@@ -29,8 +29,8 @@ ssh -p 31211 root@183.147.142.40
 ## 工作目录
 
 - 每人只在 `/home/<自己的目录>` 下做实验（目录格式 `<缩写>@<群昵称>`，分配见 `01_team.md`；总览表在 `/home/README.md`）
-- 每个个人目录下有软链：`data` → 数据盘 datasets，`shared` → `/home/shared`
-- 共享仓库 clone 在 `/home/shared/egodata_process`，正式代码一律通过 PR 进仓库，不要在共享 clone 里直接改
+- 每个个人目录：`egodata_process/`（仓库 clone）+ `TASK.md`（任务卡软链）+ `data` 软链（→ 数据盘 datasets）
+- 在自己的 clone 里编译/测试自己任务的模块；push 由 Daniel 从 Mac 统一进行（服务器 origin 只读）
 
 ## conda 环境规范（避免编译冲突）
 
@@ -41,13 +41,13 @@ ssh -p 31211 root@183.147.142.40
    conda activate ash_hands
    ```
 3. 需要 CUDA 编译的包（mamba-ssm、nvdiffrast 等）装在自己环境里，出问题删环境重来，不影响别人
-4. pip 已全局配置清华镜像（`/etc/pip.conf`）；**装包优先 `uv pip install`**（uv 已全局安装，快一个量级），如 `uv pip install --only-binary :all: numpy`
+4. pip/uv 已全局配置阿里云镜像（实测最快，41MB/s）；**装包优先 `uv pip install`**（uv 已全局安装，快一个量级），如 `uv pip install --only-binary :all: numpy`
 
 ## 下载与加速工具（已全局就绪）
 
 - `aria2c -x16 -s16 -c <URL>`：多线程 + 断点续传，模型/数据集/大 wheel 一律用它，别用 wget
 - `HF_ENDPOINT=https://hf-mirror.com` 已在 `/root/.bashrc`，HF 下载零改动走镜像
-- GitHub clone/pull：`/home/shared/egodata_process` 的 origin 已配成 `gh-proxy.com` 前缀（实测唯一可用前缀），`git pull` 直接可用（**只读拉取；push 一律从自己电脑做，勿走代理**）
+- GitHub clone/pull：每个工位 clone 的 origin 已配成 `gh-proxy.com` 前缀（实测唯一可用前缀），`git pull` 直接可用（**只读拉取；push 一律从自己电脑做，勿走代理**）
 - 完整加速手册（torch/flash-attn/deepspeed 预编译 wheel 选版方法等）：`.agent/skills/env-setup/SKILL.md`
 
 ## GPU

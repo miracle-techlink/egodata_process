@@ -1,0 +1,44 @@
+# 任务⑥ Mamba 训练基线配置
+# 运行: python -m src.mamba.train --config configs/mamba_base.yaml
+# 环境: conda activate caron_mamba（torch 2.6.0 + mamba_ssm 2.2.6.post3，见 .agent/skills/mamba-training/SKILL.md）
+run_name: mamba_base
+seed: 42
+# 契约版本：03_data_pipeline.md 当前无日期头，取契约冻结日 2026-10-15（见 docs/DELIVERABLES.md）
+contract_version: "2026-10-15"
+device: auto            # auto|cuda|cpu；mamba 骨干必须 cuda
+runs_root: runs         # 服务器上改指数据盘，例如 /root/gpufree-data/datasets/ego_hoi/runs（ckpt 勿写根盘）
+
+data:
+  root: samples                       # ④ 产物根，下含 train/ val/ 子目录
+  index: samples/dataset_index.json   # 缺失时回退 glob 并告警（无法校验 split 隔离）
+  cache_in_memory: false              # true = 全量 npz 读进内存（小数据集加速）
+  nan_to_num: false                   # 保持 false：⑤ 编码器原生处理 NaN（观测标志）；仅调试备用
+  use_gaze: false                     # ±gaze 消融开关；需样本内含 gaze_seq，自动透传给 ⑤ 编码器
+
+model:
+  backbone: mamba
+  d_model: 128
+  n_layer: 4
+  d_state: 16
+  d_conv: 4
+  expand: 2
+  dropout: 0.1
+  encoder: {}                         # 透传给 ⑤ build_encoder：n_layers/n_heads/dim_ff/max_frames/contact_threshold 等
+  decoder:
+    n_max: 8                          # 与 ④ 样本 obj_seq 的 N_max 对齐；不足自动右侧 padding
+    n_interaction_types: 7            # 契约标签体系 {none,reach,grasp,hold,move,place,release}
+
+train:
+  epochs: 50
+  batch_size: 64        # 24G 显存起点 W=32/bs=64/d128；OOM 顺序见 SKILL.md
+  lr: 3.0e-4
+  weight_decay: 0.01
+  grad_clip: 1.0
+  num_workers: 0        # 服务器可调 4
+  amp_bf16: true        # 仅 CUDA 生效；CPU 自动降级 fp32
+  log_interval: 20
+  selection_metric: val_loss          # val_loss（越小越好）| val_acc_macro（越大越好）
+  loss_weights:
+    subject: 1.0
+    object: 1.0                       # object logits 先按 obj_mask 屏蔽无效槽位再算 CE
+    interaction_type: 1.0

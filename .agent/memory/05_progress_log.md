@@ -3,6 +3,14 @@
 > 每人完工一个阶段就追加一条（最新在最上）。格式：
 > `## YYYY-MM-DD 名字 — 做了什么｜产出路径｜遗留问题`
 
+## 2026-10-15 Daniel — 七模块代码并行开发完成 + 契约首轮冻结
+
+- 7 个 agent 并行完成各模块初版：① `src/preprocessing/split_clips.py`（fake-ffmpeg 编排级 e2e 过）② `src/hand_pose/extract_hands.py`（12 单测过）③ `src/pose6d/`（24 单测过，三段式可插拔：Detector/Depth/PoseBackend）④ `src/dataset/`（build_samples+label_rules+visualize+rot6d，合成数据 e2e 过）⑤ `src/encoding/`（10 单测过，CPU torch 实测）⑥ `src/mamba/train.py`（LSTM 基线 15 epoch 冒烟过，loss 正常下降）⑦ `tests/check_contracts.py` + `make_fixtures.py`（25 项自测全绿）
+- **契约 2026-10-15 首轮冻结**：样本 label 分离键（label_subject/object_slot/object_id/interaction + name）、subject 0=left/1=right/2=none、interaction 7 类索引、obj_mask/obj_valid/hand_valid、dataset_index 顶层 {train,val,test}、pose6d bboxes 未检出填 -1、clips csv 固定 6 列+残段记 meta.json
+- 新增 `docs/DELIVERABLES.md` 交付物对齐表（每阶段交付什么、谁验收、当前阻塞）
+- 工位精简：删除每人工位冗余的 `shared` 软链与 `/home/shared`（工位只保留 clone + TASK.md + data 软链）
+- 遗留：④ build_samples 有 4 处待修（恢复帧速度 NaN、index 结构、contract_version、窗口 off-by-one）；GPU 仍未挂载；EgoDemo 申请中
+
 ## 2026-10-15 Daniel — 全环境终验通过（无 GPU 条件下）
 
 - daniel_test 补齐 torch 2.6.0 + causal_conv1d/mamba_ssm wheel（与 caron_mamba 同栈）

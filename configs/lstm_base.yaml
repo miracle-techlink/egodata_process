@@ -1,0 +1,40 @@
+# 任务⑥ LSTM 对照基线（与 mamba_base 同结构：同 d_model/n_layer/dropout/编解码器）
+# 运行: python -m src.mamba.train --config configs/lstm_base.yaml
+# 不依赖 mamba_ssm，可在无 GPU 环境跑通数据链路；等效命令：任意 config 加 --baseline lstm
+run_name: lstm_base
+seed: 42
+contract_version: "2026-10-15"
+device: auto
+runs_root: runs         # 服务器上改指数据盘，例如 /root/gpufree-data/datasets/ego_hoi/runs
+
+data:
+  root: samples
+  index: samples/dataset_index.json
+  cache_in_memory: false
+  nan_to_num: false     # 保持 false：⑤ 编码器原生处理 NaN
+  use_gaze: false
+
+model:
+  backbone: lstm
+  d_model: 128
+  n_layer: 4
+  dropout: 0.1
+  encoder: {}
+  decoder:
+    n_max: 8
+    n_interaction_types: 7
+
+train:
+  epochs: 50
+  batch_size: 64
+  lr: 3.0e-4
+  weight_decay: 0.01
+  grad_clip: 1.0
+  num_workers: 0
+  amp_bf16: true        # 仅 CUDA 生效；CPU 自动降级 fp32
+  log_interval: 20
+  selection_metric: val_loss
+  loss_weights:
+    subject: 1.0
+    object: 1.0
+    interaction_type: 1.0
