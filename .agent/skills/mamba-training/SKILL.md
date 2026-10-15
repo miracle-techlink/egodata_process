@@ -21,14 +21,15 @@ description: 任务⑥ 基于 mamba-ssm 训练时序意图预测模型：公共�
 
 ```bash
 conda create -n caron_mamba python=3.10 -y && conda activate caron_mamba
-uv pip install torch==2.6.0 torchvision --index-url https://download.pytorch.org/whl/cu126
-# 预编译 wheel（服务器走 gh-proxy 前缀下载）：
-uv pip install causal_conv1d-1.5.2+cu12torch2.6cxx11abiFALSE-cp310-cp310-linux_x86_64.whl \
-               mamba_ssm-2.2.6.post3+cu12torch2.6cxx11abiFALSE-cp310-cp310-linux_x86_64.whl
+# torch 走清华 pypi（⚠️ download.pytorch.org 从本服务器下载会停滞，勿用官方 cu126 index）
+uv pip install torch==2.6.0 torchvision==0.21.0
+# 预编译 wheel 数据盘有备份，直接装：
+uv pip install /root/gpufree-data/wheels/causal_conv1d-1.5.2+cu12torch2.6cxx11abiFALSE-cp310-cp310-linux_x86_64.whl \
+               /root/gpufree-data/wheels/mamba_ssm-2.2.6.post3+cu12torch2.6cxx11abiFALSE-cp310-cp310-linux_x86_64.whl
 python -c "from mamba_ssm import Mamba; print('ok')"
 ```
 
-**踩过的坑**：`pip/uv 直装 mamba-ssm` 会触发源码编译，且 build isolation 默认把 torch 隔离掉导致失败；即便加 `--no-build-isolation`，对 torch 2.14 也编不过。**一律用预编译 wheel + 配套 torch 版本**。
+**踩过的坑**：① `uv/pip 直装 mamba-ssm` 会源码编译且 build isolation 隔离 torch → 失败；② torch 2.14 无配套 wheel 且编译不兼容；③ download.pytorch.org 从本服务器拉不动 → torch 用清华 pypi（自带 cu124 runtime，与 cu12 wheel 兼容）。wheel 备份在 `/root/gpufree-data/wheels/`（含 sha 命名，勿删）。
 
 ## 训练规范
 
