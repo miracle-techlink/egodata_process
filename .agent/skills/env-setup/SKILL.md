@@ -13,7 +13,7 @@ description: 通用技能：云端 GPU 服务器训练环境快速搭建与下�
 - ✅ Miniconda `/opt/miniconda3`（清华源）、pip 清华源（`/etc/pip.conf`）
 - ✅ aria2c、uv 已全局安装；`HF_ENDPOINT`、`UV_INDEX_URL` 等已写入 `/root/.bashrc`
 - ⚠️ BBR/sysctl 容器内无权限，跳过；Docker 加速不涉及（我们就在容器里）
-- ⚠️ GitHub 直连 TLS 不稳 → clone 用 ghproxy 前缀（见下），**push 绝不走代理前缀（会泄露 token）**
+- ⚠️ GitHub 直连 TLS 不稳 → clone/pull 用 `gh-proxy.com` 前缀（见下，已实测），**push 绝不走代理前缀（会泄露 token）**
 
 ## 1. 镜像源速查
 
@@ -48,9 +48,9 @@ pip install "huggingface_hub[hf_xet]"        # Xet 分块去重+续传，新版 
 modelscope download --model Qwen/Qwen2.5-7B-Instruct
 
 # GitHub clone / release 下载（只读场景）
-git clone https://ghproxy.com/https://github.com/org/repo.git
-aria2c -x16 -s16 -c https://ghproxy.com/https://github.com/org/repo/releases/download/v1/x.whl
-# 备选前缀：mirror.ghproxy.com / gh-proxy.com
+git clone https://gh-proxy.com/https://github.com/org/repo.git
+aria2c -x16 -s16 -c https://gh-proxy.com/https://github.com/org/repo/releases/download/v1/x.whl
+# 前缀可用性（2026-10-15 本服务器实测）：gh-proxy.com ✅ 可用；ghproxy.com 挂起、mirror.ghproxy.com DNS 解析失败
 # ⛔ push 不走代理前缀——第三方代理会看到你的凭据
 ```
 

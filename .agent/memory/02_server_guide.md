@@ -47,7 +47,7 @@ ssh -p 31211 root@183.147.142.40
 
 - `aria2c -x16 -s16 -c <URL>`：多线程 + 断点续传，模型/数据集/大 wheel 一律用它，别用 wget
 - `HF_ENDPOINT=https://hf-mirror.com` 已在 `/root/.bashrc`，HF 下载零改动走镜像
-- GitHub clone/release 慢：套前缀 `https://ghproxy.com/https://github.com/...`（**只读操作用；push 绝不走代理**）
+- GitHub clone/pull：`/home/shared/egodata_process` 的 origin 已配成 `gh-proxy.com` 前缀（实测唯一可用前缀），`git pull` 直接可用（**只读拉取；push 一律从自己电脑做，勿走代理**）
 - 完整加速手册（torch/flash-attn/deepspeed 预编译 wheel 选版方法等）：`.agent/skills/env-setup/SKILL.md`
 
 ## GPU
