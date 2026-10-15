@@ -21,6 +21,20 @@
 └── tests/             # ⑦ 集成测试 / 接口校验
 ```
 
+## 团队分工
+
+| 成员 | 任务 | 服务器工位 |
+|------|------|-----------|
+| 🐠 | ① 数据集切分（长视频 → ~20s clips） | `/home/fish@🐠` |
+| Prick1yAsh | ② 手部姿态提取（MediaPipe 21 关键点） | `/home/ash@Prick1yAsh` |
+| 空腹panda | ③ 物体 6D pose 提取（FoundationPose） | `/home/panda@空腹panda` |
+| 谢武 | ④ 训练数据构建 + 可视化 | `/home/xw@谢武` |
+| Arc | ⑤ 交互关系编码器/解码器 | `/home/arc@Arc` |
+| Caron | ⑥ Mamba 时序模型训练 | `/home/caron@Caron` |
+| Daniel | ⑦ 集成测试 / debug / 优化 | `/home/daniel` |
+
+> 分工细节、依赖关系、协作规则见 `.agent/memory/01_team.md`
+
 ## 快速上手
 
 1. 阅读 `AGENTS.md`，再按 `.agent/memory/` 编号顺序读完 5 个文件（10 分钟）
