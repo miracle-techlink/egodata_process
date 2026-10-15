@@ -10,16 +10,25 @@ description: 任务⑥ 基于 mamba-ssm 训练时序意图预测模型：公共�
 - 输入：④ 的 `samples/` + ⑤ 的 `build_encoder/build_decoder`
 - 输出：`data/ego_hoi/runs/<run_name>/best.pt` + 训练日志（**checkpoint 存数据盘，根盘会爆**）
 
-## 安装（4090 + cu121，独立环境）
+## 安装（✅ 2026-10-15 已预装验证，直接用）
+
+`conda activate caron_mamba` 即可，已装好：
+
+- **torch 2.6.0+cu126**（⚠️ 勿升到 2.14：mamba-ssm 没有配套预编译 wheel，源码编译与新版 torch 不兼容）
+- causal_conv1d 1.5.2 + mamba_ssm 2.2.6.post3（GitHub releases 预编译 wheel，四元组 `cu12torch2.6 abiFALSE cp310`）
+
+如需重建：
 
 ```bash
 conda create -n caron_mamba python=3.10 -y && conda activate caron_mamba
-pip install torch --index-url https://download.pytorch.org/whl/cu121
-pip install causal-conv1d>=1.4.0 mamba-ssm   # 编译需 nvcc；卡住就下预编译 wheel
+uv pip install torch==2.6.0 torchvision --index-url https://download.pytorch.org/whl/cu126
+# 预编译 wheel（服务器走 gh-proxy 前缀下载）：
+uv pip install causal_conv1d-1.5.2+cu12torch2.6cxx11abiFALSE-cp310-cp310-linux_x86_64.whl \
+               mamba_ssm-2.2.6.post3+cu12torch2.6cxx11abiFALSE-cp310-cp310-linux_x86_64.whl
+python -c "from mamba_ssm import Mamba; print('ok')"
 ```
 
-- 验证：`python -c "import mamba_ssm; from mamba_ssm import Mamba"`（import 报错九成是 torch/cuda 版本不匹配）
-- 官方仓库：https://github.com/state-spaces/mamba
+**踩过的坑**：`pip/uv 直装 mamba-ssm` 会触发源码编译，且 build isolation 默认把 torch 隔离掉导致失败；即便加 `--no-build-isolation`，对 torch 2.14 也编不过。**一律用预编译 wheel + 配套 torch 版本**。
 
 ## 训练规范
 

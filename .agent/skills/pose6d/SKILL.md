@@ -24,10 +24,12 @@ description: 任务③ 用 FoundationPose 提取目标物体 6D 位姿（位置+
 ## 安装要点（CUDA 编译，独立环境！）
 
 ```bash
-conda create -n panda_6d python=3.10 -y && conda activate panda_6d
-# 按 FoundationPose README：pytorch + kaolin + nvdiffrast + bundlesdf 等 CUDA 扩展
-# 编译卡住先看官方 issues；不要用 docker（我们已在容器内）
+conda activate panda_6d   # 已预装 torch 2.14 + trimesh + open3d + opencv
+# 按 FoundationPose README 补装 kaolin / nvdiffrast / bundlesdf 等 CUDA 扩展
 ```
+
+- ⚠️ FoundationPose 生态对 torch 版本敏感（官方年代为 torch 2.0–2.5）；若扩展编译与 torch 2.14 冲突，把 panda_6d 降到 `torch==2.6.0` + cu126 再试
+- 预编译 wheel 优先原则见 `.agent/skills/env-setup`；编译卡住先看官方 issues；不要用 docker（我们已在容器内）
 
 ## 要点
 

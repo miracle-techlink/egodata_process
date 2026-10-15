@@ -3,6 +3,14 @@
 > 每人完工一个阶段就追加一条（最新在最上）。格式：
 > `## YYYY-MM-DD 名字 — 做了什么｜产出路径｜遗留问题`
 
+## 2026-10-15 Daniel — 全环境预配完成
+
+- 7 个 conda 环境建好（全落数据盘）：fish_split(ffmpeg)、ash_hands(mediapipe 1.1.1)、xw_dataset、arc_enc/panda_6d/daniel_test(torch)、caron_mamba
+- 修复 mediapipe 缺 libGL（apt 装 libgl1/libglib2.0-0）
+- mamba-ssm 路线定案：torch 2.14 无预编译 wheel 且源码编译不兼容 → caron_mamba/daniel_test 定格 **torch 2.6.0+cu126 + causal_conv1d 1.5.2 + mamba_ssm 2.2.6.post3 预编译 wheel**
+- 参考仓库预拉：panda 工位 FoundationPose + Depth-Anything-V2；caron 工位 mamba
+- 服务器自带 nvcc CUDA 12.6（编译能力有，但优先预编译 wheel 原则不变）
+
 ## 2026-10-15 Daniel — 工位弹药备齐 + 数据集情报
 
 - 每个成员目录配好独立仓库 clone（`~/egodata_process`，origin 走 gh-proxy，全部同步到最新）
