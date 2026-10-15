@@ -3,6 +3,14 @@
 > 每人完工一个阶段就追加一条（最新在最上）。格式：
 > `## YYYY-MM-DD 名字 — 做了什么｜产出路径｜遗留问题`
 
+## 2026-10-15 Daniel — 工位弹药备齐 + 数据集情报
+
+- 每个成员目录配好独立仓库 clone（`~/egodata_process`，origin 走 gh-proxy，全部同步到最新）
+- 服务器系统 Python 装好 modelscope 1.40.2 + huggingface_hub[hf_xet] 下载工具
+- 数据盘 `ego_hoi/README.md` 说明目录分工；`raw/download_egodemo.sh` 下载脚本就绪
+- **重要情报**：① EgoDemo 是申请制（gated-manual），fish 需先去 HF 申请访问；② ModelScope 的 ego_pose_dataset 目前是空壳（数据未上传）——已在 04_resources.md 标注
+- 遗留：fish 的 HF 申请待批；ego_pose_dataset 待上传方补数据
+
 ## 2026-10-15 Daniel — hdk 目录归属确认并迁移
 
 - `hdk` = Caron（误用真名缩写建目录），其 repo clone + conda env 已迁移至 `/home/caron@Caron/`，附 MIGRATION_NOTE.md（prefix 环境重建提醒、`src/encoding/` 代码落点约定、remote 已改代理前缀）

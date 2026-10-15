@@ -5,8 +5,8 @@
 | 资源 | 地址 |
 |------|------|
 | 代码仓库 | https://github.com/miracle-techlink/egodata_process |
-| 处理好的数据集 | https://www.modelscope.cn/datasets/Liuyue9698/ego_pose_dataset |
-| 原始数据参考 | https://huggingface.co/datasets/LightwheelAI/EgoDemo |
+| 处理好的数据集 | https://www.modelscope.cn/datasets/Liuyue9698/ego_pose_dataset ⚠️ 2026-10-15 查：**仍是空壳**（只有 README），数据待上传 |
+| 原始数据参考 | https://huggingface.co/datasets/LightwheelAI/EgoDemo ⚠️ **申请制（gated-manual）**：先去 HF 申请访问，批准后配 token 用 `data/ego_hoi/raw/download_egodemo.sh` 下载 |
 | 云端环境配置指南 | https://github.com/miracle-techlink/gpu-rsi-plugin （精华版已收录：`skills/env-setup/SKILL.md`） |
 
 ## 服务器
