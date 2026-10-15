@@ -3,9 +3,16 @@
 > 每人完工一个阶段就追加一条（最新在最上）。格式：
 > `## YYYY-MM-DD 名字 — 做了什么｜产出路径｜遗留问题`
 
+## 2026-10-15 Daniel — 全环境终验通过（无 GPU 条件下）
+
+- daniel_test 补齐 torch 2.6.0 + causal_conv1d/mamba_ssm wheel（与 caron_mamba 同栈）
+- 修复三处：xw_dataset 补 pyyaml；panda_6d 补系统库 libegl1 + libusb-1.0-0（open3d import 通过）；fish 的 ffmpeg 改走 **apt 系统级安装**（conda 装 ffmpeg 解依赖会被 2GB cgroup OOM kill——conda 大求解一律避免，优先 uv/apt）
+- 终验结果：ash_hands(mediapipe 1.1.1) ✅ / xw_dataset ✅ / panda_6d(torch+trimesh+open3d) ✅ / arc_enc(torch 2.14.1+cu126) ✅ / caron_mamba+daniel_test(torch 2.6.0 + mamba wheels 在位) ✅ / ffmpeg 4.4.2 系统级 ✅
+- ⚠️ 唯一阻塞：GPU 仍未挂载进容器（无 /dev/nvidia*），mamba import 验证与 ③⑥ 训练任务等 GPU 就位后进行；gpufree 控制台操作待定
+
 ## 2026-10-15 Daniel — 全环境预配完成
 
-- 7 个 conda 环境建好（全落数据盘）：fish_split(ffmpeg)、ash_hands(mediapipe 1.1.1)、xw_dataset、arc_enc/panda_6d/daniel_test(torch)、caron_mamba
+- 7 个 conda 环境建好（全落数据盘）：fish_split(ffmpeg→已改 apt 系统级)、ash_hands(mediapipe 1.1.1)、xw_dataset、arc_enc/panda_6d/daniel_test(torch)、caron_mamba
 - 修复 mediapipe 缺 libGL（apt 装 libgl1/libglib2.0-0）
 - mamba-ssm 路线定案：torch 2.14 无预编译 wheel 且源码编译不兼容 → caron_mamba/daniel_test 定格 **torch 2.6.0+cu126 + causal_conv1d 1.5.2 + mamba_ssm 2.2.6.post3 预编译 wheel**
 - 参考仓库预拉：panda 工位 FoundationPose + Depth-Anything-V2；caron 工位 mamba

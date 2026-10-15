@@ -29,7 +29,9 @@ uv pip install /root/gpufree-data/wheels/causal_conv1d-1.5.2+cu12torch2.6cxx11ab
 python -c "from mamba_ssm import Mamba; print('ok')"
 ```
 
-**踩过的坑**：① `uv/pip 直装 mamba-ssm` 会源码编译且 build isolation 隔离 torch → 失败；② torch 2.14 无配套 wheel 且编译不兼容；③ download.pytorch.org 从本服务器拉不动 → torch 用清华 pypi（自带 cu124 runtime，与 cu12 wheel 兼容）。wheel 备份在 `/root/gpufree-data/wheels/`（含 sha 命名，勿删）。
+**踩过的坑**：① `uv/pip 直装 mamba-ssm` 会源码编译且 build isolation 隔离 torch → 失败；② torch 2.14 无配套 wheel 且编译不兼容；③ download.pytorch.org 从本服务器拉不动 → torch 用清华 pypi（自带 cu124 runtime，与 cu12 wheel 兼容，`torch.__version__` 显示 2.6.0+cu124 属正常）。wheel 备份在 `/root/gpufree-data/wheels/`（含 sha 命名，勿删）。
+
+**GPU 未挂载时的预期现象**：容器没挂 GPU（无 `/dev/nvidia*`）时，`from mamba_ssm import Mamba` 会报 `RuntimeError: 0 active drivers`（triton autotuner 初始化需要 CUDA driver）——**这不是安装错误**。此时用 `uv pip show mamba-ssm` + 确认 `site-packages/mamba_ssm/*.so` 存在 + `import torch` 成功作为安装到位的判据；GPU 挂载后再跑完整 import。daniel_test 环境也装了同一套（torch 2.6 + 两个 wheel）。
 
 ## 训练规范
 

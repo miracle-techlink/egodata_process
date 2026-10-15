@@ -49,5 +49,7 @@ ls data/raw/*.mp4 | xargs -P 8 -I{} python src/preprocessing/split_one.py {}
 
 ```bash
 conda create -n fish_split python=3.10 -y && conda activate fish_split
-conda install -c conda-forge ffmpeg -y
+# ffmpeg 用系统级（apt 已装好 4.4.2，直接可用）：
+# ⚠️ 不要 conda install ffmpeg —— 本容器 2GB cgroup 内存限制会让 conda 解依赖被 OOM kill
+ffmpeg -version
 ```

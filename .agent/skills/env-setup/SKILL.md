@@ -10,18 +10,19 @@ description: 通用技能：云端 GPU 服务器训练环境快速搭建与下�
 
 ## 本服务器现状（2026-10-15 已落地）
 
-- ✅ Miniconda `/opt/miniconda3`（清华源）、pip 清华源（`/etc/pip.conf`）
+- ✅ Miniconda `/opt/miniconda3`（清华 conda 源）、pip/uv **阿里云源**（`/etc/pip.conf` + `/root/.bashrc`；实测 41MB/s > 华为 20 > 清华 6）
 - ✅ aria2c、uv 已全局安装；`HF_ENDPOINT`、`UV_INDEX_URL` 等已写入 `/root/.bashrc`
 - ⚠️ BBR/sysctl 容器内无权限，跳过；Docker 加速不涉及（我们就在容器里）
 - ⚠️ GitHub 直连 TLS 不稳 → clone/pull 用 `gh-proxy.com` 前缀（见下，已实测），**push 绝不走代理前缀（会泄露 token）**
+- ⛔ **容器 cgroup 内存限 2GB：conda install 解依赖大的包（如 ffmpeg）会被 OOM kill 静默退出** → 装包一律 uv（Python 包）或 apt（系统工具），conda 只用来 create 空环境
 
 ## 1. 镜像源速查
 
 ```bash
-# pip（已全局配置 /etc/pip.conf → 清华）
+# pip（已全局配置 /etc/pip.conf → 阿里云）
 # uv（~/.bashrc 已配置）
-export UV_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple
-export UV_DEFAULT_INDEX=https://pypi.tuna.tsinghua.edu.cn/simple
+export UV_INDEX_URL=https://mirrors.aliyun.com/pypi/simple/
+export UV_DEFAULT_INDEX=https://mirrors.aliyun.com/pypi/simple/
 export UV_CONCURRENT_DOWNLOADS=100
 export UV_HTTP_RETRIES=5
 export UV_COMPILE_BYTECODE=1
