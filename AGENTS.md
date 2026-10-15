@@ -24,6 +24,7 @@
 | ⑤ 编码器/解码器 | `encoder-decoder` |
 | ⑥ Mamba 训练 | `mamba-training` |
 | ⑦ 测试/debug/集成 | `integration-test` |
+| 通用：环境搭建/下载加速 | `env-setup` |
 
 ## 铁律
 

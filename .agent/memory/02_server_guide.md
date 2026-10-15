@@ -41,7 +41,14 @@ ssh -p 31211 root@183.147.142.40
    conda activate ash_hands
    ```
 3. 需要 CUDA 编译的包（mamba-ssm、nvdiffrast 等）装在自己环境里，出问题删环境重来，不影响别人
-4. pip 已全局配置清华镜像（`/etc/pip.conf`）
+4. pip 已全局配置清华镜像（`/etc/pip.conf`）；**装包优先 `uv pip install`**（uv 已全局安装，快一个量级），如 `uv pip install --only-binary :all: numpy`
+
+## 下载与加速工具（已全局就绪）
+
+- `aria2c -x16 -s16 -c <URL>`：多线程 + 断点续传，模型/数据集/大 wheel 一律用它，别用 wget
+- `HF_ENDPOINT=https://hf-mirror.com` 已在 `/root/.bashrc`，HF 下载零改动走镜像
+- GitHub clone/release 慢：套前缀 `https://ghproxy.com/https://github.com/...`（**只读操作用；push 绝不走代理**）
+- 完整加速手册（torch/flash-attn/deepspeed 预编译 wheel 选版方法等）：`.agent/skills/env-setup/SKILL.md`
 
 ## GPU
 

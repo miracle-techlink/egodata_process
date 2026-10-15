@@ -7,7 +7,7 @@
 | 代码仓库 | https://github.com/miracle-techlink/egodata_process |
 | 处理好的数据集 | https://www.modelscope.cn/datasets/Liuyue9698/ego_pose_dataset |
 | 原始数据参考 | https://huggingface.co/datasets/LightwheelAI/EgoDemo |
-| 训练基础 wheels 安装文档 | 《训练环境配置优化》（群文件/飞书，找群主获取；获取后把链接补到此处） |
+| 云端环境配置指南 | https://github.com/miracle-techlink/gpu-rsi-plugin （精华版已收录：`skills/env-setup/SKILL.md`） |
 
 ## 服务器
 
@@ -25,11 +25,12 @@
 | 时序模型 | [state-spaces/mamba](https://github.com/state-spaces/mamba)（含 mamba-ssm、causal-conv1d） |
 | 视线先验（增强探索） | 后续文献综述补充 |
 
-## 镜像源（服务器已配置）
+## 镜像源与加速（服务器已配置）
 
-- conda：清华镜像（`/opt/miniconda3/.condarc`）
-- pip：清华镜像（`/etc/pip.conf`）
-- HuggingFace 如拉取慢：`export HF_ENDPOINT=https://hf-mirror.com`
+- conda：清华镜像（`/opt/miniconda3/.condarc`）；pip：清华镜像（`/etc/pip.conf`）
+- uv、aria2c 已全局安装；`HF_ENDPOINT=https://hf-mirror.com` 等环境变量在 `/root/.bashrc`
+- 装包用 `uv pip install`、大文件用 `aria2c -x16 -s16 -c`、GitHub clone 慢套 ghproxy 前缀（push 勿用）
+- 完整手册：`skills/env-setup/SKILL.md`
 
 ## 文献综述（任务书第 1 项）
 
