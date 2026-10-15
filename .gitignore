@@ -1,0 +1,19 @@
+# 数据与产物（存服务器数据盘，不进 git）
+data/
+datasets/
+checkpoints/
+runs/
+*.npz
+*.mp4
+*.pt
+*.ckpt
+
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+.ipynb_checkpoints/
+
+# 环境与系统
+.env
+.DS_Store
