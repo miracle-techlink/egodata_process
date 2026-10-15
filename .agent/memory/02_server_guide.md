@@ -28,7 +28,7 @@ ssh -p 31211 root@183.147.142.40
 
 ## 工作目录
 
-- 每人只在 `/home/<自己的目录>` 下做实验（目录分配见 `01_team.md`）
+- 每人只在 `/home/<自己的目录>` 下做实验（目录格式 `<缩写>@<群昵称>`，分配见 `01_team.md`；总览表在 `/home/README.md`）
 - 每个个人目录下有软链：`data` → 数据盘 datasets，`shared` → `/home/shared`
 - 共享仓库 clone 在 `/home/shared/egodata_process`，正式代码一律通过 PR 进仓库，不要在共享 clone 里直接改
 

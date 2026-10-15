@@ -3,6 +3,12 @@
 > 每人完工一个阶段就追加一条（最新在最上）。格式：
 > `## YYYY-MM-DD 名字 — 做了什么｜产出路径｜遗留问题`
 
+## 2026-10-15 Daniel — 成员目录实名制
+
+- `/home/` 成员目录改名 `<缩写>@<群昵称>`（fish@🐠、ash@Prick1yAsh、panda@空腹panda、xw@谢武、arc@Arc、caron@Caron），新增 `/home/README.md` 总览表
+- GitHub 已打通（deploy key + ssh.github.com:443）：Mac 可 push；服务器仓库 origin 配 gh-proxy.com 前缀只读拉取
+- 遗留：`hdk` 目录归属未登记；`daniel` 目录群昵称待确认
+
 ## 2026-10-15 Daniel — 收录环境配置指南 + 服务器加速落地
 
 - 《云端GPU服务器环境配置指南》（[gpu-rsi-plugin](https://github.com/miracle-techlink/gpu-rsi-plugin)）精华版收录为 `skills/env-setup/SKILL.md`
