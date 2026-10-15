@@ -3,6 +3,10 @@
 > 每人完工一个阶段就追加一条（最新在最上）。格式：
 > `## YYYY-MM-DD 名字 — 做了什么｜产出路径｜遗留问题`
 
+## 2026-10-15 Daniel — hdk 目录归属确认并迁移
+
+- `hdk` = Caron（误用真名缩写建目录），其 repo clone + conda env 已迁移至 `/home/caron@Caron/`，附 MIGRATION_NOTE.md（prefix 环境重建提醒、`src/encoding/` 代码落点约定、remote 已改代理前缀）
+
 ## 2026-10-15 Daniel — 成员目录实名制
 
 - `/home/` 成员目录改名 `<缩写>@<群昵称>`（fish@🐠、ash@Prick1yAsh、panda@空腹panda、xw@谢武、arc@Arc、caron@Caron），新增 `/home/README.md` 总览表

@@ -27,4 +27,4 @@
 - 格式：`<缩写>@<群昵称>`（如 `ash@Prick1yAsh`），`ls /home` 一眼定位归属；`/home/README.md` 有总览表
 - 进入带 @/中文/emoji 的目录：输入开头字母后按 **Tab** 自动补全，不要手打全名；脚本里一律用 `~/` 或软链，不硬编码家目录路径
 - **conda 环境名保持纯 ASCII**（如 `ash_hands`），与目录名解耦，不带 @/中文/emoji
-- `hdk` 目录暂未登记归属；`daniel` 目录待本人确认群昵称后再改名
+- `hdk` 已确认是 Caron 所建（误用真名缩写），内容已并入 `/home/caron@Caron`（详见该目录 MIGRATION_NOTE.md）；`daniel` 目录待本人确认群昵称后再改名
