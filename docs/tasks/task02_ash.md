@@ -15,12 +15,13 @@ npz 字段：`left_hand (T,21,3)`、`right_hand (T,21,3)`、`conf (T,2)`，未�
 
 ## 当前状态
 
-- ✅ 环境已预装：`conda activate ash_hands`（mediapipe + opencv + numpy 已装好）
-- ⏳ 等 ①fish 出 clips（等料期间：用手机拍一段 30s 操作视频当输入，先把提取管线跑通）
+- ✅ `conda activate ash_hands`：**mediapipe 定格 0.10.21**，不要升级
+- ✅ 2 个真实 clips / 1200 帧已提取并通过契约校验（0 错误）；左手检出 75.2%、右手 83.8%、双手 63.3%
+- ⏳ 待做真实视频左右手可视化抽检、meta 推荐键修正和子集批处理
 
 ## 实施步骤
 
-1. **D1 跑通**：`src/hand_pose/extract.py`，MediaPipe Hands 视频流模式（`static_image_mode=False`, `max_num_hands=2`, 置信度 0.5），处理 1 个 clip
+1. **D1 跑通**：`src/hand_pose/extract_hands.py`，MediaPipe Hands 视频流模式（`static_image_mode=False`, `max_num_hands=2`, 置信度 0.5），真实 clips 已跑通 ✅
 2. **D2 验证**：关键点叠图/叠视频自检 + 交 Daniel 契约校验 + 交 xw 可视化抽检
 3. **D3 全量**：批量 + 断点续跑（已存在的 npz 跳过），产出覆盖率统计（各 clip 检出率入 meta）
 
@@ -31,9 +32,9 @@ npz 字段：`left_hand (T,21,3)`、`right_hand (T,21,3)`、`conf (T,2)`，未�
 
 ## 验收标准
 
-- [ ] `tests/check_contracts.py hand_pose <npz>` 通过
+- [x] `tests/check_contracts.py hand_pose <目录>` 首批真实数据通过（0 错误）
 - [ ] 3 个 clip 可视化抽检（xw 配合）左右手无误、时间对齐
-- [ ] 检出率统计入 meta.json
+- [x] 检出率统计入 meta.json
 - [ ] 更新进度日志，提 PR（分支 `ash/hand-pose-extract`）
 
 ## 求助与参考

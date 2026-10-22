@@ -21,10 +21,11 @@ dec = build_decoder(cfg)   # 时序表示 -> dict(subject=, object=, type=) logi
 
 ## 当前状态
 
-- ✅ 环境已预装：`conda activate arc_enc`（torch cu126 已装好）
-- ⏳ 等 ④xw 的样本结构冻结（等料期间：用随机张量按契约 shape 开发+单测）
+- ✅ 环境可用：`conda activate arc_enc`（torch 2.14.1+cu130）
+- ✅ 样本契约与 `build_encoder/build_decoder` 接口已冻结；10 项单测及 LSTM/Mamba 集成冒烟通过
+- ⏳ 下一步是接 ④ 的真实 samples 做 overfit 与坐标单位联调，不再等接口冻结
 
-## 设计要点（草案，实现后回写契约 ⑤节）
+## 设计要点（已实现，细节见契约 ⑤节）
 
 - **实体 token**：每帧 {人体全局, 左手, 右手, obj_1..N}；token = 自身状态 + **关系特征**（与其他实体的相对位置/距离、相对速度、contact 标志）+ 实体类型 embedding + 时间 embedding
 - **关系层**：1–2 层轻量 cross-attention；d_model=128 起步——**初版宁小勿大**，跑通再加深
@@ -34,14 +35,14 @@ dec = build_decoder(cfg)   # 时序表示 -> dict(subject=, object=, type=) logi
 
 ## 实施步骤
 
-1. **D1**：按契约 shape 用随机张量写完 encoder/decoder + shape 单测（`tests/`）
-2. **D2**：和 caron 联调前向（随机权重 loss 能 backward）
-3. **D3**：xw 样本到位后接真实数据，冻结接口
+1. **D1**：按契约 shape 用随机张量写完 encoder/decoder + shape 单测（`tests/`）✅
+2. **D2**：和 caron 联调前向（随机权重 loss 能 backward）✅
+3. **D3**：接 xw 真实样本做 overfit，保持已冻结接口不变
 
 ## 验收标准
 
-- [ ] shape 单测全过（含 N 变化、NaN mask 输入不炸）
-- [ ] 随机数据上 overfit 小实验 loss 显著下降（与 caron 配合）
+- [x] shape 单测全过（含 N 变化、NaN mask 输入不炸）
+- [ ] 真实样本上 overfit 小实验 loss 显著下降（与 caron 配合）
 - [ ] 更新进度日志，提 PR（分支 `arc/encoding`）
 
 ## 求助与参考

@@ -11,7 +11,8 @@
 
 ## 服务器
 
-- `ssh -p 31211 root@183.147.142.40`，4090 24GB（gpufree）
+- 现役：`ssh -p 30314 root@120.209.70.195`，**L40 46GB**（gpufree，Ubuntu 20.04）
+- 旧 4090 机器因 GPU 无法挂载已弃用，不再作为开发环境
 - 密码在群消息里，**不要**提交进仓库
 - 规范详见 `02_server_guide.md`
 
@@ -27,7 +28,7 @@
 
 ## 镜像源与加速（服务器已配置）
 
-- conda：清华镜像（`/opt/miniconda3/.condarc`）；pip：清华镜像（`/etc/pip.conf`）
+- conda：清华镜像（`/opt/miniconda3/.condarc`）；pip/uv：阿里云镜像（`/etc/pip.conf` + 环境变量）
 - uv、aria2c 已全局安装；`HF_ENDPOINT=https://hf-mirror.com` 等环境变量在 `/root/.bashrc`
 - 装包用 `uv pip install`、大文件用 `aria2c -x16 -s16 -c`、GitHub clone 慢套 ghproxy 前缀（push 勿用）
 - 完整手册：`skills/env-setup/SKILL.md`

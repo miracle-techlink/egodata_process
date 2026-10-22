@@ -10,14 +10,14 @@ ssh -p 30314 root@120.209.70.195
 - 机型：**NVIDIA L40 46GB**（sm_89，驱动 580/CUDA 13.0，nvcc 12.1 在 `/usr/local/cuda`）
 - 系统：**Ubuntu 20.04（glibc 2.31）**——⚠️ 很多官方预编译 CUDA wheel（mamba_ssm 等）要求 glibc 2.32+，本机必须源码编译，见 mamba-training skill
 - 系统 Python 3.10，conda 装在 `/opt/miniconda3`（已配镜像）；uv/ffmpeg/aria2/git-lfs 已装
-- 旧机器（4090，ssh -p 31211 root@183.147.142.40）GPU 挂不上已弃用，仅留作备份
+- 旧 4090 机器因 GPU 无法挂载已弃用，不要再用于环境配置、下载或训练
 
 ## 磁盘布局（重要：根盘只有 30GB）
 
 | 挂载点 | 容量 | 用途 |
 |--------|------|------|
 | `/`（overlay） | 30G | 系统、代码、个人目录 —— **不要放大文件** |
-| `/root/gpufree-data` | **246G** | **持久数据盘**：数据集 + 所有 conda 环境 |
+| `/root/gpufree-data` | **492G** | **持久数据盘**：数据集 + 所有 conda 环境 |
 | `/data/tini` | 1T（宿主机共享，73% 已用） | 勿依赖，非本实例专属 |
 
 ```
@@ -30,8 +30,10 @@ ssh -p 30314 root@120.209.70.195
 
 ## 工作目录
 
-- 每人只在 `/home/<自己的目录>` 下放个人任务产物（目录格式 `<缩写>@<群昵称>`，分配见 `01_team.md`；总览表在 `/home/README.md`）
-- **公用项目代码只有一份中央 clone：`/workspace/egodata_process`**（origin 走 gh-proxy 只读拉取；push 由 Daniel 从 Mac 统一进行）。工位里不放仓库 clone，只放 `README.md` + `TASK.md`（任务卡实体文件）+ `data` 软链 + 个人产物
+- 每人只在 `/home/<自己的目录>` 下放本人任务相关内容（目录格式 `<缩写>@<群昵称>`，分配见 `01_team.md`；总览表在 `/home/README.md`）
+- **公用项目主代码只有一份中央 clone：`/workspace/egodata_process`**（origin 走 gh-proxy 只读拉取；push 由 Daniel 从 Mac 统一进行）
+- 工位不放整仓 clone；保留 `README.md` + `TASK.md`（实体副本）+ `data` 软链，以及本人任务的实验/测试代码、参考仓库和产物
+- 在工位编译、测试本人任务模块；验证后由 Daniel 整理进中央 `src/` 对应模块，不在服务器上 push
 
 ## conda 环境规范（避免编译冲突）
 
@@ -53,9 +55,9 @@ ssh -p 30314 root@120.209.70.195
 
 ## GPU
 
-- 4090 24GB 一块，多人错峰使用；跑训练前 `nvidia-smi` 看一眼占用
-- 2026-10-15 搭建时 GPU 未挂载进容器（`/dev/nvidia*` 不存在）。若 `nvidia-smi -L` 无输出，到 gpufree 控制台确认 GPU 是否分配，再重启实例
-- 显存预算按 24GB 规划，见 `skills/mamba-training/SKILL.md`
+- **L40 46GB 一块**，多人错峰使用；跑训练前 `nvidia-smi` 看占用
+- L40 计算能力为 sm_89；源码编译 CUDA 扩展时必须包含 `compute_89/sm_89`
+- 显存起点与 OOM 处理见 `.agent/skills/mamba-training/SKILL.md`
 
 ## PR 流程
 

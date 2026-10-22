@@ -15,9 +15,10 @@
 
 ## 当前状态
 
-- ✅ 环境已预装：`conda activate xw_dataset`（numpy + opencv + matplotlib + tqdm）
-- ⏳ 等 ②ash、③panda 的首批 npz（等料期间：先写好可视化脚本，用合成 npz 自测）
-- 🔑 **开工第一件事**：和 ash、panda 逐字对齐 npz 字段名（跑 `tests/check_contracts.py`）
+- ✅ 环境可用：`conda activate xw_dataset`（numpy + opencv + matplotlib + tqdm）
+- ✅ 契约字段已冻结；313 个合成样本通过校验（0 error / 0 warning），LSTM/Mamba 均能读取训练
+- ✅ 首批真实 hand_pose 已产出；⏳ 真实 pose6d 仍等 ③，当前不能把 mock 结果当真实物体轨迹
+- 🔑 下一步：接真实 ②③ npz，出标签分布与 ≥5% 可视化抽检，不再等字段对齐
 
 ## 实施步骤
 

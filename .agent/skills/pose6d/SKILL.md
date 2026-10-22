@@ -8,7 +8,7 @@ description: 任务③ 用 FoundationPose 提取目标物体 6D 位姿（位置+
 ## 契约（详见 .agent/memory/03_data_pipeline.md ③）
 
 - 输入：`clips/<clip_id>.mp4` + 深度（若可得）+ 物体 mask/检测框
-- 输出：`pose6d/<clip_id>.npz`：`object_ids (N,)`、`poses (N,T,4,4)`（物体→相机）、`bboxes (N,T,4)`；未检出帧 NaN
+- 输出：`pose6d/<clip_id>.npz`：`object_ids (N,)`、`poses (N,T,4,4)`（物体→相机）、`bboxes (N,T,4)`；poses 未检出填 NaN，bboxes 未检出填 -1
 
 ## 方案：FoundationPose（NVlabs）
 
@@ -19,7 +19,7 @@ description: 任务③ 用 FoundationPose 提取目标物体 6D 位姿（位置+
 1. **深度**：FoundationPose 需要 RGB-D。若 EgoDemo/ego_pose_dataset 无深度通道 → 走降级路径：DepthAnything V2 单目深度估计补齐，meta 记 `depth_source: depth_anything_v2`
 2. **mask**：需要首帧物体 mask → 用 Grounded-SAM / SAM2 自动出 mask，视频内由 FoundationPose 跟踪
 3. **物体 mesh**：model-free 模式可用 RGB-D 重建（NeRF/bundlesdf），无需提前 CAD
-4. **显存**：4090 24GB 够单物体跟踪；多物体逐物体串行跑
+4. **显存**：现役 L40 46GB 够单物体跟踪；多物体逐物体串行跑，批量前先实测显存
 
 ## 安装要点（CUDA 编译，独立环境！）
 

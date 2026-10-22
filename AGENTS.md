@@ -28,11 +28,11 @@
 
 ## 任务卡（每人一份：目标/步骤/验收标准）
 
-`docs/tasks/task01_*.md` ~ `task07_*.md`，与分工一一对应；各工位里有 `TASK.md` 软链直达自己那份。
+`docs/tasks/task01_*.md` ~ `task07_*.md`，与分工一一对应；公用代码统一在 `/workspace/egodata_process`，各工位的 `TASK.md` 是对应任务卡的实体副本。
 
 ## 铁律
 
 1. **接口改动先改契约**：任何输入/输出格式变化，先改 `03_data_pipeline.md` 并在 PR 描述中 @ 上下游负责人
 2. **完工必更新** `05_progress_log.md`（日期、做了什么、产出路径、遗留问题）
 3. 服务器规范见 `02_server_guide.md`：自己的 `/home` 目录、独立 conda 环境、不污染 base
-4. 代码进 `src/` 对应模块，通用工具函数进 `src/common/`，不要散落个人目录
+4. 合入主仓库的代码进 `src/` 对应模块，通用工具函数进 `src/common/`；工位只保留本人任务的实验/测试代码与产物，不放整仓 clone

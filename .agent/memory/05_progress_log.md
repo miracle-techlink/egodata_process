@@ -3,6 +3,16 @@
 > 每人完工一个阶段就追加一条（最新在最上）。格式：
 > `## YYYY-MM-DD 名字 — 做了什么｜产出路径｜遗留问题`
 
+## 2026-10-22 Daniel — 真实①② + Mamba GPU 验证 + 工位/清理收尾
+
+- **EgoDemo 子集下载完成**：15 个机电类场景、328 个 mp4、19.47 GiB、0 个 incomplete；路径 `/root/gpufree-data/datasets/ego_hoi/raw/egodemo_subset/`。使用 hf CLI + hf-mirror + read token，未把 token 写入 git
+- **真实①②复核通过**：2 个 head_left 视频重编码为 6 clips，clips 契约 0 error（2 个 10–18s 残段 warning）；2 个 hand_pose / 1200 帧 0 error，左/右/双手检出率 **75.2% / 83.8% / 63.3%**。产出在 `datasets/ego_hoi/{clips_real,hand_pose_real}/`
+- **Mamba 在 L40 全验证通过**：causal_conv1d 1.7.0 + mamba_ssm 2.2.6.post3 本机 sm_89 wheel；FP32/BF16 前向反向、cuobjdump sm_89 cubin、3 epoch 训练与 checkpoint 重载均通过。train loss **4.3740→1.4405**、val loss **2.9758→0.9296**、峰值显存 **699 MiB**；产物 `/home/daniel/pipeline_run/runs/mamba_smoke/`
+- **依赖兼容定格**：caron_mamba/daniel_test 均为 torch 2.6.0+cu124；transformers 5.20.2 与 mamba_ssm 不兼容，已降为 **transformers 4.56.2 + tokenizers 0.22.2 + huggingface-hub 0.36.2**。已独立复跑 Mamba GPU 前后向与 Arc 10 项 standalone 单测
+- **工位最终结构**：7 个 `/home/<缩写>@<群昵称>/` 均无整仓 clone，只保留 README、实体 TASK、data 软链及本人任务实验/测试代码、refs 和产物；公用主代码仅 `/workspace/egodata_process`
+- **清理完成**：删除 6 份工位冗余 clone、旧不兼容 wheel 与 `/tmp/miniconda.sh`（约 842 MiB）；Mamba 验证后删除临时 `src_build`（约 926 MiB），保留 `wheels/ubuntu2004/`。uv-cache 约 16G 保留用于加速重建；数据盘当前约 450G 可用
+- **边界/遗留**：真实③ FoundationPose/深度/mesh 后端与真实④样本尚未完成；当前合成样本标签分布单一，冒烟准确率 1.0 不能作为模型效果结论。ModelScope ego_pose_dataset 仍为空壳
+
 ## 2026-10-22 Daniel — 迁移新服务器（L40）+ 全链路 GPU 冒烟
 
 - **换机**：旧 4090 机器 GPU 挂不上弃用 → 新机器 `ssh -p 30314 root@120.209.70.195`（L40 46G，Ubuntu 20.04 glibc 2.31，数据盘 246G）

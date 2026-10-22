@@ -37,13 +37,14 @@
 
 ## 快速上手
 
-1. 阅读 `AGENTS.md`，再按 `.agent/memory/` 编号顺序读完 5 个文件（10 分钟）
+1. 阅读 `AGENTS.md`，再按 `.agent/memory/` 编号顺序读完 6 个文件（约 10 分钟）
 2. 在 `.agent/skills/` 找到自己任务的 SKILL.md，按手册开发
-3. 服务器上在 `/home/<你的目录>` 工作，conda 独立环境，完工后提 PR
-4. 完工 checklist 见 `.agent/skills/integration-test/SKILL.md`
+3. 服务器公用主代码只有 `/workspace/egodata_process`；个人工位 `/home/<你的目录>` 只放本人任务的实验/测试代码、参考资料和产物，不放整仓 clone
+4. 使用自己的 conda 环境，完工后整理代码进对应 `src/` 模块并提 PR
+5. 完工 checklist 见 `.agent/skills/integration-test/SKILL.md`
 
 ## 资源
 
-- 处理好的数据集（ModelScope）：https://www.modelscope.cn/datasets/Liuyue9698/ego_pose_dataset
-- 原始数据参考（HuggingFace）：https://huggingface.co/datasets/LightwheelAI/EgoDemo
-- 服务器：4090 24GB（gpufree），使用规范见 `.agent/memory/02_server_guide.md`
+- 处理好的数据集（ModelScope）：https://www.modelscope.cn/datasets/Liuyue9698/ego_pose_dataset（目前仍待上传）
+- 原始数据参考（HuggingFace）：https://huggingface.co/datasets/LightwheelAI/EgoDemo（已获访问权，服务器下载机电类子集）
+- 现役服务器：**NVIDIA L40 46GB**（gpufree），使用规范见 `.agent/memory/02_server_guide.md`

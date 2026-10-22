@@ -11,14 +11,14 @@
 | 输入 | ① 的 clips（+深度/mask，见前置检查） | `data/ego_hoi/clips/` |
 | 输出 | `pose6d/<clip_id>.npz` | `data/ego_hoi/pose6d/` |
 
-npz 字段：`object_ids (N,)`、`poses (N,T,4,4)`（**物体→相机**）、`bboxes (N,T,4)`；未检出帧 NaN。契约细节：`.agent/memory/03_data_pipeline.md` ③节
+npz 字段：`object_ids (N,)`、`poses (N,T,4,4)`（**物体→相机**）、`bboxes (N,T,4)`；poses 未检出填 NaN，bboxes 未检出填 -1。契约细节：`.agent/memory/03_data_pipeline.md` ③节
 
 ## 当前状态
 
 - ✅ 环境基础已备：`conda activate panda_6d`（torch + trimesh + open3d + opencv）
-- ✅ 参考代码已克隆到工位：`refs/FoundationPose`、`refs/Depth-Anything-V2`（深度缺失时的降级方案）
-- ⚠️ **GPU 当前未挂载**，FoundationPose 的 CUDA 扩展编译与推理需要 GPU 就位（nvcc 12.6 已有，编译本身可以先试）
-- ⏳ 等 ①fish 出 clips
+- ✅ 参考代码在工位：`refs/FoundationPose`、`refs/Depth-Anything-V2`；L40 GPU 与真实 clips 均已就位
+- ✅ mock 后端已通过合成链路契约验证；⚠️ **真实 FoundationPose/深度/mesh 后端尚未跑通，是当前全真实链路的主要缺口**
+- 编译注意本机是 Ubuntu 20.04 + sm_89，nvcc 在 `/usr/local/cuda`
 
 ## 前置检查清单（开工第一天做完）
 
