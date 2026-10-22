@@ -144,3 +144,23 @@ HO-Cap只取得选择的完整单机位文件，不声称下载了完整多机�
 本次只对已固定版本的镜像目录与官方split证据交叉计数，不宣称覆盖整个官方数据集：`JWRoboticsVision/HO-Cap-Dataset`固定revision目录有64个采集档案，其中仅官方train 50、valid 7、test 7。当前只取官方train策略下已下载24，最多另有26个候选；即使这50个全部合格，距120仍至少缺70个其他合格采集。数量不是下载保证，更不是验收通过；不可用多机位或未知时长片填这个缺口。原始证据及逐采集计数见 `source_capacity_120.json`。
 
 下一步需同时推进现有24条的时间/坐标/参考质量验收，以及具有真实长序列、联合手物参考和所需标定的新增来源验证。未验证来源的下载计划不计入“已下载”，未通过质量门禁的下载不计入“合格”。训练保持关闭，不为了达到120篡改动作标签或降低质量门禁。
+
+## GitHub同步与ModelScope分发门禁
+
+GitHub仓库为 `miracle-techlink/egodata_process`，main文档推送已使用正确的 `miracle-techlink` SSH账号完成并读取远端SHA确认。此前默认SSH身份被拒绝，不是目标账号缺少权限；无需修改全局SSH配置、force-push或借助只读代理。仅发布本阶段三份文档，既有未提交代码/其他阶段文档保留在工作区。
+
+ModelScope目标为 `Liuyue9698/ego_pose_dataset`。2026-10-22只读/无副作用预检确认：凭据用户名与目标所有者一致，仓库API读取成功，Git读取与push --dry-run成功；master仅有 `.gitattributes` 和模板 `README.md`，仓库可见性为public，模板声明Apache License 2.0。dry-run不执行实际上传或引用更新，也不保证后续每批数据写入成功。**此轮ModelScope候选上传数0、正式合格上传数0；不修改目标仓库可见性或许可元数据。** 预检证据在数据根目录 `modelscope_preflight_20261022.json`。
+
+### 按来源控制发布范围
+
+| 来源 | 可考虑发布的范围 | 必须排除/保留的限制 |
+|---|---|---|
+| HO-Cap官方数据 | 原始RGB-D、公开逐帧参考、相机标定、物体mesh/纹理的明确白名单子集 | 保留CC BY 4.0、作者/来源/原有声明，注明筛选/重打包/转换，不暗示官方背书；未核验的第三方资产不随包发布 |
+| EgoDemo / EgoPro来源辅助数据 | 不包含或重构底层记录的聚合统计、研究结论和通用处理说明 | 不上传视频、抽帧/contactsheet、手部/事件标注、逐帧时间戳、UUID/源路径或可定位记录的manifest/metadata/checksum |
+| MANO基础模型及独立第三方模型 | 未取得单独再分发授权前不发布 | 不把HO-Cap的数据许可或工具GPL代码许可当作MANO基础模型的许可；生成的手网格等另行核验 |
+
+HO-Cap官方项目直接声明数据采用CC BY 4.0：`https://irvlutd.github.io/HOCap/`；许可正文：`https://creativecommons.org/licenses/by/4.0/legalcode.en`。署名应保留Jikai Wang、Qifan Zhang、Yu-Wei Chao、Bowen Wen、Xiaohu Guo、Yu Xiang及HO-Cap来源，附固定下载版本和修改说明；论文BibTeX不能替代许可署名。该许可不自动授予第三方肖像、隐私或商标等权利，未核验项不得宣称已全面清理。
+
+EgoDemo公开数据页标记自定义许可 `commercial-training-no-resale-v1.0` 并要求访问审批：`https://huggingface.co/datasets/LightwheelAI/EgoDemo`。本地已取得的固定 `LICENSE.md` SHA256为 `cb0a5a97be1bfe49ec12042df74bf443099d29ba74e5661716ea87a4735514b1`；其§3明确限制第三方再分发、公开或登录后再托管，以及帮助定位/重构/获取试用记录的标识符、清单和元数据。访问获批不等于取得再分发权，private仓库也不自动满足受控服务商的书面约束例外；未核验任何单独书面例外，因此不发布上述材料。GitHub文档也遵守此规则，仅保留不可定位记录的聚合统计。
+
+后续上传只能由HO-Cap白名单重新组包，不能直接同步整个 `runs/` 或混合台账。混合审阅报告、exposure registry、共享provenance文件可能含EgoDemo记录，即使被HO-Cap记录引用也必须剥离。先完成数据卡、来源许可/NOTICE和第三方资产排除；不能把上游HO-Cap改标成当前模板的Apache-2.0。候选使用独立candidate路径和 `training_allowed=false`，只有通过120段与全部质量门禁的新冻结版本才能发布正式训练清单。

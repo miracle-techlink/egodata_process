@@ -10,7 +10,8 @@
 - 交叉核查固定HO-Cap镜像目录与官方split：64个采集档案中train50/valid7/test7。当前只下载官方train策略下最多另补26候选，即使50全合格仍至少需其他来源70个合格采集；不把镜像目录数当整个官方数据规模。逐采集证据 `source_capacity_120.json`。
 - 此次只锁定目标、审计来源容量，没有启动下载/训练；需推进既有24条时间/几何/参考质量验收与新来源验证，数量质量都达标再训练。
 - GitHub同步限定为本阶段三份文档；只提交这两条数据阶段日志、交付表的数据阶段条目及数据规范文档，不夹带历史未提交阶段、代码、数据、权重或凭据。1,081tests＋84subtests对应本地/服务器工作区，不表示本次文档commit包含新增工具和测试源码。
-- GitHub同步未完成：本地main已生成仅文档提交；HTTPS没有可用登录凭据，现有SSH认证成功但被目标仓库拒绝写入权限。未force-push、未通过只读代理推送；须取得 `miracle-techlink/egodata_process` 写权限后再同步，不能将本地提交当作已推送。
+- GitHub权限诊断已纠正并恢复同步：前次拒绝来自默认SSH身份，不代表目标账号无写权限。显式选择已获授权的 `miracle-techlink` 账号后，已将本阶段文档提交推送至main，并从GitHub读取远端SHA核验成功。未force-push、未更改默认SSH配置或通过只读代理推送；后续仍固定使用正确身份。
+- ModelScope目标为 `Liuyue9698/ego_pose_dataset`；本机凭据身份匹配仓库所有者，仓库读取及Git push --dry-run通过，但尚未执行数据写入。仓库为public，master现仅README/.gitattributes，模板许可为Apache-2.0。已核查EgoDemo固定许可证§3禁止再托管及可定位记录的清单；HO-Cap按CC BY 4.0仅可白名单发布，保留署名/来源/修改说明，排除MANO基础模型等第三方受限资产。发布前须纠正数据许可说明，不能将HO-Cap重许可为Apache；此轮ModelScope上传候选0、正式合格0，不把权限预检当上传成功。
 
 ## 2026-10-22 Codex 多Agent — 数据先行，扩充48个真人采集并冻结候选划分
 
