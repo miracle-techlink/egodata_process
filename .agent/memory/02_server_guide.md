@@ -30,9 +30,8 @@ ssh -p 30314 root@120.209.70.195
 
 ## 工作目录
 
-- 每人只在 `/home/<自己的目录>` 下做实验（目录格式 `<缩写>@<群昵称>`，分配见 `01_team.md`；总览表在 `/home/README.md`）
-- 每个个人目录：`egodata_process/`（仓库 clone）+ `TASK.md`（任务卡软链）+ `data` 软链（→ 数据盘 datasets）
-- 在自己的 clone 里编译/测试自己任务的模块；push 由 Daniel 从 Mac 统一进行（服务器 origin 只读）
+- 每人只在 `/home/<自己的目录>` 下放个人任务产物（目录格式 `<缩写>@<群昵称>`，分配见 `01_team.md`；总览表在 `/home/README.md`）
+- **公用项目代码只有一份中央 clone：`/workspace/egodata_process`**（origin 走 gh-proxy 只读拉取；push 由 Daniel 从 Mac 统一进行）。工位里不放仓库 clone，只放 `README.md` + `TASK.md`（任务卡实体文件）+ `data` 软链 + 个人产物
 
 ## conda 环境规范（避免编译冲突）
 
@@ -49,7 +48,7 @@ ssh -p 30314 root@120.209.70.195
 
 - `aria2c -x16 -s16 -c <URL>`：多线程 + 断点续传，模型/数据集/大 wheel 一律用它，别用 wget
 - `HF_ENDPOINT=https://hf-mirror.com` 已在 `/root/.bashrc`，HF 下载零改动走镜像
-- GitHub clone/pull：每个工位 clone 的 origin 已配成 `gh-proxy.com` 前缀（实测唯一可用前缀），`git pull` 直接可用（**只读拉取；push 一律从自己电脑做，勿走代理**）
+- GitHub clone/pull：中央 clone `/workspace/egodata_process` 的 origin 已配成 `gh-proxy.com` 前缀（实测可用），`git pull` 直接可用（**只读拉取；push 一律从自己电脑做，勿走代理**）
 - 完整加速手册（torch/flash-attn/deepspeed 预编译 wheel 选版方法等）：`.agent/skills/env-setup/SKILL.md`
 
 ## GPU
