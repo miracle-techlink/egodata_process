@@ -97,3 +97,14 @@ x = torch.randn(1024, 1024, device="cuda"); print("matmul ok:", (x @ x).sum().it
 EOF
 # 需要 flash_attn/deepspeed 时再 import 对应包验证
 ```
+
+---
+
+## 2026-10-22 新服务器补充坑位（实测）
+
+- **并行 `conda create` 会互踩 `/opt/miniconda3/pkgs` 下载缓存**（报 corrupt tarball / .conda.partial 缺失）→ 空环境一律串行创建，只有 `uv pip install` 并行
+- **uv 并行装多个 torch 环境会等缓存锁超时**（300s）→ 串行装或 `UV_LOCK_TIMEOUT=7200`
+- **`pkill -f <pattern>` 会匹配 SSH 远程 shell 自己的命令行导致自杀** → 杀进程一律用 PID（`pgrep -a` 先查）
+- **git-xet 二进制需要 libssl.so.3（Ubuntu 22.04+）**，20.04 跑不了 → 用 hf CLI（hf_xet python 版）+ `HF_ENDPOINT=https://hf-mirror.com` 替代，效果相同
+- **跨服务器 rsync 大目录可能只有 1-2MB/s** → 别硬等，能用镜像重建的环境直接 uv 重建（分钟级），只有不可替代的产物（自编译 wheel、数据）才 rsync
+- **gated HF 数据集走 hf-mirror 必须用 read token**（SSH key 只对 git 有效）；`hf download <repo> --repo-type=dataset --include "<子集pattern>"` + `HF_XET_CACHE` 指到数据盘

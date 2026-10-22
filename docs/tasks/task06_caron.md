@@ -49,3 +49,14 @@
 
 - 手册：`.agent/skills/mamba-training/SKILL.md`（安装/预算/调优细节）
 - https://github.com/state-spaces/mamba
+
+---
+
+## 下一步开发方向（2026-10-22 Daniel 链路实测后）
+
+**现状**：LSTM 基线已在 L40 GPU 跑通（loss 正常下降）；mamba_ssm 本机必须源码编译（glibc 2.31），FORCE_BUILD + sm_89 补丁 + --no-deps 的完整流程见 mamba-training skill，wheel 备份在 `/root/gpufree-data/wheels/ubuntu2004/`。
+
+1. **Mamba 骨干真实训练**：编译验证后跑 `configs/mamba_base.yaml`，对比 LSTM 基线同数据同结构，记录 loss/acc/显存（L40 46G 比 4090 宽裕，batch 可以放大）
+2. **真实数据预训练**：①②③④ 的真实 samples 出来后先做小规模预训练，再谈迁移机电场景；公共数据预训练数据集 ego_pose_dataset（ModelScope）目前仍是空壳，暂以 EgoDemo 为主
+3. **实验矩阵补齐**：宏 F1、提前预测时长分布等指标报告脚本还没写，是下一步（配合 ⑦）
+4. 注意：不要升级本机 torch（2.6.0 定格），装任何包先确认不会连带升级 torch（uv 加 --no-deps 或锁定）

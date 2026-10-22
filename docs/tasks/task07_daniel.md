@@ -45,3 +45,14 @@ python tests/check_contracts.py samples <目录>
 
 - 手册：`.agent/skills/integration-test/SKILL.md`（含 PR checklist 模板）
 - 契约唯一事实源：`.agent/memory/03_data_pipeline.md`
+
+---
+
+## 下一步开发方向（2026-10-22 Daniel 链路实测后）
+
+**现状**：①→⑥ 全链路已端到端跑通（切分→手部→mock pose→313 样本→LSTM 训练），各阶段契约校验全过；check_contracts 25 项自测全绿。
+
+1. **校验器增强**：clips 模式增加"相邻 clip 时间重叠检测"（① copy 模式漂移暴露的问题）；meta.json 键名与 ②③ 统一后把 warning 收成 error
+2. **真实数据全链路**：EgoDemo 子集下载完成后，从真实 clip 重跑 ①→⑥，重点看手部检出率与标签分布
+3. **mamba vs LSTM 对照**：真实 samples 上跑对照实验并出报告
+4. 遗留研究问题跟踪：坐标系统一（②③④⑤）、gaze 先验接入、EgoDemo manifest 内参解析

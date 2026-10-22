@@ -3,6 +3,16 @@
 > 每人完工一个阶段就追加一条（最新在最上）。格式：
 > `## YYYY-MM-DD 名字 — 做了什么｜产出路径｜遗留问题`
 
+## 2026-10-22 Daniel — 迁移新服务器（L40）+ 全链路 GPU 冒烟
+
+- **换机**：旧 4090 机器 GPU 挂不上弃用 → 新机器 `ssh -p 30314 root@120.209.70.195`（L40 46G，Ubuntu 20.04 glibc 2.31，数据盘 246G）
+- 7 个 conda 环境在新机器全部重建（uv 阿里云；弃 1-2MB/s 的 rsync 方案）；wheels/工位/pipeline_run 已迁移
+- **①→⑥ 全链路已端到端跑通**：切分（发现 -c copy 漂移，真实数据须 --reencode）→ 手部（mediapipe 定格 0.10.21）→ mock pose → 313 样本（check 全绿）→ **LSTM 训练 L40 上 loss 2.49→0.70**
+- **EgoDemo 已获访问权**：元数据 clone 完成，全量 1.44TB 只拉子集；hf-mirror 7.3MB/s vs 直连 40KB/s，gated 走镜像必须 read token（已配）
+- **mamba 走源码编译**（glibc 2.31 + sm_89 补丁 + FORCE_BUILD + --no-deps），详见 mamba-training skill；wheel 备份 `wheels/ubuntu2004/`
+- 7 张任务卡已追加"下一步开发方向"（各模块实测发现 + 下一步）
+- 遗留：mamba 编译验证与真实数据 ①② 由两个 agent 并行执行中；ego_pose_dataset（ModelScope）仍空壳
+
 ## 2026-10-15 Daniel — 七模块代码并行开发完成 + 契约首轮冻结
 
 - 7 个 agent 并行完成各模块初版：① `src/preprocessing/split_clips.py`（fake-ffmpeg 编排级 e2e 过）② `src/hand_pose/extract_hands.py`（12 单测过）③ `src/pose6d/`（24 单测过，三段式可插拔：Detector/Depth/PoseBackend）④ `src/dataset/`（build_samples+label_rules+visualize+rot6d，合成数据 e2e 过）⑤ `src/encoding/`（10 单测过，CPU torch 实测）⑥ `src/mamba/train.py`（LSTM 基线 15 epoch 冒烟过，loss 正常下降）⑦ `tests/check_contracts.py` + `make_fixtures.py`（25 项自测全绿）

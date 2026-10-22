@@ -41,3 +41,14 @@ npz 字段：`left_hand (T,21,3)`、`right_hand (T,21,3)`、`conf (T,2)`，未�
 - 手册：`.agent/skills/hand-pose/SKILL.md`
 - 入门教程：https://blog.csdn.net/g11d111/article/details/115539407
 - 官方文档：https://ai.google.dev/edge/mediapipe/solutions/vision/hand_landmarker
+
+---
+
+## 下一步开发方向（2026-10-22 Daniel 链路实测后）
+
+**现状**：extract_hands.py 在服务器真实跑通（8/8 clips）。**环境已定 mediapipe==0.10.21**（1.1.1 移除了 `mp.solutions` legacy API，不要升级！）。
+
+1. **真实视频检出率评估**：合成测试视频全 NaN 是预期，真实 EgoDemo 画面上的左右手检出率才是指标（meta.json stats）。若检出率低：调 `min_hand_detection_confidence`、试用 wrist 机位视频、或评估 HaMeR 等更强模型（先出报告再换）
+2. **左右手标签抽检**：用 ④ 的 visualize 叠图人工确认 ego 视角下 handedness 不反（验收硬指标）
+3. **meta.json 键名对齐**：check_contracts 目前对 meta 推荐键 `source_clip/created_at/env` 给 warning——与 Daniel 统一命名后改掉（小改）
+4. 吞吐优化：`--num_workers` 多进程跑大批量，记录 clips/小时

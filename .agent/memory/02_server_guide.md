@@ -1,21 +1,23 @@
 # 02 — 服务器使用规范
 
-## 连接
+## 连接（2026-10-22 起用新机器）
 
 ```bash
-ssh -p 31211 root@183.147.142.40
+ssh -p 30314 root@120.209.70.195
 # 密码见群消息（不要写进任何会提交到 git 的文件）
 ```
 
-- 机型：RTX 4090 24GB（gpufree 容器实例）
-- 系统 Python 3.10.12，conda 装在 `/opt/miniconda3`（已配好清华镜像，初始化进 `/root/.bashrc`）
+- 机型：**NVIDIA L40 46GB**（sm_89，驱动 580/CUDA 13.0，nvcc 12.1 在 `/usr/local/cuda`）
+- 系统：**Ubuntu 20.04（glibc 2.31）**——⚠️ 很多官方预编译 CUDA wheel（mamba_ssm 等）要求 glibc 2.32+，本机必须源码编译，见 mamba-training skill
+- 系统 Python 3.10，conda 装在 `/opt/miniconda3`（已配镜像）；uv/ffmpeg/aria2/git-lfs 已装
+- 旧机器（4090，ssh -p 31211 root@183.147.142.40）GPU 挂不上已弃用，仅留作备份
 
 ## 磁盘布局（重要：根盘只有 30GB）
 
 | 挂载点 | 容量 | 用途 |
 |--------|------|------|
 | `/`（overlay） | 30G | 系统、代码、个人目录 —— **不要放大文件** |
-| `/root/gpufree-data` | 49G | **持久数据盘**：数据集 + 所有 conda 环境 |
+| `/root/gpufree-data` | **246G** | **持久数据盘**：数据集 + 所有 conda 环境 |
 | `/data/tini` | 1T（宿主机共享，73% 已用） | 勿依赖，非本实例专属 |
 
 ```

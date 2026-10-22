@@ -59,3 +59,25 @@ OOM 顺序：grad checkpointing → batch 减半 → 梯度累积补回等效 ba
 ## 协作
 
 - 接口问题找 ⑤arc；样本问题找 ④xw；冒烟失败先跑 `tests/check_contracts.py` 定位到具体环节
+
+---
+
+## Ubuntu 20.04 源码编译路线（2026-10-22 新服务器实测，必走）
+
+新服务器 L40 是 Ubuntu 20.04（glibc 2.31），官方预编译 wheel 要 glibc 2.32 → **import 报 `GLIBC_2.32 not found`**。预编译 wheel 在本机不可用，源码编译步骤（已在 caron_mamba/daniel_test 落地）：
+
+```bash
+export PATH=/usr/local/cuda/bin:$PATH CUDA_HOME=/usr/local/cuda MAX_JOBS=8
+export MAMBA_FORCE_BUILD=TRUE CAUSAL_CONV1D_FORCE_BUILD=TRUE   # 关键！否则 setup.py 会偷下载预编译包
+# torch 保持 2.6.0，不要升级
+cd <mamba源码> && python setup.py bdist_wheel
+# 安装时必须 --no-deps，否则 uv 会顺手把 torch 升到最新版破坏兼容：
+uv pip install --no-deps --reinstall dist/*.whl
+```
+
+三个坑（都踩过）：
+1. `MAMBA_FORCE_BUILD=TRUE` 不设 → "Guessing wheel URL" 下载预编译包冒充编译产物，glibc 错误依旧
+2. setup.py 硬编码 gencode 列表（75/80/87/90…）**没有 sm_89（L40）** → 要在 `arch=compute_80` 行后补 `arch=compute_89,code=sm_89`，否则 no kernel image
+3. 重装 wheel 不加 `--no-deps` → torch 被升级 2.6→2.14，需降回
+
+编译产物备份：`/root/gpufree-data/wheels/ubuntu2004/`（causal_conv1d 1.7.0 + mamba_ssm 2.2.6.post3，sm_89 专用）。

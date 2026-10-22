@@ -6,7 +6,7 @@
 |------|------|
 | 代码仓库 | https://github.com/miracle-techlink/egodata_process |
 | 处理好的数据集 | https://www.modelscope.cn/datasets/Liuyue9698/ego_pose_dataset ⚠️ 2026-10-15 查：**仍是空壳**（只有 README），数据待上传 |
-| 原始数据参考 | https://huggingface.co/datasets/LightwheelAI/EgoDemo ⚠️ **申请制（gated-manual）**：先去 HF 申请访问，批准后配 token 用 `data/ego_hoi/raw/download_egodemo.sh` 下载 |
+| 原始数据参考 | https://huggingface.co/datasets/LightwheelAI/EgoDemo ✅ 2026-10-22 **已获访问权**（SSH key + read token 已配在新服务器）。⚠️ 全量 1.44TB（四机位），只拉子集：`/root/gpufree-data/datasets/ego_hoi/raw/egodemo_subset/`；下载用 hf CLI + hf-mirror + token（直连 hf.co 极慢）。结构 `EgoProRaw/mp4/<场景>/<uuid>/<camera>/`，119 场景，单视频约 50MB；manifests/*.parquet 可能含标定信息（③ 待挖） |
 | 云端环境配置指南 | https://github.com/miracle-techlink/gpu-rsi-plugin （精华版已收录：`skills/env-setup/SKILL.md`） |
 
 ## 服务器

@@ -48,3 +48,14 @@ dec = build_decoder(cfg)   # 时序表示 -> dict(subject=, object=, type=) logi
 
 - 手册：`.agent/skills/encoder-decoder/SKILL.md`
 - 数据侧问题找 xw，训练侧问题找 caron，接口争议回契约文件
+
+---
+
+## 下一步开发方向（2026-10-22 Daniel 链路实测后）
+
+**现状**：encoder/decoder 10 单测全过（含前向反向、mask、gaze 开关）；接口已冻结进契约（实体顺序/类别索引/build_encoder/build_decoder 签名）。LSTM 基线已带你的编码器在 L40 上训练冒烟通过。
+
+1. **真实样本联调**：④ 的真实 samples 出来后跑 overfit 小实验（单 batch 能过拟合 = 链路没问题）
+2. **关系特征的单位问题**：手部归一化坐标 vs 物体米制坐标混算距离/contact 目前不合理——短期方案：contact_threshold 按归一化空间单独设、或对两类特征分组归一化；长期等 ④ 坐标系统一
+3. **gaze 先验落地**：接口已预留（use_gaze/gaze_dim），下一步定义 gaze_seq 的数据来源与格式（与 ② 或新视线估计模块对齐），这是课题"进一步增强"的加分项
+4. 参数量目前 ~350K 很小，真实数据后可按欠拟合情况加深

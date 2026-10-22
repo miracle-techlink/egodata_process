@@ -37,3 +37,14 @@
 
 - 手册：`.agent/skills/build-training-data/SKILL.md`
 - 上游字段争议 → 回 `03_data_pipeline.md` 对齐，别单方面适配
+
+---
+
+## 下一步开发方向（2026-10-22 Daniel 链路实测后）
+
+**现状**：build_samples 已修 3 处（恢复帧速度 NaN、index 结构、contract_version），313 个样本通过契约校验 0 error 0 warning；index 冻结为 `{train,val,test}`，富元信息在 meta.json。
+
+1. **真实数据标签分布**：合成数据 label 全 none 无意义，真实 ②③ 产出后看 `meta.json` 的 interaction_counts——启发式阈值（contact/reach margin、vel_thresh=0.05m/s）大概率要按真实尺度调，先出分布报告再调参
+2. **与 ⑤arc 对齐交互标签规则**：label_rules.py 是草案，重点是 grasp/hold/move/place/release 的状态转移定义，对齐后回写契约冻结
+3. **坐标系不一致（已知研究问题）**：手部是归一化图像坐标、物体是相机系米制，目前 contact 在图像空间判定是权宜之计；③ 内参落实后评估手部关键点升维到相机系
+4. 可视化在真实 clip 上抽检 ≥5%：左右手不反、物体轴不飘、时间对齐

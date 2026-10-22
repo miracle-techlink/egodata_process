@@ -43,3 +43,15 @@ npz 字段：`object_ids (N,)`、`poses (N,T,4,4)`（**物体→相机**）、`b
 
 - 手册：`.agent/skills/pose6d/SKILL.md`
 - https://github.com/NVlabs/FoundationPose ｜ https://github.com/DepthAnything/Depth-Anything-V2
+
+---
+
+## 下一步开发方向（2026-10-22 Daniel 链路实测后）
+
+**现状**：extract_pose6d.py 三段式管线已跑通（bbox-from-file + mock pose，8/8 clips 契约全过）。**新服务器 L40 GPU 已可用**，真实后端可以开工了。
+
+1. **相机内参从数据集 manifest 挖**：EgoDemo 有 `EgoProRaw/manifests/*.parquet` 和 `studio.parquet`，先解析看有没有标定/内参/深度——有就接入 `--intrinsics-json`，消灭启发式内参（这直接决定 ④⑤ 的坐标系质量）
+2. **编译依赖注意**：本机 Ubuntu 20.04 glibc 2.31，nvdiffrast/kaolin 等一律源码编译（参考 mamba-training skill 的 FORCE_BUILD/sm_89 补丁经验，L40 是 sm_89）
+3. **分步打开后端**：先 DepthAnything 深度 → 再 FoundationPose（需 mesh）；GroundedSAM 检测器 API 可能要适配 Grounded-SAM-2
+4. **model-free 重建（bundlesdf）是当前最大缺口**：没有 mesh 的物体走不了 FoundationPose register，评估是否作为主线方案
+5. 每步都在真实 clip 上跑 check_contracts + 可视化抽检（物体轴不飘、id 跨帧一致）

@@ -45,3 +45,15 @@
 ## 参考
 
 - https://huggingface.co/datasets/LightwheelAI/EgoDemo
+
+---
+
+## 下一步开发方向（2026-10-22 Daniel 链路实测后）
+
+**现状**：split_clips.py 已在真实 ffmpeg 上跑通；EgoDemo 访问权已拿到，全量 1.44TB（多机位），只能按子集工作。
+
+1. **真实数据一律 `--reencode`**：实测 `-c copy` 关键帧漂移严重——clip 最长达 26.9s（超 22s 上限）、相邻 clip 重叠 3.5s。copy 模式仅留作快速预览，交付数据必须重编码精确切点
+2. **多机位目录适配**：EgoDemo 结构是 `EgoProRaw/mp4/<场景>/<uuid>/<camera>/xxx.mp4`（head_left/head_right/left_wrist/right_wrist 四机位）。写一个 prepare 脚本：把 head_left 视频软链成平铺目录，文件名 `<场景>_<uuid>` 保证唯一（这就是 source_video 名，影响 split 隔离）
+3. **机位选择评估**：head_left vs head_right 哪个手部视野更好，抽帧对比后定主用机位；wrist 机位留给 ② 做手部增强（与 ash 对齐）
+4. **子集扩大策略**：当前先 10-15 场景 ≤30GB；后续按训练需求扩，注意 246G 盘容量
+5. 校验：每批 clips 过 `tests/check_contracts.py clips`
