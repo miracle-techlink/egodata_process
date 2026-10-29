@@ -38,6 +38,19 @@
 - 切分参数/格式问题 → Daniel；数据集访问问题 → 群里喊，大家一起想办法
 - 手册：`.agent/skills/dataset-split/SKILL.md`
 
+## 下游衔接（新增：VLM 语义标注 + 质检）
+
+你的 clips 不再只供 ②③ 提特征，还直接进 **VLM 语义预标注** 和 **自动质检** 两条线，切分时必须为此保证：
+
+1. **原生时间轴可回溯**：`clips_index.csv` 每行必须能从 clip 反查源视频、源起止帧/PTS。EgoDemo Raw 与 annotated 视频帧率不同，**禁止按帧号跨版本混用**；时间戳缺失先找上游，不假定 30 FPS
+2. **重编码不丢时间精度**：VLM 证据帧按 PTS 引用（如 `PTS=18.066667000`），切点漂移会直接污染语义标注边界——这是必须 `--reencode` 的第二个理由
+3. **clip_id 稳定**：一旦进入标注流程，clip_id 就是候选事件、审核记录、训练样本的共同外键，改名会导致已审核记录失效
+
+质检侧（与 ④ 谢武共同维护）：
+
+- 批量切分完成后，用 `src/annotation/review_pipeline.py` 对 clips 做自动复核（配置参考 `configs/review_pipeline_300.json`，用法见 `docs/AUTOMATIC_REVIEW_PIPELINE.md`），报告缺帧/重复帧/时间轴断裂
+- 自动复核只缩小人工范围，不把未查看的视频标为已复核；最终验收仍以人工抽检为准
+
 ## 参考
 
 - https://huggingface.co/datasets/LightwheelAI/EgoDemo
