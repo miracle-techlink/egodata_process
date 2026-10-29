@@ -24,6 +24,7 @@
 | ⑤ 编码器/解码器 | `encoder-decoder` |
 | ⑥ Mamba 训练 | `mamba-training` |
 | ⑦ 测试/debug/集成 | `integration-test` |
+| VLM 语义预标注与人工审核 | `vlm-annotation` |
 | 通用：环境搭建/下载加速 | `env-setup` |
 
 ## 任务卡（每人一份：目标/步骤/验收标准）

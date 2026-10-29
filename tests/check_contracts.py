@@ -7,7 +7,7 @@ Usage:
     python tests/check_contracts.py pose6d    <npz | dir of npz>
     python tests/check_contracts.py samples   <samples root dir | sample.npz>
 
-Source of truth: .agent/memory/03_data_pipeline.md (contract version 2026-10-15).
+Source of truth: .agent/memory/03_data_pipeline.md (contract version 2026-10-22).
 Exit code: 0 = pass (warnings allowed), 1 = any error, 2 = usage error.
 """
 
@@ -47,7 +47,8 @@ SAMPLE_LABEL_KEYS = ("label_subject", "label_object_slot", "label_object_id",
                      "label_interaction", "label_interaction_name")
 SAMPLE_STRUCT_KEYS = ("hand_seq", "obj_seq", "obj_mask", "obj_valid", "hand_valid",
                       "object_ids", "clip_id", "source_video", "start_frame", "fps")
-SAMPLE_KEYS = SAMPLE_STRUCT_KEYS + SAMPLE_LABEL_KEYS
+PREDICTION_KEYS = ("target_frame", "horizon_frames", "horizon_seconds")
+SAMPLE_KEYS = SAMPLE_STRUCT_KEYS + SAMPLE_LABEL_KEYS + PREDICTION_KEYS + ("split_group",)
 
 
 class Report:
@@ -680,6 +681,49 @@ def _check_provenance(data, path, rep):
             rep.error(path, "fps", f"fps {float(arr.reshape(-1)[0])} <= 0")
 
 
+def _check_prediction_metadata(data, path, rep):
+    if "split_group" in data:
+        try:
+            group = scalar_str(data["split_group"])
+            if not group:
+                rep.error(path, "split_group", "empty split_group")
+        except ValueError as error:
+            rep.error(path, "split_group", str(error))
+    present = [key for key in PREDICTION_KEYS if key in data]
+    if not present:
+        return
+    if len(present) != len(PREDICTION_KEYS):
+        rep.error(path, "horizon", "target_frame, horizon_frames and horizon_seconds must coexist")
+        return
+    integers = {}
+    for key in ("target_frame", "horizon_frames", "start_frame"):
+        value = np.asarray(data.get(key))
+        if value.size != 1 or value.dtype.kind not in "iu":
+            rep.error(path, key, "expected integer scalar")
+            return
+        integers[key] = int(value.reshape(-1)[0])
+    horizon = integers["horizon_frames"]
+    if horizon < 1:
+        rep.error(path, "horizon_frames", "prediction horizon must be at least one frame")
+    observed_end = integers["start_frame"] + data["hand_seq"].shape[0] - 1
+    if integers["target_frame"] != observed_end + horizon:
+        rep.error(path, "target_frame", "target does not match observation end + horizon_frames")
+    if integers["target_frame"] <= observed_end:
+        rep.error(path, "target_frame", "target must be outside the observation window")
+    values = {}
+    for key in ("fps", "horizon_seconds"):
+        value = np.asarray(data.get(key))
+        if value.size != 1 or value.dtype.kind not in "fiu":
+            rep.error(path, key, "expected numeric scalar")
+            return
+        values[key] = float(value.reshape(-1)[0])
+        if not np.isfinite(values[key]) or values[key] <= 0:
+            rep.error(path, key, "value must be positive and finite")
+            return
+    if not np.isclose(values["horizon_seconds"], horizon / values["fps"], rtol=1e-5):
+        rep.error(path, "horizon_seconds", "does not match horizon_frames / fps")
+
+
 def check_sample_file(npz_path, rep, ws, nmaxs):
     data = load_npz(npz_path, rep)
     if data is None:
@@ -822,6 +866,7 @@ def check_sample_file(npz_path, rep, ws, nmaxs):
                       f"bbox area (dim 9) negative at {int((v[:, 9] < 0).sum())} row(s)")
 
     _check_provenance(data, npz_path, rep)
+    _check_prediction_metadata(data, npz_path, rep)
     _check_labels(data, ids, obj_mask, n_max, npz_path, rep)
 
 
@@ -906,6 +951,8 @@ def check_samples(path, rep):
 def _check_samples_with_index(root, index, index_path, rep):
     listed = {}   # sample_id -> split
     video_split = {}
+    group_split = {}
+    indexed_entries = {}
     n_listed = 0
     for split in SPLITS:
         entries = index.get(split) or []
@@ -927,6 +974,15 @@ def _check_samples_with_index(root, index, index_path, rep):
                               f"'{split}' (split must isolate source_video)")
                 video_split[sv] = split
             fname = sid if sid.endswith(".npz") else sid + ".npz"
+            indexed_entries[(split, fname)] = e
+            if "split_group" in e:
+                group = e["split_group"]
+                if not isinstance(group, str) or not group:
+                    rep.error(index_path, "split_group", "expected nonempty string")
+                elif group in group_split and group_split[group] != split:
+                    rep.error(index_path, "split_group", f"'{group}' appears in multiple splits")
+                else:
+                    group_split[group] = split
             if not (root / split / fname).exists():
                 rep.error(index_path, split, f"listed sample file missing: {split}/{fname}")
     for split in SPLITS:
@@ -940,6 +996,22 @@ def _check_samples_with_index(root, index, index_path, rep):
     ws, nmaxs = set(), set()
     for f in files:
         check_sample_file(f, rep, ws, nmaxs)
+        payload = load_npz(f, rep)
+        if payload is None:
+            continue
+        entry = indexed_entries[(f.parent.name, f.name)]
+        if "split_group" in payload:
+            try:
+                group = scalar_str(payload["split_group"])
+            except ValueError:
+                continue
+            if entry.get("split_group") != group:
+                rep.error(f, "split_group", "sample and dataset_index.json disagree")
+            if group in group_split and group_split[group] != f.parent.name:
+                rep.error(f, "split_group", f"'{group}' appears in multiple splits")
+            group_split[group] = f.parent.name
+        elif "split_group" in entry:
+            rep.error(f, "split_group", "index specifies a group but sample does not")
     if len(ws) > 1:
         rep.error(index_path, "-", f"inconsistent window length W across samples: {sorted(ws)}")
     elif ws and ws != {DEFAULT_W}:
@@ -955,7 +1027,7 @@ def _check_samples_with_index(root, index, index_path, rep):
 def main(argv=None):
     ap = argparse.ArgumentParser(
         description="Validate ego_hoi pipeline artifacts against "
-                    ".agent/memory/03_data_pipeline.md (contract 2026-10-15)")
+                    ".agent/memory/03_data_pipeline.md (contract 2026-10-22)")
     ap.add_argument("stage", choices=STAGES)
     ap.add_argument("path", help="file or directory, depending on stage")
     args = ap.parse_args(argv)

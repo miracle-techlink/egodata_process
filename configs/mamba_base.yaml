@@ -4,7 +4,7 @@
 run_name: mamba_base
 seed: 42
 # 契约版本：03_data_pipeline.md 当前无日期头，取契约冻结日 2026-10-15（见 docs/DELIVERABLES.md）
-contract_version: "2026-10-15"
+contract_version: "2026-10-22"
 device: auto            # auto|cuda|cpu；mamba 骨干必须 cuda
 runs_root: runs         # 服务器上改指数据盘，例如 /root/gpufree-data/datasets/ego_hoi/runs（ckpt 勿写根盘）
 
@@ -23,7 +23,8 @@ model:
   d_conv: 4
   expand: 2
   dropout: 0.1
-  encoder: {}                         # 透传给 ⑤ build_encoder：n_layers/n_heads/dim_ff/max_frames/contact_threshold 等
+  encoder:
+    coordinate_mode: mixed
   decoder:
     n_max: 8                          # 与 ④ 样本 obj_seq 的 N_max 对齐；不足自动右侧 padding
     n_interaction_types: 7            # 契约标签体系 {none,reach,grasp,hold,move,place,release}

@@ -1,0 +1,30 @@
+{
+  "schema_version": "human_pose_dataset_v1",
+  "seed": 20261022,
+  "fixture_mode": false,
+  "min_duration_seconds": 10.0,
+  "required_roles": ["rgb", "depth", "intrinsics", "mesh", "hand_metric_gt", "object_pose_gt", "hand_observations", "object_observations", "hand_valid", "object_valid"],
+  "required_capabilities": ["rgb", "depth", "intrinsics", "mesh", "hand_metric_gt", "object_pose_gt", "hand_observations", "object_observations"],
+  "required_quality": ["decode", "timestamps", "calibration", "coordinates", "annotation_alignment", "visual_review"],
+  "required_evidence": ["subject_id", "scene_id", "action_labels", "human_verified", "continuity", "timestamp_source", "coordinates", "gt_independence", "camera", "decode", "calibration", "annotation_alignment", "visual_review"],
+  "evidence_format": {"asset_role": "provenance", "description": "Specific source field, review or annotation supporting the assertion"},
+  "timestamp_sources": ["source_timestamps", "video_pts", "official_fps"],
+  "duration_definitions": ["frame_span", "frame_count_over_fps"],
+  "official_fps_frame_ids_role": "frame_ids",
+  "auxiliary_reference_roles": ["hand_world_reference", "hand_metric_gt"],
+  "continuity_requirements": {"continuous": true, "concatenated": false, "repeated_frames": false, "interpolated": false, "fps_modified": false},
+  "coordinate_requirements": {"unit": "m", "hand_frame": "camera", "object_frame": "camera", "handedness": "right", "aligned": true},
+  "camera_motion_options": ["fixed", "compensated"],
+  "gt_requirements": {"gt_independent": true, "gt_usage": "supervision_or_evaluation_only", "separate_estimate_directories": true, "reference_not_used_for_inference_or_initialization": true},
+  "content_alias_policy": "RGB/depth always imply shared content. Other raw/GT/estimate payloads only alias with identity_scope=per_sequence. Shared calibration, meshes and full label archives never imply a shared acquisition.",
+  "split_ratios": {"train": 0.7, "val": 0.15, "test": 0.15},
+  "minimums": {
+    "acquisitions": 120,
+    "subjects": 6,
+    "objects": 8,
+    "actions": 4,
+    "train": 60,
+    "val": 15,
+    "test": 15
+  }
+}

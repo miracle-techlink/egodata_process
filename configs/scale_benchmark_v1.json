@@ -1,0 +1,183 @@
+{
+  "schema_version": "scale_benchmark_v1",
+  "protocol_status": "preregistered_not_executed",
+  "threshold_source": "project_internal_design_not_official_benchmark",
+  "budget_unit": "qualified_independent_acquisitions_before_sliding_windows",
+  "designs": [
+    {
+      "design_id": "fixed_total_120_train_30_60_84",
+      "fixed_total_independent_acquisitions": 120,
+      "holdout_included_in_fixed_total": true,
+      "train_acquisition_budgets": [30, 60, 84],
+      "holdout_independent_acquisitions": {
+        "val": 18,
+        "test": 18
+      },
+      "selection_rule": "Freeze group-isolated val/test once; select nested train groups for 30/60/84 without moving any holdout group.",
+      "interpretation": "Only 120 total acquisitions are required before group-rounding; 84 is the maximum training budget, not 120."
+    },
+    {
+      "design_id": "train_30_60_90_120_plus_holdout",
+      "fixed_total_independent_acquisitions": null,
+      "holdout_included_in_fixed_total": false,
+      "train_acquisition_budgets": [30, 60, 90, 120],
+      "holdout_independent_acquisitions": {
+        "val": 18,
+        "test": 18
+      },
+      "selection_rule": "Acquire independent val/test groups in addition to the 120-acquisition training pool; never reuse them to reach a training budget.",
+      "interpretation": "The arithmetic minimum is 120+18+18=156 total acquisitions; indivisible subject/acquisition groups can require more than 156."
+    }
+  ],
+  "split_protocol": {
+    "group_key": "split_group",
+    "isolation_unit": "source acquisition plus all cameras, clips, transcodes, aliases and windows",
+    "subject_isolation_preferred": true,
+    "freeze_before": [
+      "window_generation",
+      "normalization_fitting",
+      "training",
+      "hyperparameter_selection"
+    ],
+    "nested_training_budgets": true,
+    "holdout_fixed_across_budgets_and_seeds": true,
+    "group_rounding_rule": "Keep every group whole and report actual train/val/test counts; do not split a group to hit exact ratios.",
+    "test_subject_requirement": "Use multiple test subjects and preferably multiple sources; one-subject val or test cannot support a broad cross-subject claim.",
+    "previously_seen_test_policy": "Any previously inspected test group is development data, not a new unseen test group."
+  },
+  "seeds": [20261022, 20261023, 20261024],
+  "minimum_seeds": 3,
+  "models": [
+    {
+      "name": "lstm",
+      "required": true
+    },
+    {
+      "name": "mamba",
+      "required": true
+    }
+  ],
+  "baselines": [
+    {
+      "name": "majority_class",
+      "fit": "Compute each head's majority class from valid train targets only; keep the same fitted baseline for val/test.",
+      "future_access": false
+    },
+    {
+      "name": "persistent_interaction",
+      "fit": "No fitted parameters.",
+      "rule": "Copy the last observed valid subject/object/interaction state; use the protocol's explicit none fallback when no prior state exists.",
+      "future_access": false
+    }
+  ],
+  "training_protocol": {
+    "normalization_fit_split": "train_only_within_each_budget",
+    "checkpoint_selection_split": "val",
+    "early_stopping_split": "val",
+    "hyperparameter_selection_split": "val",
+    "invalid_label_policy": "Mask label_valid=0 targets from loss, class distributions and metrics; pending or unlabelled frames are not none.",
+    "same_protocol_across_budgets": true,
+    "test_policy": "Do not inspect test predictions or metrics until all budgets, hyperparameters, checkpoints and the final val-selected configuration are frozen; run the final test evaluation exactly once."
+  },
+  "evaluation_protocol": {
+    "test_policy": "final_once_after_val_selection_and_protocol_freeze; never_use_test_for_data_size_hyperparameters_checkpoint_or_plateau",
+    "primary_selection_metric": "val_acquisition_equal_weight_three_head_joint_accuracy",
+    "secondary_selection_metrics": [
+      "val_acquisition_equal_weight_subject_macro_f1",
+      "val_acquisition_equal_weight_object_macro_f1",
+      "val_acquisition_equal_weight_interaction_macro_f1"
+    ],
+    "selection_tie_break": "Prefer the smaller training budget, then the simpler baseline/model according to the frozen ordering; never consult test.",
+    "final_test_use": "Report the single val-selected final configuration with class distribution and acquisition-cluster confidence intervals."
+  },
+  "metrics": {
+    "heads": ["subject", "object", "interaction_type"],
+    "per_head_macro_f1": true,
+    "per_class_precision_recall_f1_support": true,
+    "interaction_classes": ["none", "reach", "grasp", "hold", "move", "place", "release"],
+    "three_head_joint_accuracy": "A target is correct only when subject, object and interaction_type are all correct on the same valid target.",
+    "coverage": {
+      "target_prediction_coverage": "valid_targets_with_a_complete_three_head_prediction / all_label_valid_targets",
+      "acquisition_coverage": "acquisitions_with_at_least_one_evaluated_valid_target / all_frozen_split_acquisitions",
+      "invalid_targets_in_denominator": false
+    },
+    "report_class_distribution": true,
+    "accuracy_guarantee": null
+  },
+  "aggregation": {
+    "sample_weighted": {
+      "description": "Pool every valid target frame with equal weight; this is descriptive because windows within an acquisition are correlated.",
+      "confusion_matrix": "Sum unweighted target-level confusion counts."
+    },
+    "acquisition_equal_weight": {
+      "description": "Give every independent acquisition equal weight regardless of its window count.",
+      "confusion_matrix": "Within each acquisition divide every confusion count by that acquisition's valid target count, then average the normalized matrices over acquisitions; compute F1 and joint accuracy from the aggregated matrices.",
+      "class_support": "Report both valid target frames and the number of independent acquisitions containing each class."
+    }
+  },
+  "cluster_bootstrap": {
+    "cluster_key": "split_group",
+    "resampling_unit": "independent_acquisition_group",
+    "resample_whole_groups_with_replacement": true,
+    "include_all_windows_of_selected_groups": true,
+    "window_level_bootstrap_allowed": false,
+    "resamples": 2000,
+    "confidence": 0.95,
+    "interval": "percentile",
+    "seed": 20261022,
+    "apply_to": [
+      "final_metrics",
+      "paired_val_learning_curve_differences",
+      "per_class_metrics_where_support_allows"
+    ],
+    "small_cluster_warning": "If val/test has only one subject or very few acquisition clusters, label intervals unstable and limit the conclusion; do not replace clusters with windows."
+  },
+  "learning_curve": {
+    "evaluation_split": "val_only",
+    "test_used_for_plateau": false,
+    "budget_axis": "independent_training_acquisitions",
+    "x_values_are_not_total_dataset_sizes": true,
+    "report_each_seed_and_seed_mean": true,
+    "plateau_rule": {
+      "primary_metric": "acquisition_equal_weight_three_head_joint_accuracy",
+      "absolute_gain_epsilon": 0.01,
+      "rule": "A terminal plateau requires the final adjacent-budget gain to be <=0.01 and its paired acquisition-cluster bootstrap 95% CI to include 0. A whole-curve plateau requires every adjacent-budget gain to meet both conditions.",
+      "otherwise": "Report no_plateau_evidence_or_inconclusive rather than guaranteeing more data will help.",
+      "epsilon_source": "preregistered_project_engineering_tolerance_not_an_official_standard"
+    },
+    "required_result": "Report plateau status per model and aggregation, with every adjacent-budget gain and CI; current status is not computable without predictions."
+  },
+  "class_diagnostics": {
+    "interaction_classes": ["none", "reach", "grasp", "hold", "move", "place", "release"],
+    "support_fields": [
+      "accepted_event_count",
+      "accepted_none_interval_count",
+      "valid_target_frame_count",
+      "train_acquisition_count_with_class",
+      "val_acquisition_count_with_class",
+      "test_acquisition_count_with_class_after_final_evaluation"
+    ],
+    "scarcity_rule": {
+      "minimum_train_acquisitions_with_class": 5,
+      "minimum_train_valid_targets_with_class": 20,
+      "rule": "Flag zero-support classes separately; flag nonzero support below either floor as scarce. These are project diagnostic floors, not sufficiency guarantees."
+    },
+    "failure_rule": "For every supported class report precision/recall/F1 and confusion; flag zero recall and F1 below both non-learning baselines. Do not hide absent or rare classes inside overall accuracy.",
+    "current_per_class_event_counts_and_accuracy": null
+  },
+  "statistical_power_and_accuracy": {
+    "status": "not_computable_at_zero_accepted_events_and_without_predictions",
+    "required_inputs": [
+      "accepted per-class events and valid target supports",
+      "acquisition-level outcome variance and the effect size to detect",
+      "seed-level and acquisition-cluster results from the frozen protocol"
+    ],
+    "rule": "Do not invent event counts, power, effect sizes, confidence intervals or final accuracy; windows cannot increase the effective independent sample size."
+  },
+  "required_outputs": {
+    "per_run": ["design_id", "actual_split_counts", "train_group_ids", "model", "seed", "budget", "selected_checkpoint", "val_metrics"],
+    "learning_curve": ["all_val_budget_results", "adjacent_gains", "paired_cluster_cis", "plateau_status", "per_class_support_and_failures"],
+    "final_test": ["single_frozen_configuration", "sample_weighted_metrics", "acquisition_equal_weight_metrics", "coverage", "class_distributions", "acquisition_cluster_cis"],
+    "prohibition": "No test-based selection of budget, model, checkpoint, hyperparameters, normalization or plateau conclusion."
+  }
+}

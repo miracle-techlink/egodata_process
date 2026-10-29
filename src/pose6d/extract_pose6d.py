@@ -39,6 +39,9 @@ Full run on the server (repos pre-pulled under ~/refs):
 from __future__ import annotations
 
 import argparse
+import hashlib
+import importlib.machinery
+import importlib.util
 import json
 import logging
 import os
@@ -249,13 +252,18 @@ class DepthAnythingProvider(DepthProvider):
         import torch
         if not torch.cuda.is_available():
             raise RuntimeError("CUDA not available; DepthAnything inference needs the GPU")
-        repo_path = Path(repo).expanduser()
-        sys.path.insert(0, str(repo_path))
-        try:
-            from depth_anything_v2.dpt import DepthAnythingV2
-        except ImportError:
-            sys.path.insert(0, str(repo_path / "metric_depth"))
-            from depth_anything_v2.dpt import DepthAnythingV2
+        repo_path = Path(repo).expanduser().resolve()
+        model_root = repo_path / "metric_depth" if metric else repo_path
+        package_path = model_root / "depth_anything_v2"
+        if not (package_path / "dpt.py").is_file():
+            raise RuntimeError(f"DepthAnything model not found: {package_path / 'dpt.py'}")
+        package_key = hashlib.sha256(str(package_path).encode()).hexdigest()
+        package_name = f"_egodata_depth_anything_v2_{package_key}"
+        if package_name not in sys.modules:
+            spec = importlib.machinery.ModuleSpec(package_name, loader=None, is_package=True)
+            spec.submodule_search_locations = [str(package_path)]
+            sys.modules[package_name] = importlib.util.module_from_spec(spec)
+        DepthAnythingV2 = importlib.import_module(f"{package_name}.dpt").DepthAnythingV2
         cfg = dict(_DA2_CONFIGS[encoder])
         if metric:
             cfg["max_depth"] = max_depth
@@ -467,13 +475,15 @@ class ClipReader:
 
     def frames(self):
         idx = 0
-        while True:
-            ok, frame = self.cap.read()
-            if not ok:
-                break
-            yield idx, frame
-            idx += 1
-        self.cap.release()
+        try:
+            while True:
+                ok, frame = self.cap.read()
+                if not ok:
+                    break
+                yield idx, frame
+                idx += 1
+        finally:
+            self.cap.release()
 
 
 def resolve_intrinsics(args, width: int, height: int,
@@ -598,6 +608,8 @@ def build_pose_backend(args, warnings, flags) -> PoseBackend:
     if args.pose_estimator == "none":
         return NullPoseBackend()
     if args.pose_estimator == "mock":
+        flags.append("mock_pose")
+        warnings.append("mock pose uses identity rotation and bbox-center backprojection; not a real 6D estimate")
         return MockPoseBackend(fallback_z=args.mock_z)
     if args.pose_estimator == "foundationpose":
         try:
@@ -658,7 +670,10 @@ def run(args) -> dict:
                 try:
                     obj_trackers[track_id] = pose_backend.create(track_id)
                 except Exception as e:
+                    if args.strict:
+                        raise
                     warnings.append(f"track {track_id}: pose backend create failed: {e}")
+                    flags.append("pose_backend_create_failed")
                     obj_trackers[track_id] = _NullObjectTracker()
             ot = obj_trackers[track_id]
 
@@ -669,11 +684,15 @@ def run(args) -> dict:
                     depth = depth_provider.depth(frame, idx)
                     depth_done = True
                 if pose_backend.requires_depth and depth is None:
+                    if args.strict:
+                        raise RuntimeError(f"frame {idx} track {track_id}: required depth is missing")
                     pose = None
                 else:
                     try:
                         pose = ot.estimate(frame, depth, K, bbox, is_new)
                     except Exception as e:
+                        if args.strict:
+                            raise
                         pose_failures += 1
                         if pose_failures <= 5:
                             warnings.append(f"frame {idx} track {track_id}: pose failed: {e}")
@@ -822,7 +841,7 @@ def build_argparser() -> argparse.ArgumentParser:
                    help="drop tracks with fewer matched frames")
 
     p.add_argument("--strict", action="store_true",
-                   help="fail instead of degrading when optional deps are missing")
+                   help="fail on unavailable backends, tracker creation errors, missing required depth, or pose estimation errors")
     p.add_argument("--log-level", default="INFO")
     return p
 

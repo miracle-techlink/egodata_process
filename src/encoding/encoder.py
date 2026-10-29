@@ -56,6 +56,9 @@ class HOIEncoder(nn.Module):
         self.dropout_p = float(cfg_get(cfg, "dropout", 0.1))
         self.max_frames = int(cfg_get(cfg, "max_frames", 64))
         self.contact_threshold = float(cfg_get(cfg, "contact_threshold", 0.15))
+        self.coordinate_mode = cfg_get(cfg, "coordinate_mode", "mixed")
+        if self.coordinate_mode not in {"mixed", "camera"}:
+            raise ValueError("coordinate_mode must be 'mixed' or 'camera'")
         self.use_gaze = bool(cfg_get(cfg, "use_gaze", False))
         self.gaze_dim = int(cfg_get(cfg, "gaze_dim", 3))
         if self.d_model % self.n_heads != 0:
@@ -102,10 +105,9 @@ class HOIEncoder(nn.Module):
             raise ValueError(f"W={W} exceeds max_frames={self.max_frames}; increase cfg.max_frames")
 
         # NaN -> 0, observed flag appended (contract: undetected frames are NaN)
-        hand_obs = ~torch.isnan(hand_seq).any(dim=(-1, -2))  # (B, W, 2)
-        hands = torch.nan_to_num(hand_seq, nan=0.0)
-        obj_obs = ~torch.isnan(obj_seq).any(dim=-1)  # (B, W, n_max)
-        objs = torch.nan_to_num(obj_seq, nan=0.0)
+        hand_obs = torch.isfinite(hand_seq).all(dim=(-1, -2))
+        hands = hand_seq.masked_fill(~hand_obs[..., None, None], 0.0)
+        obj_obs = torch.isfinite(obj_seq).all(dim=-1)
 
         if obj_mask is None:
             slot_valid = obj_obs.any(dim=1, keepdim=True).expand(B, W, n_obj)
@@ -114,6 +116,7 @@ class HOIEncoder(nn.Module):
                 raise ValueError(f"obj_mask must be (B, W, n_max), got {tuple(obj_mask.shape)}")
             slot_valid = obj_mask.bool()
         obj_valid = slot_valid & obj_obs
+        objs = obj_seq.masked_fill(~obj_valid[..., None], 0.0)
 
         # --- self-state tokens ---
         hand_feat = torch.cat([hands.flatten(3), hand_obs[..., None].float()], dim=-1)
@@ -146,6 +149,10 @@ class HOIEncoder(nn.Module):
         rel_vel = vel[:, :, None, :, :] - vel[:, :, :, None, :]
         dist = rel_pos.norm(dim=-1, keepdim=True)  # (B, W, E, E, 1)
         pair_ok = usable[:, :, :, None] & usable[:, :, None, :]  # (B, W, E, E)
+        if self.coordinate_mode == "mixed":
+            image_space = torch.arange(E, device=pos.device) < N_FIXED_ENTITIES
+            same_space = image_space[:, None] == image_space[None, :]
+            pair_ok = pair_ok & same_space
         eye = torch.eye(E, dtype=torch.bool, device=pos.device)
         pair_ok = pair_ok & ~eye
         contact = ((dist.squeeze(-1) < self.contact_threshold) & pair_ok)[..., None].float()

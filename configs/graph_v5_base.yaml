@@ -1,0 +1,33 @@
+run_name: graph_v5_base
+seed: 20261024
+contract_version: v5-2026-10-24
+device: auto
+runs_root: runs
+data:
+  root: runs/egodemo_training_v5_300_20261024
+  cache_all_sequences: true
+  num_workers: 0
+model:
+  backbone: mamba  # mamba | lstm | transformer
+  input_dim: 120
+  event_type_count: 66
+  d_model: 128
+  n_layer: 2
+  d_state: 16
+  d_conv: 4
+  expand: 2
+  n_heads: 4
+  dropout: 0.0
+train:
+  epochs: 50
+  batch_size: 16
+  lr: 0.0003
+  weight_decay: 0.01
+  grad_clip: 1.0
+  amp_bf16: true
+  log_interval: 10
+  selection_metric: val_loss
+eval:
+  threshold: 0.5
+  top_k: 20
+  decode_samples: 5

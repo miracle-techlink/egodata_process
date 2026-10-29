@@ -53,7 +53,8 @@ class HOIDecoder(nn.Module):
             em = torch.cat([fixed, obj_mask.to(dtype)], dim=-1)
         else:
             em = torch.ones(B, E, dtype=dtype, device=device)
-        return (h * em[..., None]).sum(dim=1) / em.sum(dim=1, keepdim=True).clamp(min=1.0)
+        masked_tokens = h.masked_fill(~em.bool()[..., None], 0.0)
+        return (masked_tokens * em[..., None]).sum(dim=1) / em.sum(dim=1, keepdim=True).clamp(min=1.0)
 
     def forward(self, tokens: torch.Tensor, obj_mask: torch.Tensor | None = None):
         if tokens.dim() == 4:

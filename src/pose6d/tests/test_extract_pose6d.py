@@ -122,8 +122,8 @@ def test_end_to_end_mock(tmp_path, capsys):
     assert meta["intrinsics"]["source"] == "cli"
     assert meta["intrinsics"]["fx"] == 500.0
     assert meta["bbox_undetected_value"] == -1
-    assert meta["quality_flags"] == []
-    assert meta["warnings"] == []
+    assert meta["quality_flags"] == ["mock_pose"]
+    assert any("not a real 6D estimate" in warning for warning in meta["warnings"])
     assert "generated_at" in meta and "environment" in meta
 
 
@@ -194,3 +194,57 @@ def test_import_without_gpu_deps():
         ep.FoundationPoseBackend(repo=None)
     with pytest.raises(RuntimeError, match="depth-anything-repo"):
         ep.DepthAnythingProvider(repo=None, ckpt="x.pth")
+
+
+@pytest.mark.parametrize("failure", ["create", "estimate", "depth"])
+@pytest.mark.parametrize("strict", [True, False])
+def test_runtime_failure_obeys_strict_mode(tmp_path, monkeypatch, failure, strict):
+    class BrokenTracker:
+        def estimate(self, frame_bgr, depth, intrinsics, bbox, is_new):
+            raise RuntimeError("pose estimation failed")
+
+    class BrokenBackend:
+        name = "foundationpose"
+        requires_depth = failure == "depth"
+
+        def create(self, track_id):
+            if failure == "create":
+                raise RuntimeError("tracker creation failed")
+            return BrokenTracker()
+
+    monkeypatch.setattr(ep, "build_pose_backend", lambda *args: BrokenBackend())
+    clip = make_clip(tmp_path)
+    boxes = make_bbox_file(tmp_path)
+    output = tmp_path / "failed_pose"
+    arguments = ["--pose-estimator", "foundationpose"]
+    if strict:
+        arguments.append("--strict")
+        with pytest.raises(RuntimeError, match="creation failed|estimation failed|required depth is missing"):
+            run_cli(clip, boxes, output, arguments)
+        assert not list(output.glob("*.npz"))
+        assert not list(output.glob("*.meta.json"))
+    else:
+        result = run_cli(clip, boxes, output, arguments)
+        with np.load(result["npz"], allow_pickle=False) as archive:
+            assert np.isnan(archive["poses"]).all()
+        metadata = json.loads(Path(result["meta"]).read_text())
+        expected_flag = {"create": "pose_backend_create_failed", "estimate": "pose_failures", "depth": "no_depth_for_estimator"}[failure]
+        assert expected_flag in metadata["quality_flags"]
+
+
+def test_clip_iterator_releases_capture_on_early_close():
+    class FakeCapture:
+        released = False
+
+        def read(self):
+            return True, np.zeros((2, 2, 3), dtype=np.uint8)
+
+        def release(self):
+            self.released = True
+
+    reader = ep.ClipReader.__new__(ep.ClipReader)
+    reader.cap = FakeCapture()
+    frames = reader.frames()
+    next(frames)
+    frames.close()
+    assert reader.cap.released

@@ -45,7 +45,7 @@ TYPE_MAP = {name: i for i, name in enumerate(INTERACTION_TYPES)}
 DEFAULT_CONFIG = {
     "run_name": "run",
     "seed": 42,
-    "contract_version": "2026-10-15",
+    "contract_version": "2026-10-22",
     "device": "auto",
     "runs_root": "runs",
     "data": {
@@ -55,6 +55,8 @@ DEFAULT_CONFIG = {
         # False: ⑤ 编码器原生吃 NaN（提取 obs 标志）；仅调试/自研编码器时开 true
         "nan_to_num": False,
         "use_gaze": False,
+        # 仅 legacy/synthetic smoke 可显式开启；不代表 accepted 人工审核或正式数据许可
+        "allow_legacy_missing_label_valid": False,
     },
     "model": {
         "backbone": "mamba",  # mamba | lstm
@@ -217,16 +219,26 @@ def resolve_split_ids(root: Path, split: str, index_path: Path | None) -> list[s
     return sorted(p.stem for p in split_dir.glob("*.npz"))
 
 
+def _warn_legacy_missing_label_valid(context):
+    print(
+        "[train] 警告：LEGACY/SYNTHETIC SMOKE ONLY — "
+        f"{context}: 兼容模式允许缺失 label_valid 并按 True 处理；"
+        "这不代表 accepted 人工审核，不是正式数据许可，输出不得作为正式结果"
+    )
+
+
 class SamplesDataset(Dataset):
     """Lazy npz loader for task-4 samples; optional in-memory cache."""
 
     def __init__(self, root, split, n_max, index_path=None, cache=False,
-                 nan_to_num=False, use_gaze=False):
+                 nan_to_num=False, use_gaze=False, allow_legacy_missing_label_valid=False):
         self.root = Path(root)
         self.split = split
         self.n_max = n_max
         self.nan_to_num = nan_to_num
         self.use_gaze = use_gaze
+        self.allow_legacy_missing_label_valid = allow_legacy_missing_label_valid
+        self._warned_legacy_missing_label_valid = False
         self.ids = resolve_split_ids(self.root, split, Path(index_path) if index_path else None)
         self._cache: dict[str, dict] = {} if cache else None
 
@@ -252,6 +264,25 @@ class SamplesDataset(Dataset):
             if mask.ndim == 2:
                 # 槽位级 = 窗口内至少一帧观测到（与 ⑤ 编码器无 mask 时的推断语义一致）
                 mask = mask.any(axis=0)
+            if "label_valid" not in keys:
+                if not self.allow_legacy_missing_label_valid:
+                    raise ValueError(
+                        f"{path}: 缺少 label_valid，正式训练默认拒绝；仅 legacy/synthetic smoke "
+                        "可显式设置 data.allow_legacy_missing_label_valid=true "
+                        "（SamplesDataset 同名参数），且不构成正式数据许可"
+                    )
+                label_valid = True
+                if not self._warned_legacy_missing_label_valid:
+                    _warn_legacy_missing_label_valid(path)
+                    self._warned_legacy_missing_label_valid = True
+            else:
+                raw_valid = np.asarray(z["label_valid"])
+                if raw_valid.size != 1 or raw_valid.dtype.kind not in "buif":
+                    raise ValueError(f"{path}: label_valid 必须是 0/1 标量")
+                value = float(raw_valid.reshape(-1)[0])
+                if not np.isfinite(value) or value not in (0.0, 1.0):
+                    raise ValueError(f"{path}: label_valid 必须是 0/1 标量")
+                label_valid = bool(value)
             labels = parse_labels(z, keys, self.n_max)
             gaze = None
             if self.use_gaze and "gaze_seq" in keys:
@@ -268,7 +299,7 @@ class SamplesDataset(Dataset):
             hand = np.nan_to_num(hand)
             obj = np.nan_to_num(obj)
         return {"hand_seq": hand, "obj_seq": obj, "obj_mask": mask,
-                "gaze_seq": gaze, "labels": labels}
+                "gaze_seq": gaze, "labels": labels, "label_valid": label_valid}
 
     def __getitem__(self, i: int) -> dict:
         sid = self.ids[i]
@@ -285,6 +316,7 @@ class SamplesDataset(Dataset):
             "subject": torch.tensor(item["labels"]["subject"], dtype=torch.long),
             "object": torch.tensor(item["labels"]["object"], dtype=torch.long),
             "interaction_type": torch.tensor(item["labels"]["interaction_type"], dtype=torch.long),
+            "label_valid": torch.tensor(item["label_valid"], dtype=torch.bool),
             "gaze_seq": torch.from_numpy(item["gaze_seq"]) if item["gaze_seq"] is not None else None,
         }
         return out
@@ -298,6 +330,7 @@ def collate_fn(batch: list[dict]) -> dict:
         "subject": torch.stack([b["subject"] for b in batch]),
         "object": torch.stack([b["object"] for b in batch]),
         "interaction_type": torch.stack([b["interaction_type"] for b in batch]),
+        "label_valid": torch.stack([b["label_valid"] for b in batch]),
     }
     gazes = [b["gaze_seq"] for b in batch]
     out["gaze_seq"] = None if all(g is None for g in gazes) else torch.stack(gazes)
@@ -390,17 +423,22 @@ class IntentModel(nn.Module):
 
     def forward(self, batch) -> dict:
         hand, obj = batch["hand_seq"], batch["obj_seq"]
-        b, w = hand.shape[:2]
+        batch_size, window_size = hand.shape[:2]
         slot_mask = batch["obj_mask"]  # (B, n_max) bool, slot validity
         enc_kw = {}
         if self._enc_obj_mask:
-            enc_kw["obj_mask"] = slot_mask[:, None, :].expand(b, w, -1)
+            enc_kw["obj_mask"] = slot_mask[:, None, :].expand(batch_size, window_size, -1)
         if self._enc_gaze:
             enc_kw["gaze_seq"] = batch.get("gaze_seq")
         tokens = self.encoder(hand, obj, **enc_kw)
         if tokens.dim() == 4:  # (B, W, E, D) per-entity tokens
-            e, d = tokens.shape[2], tokens.shape[3]
-            seq = self.backbone(tokens.reshape(b * e, w, d)).reshape(b, w, e, d)
+            entity_count, feature_dim = tokens.shape[2:]
+            trajectories = tokens.permute(0, 2, 1, 3).reshape(
+                batch_size * entity_count, window_size, feature_dim
+            )
+            seq = self.backbone(trajectories).reshape(
+                batch_size, entity_count, window_size, feature_dim
+            ).permute(0, 2, 1, 3)
         else:  # (B, W, D) already pooled per frame
             seq = self.backbone(tokens)
         dec_kw = {"obj_mask": slot_mask} if self._dec_obj_mask else {}
@@ -473,33 +511,77 @@ class RunLogger:
 def mask_object_logits(logits: torch.Tensor, obj_mask: torch.Tensor) -> torch.Tensor:
     """logits (B, n_max+1); class n_max = none, never masked."""
     masked = logits.clone()
-    masked[:, :-1] = masked[:, :-1].masked_fill(~obj_mask, -1e4)
+    masked[:, :-1] = masked[:, :-1].masked_fill(~obj_mask.bool(), float("-inf"))
     return masked
 
 
-def compute_losses(logits: dict, batch: dict, weights: dict) -> tuple:
-    obj_logits = mask_object_logits(logits["object"], batch["obj_mask"])
-    l_subj = F.cross_entropy(logits["subject"], batch["subject"], ignore_index=-1)
-    l_obj = F.cross_entropy(obj_logits, batch["object"], ignore_index=-1)
-    l_type = F.cross_entropy(logits["interaction_type"], batch["interaction_type"], ignore_index=-1)
-    total = (weights["subject"] * l_subj + weights["object"] * l_obj
-             + weights["interaction_type"] * l_type)
-    return total, {"subject": l_subj.item(), "object": l_obj.item(),
-                   "interaction_type": l_type.item()}
+def _label_valid_mask(batch, allow_legacy_missing_label_valid, context):
+    if "label_valid" in batch:
+        return batch["label_valid"].bool(), False
+    if not allow_legacy_missing_label_valid:
+        raise ValueError(
+            f"{context}: 缺少 label_valid，正式训练默认拒绝；仅 legacy/synthetic smoke "
+            "可显式启用 allow_legacy_missing_label_valid，且不构成正式数据许可"
+        )
+    return torch.ones_like(batch["subject"], dtype=torch.bool), True
+
+
+def compute_losses(logits: dict, batch: dict, weights: dict, *,
+                   allow_legacy_missing_label_valid=False) -> tuple:
+    """Average each head over valid targets; an unsupervised head contributes zero."""
+    label_valid, legacy_missing = _label_valid_mask(
+        batch, allow_legacy_missing_label_valid, "compute_losses"
+    )
+    if legacy_missing:
+        _warn_legacy_missing_label_valid("compute_losses")
+    losses = {}
+    for head in ("subject", "object", "interaction_type"):
+        head_logits = (mask_object_logits(logits[head], batch["obj_mask"])
+                       if head == "object" else logits[head])
+        valid_targets = (batch[head] != -1) & label_valid
+        valid_count = valid_targets.sum().clamp_min(1)
+        losses[head] = F.cross_entropy(
+            head_logits[valid_targets], batch[head][valid_targets], reduction="sum"
+        ) / valid_count
+    total = sum(weights[head] * loss for head, loss in losses.items())
+    return total, {head: loss.item() for head, loss in losses.items()}
 
 
 def run_epoch(model, loader, device, cfg, amp_ok, optimizer=None):
+    """Return metrics excluding -1 targets and label_valid=False samples.
+
+    f1_macro_<head> averages class F1 over the head's full output vocabulary;
+    classes absent from both targets and predictions contribute zero. acc_joint
+    requires all three targets to be valid and all three predictions correct.
+    acc_macro remains the mean of the three head accuracies for compatibility,
+    not a class-level macro-F1. Empty denominators return zero, including losses.
+    """
     training = optimizer is not None
     model.train() if training else model.eval()
     weights = cfg["train"]["loss_weights"]
     log_interval = cfg["train"]["log_interval"]
-    totals = {"loss": 0.0, "subject": 0.0, "object": 0.0, "interaction_type": 0.0}
+    allow_legacy = cfg.get("data", {}).get("allow_legacy_missing_label_valid", False)
+    legacy_missing_label_valid = False
+    totals = {"subject": 0.0, "object": 0.0, "interaction_type": 0.0}
     correct = {"subject": 0, "object": 0, "interaction_type": 0}
-    n_samples = 0
+    valid_counts = {head: 0 for head in totals}
+    confusion_matrices = {}
+    joint_correct = 0
+    joint_count = 0
     t0 = time.time()
     for step, batch in enumerate(loader):
         batch = {k: (v.to(device, non_blocking=True) if torch.is_tensor(v) else v)
                  for k, v in batch.items()}
+        label_valid, legacy_missing = _label_valid_mask(batch, allow_legacy, f"epoch batch {step}")
+        if legacy_missing:
+            batch["label_valid"] = label_valid
+            if not legacy_missing_label_valid:
+                _warn_legacy_missing_label_valid(f"epoch batch {step}")
+            legacy_missing_label_valid = True
+        valid_targets = {head: (batch[head] != -1) & label_valid for head in totals}
+        batch_counts = {head: valid.sum().item() for head, valid in valid_targets.items()}
+        if not any(batch_counts.values()):
+            continue
         ctx = (torch.autocast(device_type="cuda", dtype=torch.bfloat16)
                if amp_ok else nullcontext())
         with torch.set_grad_enabled(training), ctx:
@@ -512,25 +594,52 @@ def run_epoch(model, loader, device, cfg, amp_ok, optimizer=None):
             if clip and clip > 0:
                 nn.utils.clip_grad_norm_(model.parameters(), clip)
             optimizer.step()
-        bs = batch["subject"].shape[0]
-        n_samples += bs
-        totals["loss"] += loss.item() * bs
-        for k in parts:
-            totals[k] += parts[k] * bs
+        for head in parts:
+            totals[head] += parts[head] * batch_counts[head]
+            valid_counts[head] += batch_counts[head]
         with torch.no_grad():
-            obj_pred = mask_object_logits(logits["object"].float(), batch["obj_mask"]).argmax(-1)
-            correct["subject"] += (logits["subject"].argmax(-1) == batch["subject"]).sum().item()
-            correct["object"] += (obj_pred == batch["object"]).sum().item()
-            correct["interaction_type"] += (
-                logits["interaction_type"].argmax(-1) == batch["interaction_type"]).sum().item()
+            predictions = {
+                head: (mask_object_logits(logits[head].float(), batch["obj_mask"])
+                       if head == "object" else logits[head]).argmax(-1)
+                for head in totals
+            }
+            joint_valid = torch.stack(list(valid_targets.values())).all(dim=0)
+            joint_matches = joint_valid.clone()
+            for head, predicted in predictions.items():
+                valid = valid_targets[head]
+                matches = predicted == batch[head]
+                correct[head] += (matches & valid).sum().item()
+                joint_matches &= matches
+                class_count = logits[head].shape[-1]
+                counts = torch.bincount(
+                    batch[head][valid] * class_count + predicted[valid],
+                    minlength=class_count * class_count,
+                ).reshape(class_count, class_count).cpu()
+                if head not in confusion_matrices:
+                    confusion_matrices[head] = counts
+                else:
+                    confusion_matrices[head] += counts
+            joint_correct += joint_matches.sum().item()
+            joint_count += joint_valid.sum().item()
         if training and log_interval and (step + 1) % log_interval == 0:
             print(f"    step {step + 1}/{len(loader)} loss={loss.item():.4f}")
-    n = max(n_samples, 1)
-    metrics = {"loss": totals["loss"] / n}
-    for k in ("subject", "object", "interaction_type"):
-        metrics[f"loss_{k}"] = totals[k] / n
-        metrics[f"acc_{k}"] = correct[k] / n
-    metrics["acc_macro"] = sum(metrics[f"acc_{k}"] for k in correct) / 3.0
+    metrics = {}
+    for head in totals:
+        metrics[f"loss_{head}"] = totals[head] / max(valid_counts[head], 1)
+        metrics[f"acc_{head}"] = correct[head] / max(valid_counts[head], 1)
+        confusion = confusion_matrices.get(head)
+        if confusion is None:
+            metrics[f"f1_macro_{head}"] = 0.0
+        else:
+            denominator = confusion.sum(dim=0) + confusion.sum(dim=1)
+            class_f1 = 2.0 * confusion.diag().double() / denominator.clamp_min(1)
+            metrics[f"f1_macro_{head}"] = class_f1.mean().item()
+    metrics["loss"] = sum(weights[head] * metrics[f"loss_{head}"] for head in totals)
+    metrics["acc_macro"] = sum(metrics[f"acc_{head}"] for head in totals) / len(totals)
+    metrics["acc_joint"] = joint_correct / max(joint_count, 1)
+    metrics["warning_legacy_missing_label_valid"] = float(
+        allow_legacy or legacy_missing_label_valid
+    )
     metrics["seconds"] = time.time() - t0
     return metrics
 
@@ -582,10 +691,16 @@ def main(argv=None):
     data_root = Path(cfg["data"]["root"])
     n_max = int(cfg["model"]["decoder"]["n_max"])
     dcfg = cfg["data"]
-    train_set = SamplesDataset(data_root, "train", n_max, dcfg["index"],
-                               dcfg["cache_in_memory"], dcfg["nan_to_num"], dcfg["use_gaze"])
-    val_set = SamplesDataset(data_root, "val", n_max, dcfg["index"],
-                             dcfg["cache_in_memory"], dcfg["nan_to_num"], dcfg["use_gaze"])
+    if dcfg["allow_legacy_missing_label_valid"]:
+        _warn_legacy_missing_label_valid("配置已显式启用兼容模式")
+    train_set = SamplesDataset(
+        data_root, "train", n_max, dcfg["index"], dcfg["cache_in_memory"],
+        dcfg["nan_to_num"], dcfg["use_gaze"], dcfg["allow_legacy_missing_label_valid"],
+    )
+    val_set = SamplesDataset(
+        data_root, "val", n_max, dcfg["index"], dcfg["cache_in_memory"],
+        dcfg["nan_to_num"], dcfg["use_gaze"], dcfg["allow_legacy_missing_label_valid"],
+    )
     if len(train_set) == 0:
         raise SystemExit(f"[train] 训练集为空：{data_root}/train/*.npz（检查 data.root/data.index 配置）")
     if len(val_set) == 0:

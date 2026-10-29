@@ -28,13 +28,15 @@ hands = mp.solutions.hands.Hands(
 
 ## 要点
 
-- **handedness 坑**：MediaPipe 输出的 Left/Right 是相对自拍镜像的，处理第三人称/ego 视频时统一按 `multi_handedness` 标签写入 `left_hand/right_hand`，并在 meta 记录是否翻转过
+- **handedness 坑**：MediaPipe Legacy Hands 假设自拍镜像输入；不能把第一人称自动等同镜像。新在线入口 `OnlineHands(input_mirrored=False)` 对非镜像输入交换左右标签，镜像输入不交换，并记录规则。旧批处理 CLI 仍需调用方显式设置 `--swap_handedness`，不要把默认原始分类标签当作已校验的解剖左右手。
 - 第一视角视频手部遮挡多、检出率低：宁可整帧 NaN 也不要补假值；低置信帧同样置 NaN
 - 批处理脚本 `src/hand_pose/extract.py`：支持 `--clips_dir --out_dir --num_workers`，断点续跑（已存在 npz 跳过）
 - 性能：MediaPipe CPU 即可跑（约实时 2–5 倍速）；量大时用 GPU 版或后面升级 HaMeR/wilor（升级时保持 npz 契约不变）
 - 首批先跑 3 个 clip，交 ⑦daniel 校验契约 + ④xw 可视化抽检
 
 ## 环境
+
+2026-10-22 已验证真人手＋FoundationPose 同帧管线：使用隔离环境 `/root/gpufree-data/conda/envs/panda_human_live`，入口 `python -m src.pose6d.run_human_rgbd`。实际配置、视频和帧率边界见 `docs/HUMAN_HAND_OBJECT_LIVE_20261022.md`；短序列实测不等于摄像头已接通或 EgoDemo 已完成。
 
 ```bash
 conda create -n ash_hands python=3.10 -y && conda activate ash_hands

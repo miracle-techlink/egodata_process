@@ -24,11 +24,13 @@ description: 任务③ 用 FoundationPose 提取目标物体 6D 位姿（位置+
 ## 安装要点（CUDA 编译，独立环境！）
 
 ```bash
-conda activate panda_6d   # 已预装 torch 2.14 + trimesh + open3d + opencv
-# 按 FoundationPose README 补装 kaolin / nvdiffrast / bundlesdf 等 CUDA 扩展
+conda activate /root/gpufree-data/conda/envs/panda_fp_real
+# 2026-10-22 已在 L40 实测：torch 2.6.0+cu124、pytorch3d、nvdiffrast、mycpp
 ```
 
-- ⚠️ FoundationPose 生态对 torch 版本敏感（官方年代为 torch 2.0–2.5）；若扩展编译与 torch 2.14 冲突，把 panda_6d 降到 `torch==2.6.0` + cu126 再试
+- 已验证入口：`python -m src.pose6d.run_rgbd_sequence`；复现命令与资产路径见 `docs/FOUNDATIONPOSE_REAL_RUN_20261022.md`。官方实拍 mustard0 全序列 737/737 跑通，但无独立 GT，不能宣传准确率或 EgoDemo 融合通过。
+- `panda_fp_real` 是新建的隔离环境；**不要降级或覆盖已有 `panda_6d`、其他同学环境或 base**。运行版本、源码 commit、编译日志见交付目录，不能只凭 import 成功判断后端就绪。
+- 本轮为已知 mesh 的 model-based 路线，不需要为了此路径先安装 model-free 重建组件；实际目标缺 mesh 时仍需另行验证重建与米制尺度。
 - 预编译 wheel 优先原则见 `.agent/skills/env-setup`；编译卡住先看官方 issues；不要用 docker（我们已在容器内）
 
 ## 要点

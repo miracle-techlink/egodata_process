@@ -1,0 +1,29 @@
+# 独立 v2 接口；不能交给旧版 src.mamba.train 的七类三头训练入口。
+schema_version: egodemo_mamba_v2
+seed: 42
+data:
+  root: /root/gpufree-data/datasets/ego_hoi/egodemo_mamba_v2_300_20261023
+  split: train
+  window_frames: 32
+  stride_frames: 16
+  horizon_seconds: 1.0
+  n_max: 8
+  points_per_object: 16
+  sequence_cache_size: 1
+  diagnostic: false  # 命令行 --diagnostic 才允许加载当前待审/离线数据
+model:
+  d_model: 128
+  n_layer: 4
+  d_state: 16
+  d_conv: 4
+  expand: 2
+  dropout: 0.1
+  n_heads: 4
+smoke:
+  batch_size: 4
+  device: cuda
+  amp_bf16: true
+  output_path: /root/gpufree-data/datasets/ego_hoi/egodemo_mamba_v2_300_20261023/mamba_forward_smoke.json
+training:
+  allowed: false
+  reason_zh: 交互未人工审核；物体/表面来自非因果离线估计。当前仅验证加载和真实Mamba前向。

@@ -3,7 +3,7 @@
 # 不依赖 mamba_ssm，可在无 GPU 环境跑通数据链路；等效命令：任意 config 加 --baseline lstm
 run_name: lstm_base
 seed: 42
-contract_version: "2026-10-15"
+contract_version: "2026-10-22"
 device: auto
 runs_root: runs         # 服务器上改指数据盘，例如 /root/gpufree-data/datasets/ego_hoi/runs
 
@@ -19,7 +19,8 @@ model:
   d_model: 128
   n_layer: 4
   dropout: 0.1
-  encoder: {}
+  encoder:
+    coordinate_mode: mixed
   decoder:
     n_max: 8
     n_interaction_types: 7

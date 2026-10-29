@@ -1,0 +1,16 @@
+{
+  "schema_version": "full_hocap_v1",
+  "display_fps": 30.0,
+  "est_refine_iter": 5,
+  "track_refine_iter": 2,
+  "torch_threads": 1,
+  "opencv_threads": 1,
+  "hand_model_complexity": 1,
+  "min_detection_confidence": 0.5,
+  "min_tracking_confidence": 0.5,
+  "min_handedness_score": 0.5,
+  "depth_radius": 2,
+  "depth_max_spread_m": 0.04,
+  "depth_min_m": 0.1,
+  "depth_max_m": 3.0
+}

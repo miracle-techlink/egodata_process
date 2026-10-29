@@ -36,9 +36,11 @@ description: 任务⑤ 设计动态人-物交互关系的编码器/解码器（�
 
 ```python
 # src/encoding/__init__.py
-def build_encoder(cfg) -> nn.Module   # 输入 hand_seq, obj_seq, gaze_seq=None -> (B, W, d_model)
-def build_decoder(cfg) -> nn.Module   # 输入时序表示 -> dict(subject=, object=, type=) logits
+def build_encoder(cfg) -> nn.Module
+def build_decoder(cfg) -> nn.Module
 ```
+
+实际冻结接口以 `03_data_pipeline.md` 为准：encoder 输入 `hand_seq, obj_seq, obj_mask=None, gaze_seq=None`，输出 `(B,W,3+N_max,D)`；decoder 输出 `subject/object/interaction_type` 三路 logits。`coordinate_mode` 默认 `mixed`，不计算手—物跨坐标系几何；只有显式统一为相机米制后才使用 `camera`。
 
 ## 要点
 

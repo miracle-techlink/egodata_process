@@ -1,0 +1,17 @@
+{
+  "base_root": "/root/gpufree-data/datasets/ego_hoi/egodemo_mamba_v2_300_20261023",
+  "v3_root": "/root/gpufree-data/datasets/ego_hoi/egodemo_annotation_v3_300_20261023",
+  "v5_root": "/root/gpufree-data/datasets/ego_hoi/egodemo_training_v5_300_20261024",
+  "source_pool": "/root/gpufree-data/datasets/ego_hoi/egodemo_expansion_300_20261023",
+  "expected_sequences": 300,
+  "workers": 4,
+  "max_attempts": 2,
+  "queue_chunk_frames": 300,
+  "thresholds": {
+    "hand_speed_mps": 3.0,
+    "bone_relative_change": 0.25,
+    "object_speed_mps": 3.0,
+    "object_rotation_deg_per_s": 720.0,
+    "se3_atol": 0.001
+  }
+}
