@@ -1,5 +1,6 @@
 import csv
 import json
+import shutil
 from pathlib import Path
 
 import numpy as np
@@ -666,3 +667,209 @@ def test_generic_qwen_native_events_none_prepare_review_apply(tmp_path):
         unknown = project_frame_label([reviewed_event], [reviewed_none], frame, ["obj_000"])
         assert unknown["valid"] is False
         assert unknown["reason"] == "unlabelled_or_rejected"
+
+
+def _responses_payload(**overrides):
+    payload = {
+        "response_id": "run-a:response:0000",
+        "sequence_id": "seq",
+        "candidate_counts": {"events": 4, "none_intervals": 0},
+        "parsed_json": {"events": [{"candidate": index} for index in range(4)],
+                        "none_intervals": []},
+        "event_ids": ["phase-grasp", "phase-hold"],
+        "none_interval_ids": [],
+        "rejected_candidate_count": 2,
+    }
+    payload.update(overrides)
+    return payload
+
+
+def _write_responses(case, **overrides):
+    path = case["root"] / "responses.jsonl"
+    path.write_text(json.dumps(_responses_payload(**overrides)) + "\n", encoding="utf-8")
+    return path
+
+
+def test_exact_raw_counts_from_matching_responses_survive_pending_apply(case):
+    _write_responses(case)
+    result = _prepare(case)
+    assert result["raw_vlm_candidates"] == 4
+    assert result["structurally_valid_candidates"] == 2
+    assert result["structurally_rejected_candidates"] == 2
+    assert result["raw_vlm_candidates_exact"] is True
+    assert result["raw_vlm_count_source"] == "same_vlm_run_responses_jsonl_candidate_counts"
+    assert result["raw_vlm_count_provenance"]["events"]["run_id"] == "run-a"
+    provenance = json.loads((case["output"] / "provenance.json").read_text(encoding="utf-8"))
+    responses_inputs = [item for item in provenance["inputs"] if item["role"] == "vlm_run_responses"]
+    assert len(responses_inputs) == 1
+    assert responses_inputs[0]["path"] == str((case["root"] / "responses.jsonl").resolve())
+
+    applied = case["root"] / "applied"
+    applied_result = apply_review(case["output"], applied)
+    assert applied_result["raw_vlm_candidates"] == 4
+    assert applied_result["structurally_valid_candidates"] == 2
+    assert applied_result["structurally_rejected_candidates"] == 2
+    assert applied_result["raw_vlm_candidates_exact"] is True
+    assert applied_result["raw_vlm_none_candidates_exact"] is True
+    applied_provenance = json.loads((applied / "provenance.json").read_text(encoding="utf-8"))
+    assert "vlm_run_responses" in {item["role"] for item in applied_provenance["inputs"]}
+    assert applied_provenance["raw_vlm_count_provenance"]["events"]["count"] == 4
+
+
+def test_cli_main_builds_prepare_and_apply_parsers():
+    from src.annotation import egodemo_events
+
+    with pytest.raises(SystemExit) as excinfo:
+        egodemo_events.main(["--help"])
+    assert excinfo.value.code == 0
+    parser = egodemo_events.argparse.ArgumentParser()
+    subparsers = parser.add_subparsers(dest="command", required=True)
+    egodemo_events._add_prepare_parser(subparsers)
+    egodemo_events._add_apply_parser(subparsers)
+    prepare = parser.parse_args([
+        "prepare", "--sequence-dir", "s", "--vlm-events", "v", "--output-dir", "o",
+        "--render-format", "continuous", "--vlm-responses", "r.jsonl",
+    ])
+    assert prepare.render_format == "continuous"
+    assert str(prepare.vlm_responses) == "r.jsonl"
+    applied = parser.parse_args([
+        "apply", "--annotation-dir", "a", "--output-dir", "o",
+        "--render-format", "continuous",
+    ])
+    assert applied.render_format == "continuous"
+
+
+def test_missing_responses_fall_back_to_non_exact_counts(case):
+    result = _prepare(case)
+    assert result["raw_vlm_candidates"] == 2
+    assert result["raw_vlm_candidates_exact"] is False
+    assert result["structurally_rejected_candidates"] is None
+    assert result["structurally_rejected_none_candidates"] is None
+    assert result["raw_vlm_count_source"] == "responses_unavailable_structurally_valid_input_fallback"
+    provenance = json.loads((case["output"] / "provenance.json").read_text(encoding="utf-8"))
+    assert "vlm_run_responses" not in {item["role"] for item in provenance["inputs"]}
+
+    applied = case["root"] / "applied-fallback"
+    applied_result = apply_review(case["output"], applied)
+    assert applied_result["raw_vlm_candidates"] == 2
+    assert applied_result["raw_vlm_candidates_exact"] is False
+    assert applied_result["structurally_rejected_candidates"] is None
+
+
+def test_explicit_missing_responses_path_fails(case):
+    with pytest.raises(AnnotationError, match="Missing VLM responses input"):
+        _prepare(case, vlm_responses=case["root"] / "missing-responses.jsonl")
+
+
+@pytest.mark.parametrize("overrides,match", [
+    ({"sequence_id": "other-sequence"}, "sequence_id"),
+    ({"response_id": "run-b:response:0000"}, "do not match"),
+    ({"event_ids": ["phase-grasp"]}, "dangling, incomplete"),
+    ({"event_ids": ["phase-grasp", "phase-hold", "ghost-event"]}, "dangling, incomplete"),
+    ({"event_ids": ["phase-grasp", "phase-grasp"]}, "unique nonempty"),
+    ({"parsed_json": {"events": [{}], "none_intervals": []}}, "parsed_json.events length"),
+    ({"rejected_candidate_count": 5}, "rejected_candidate_count disagrees"),
+    ({"candidate_counts": {"events": 1, "none_intervals": 0},
+      "parsed_json": {"events": [{}], "none_intervals": []}}, "exceeds the raw candidate count"),
+])
+def test_mismatched_responses_are_rejected(case, overrides, match):
+    _write_responses(case, **overrides)
+    with pytest.raises(AnnotationError, match=match):
+        _prepare(case)
+
+
+def _write_fixture_video(case, cv2, name="annotated.mp4", frames=6, fps=2.0):
+    video = case["root"] / name
+    writer = cv2.VideoWriter(str(video), cv2.VideoWriter_fourcc(*"mp4v"), fps, (100, 80))
+    if not writer.isOpened():
+        pytest.skip("OpenCV mp4 writer is unavailable")
+    for frame in range(frames):
+        writer.write(np.full((80, 100, 3), frame * 30, dtype=np.uint8))
+    writer.release()
+    return video
+
+
+def test_continuous_render_verifies_input_and_output_pts(case):
+    cv2 = pytest.importorskip("cv2")
+    if shutil.which("ffprobe") is None:
+        pytest.skip("ffprobe is required for continuous review rendering")
+    from src.annotation.render_review import render_continuous_review
+
+    _prepare(case)
+    video = _write_fixture_video(case, cv2)
+    output = case["root"] / "continuous.mp4"
+    result = render_continuous_review(
+        case["output"], video, output, fps=2.0,
+        pts_tolerance_seconds=0.01, output_pts_tolerance_seconds=0.01,
+    )
+    assert result["decoded_annotated_frames"] == 6
+    assert result["displayed_frame_count"] == 6
+    assert result["output_decoded_frames"] == 6
+    assert result["panel_count"] == 0
+    assert result["human_reviewed_frames"] == 0
+    assert result["human_reviewed_candidates"] == 0
+    assert result["human_review_complete"] is False
+    assert result["input_pts"]["status"] == "verified"
+    assert result["input_pts"]["frame_count"] == 6
+    assert result["output_pts"]["status"] == "verified"
+    assert result["output_pts"]["frame_count"] == 6
+    assert result["output_timebase"]["mode"] == "constant_frame_rate_playback"
+    with pytest.raises(FileExistsError):
+        render_continuous_review(case["output"], video, output, fps=2.0)
+
+
+def test_prepare_continuous_format_writes_static_and_continuous(case):
+    cv2 = pytest.importorskip("cv2")
+    if shutil.which("ffprobe") is None:
+        pytest.skip("ffprobe is required for continuous review rendering")
+
+    video = _write_fixture_video(case, cv2)
+    rendered_dir = case["root"] / "prepared-continuous"
+    prepare_annotations(
+        case["sequence"], case["vlm"], rendered_dir,
+        hand_pose=case["hand"], pose6d=case["pose"], video=video,
+        render_format="continuous",
+    )
+    assert (rendered_dir / "review.mp4").is_file()
+    assert (rendered_dir / "review_continuous.mp4").is_file()
+    summary = json.loads((rendered_dir / "summary.json").read_text(encoding="utf-8"))
+    render = summary["render"]
+    assert render["format"] == "continuous"
+    assert render["path"] == str(rendered_dir / "review_continuous.mp4")
+    assert render["decoded_annotated_frames"] == 6
+    assert render["output_decoded_frames"] == 6
+    assert render["input_pts"]["status"] == "verified"
+    assert render["output_pts"]["status"] == "verified"
+    assert render["static_review"]["format"] == "mp4"
+    assert render["static_review"]["panel_count"] == 4
+    assert render["static_review"]["output_verified"] is True
+
+
+def test_continuous_render_rejects_shifted_native_timeline(case):
+    cv2 = pytest.importorskip("cv2")
+    if shutil.which("ffprobe") is None:
+        pytest.skip("ffprobe is required for continuous review rendering")
+    from src.annotation.render_review import RenderError, render_continuous_review
+
+    _prepare(case)
+    video = _write_fixture_video(case, cv2)
+    timeline_path = case["output"] / "timeline.json"
+    timeline = json.loads(timeline_path.read_text(encoding="utf-8"))
+    timeline["timestamps"] = [value + 0.1 for value in timeline["timestamps"]]
+    timeline_path.write_text(json.dumps(timeline), encoding="utf-8")
+    with pytest.raises(RenderError, match="does not match the native timeline"):
+        render_continuous_review(case["output"], video, case["root"] / "shifted.mp4", fps=2.0)
+
+
+def test_continuous_render_requires_ffprobe(case, monkeypatch):
+    pytest.importorskip("cv2")
+    import src.annotation.render_review as render_review_module
+
+    _prepare(case)
+    monkeypatch.setattr(
+        render_review_module.shutil, "which", lambda *args, **kwargs: None,
+    )
+    with pytest.raises(render_review_module.RenderError, match="ffprobe is required"):
+        render_review_module.render_continuous_review(
+            case["output"], case["root"] / "annotated.mp4", case["root"] / "continuous.mp4",
+        )

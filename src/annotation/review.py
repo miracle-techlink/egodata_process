@@ -16,9 +16,12 @@ import numpy as np
 from src.annotation.egodemo_events import (
     AnnotationError,
     _check_output,
+    _fallback_raw_vlm_counts,
     _input_record,
+    _nonnegative_integer,
     _provenance,
     _read_json,
+    _render_review_outputs,
     _sha256,
     _write_json,
     build_summary,
@@ -418,6 +421,60 @@ def _apply_none(record, row, native, is_new):
     return updated
 
 
+def _raw_count_state_from_prior_summary(prior_summary, valid_event_count, valid_none_count):
+    """Carry raw VLM counts across apply without inventing or re-deriving them."""
+    if not prior_summary:
+        return _fallback_raw_vlm_counts(
+            valid_event_count, valid_none_count,
+            "responses_unavailable_structurally_valid_input_fallback",
+        )
+    provenance = prior_summary.get("raw_vlm_count_provenance")
+    raw = {
+        "events": prior_summary.get("raw_vlm_candidates"),
+        "none_intervals": prior_summary.get("raw_vlm_none_candidates"),
+    }
+    valid = {
+        "events": _nonnegative_integer(
+            prior_summary.get("structurally_valid_candidates", valid_event_count),
+            "prior structurally_valid_candidates",
+        ),
+        "none_intervals": _nonnegative_integer(
+            prior_summary.get("structurally_valid_none_candidates", valid_none_count),
+            "prior structurally_valid_none_candidates",
+        ),
+    }
+    if provenance is not None:
+        if not isinstance(provenance, dict):
+            raise AnnotationError("parent summary raw_vlm_count_provenance must be an object")
+        result = copy.deepcopy(provenance)
+        for kind, raw_field in (("events", "raw_vlm_candidates"), ("none_intervals", "raw_vlm_none_candidates")):
+            info = result.get(kind)
+            if not isinstance(info, dict):
+                raise AnnotationError(f"parent summary raw_vlm_count_provenance lacks {kind}")
+            count = _nonnegative_integer(info.get("count"), f"parent {kind} raw count")
+            if raw[kind] is None or count != _nonnegative_integer(raw[kind], raw_field):
+                raise AnnotationError(f"parent summary raw count and provenance disagree for {kind}")
+            info["structurally_valid_input_count"] = _nonnegative_integer(
+                info.get("structurally_valid_input_count"), f"parent {kind} structurally valid count"
+            )
+            if not isinstance(info.get("exact"), bool) or not isinstance(info.get("source"), str):
+                raise AnnotationError(f"parent {kind} raw count provenance needs boolean exact and source")
+        return result
+    if raw["events"] is None and raw["none_intervals"] is None:
+        return _fallback_raw_vlm_counts(
+            valid_event_count, valid_none_count,
+            "responses_unavailable_structurally_valid_input_fallback",
+        )
+    result = _fallback_raw_vlm_counts(
+        _nonnegative_integer(raw["events"], "raw_vlm_candidates"),
+        _nonnegative_integer(raw["none_intervals"], "raw_vlm_none_candidates"),
+        "prior_summary_without_responses_unverified",
+    )
+    for kind in ("events", "none_intervals"):
+        result[kind]["structurally_valid_input_count"] = valid[kind]
+    return result
+
+
 def apply_review(
     annotation_dir, output_dir, *, review_csv=None, hand_pose=None, pose6d=None,
     image_width=None, image_height=None, video=None, render_format="mp4", expand_ratio=0.25,
@@ -481,8 +538,11 @@ def apply_review(
         validate_none_interval(interval, native["frame_count"])
     prior_summary_path = annotation_dir / "summary.json"
     prior_summary = _read_json(prior_summary_path) if prior_summary_path.is_file() else {}
-    raw_vlm_count = prior_summary.get("raw_vlm_candidates", len(events))
-    raw_vlm_none_count = prior_summary.get("raw_vlm_none_candidates", len(none_intervals))
+    raw_count_provenance = _raw_count_state_from_prior_summary(
+        prior_summary, len(events), len(none_intervals)
+    )
+    raw_vlm_count = raw_count_provenance["events"]["count"]
+    raw_vlm_none_count = raw_count_provenance["none_intervals"]["count"]
     inputs = []
     for name, role in (
         ("events.jsonl", "candidate_events"), ("none_intervals.jsonl", "candidate_none_intervals"),
@@ -492,6 +552,11 @@ def apply_review(
         path = annotation_dir / name
         if path.is_file():
             inputs.append(_input_record(path, role))
+    responses_path = raw_count_provenance["events"].get("path")
+    if raw_count_provenance["events"]["exact"] and responses_path:
+        candidate = Path(responses_path)
+        if candidate.is_file():
+            inputs.append(_input_record(candidate, "vlm_run_responses"))
     inputs.append(_input_record(review_path, "applied_review_csv"))
     for path, role in ((hand_pose, "hand_pose_npz"), (pose6d, "pose6d_npz"), (video, "annotated_video")):
         if path is not None:
@@ -514,22 +579,21 @@ def apply_review(
         write_review_csv(stage / "review.csv", reviewed_events, reviewed_none)
         render_info = {"status": "not_requested", "reason": "provide --video to render reviewed evidence"}
         if video is not None:
-            from src.annotation.render_review import render_review
-            render_path = stage / ("review.mp4" if render_format == "mp4" else "contact_sheet.jpg")
-            render_info = render_review(stage, video, render_path, output_format=render_format)
-            render_info["path"] = str(output / render_path.name)
+            render_info = _render_review_outputs(stage, video, output, render_format)
         object_ids = tracks["object_ids"] if tracks else sorted({
             event["object_id"] for event in reviewed_events if event.get("object_id")
         })
         summary = build_summary(
             native, reviewed_events, reviewed_none, raw_vlm_count=raw_vlm_count,
             object_ids=object_ids, render=render_info, raw_vlm_none_count=raw_vlm_none_count,
+            raw_count_provenance=raw_count_provenance,
         )
         _write_json(stage / "summary.json", summary)
         _provenance(stage, native, inputs, {
             "operation": "apply",
             "parent_annotation_dir": str(annotation_dir),
             "review_implementation_sha256": _sha256(Path(__file__).resolve()),
+            "raw_vlm_count_provenance": raw_count_provenance,
             "render": render_info,
         })
         stage.rename(output)

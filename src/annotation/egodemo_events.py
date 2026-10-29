@@ -74,6 +74,12 @@ def _positive_integer(value, name):
     return int(value)
 
 
+def _nonnegative_integer(value, name):
+    if isinstance(value, bool) or not isinstance(value, (int, np.integer)) or int(value) < 0:
+        raise AnnotationError(f"{name} must be a nonnegative integer")
+    return int(value)
+
+
 def _native_domain_end(timestamps, fps, meta):
     if len(timestamps) > 1:
         interval = float(np.median(np.diff(timestamps)))
@@ -251,6 +257,189 @@ def load_vlm_events(path):
 
 def load_vlm_none_intervals(path):
     return _load_vlm_records(path, ("none_intervals",))
+
+
+def _fallback_raw_vlm_counts(event_count, none_count, source):
+    warning = "raw model count is unknown; the value is only a structurally valid input count fallback"
+    return {
+        "events": {
+            "count": int(event_count), "structurally_valid_input_count": int(event_count),
+            "exact": False, "source": source, "path": None, "sha256": None, "warning": warning,
+        },
+        "none_intervals": {
+            "count": int(none_count), "structurally_valid_input_count": int(none_count),
+            "exact": False, "source": source, "path": None, "sha256": None, "warning": warning,
+        },
+    }
+
+
+def _response_run_id(response, location):
+    response_id = response.get("response_id")
+    if not isinstance(response_id, str) or not response_id.strip():
+        raise AnnotationError(f"{location}: response_id must be a nonempty string")
+    declared = response.get("run_id")
+    if declared is not None and (not isinstance(declared, str) or not declared.strip()):
+        raise AnnotationError(f"{location}: run_id must be a nonempty string")
+    derived = response_id.split(":response:", 1)[0] if ":response:" in response_id else None
+    if derived == "":
+        raise AnnotationError(f"{location}: response_id has an empty run context")
+    if declared is not None and derived is not None and declared != derived:
+        raise AnnotationError(f"{location}: run_id and response_id run contexts disagree")
+    run_id = declared or derived
+    if run_id is None:
+        raise AnnotationError(f"{location}: cannot establish the VLM run from run_id/response_id")
+    return run_id
+
+
+def _input_run_ids(contexts, records, marker):
+    run_ids = set()
+    for context in contexts:
+        run_id = context.get("run_id")
+        if run_id is not None:
+            if not isinstance(run_id, str) or not run_id.strip():
+                raise AnnotationError("VLM input run_id must be a nonempty string")
+            run_ids.add(run_id)
+    for record in records:
+        identifier = record.get("event_id", record.get("interval_id"))
+        if marker in identifier:
+            run_id = identifier.split(marker, 1)[0]
+            if not run_id:
+                raise AnnotationError(f"VLM identifier {identifier!r} has an empty run context")
+            run_ids.add(run_id)
+    return run_ids
+
+
+def _read_response_count_contexts(path):
+    responses = []
+    with Path(path).open(encoding="utf-8") as stream:
+        for line_number, line in enumerate(stream, 1):
+            if not line.strip():
+                continue
+            location = f"{Path(path).name}:{line_number}"
+            try:
+                response = json.loads(line)
+            except json.JSONDecodeError as error:
+                raise AnnotationError(f"Invalid VLM responses JSON at {location}: {error}") from error
+            if not isinstance(response, dict):
+                raise AnnotationError(f"{location}: each VLM response must be an object")
+            counts = response.get("candidate_counts")
+            if not isinstance(counts, dict):
+                raise AnnotationError(f"{location}: candidate_counts must be an object")
+            parsed = response.get("parsed_json")
+            if parsed is not None and not isinstance(parsed, dict):
+                raise AnnotationError(f"{location}: parsed_json must be an object or null")
+            normalized = {
+                "response_id": response.get("response_id"),
+                "sequence_id": response.get("sequence_id"),
+                "run_id": _response_run_id(response, location),
+                "counts": {}, "ids": {},
+                "rejected_candidate_count": response.get("rejected_candidate_count"),
+            }
+            for kind in ("events", "none_intervals"):
+                count = _nonnegative_integer(counts.get(kind), f"{location}: candidate_counts.{kind}")
+                normalized["counts"][kind] = count
+                if parsed is not None and kind in parsed:
+                    if not isinstance(parsed[kind], list) or len(parsed[kind]) != count:
+                        raise AnnotationError(
+                            f"{location}: parsed_json.{kind} length disagrees with candidate_counts"
+                        )
+                id_key = "event_ids" if kind == "events" else "none_interval_ids"
+                if id_key in response:
+                    identifiers = response[id_key]
+                    if (not isinstance(identifiers, list)
+                            or any(not isinstance(value, str) or not value for value in identifiers)
+                            or len(set(identifiers)) != len(identifiers)):
+                        raise AnnotationError(f"{location}: {id_key} must contain unique nonempty strings")
+                    if len(identifiers) > count:
+                        raise AnnotationError(f"{location}: {id_key} exceeds the raw candidate count")
+                    normalized["ids"][kind] = identifiers
+            if normalized["rejected_candidate_count"] is not None:
+                normalized["rejected_candidate_count"] = _nonnegative_integer(
+                    normalized["rejected_candidate_count"], f"{location}: rejected_candidate_count"
+                )
+            responses.append(normalized)
+    if not responses:
+        raise AnnotationError(f"VLM responses file is empty: {path}")
+    return responses
+
+
+def load_raw_vlm_candidate_counts(
+    native, events, none_intervals, run_contexts, none_run_contexts,
+    vlm_events_path, vlm_none_path=None, responses_path=None,
+):
+    """Read exact raw counts only from a matching VLM run's responses.jsonl."""
+    automatic = responses_path is None
+    path = (
+        Path(vlm_events_path).expanduser().resolve().parent / "responses.jsonl"
+        if automatic else Path(responses_path).expanduser().resolve()
+    )
+    if not path.is_file():
+        if not automatic:
+            raise AnnotationError(f"Missing VLM responses input: {path}")
+        return _fallback_raw_vlm_counts(
+            len(events), len(none_intervals), "responses_unavailable_structurally_valid_input_fallback"
+        )
+    responses = _read_response_count_contexts(path)
+    for index, response in enumerate(responses, 1):
+        if response["sequence_id"] != native["sequence_id"]:
+            raise AnnotationError(
+                f"responses.jsonl entry {index}: sequence_id {response['sequence_id']!r} "
+                f"does not match {native['sequence_id']!r}"
+            )
+    response_runs = {response["run_id"] for response in responses}
+    if len(response_runs) != 1:
+        raise AnnotationError(f"responses.jsonl must contain exactly one VLM run: {sorted(response_runs)}")
+    run_id = next(iter(response_runs))
+    event_runs = _input_run_ids(run_contexts, events, ":event:")
+    none_runs = _input_run_ids(none_run_contexts, none_intervals, ":none:")
+    for kind, run_ids in (("event", event_runs), ("none", none_runs)):
+        if not run_ids <= {run_id}:
+            raise AnnotationError(f"VLM {kind} input run contexts {sorted(run_ids)} do not match {run_id!r}")
+    raw_counts = {kind: sum(response["counts"][kind] for response in responses)
+                  for kind in ("events", "none_intervals")}
+    input_records = {"events": events, "none_intervals": none_intervals}
+    input_runs = {"events": event_runs, "none_intervals": none_runs}
+    for kind, id_key in (("events", "event_ids"), ("none_intervals", "none_interval_ids")):
+        records = input_records[kind]
+        with_ids = [response for response in responses if kind in response["ids"]]
+        if with_ids and len(with_ids) != len(responses):
+            raise AnnotationError(f"responses.jsonl has incomplete {id_key} run provenance")
+        if with_ids:
+            identifiers = [value for response in responses for value in response["ids"][kind]]
+            if len(set(identifiers)) != len(identifiers):
+                raise AnnotationError(f"responses.jsonl has duplicate {id_key} across responses")
+            input_ids = [record["event_id" if kind == "events" else "interval_id"] for record in records]
+            if set(identifiers) != set(input_ids) or len(identifiers) != len(input_ids):
+                raise AnnotationError(
+                    f"VLM {kind} input IDs are dangling, incomplete, or from a different responses.jsonl run"
+                )
+        elif records and not input_runs[kind]:
+            raise AnnotationError(f"Cannot match VLM {kind} input to responses.jsonl without run/ID provenance")
+        if raw_counts[kind] < len(records):
+            raise AnnotationError(f"responses.jsonl raw {kind} count is below the structurally valid input count")
+    if vlm_none_path is None and raw_counts["none_intervals"] and not any(
+        "none_intervals" in response["ids"] for response in responses
+    ):
+        raise AnnotationError("responses.jsonl proposes none intervals but no none input/ID provenance was supplied")
+    rejected = [response["rejected_candidate_count"] for response in responses]
+    if any(value is not None for value in rejected):
+        if any(value is None for value in rejected):
+            raise AnnotationError("responses.jsonl has incomplete rejected_candidate_count provenance")
+        derived_rejected = raw_counts["events"] + raw_counts["none_intervals"] - len(events) - len(none_intervals)
+        if sum(rejected) != derived_rejected:
+            raise AnnotationError("responses.jsonl rejected_candidate_count disagrees with raw/valid counts")
+    source = {
+        "path": str(path), "sha256": _sha256(path), "run_id": run_id,
+        "response_ids": [response["response_id"] for response in responses],
+    }
+    return {
+        kind: {
+            **copy.deepcopy(source), "count": raw_counts[kind],
+            "structurally_valid_input_count": len(input_records[kind]),
+            "exact": True, "source": "same_vlm_run_responses_jsonl_candidate_counts",
+        }
+        for kind in ("events", "none_intervals")
+    }
 
 
 def _event_seconds(record, names):
@@ -747,7 +936,7 @@ def _counts(records, key, values):
 
 def build_summary(
     native, events, none_intervals, raw_vlm_count=None, object_ids=None, render=None,
-    raw_vlm_none_count=None,
+    raw_vlm_none_count=None, raw_count_provenance=None,
 ):
     frame_count = native["frame_count"]
     source_coverage = np.zeros(frame_count, dtype=np.int64)
@@ -767,6 +956,45 @@ def build_summary(
         label = project_frame_label(events, none_intervals, frame, object_ids)
         valid_frames += int(label["valid"])
         reasons[label["reason"]] = reasons.get(label["reason"], 0) + 1
+    raw_values = {
+        "events": _nonnegative_integer(
+            len(events) if raw_vlm_count is None else raw_vlm_count, "raw_vlm_candidates"
+        ),
+        "none_intervals": _nonnegative_integer(
+            len(none_intervals) if raw_vlm_none_count is None else raw_vlm_none_count,
+            "raw_vlm_none_candidates",
+        ),
+    }
+    if raw_count_provenance is None:
+        raw_count_provenance = _fallback_raw_vlm_counts(
+            raw_values["events"], raw_values["none_intervals"],
+            "summary_without_responses_unverified_fallback",
+        )
+        raw_count_provenance["events"]["structurally_valid_input_count"] = len(events)
+        raw_count_provenance["none_intervals"]["structurally_valid_input_count"] = len(none_intervals)
+    else:
+        raw_count_provenance = copy.deepcopy(raw_count_provenance)
+    rejected_counts = {}
+    for kind in ("events", "none_intervals"):
+        info = raw_count_provenance.get(kind)
+        if not isinstance(info, dict) or not isinstance(info.get("exact"), bool):
+            raise AnnotationError(f"raw count provenance for {kind} must include a boolean exact flag")
+        if not isinstance(info.get("source"), str) or not info["source"]:
+            raise AnnotationError(f"raw count provenance for {kind} requires a source")
+        if info["count"] != raw_values[kind]:
+            raise AnnotationError(f"raw count and provenance disagree for {kind}")
+        valid_at_source = _nonnegative_integer(
+            info.get("structurally_valid_input_count"), f"{kind} structurally valid source count"
+        )
+        if info["exact"]:
+            if not info.get("path") or not info.get("sha256"):
+                raise AnnotationError(f"exact raw count provenance for {kind} requires responses path and SHA")
+            if valid_at_source > info["count"]:
+                raise AnnotationError(f"raw count is below the source-valid count for {kind}")
+            rejected_counts[kind] = info["count"] - valid_at_source
+        else:
+            rejected_counts[kind] = None
+    count_sources = {raw_count_provenance[kind]["source"] for kind in raw_values}
     return {
         "schema_version": "hoi_annotation_v1",
         "sequence_id": native["sequence_id"],
@@ -776,12 +1004,16 @@ def build_summary(
         "training_ready": False,
         "semantic_projection_only": True,
         "3d_geometry_verified": False,
-        "raw_vlm_candidates": len(events) if raw_vlm_count is None else raw_vlm_count,
-        "raw_vlm_none_candidates": (
-            len(none_intervals) if raw_vlm_none_count is None else raw_vlm_none_count
-        ),
+        "raw_vlm_candidates": raw_values["events"],
+        "raw_vlm_none_candidates": raw_values["none_intervals"],
+        "raw_vlm_candidates_exact": raw_count_provenance["events"]["exact"],
+        "raw_vlm_none_candidates_exact": raw_count_provenance["none_intervals"]["exact"],
+        "raw_vlm_count_source": count_sources.pop() if len(count_sources) == 1 else "mixed",
+        "raw_vlm_count_provenance": raw_count_provenance,
         "structurally_valid_candidates": len(events),
         "structurally_valid_none_candidates": len(none_intervals),
+        "structurally_rejected_candidates": rejected_counts["events"],
+        "structurally_rejected_none_candidates": rejected_counts["none_intervals"],
         "track_linked_candidates": sum(event.get("track_link_status") == "linked" for event in events),
         "review_status_counts": _counts(
             events + none_intervals, "review_status", ["pending", "accepted", "rejected", "needs_revision"]
@@ -872,10 +1104,29 @@ def _provenance(stage, native, inputs, extra=None):
     _write_json(stage / "provenance.json", value)
 
 
+def _render_review_outputs(stage, video, output, render_format):
+    if render_format not in {"mp4", "contact-sheet", "continuous"}:
+        raise AnnotationError(f"Unsupported review render format: {render_format}")
+    from src.annotation.render_review import render_continuous_review, render_review
+    if render_format == "continuous":
+        static_path = stage / "review.mp4"
+        static_info = render_review(stage, video, static_path, output_format="mp4")
+        static_info["path"] = str(output / static_path.name)
+        continuous_path = stage / "review_continuous.mp4"
+        render_info = render_continuous_review(stage, video, continuous_path)
+        render_info["path"] = str(output / continuous_path.name)
+        render_info["static_review"] = static_info
+        return render_info
+    render_path = stage / ("review.mp4" if render_format == "mp4" else "contact_sheet.jpg")
+    render_info = render_review(stage, video, render_path, output_format=render_format)
+    render_info["path"] = str(output / render_path.name)
+    return render_info
+
+
 def prepare_annotations(
     sequence_dir, vlm_events, output_dir, *, vlm_none_intervals=None, source_review=None,
     hand_pose=None, pose6d=None, image_width=None, image_height=None, sequence_id=None,
-    fps=None, video=None, render_format="mp4", expand_ratio=0.25,
+    fps=None, video=None, render_format="mp4", expand_ratio=0.25, vlm_responses=None,
 ):
     """Create a fresh pending-review directory; never generate none from source gaps."""
     output = _check_output(output_dir)
@@ -892,6 +1143,10 @@ def prepare_annotations(
     )
     if collisions:
         raise AnnotationError(f"VLM event/none identifiers collide across inputs: {collisions}")
+    raw_count_provenance = load_raw_vlm_candidate_counts(
+        native, events, none_intervals, run_contexts, none_run_contexts,
+        vlm_events, vlm_none_path=vlm_none_intervals, responses_path=vlm_responses,
+    )
     tracks = load_track_inputs(
         native, hand_pose_path=hand_pose, pose6d_path=pose6d,
         image_width=image_width, image_height=image_height,
@@ -906,6 +1161,8 @@ def prepare_annotations(
     ]
     if vlm_none_intervals is not None:
         inputs.append(_input_record(vlm_none_intervals, "vlm_none_intervals"))
+    if raw_count_provenance["events"]["exact"]:
+        inputs.append(_input_record(raw_count_provenance["events"]["path"], "vlm_run_responses"))
     if native["meta_path"] is not None:
         inputs.append(_input_record(native["meta_path"], "sequence_meta"))
     for path, role in (
@@ -933,22 +1190,20 @@ def prepare_annotations(
         write_review_csv(stage / "review.csv", events, none_intervals)
         render_info = {"status": "not_requested", "reason": "provide --video to render annotated evidence"}
         if video is not None:
-            from src.annotation.render_review import render_review
-            render_path = stage / ("review.mp4" if render_format == "mp4" else "contact_sheet.jpg")
-            render_info = render_review(
-                stage, video, render_path, output_format=render_format,
-            )
-            render_info["path"] = str(output / render_path.name)
+            render_info = _render_review_outputs(stage, video, output, render_format)
         summary = build_summary(
-            native, events, none_intervals, raw_vlm_count=len(records),
+            native, events, none_intervals,
+            raw_vlm_count=raw_count_provenance["events"]["count"],
             object_ids=tracks["object_ids"] if tracks else [], render=render_info,
-            raw_vlm_none_count=len(none_records),
+            raw_vlm_none_count=raw_count_provenance["none_intervals"]["count"],
+            raw_count_provenance=raw_count_provenance,
         )
         _write_json(stage / "summary.json", summary)
         _provenance(stage, native, inputs, {
             "operation": "prepare",
             "vlm_run_contexts": run_contexts,
             "vlm_none_run_contexts": none_run_contexts,
+            "raw_vlm_count_provenance": raw_count_provenance,
             "source_review": source_review_info,
             "render": render_info,
         })
@@ -973,8 +1228,12 @@ def _add_prepare_parser(subparsers):
     parser.add_argument("--sequence-id")
     parser.add_argument("--fps", type=float, help="required only for a single-frame timeline without meta fps")
     parser.add_argument("--video", type=Path, help="matching annotated video, never a raw video")
-    parser.add_argument("--render-format", choices=("mp4", "contact-sheet"), default="mp4")
+    parser.add_argument("--render-format", choices=("mp4", "contact-sheet", "continuous"), default="mp4")
     parser.add_argument("--expand-ratio", type=float, default=0.25)
+    parser.add_argument(
+        "--vlm-responses", type=Path,
+        help="optional audited VLM responses.jsonl; defaults to the file beside --vlm-events when present",
+    )
     return parser
 
 
@@ -988,7 +1247,7 @@ def _add_apply_parser(subparsers):
     parser.add_argument("--image-width", type=int)
     parser.add_argument("--image-height", type=int)
     parser.add_argument("--video", type=Path, help="matching annotated video, never a raw video")
-    parser.add_argument("--render-format", choices=("mp4", "contact-sheet"), default="mp4")
+    parser.add_argument("--render-format", choices=("mp4", "contact-sheet", "continuous"), default="mp4")
     parser.add_argument("--expand-ratio", type=float, default=0.25)
     return parser
 
@@ -1008,6 +1267,7 @@ def main(argv=None):
                 image_width=args.image_width, image_height=args.image_height,
                 sequence_id=args.sequence_id, fps=args.fps, video=args.video,
                 render_format=args.render_format, expand_ratio=args.expand_ratio,
+                vlm_responses=args.vlm_responses,
             )
         else:
             from src.annotation.review import apply_review
