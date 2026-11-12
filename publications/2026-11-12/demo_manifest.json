@@ -1,0 +1,376 @@
+{
+  "dataset": "HO-Cap",
+  "source": "https://irvlutd.github.io/HOCap/",
+  "license": "CC BY 4.0",
+  "frames": 446,
+  "fps_playback": 30,
+  "source_timestamps_known": false,
+  "feature_timebase": "Assumed 30 Hz for interface demonstration; not measured source time",
+  "model": "lstm_final",
+  "checkpoint_sha256": "c04c6ce22d7860680da81c2bef17beab5076770f61964cd394b8e52047a0d419",
+  "checkpoint_epoch": 43,
+  "model_config": {
+    "backbone": "lstm",
+    "input_dim": 132,
+    "event_type_count": 66,
+    "d_model": 128,
+    "n_layer": 2,
+    "d_state": 16,
+    "d_conv": 4,
+    "expand": 2,
+    "n_heads": 4,
+    "dropout": 0.0
+  },
+  "history_frames": 32,
+  "training_horizon_seconds": 1.0,
+  "demo_horizon_seconds_verified": false,
+  "metric_hand_3d_used": false,
+  "object_pose_frame": "OpenCV camera coordinates; demo adapter only",
+  "bbox_source": "Projected mesh bounds from saved FoundationPose estimates",
+  "rgb_stats_source": "Current RGB crop mean and standard deviation",
+  "prediction_source": "Actual checkpoint inference, no retraining, no GT labels",
+  "event_types": [
+    {
+      "layer": "operation",
+      "code": "align",
+      "name_zh": "对齐/调整"
+    },
+    {
+      "layer": "operation",
+      "code": "arrange",
+      "name_zh": "整理/排列"
+    },
+    {
+      "layer": "operation",
+      "code": "assemble",
+      "name_zh": "组装/安装"
+    },
+    {
+      "layer": "operation",
+      "code": "attach",
+      "name_zh": "贴附/连接"
+    },
+    {
+      "layer": "operation",
+      "code": "cap",
+      "name_zh": "盖帽"
+    },
+    {
+      "layer": "operation",
+      "code": "clamp",
+      "name_zh": "夹固"
+    },
+    {
+      "layer": "operation",
+      "code": "close",
+      "name_zh": "合上"
+    },
+    {
+      "layer": "operation",
+      "code": "collect",
+      "name_zh": "收集/聚拢"
+    },
+    {
+      "layer": "operation",
+      "code": "cut",
+      "name_zh": "剪切"
+    },
+    {
+      "layer": "operation",
+      "code": "disassemble",
+      "name_zh": "拆解"
+    },
+    {
+      "layer": "operation",
+      "code": "discard",
+      "name_zh": "丢弃"
+    },
+    {
+      "layer": "operation",
+      "code": "dispense",
+      "name_zh": "滴取/滴注"
+    },
+    {
+      "layer": "operation",
+      "code": "extract",
+      "name_zh": "取出/拆出"
+    },
+    {
+      "layer": "operation",
+      "code": "fill",
+      "name_zh": "填充/补充"
+    },
+    {
+      "layer": "operation",
+      "code": "flatten",
+      "name_zh": "压平"
+    },
+    {
+      "layer": "operation",
+      "code": "flip",
+      "name_zh": "翻转"
+    },
+    {
+      "layer": "operation",
+      "code": "fold",
+      "name_zh": "折叠"
+    },
+    {
+      "layer": "operation",
+      "code": "grasp",
+      "name_zh": "拿取"
+    },
+    {
+      "layer": "operation",
+      "code": "hang",
+      "name_zh": "挂放"
+    },
+    {
+      "layer": "operation",
+      "code": "hold",
+      "name_zh": "持握/扶稳"
+    },
+    {
+      "layer": "operation",
+      "code": "insert",
+      "name_zh": "插入/装入"
+    },
+    {
+      "layer": "operation",
+      "code": "inspect",
+      "name_zh": "检查"
+    },
+    {
+      "layer": "operation",
+      "code": "lift",
+      "name_zh": "提起"
+    },
+    {
+      "layer": "operation",
+      "code": "loosen",
+      "name_zh": "旋松"
+    },
+    {
+      "layer": "operation",
+      "code": "open",
+      "name_zh": "打开"
+    },
+    {
+      "layer": "operation",
+      "code": "place",
+      "name_zh": "放置"
+    },
+    {
+      "layer": "operation",
+      "code": "plug",
+      "name_zh": "插接"
+    },
+    {
+      "layer": "operation",
+      "code": "portion",
+      "name_zh": "分装"
+    },
+    {
+      "layer": "operation",
+      "code": "pour",
+      "name_zh": "倾倒"
+    },
+    {
+      "layer": "operation",
+      "code": "press",
+      "name_zh": "按压"
+    },
+    {
+      "layer": "operation",
+      "code": "pull",
+      "name_zh": "拉"
+    },
+    {
+      "layer": "operation",
+      "code": "push",
+      "name_zh": "推"
+    },
+    {
+      "layer": "operation",
+      "code": "scan",
+      "name_zh": "扫描"
+    },
+    {
+      "layer": "operation",
+      "code": "scoop",
+      "name_zh": "舀取"
+    },
+    {
+      "layer": "operation",
+      "code": "seal",
+      "name_zh": "封口"
+    },
+    {
+      "layer": "operation",
+      "code": "separate",
+      "name_zh": "分离/分拣"
+    },
+    {
+      "layer": "operation",
+      "code": "shake",
+      "name_zh": "摇动"
+    },
+    {
+      "layer": "operation",
+      "code": "spread",
+      "name_zh": "铺开"
+    },
+    {
+      "layer": "operation",
+      "code": "stack",
+      "name_zh": "堆叠"
+    },
+    {
+      "layer": "operation",
+      "code": "stir",
+      "name_zh": "搅拌/混合"
+    },
+    {
+      "layer": "operation",
+      "code": "tear",
+      "name_zh": "撕开"
+    },
+    {
+      "layer": "operation",
+      "code": "tie",
+      "name_zh": "系紧/打结"
+    },
+    {
+      "layer": "operation",
+      "code": "tighten",
+      "name_zh": "旋紧"
+    },
+    {
+      "layer": "operation",
+      "code": "transfer",
+      "name_zh": "移动/递送"
+    },
+    {
+      "layer": "operation",
+      "code": "unfold",
+      "name_zh": "展开"
+    },
+    {
+      "layer": "operation",
+      "code": "untie",
+      "name_zh": "解开"
+    },
+    {
+      "layer": "operation",
+      "code": "unwind",
+      "name_zh": "解卷/解缠"
+    },
+    {
+      "layer": "operation",
+      "code": "wind",
+      "name_zh": "绕卷/缠绕"
+    },
+    {
+      "layer": "operation",
+      "code": "wipe",
+      "name_zh": "擦拭"
+    },
+    {
+      "layer": "relation",
+      "code": "acts_on",
+      "name_zh": "工具作用于工件"
+    },
+    {
+      "layer": "relation",
+      "code": "co_motion",
+      "name_zh": "共同运动"
+    },
+    {
+      "layer": "relation",
+      "code": "contact",
+      "name_zh": "接触"
+    },
+    {
+      "layer": "relation",
+      "code": "grasp_control",
+      "name_zh": "抓持控制"
+    },
+    {
+      "layer": "relation",
+      "code": "stabilizes",
+      "name_zh": "稳定工件"
+    },
+    {
+      "layer": "relation",
+      "code": "supported_by",
+      "name_zh": "受到支撑"
+    },
+    {
+      "layer": "transition",
+      "code": "contact_onset",
+      "name_zh": "首次接触"
+    },
+    {
+      "layer": "transition",
+      "code": "grasp_onset",
+      "name_zh": "建立抓持"
+    },
+    {
+      "layer": "transition",
+      "code": "operation_onset",
+      "name_zh": "开始操作"
+    },
+    {
+      "layer": "transition",
+      "code": "release",
+      "name_zh": "最终脱离"
+    },
+    {
+      "layer": "transition",
+      "code": "support_gained",
+      "name_zh": "建立支撑"
+    },
+    {
+      "layer": "transition",
+      "code": "support_lost",
+      "name_zh": "失去支撑"
+    },
+    {
+      "layer": "cooperation",
+      "code": "bimanual_joint",
+      "name_zh": "双手共同操作"
+    },
+    {
+      "layer": "cooperation",
+      "code": "complementary",
+      "name_zh": "一手操作、一手稳定"
+    },
+    {
+      "layer": "cooperation",
+      "code": "handover",
+      "name_zh": "手间传递"
+    },
+    {
+      "layer": "cooperation",
+      "code": "single_hand",
+      "name_zh": "单手操作"
+    },
+    {
+      "layer": "cooperation",
+      "code": "tool_mediated",
+      "name_zh": "工具介导"
+    }
+  ],
+  "object_ids": [
+    "G04_1",
+    "G04_2",
+    "G04_3",
+    "G04_4"
+  ],
+  "threshold": 0.5,
+  "accuracy": null,
+  "claimed_test_f1": null,
+  "training_performed": false,
+  "scope": "Cross-dataset pipeline interface demonstration, not the reported 0.93 experiment",
+  "perception_npz_sha256": "a641b76869a0e9dad4720872b0d9d11e3f427e65782d02568d2b7293eafadfed"
+}

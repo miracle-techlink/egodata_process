@@ -1,20 +1,21 @@
 THIRD-PARTY NOTICES — Public Technical Report
 
-This release publishes a research technical report. It does not distribute source datasets, model weights, or record-level EgoDemo material.
+This release publishes a research technical report and demonstration videos. It does not distribute source datasets, model weights, or record-level EgoDemo material.
 
 DexYCB
 Source: https://dex-ycb.github.io/
 License: Creative Commons Attribution-NonCommercial 4.0 International
 https://creativecommons.org/licenses/by-nc/4.0/
 Authors: Yu-Wei Chao, Wei Yang, Yu Xiang, Pavlo Molchanov, Ankur Handa, Jonathan Tremblay, Yashraj S. Narang, Karl Van Wyk, Umar Iqbal, Stan Birchfield, Jan Kautz, Dieter Fox.
-Use: a research screenshot with project-estimated hand skeleton, object box and pose axes. The screenshot is subject to the original noncommercial license. No endorsement is implied.
+Use: research screenshots and a 44-frame video with project-estimated hand skeleton, object box and pose axes. The screenshot is subject to the original noncommercial license. No endorsement is implied.
 
 HO-Cap
 Source: https://irvlutd.github.io/HOCap/
+Download mirror: JWRoboticsVision/HO-Cap-Dataset, revision 2b24836d5e51ad39e56ed4db3fc0c166e755332e.
 License: Creative Commons Attribution 4.0 International
 https://creativecommons.org/licenses/by/4.0/
 Authors: Jikai Wang, Qifan Zhang, Yu-Wei Chao, Bowen Wen, Xiaohu Guo, Yu Xiang.
-Use: selected project inference-rendering frame with four estimated object poses. Original data rights and attribution remain. No MANO base model is distributed. No endorsement is implied.
+Use: 446-frame RGB and four-object inference-rendering video, synchronized pipeline demonstration, and derived screenshots. Modifications: frame selection, overlays of hand landmarks and estimated object poses, layout, transcoding, and new cross-dataset LSTM inference. Original data rights and attribution remain. No MANO base model is distributed. No endorsement is implied.
 
 FoundationPose
 Source: https://github.com/NVlabs/FoundationPose
