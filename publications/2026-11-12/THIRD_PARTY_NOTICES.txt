@@ -25,6 +25,6 @@ Use: a research/evaluation illustration from a public backend example, with proj
 
 EgoDemo / Lightwheel AI
 Official authorized-access entry: https://huggingface.co/datasets/LightwheelAI/EgoDemo
-The public report contains method descriptions and non-record-identifying aggregate statistics. It excludes source frames, videos, record identifiers, per-frame annotations, manifests and source checksums. Hand-coordinate, surface-motion and interaction-interface illustrations are independently authored explanatory diagrams, not reconstructions or experimental predictions.
+The public report contains method descriptions and non-record-identifying aggregate statistics. It excludes source frames, videos, record identifiers, per-frame annotations, manifests and source checksums. Hand-coordinate and surface-motion illustrations are independently authored explanatory diagrams, not reconstructions or experimental predictions. The newly added interaction interface and continuous pipeline video use HO-Cap observations and actual cross-dataset LSTM inference.
 
 Author-created text and diagrams are not a relicensing of any third-party material. Consult the cited sources and original licenses before reusing third-party screenshots.

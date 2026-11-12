@@ -372,5 +372,98 @@
   "claimed_test_f1": null,
   "training_performed": false,
   "scope": "Cross-dataset pipeline interface demonstration, not the reported 0.93 experiment",
-  "perception_npz_sha256": "a641b76869a0e9dad4720872b0d9d11e3f427e65782d02568d2b7293eafadfed"
+  "perception_npz_sha256": "a641b76869a0e9dad4720872b0d9d11e3f427e65782d02568d2b7293eafadfed",
+  "object_display_names": [
+    "红盖圆瓶",
+    "蓝色纸盒",
+    "椭圆罐",
+    "粉色包装盒"
+  ],
+  "object_names_source": "Appearance-based names assigned by visual review; not product recognition predictions",
+  "current_interaction_source": "Coarse visual-review phases for display; uncertain transition ranges explicitly marked; not benchmark labels",
+  "visual_review_phases": [
+    {
+      "start": 0,
+      "end": 44,
+      "phase": "手在红盖圆瓶旁",
+      "relation": "邻近",
+      "uncertain": false,
+      "evidence_frames": [
+        0,
+        20,
+        40
+      ]
+    },
+    {
+      "start": 45,
+      "end": 64,
+      "phase": "接近与抓取过渡",
+      "relation": "抓取过渡",
+      "uncertain": true,
+      "evidence_frames": [
+        40,
+        60,
+        80
+      ]
+    },
+    {
+      "start": 65,
+      "end": 119,
+      "phase": "持握红盖圆瓶",
+      "relation": "持握",
+      "uncertain": false,
+      "evidence_frames": [
+        80,
+        100
+      ]
+    },
+    {
+      "start": 120,
+      "end": 299,
+      "phase": "持握并移动红盖圆瓶",
+      "relation": "持握 / 移动",
+      "uncertain": false,
+      "evidence_frames": [
+        140,
+        180,
+        220,
+        260
+      ]
+    },
+    {
+      "start": 300,
+      "end": 389,
+      "phase": "持握圆瓶并向桌面放回",
+      "relation": "持握 / 放回",
+      "uncertain": false,
+      "evidence_frames": [
+        300,
+        340,
+        380
+      ]
+    },
+    {
+      "start": 390,
+      "end": 424,
+      "phase": "放置与松手过渡",
+      "relation": "松手过渡",
+      "uncertain": true,
+      "evidence_frames": [
+        380,
+        410,
+        430
+      ]
+    },
+    {
+      "start": 425,
+      "end": 445,
+      "phase": "圆瓶已放回，手离开",
+      "relation": "已松手",
+      "uncertain": false,
+      "evidence_frames": [
+        430,
+        445
+      ]
+    }
+  ]
 }
