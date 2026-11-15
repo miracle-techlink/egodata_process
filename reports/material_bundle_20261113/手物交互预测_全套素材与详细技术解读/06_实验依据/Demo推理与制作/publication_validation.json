@@ -1,0 +1,33 @@
+{
+  "pdf_pages": 20,
+  "pdf_sha256": "4eb8e471189907e92553cc38902add8cad831648dca3d134db7d8aebfcac7f87",
+  "site_files": [
+    "egodata-technical-report-zh.pdf",
+    "index.html",
+    "demo_manifest.json",
+    "THIRD_PARTY_NOTICES.txt",
+    "media/hands_and_object_rgbd.jpg",
+    "media/hocap_four_objects.jpg",
+    "media/full-pipeline.mp4",
+    "media/hands_and_object_rgbd.mp4",
+    "media/object-1.jpg",
+    "media/perception_validation.png",
+    "media/pipeline-frame-379.jpg",
+    "media/pipeline-sequence.jpg",
+    "media/rsi_observed_history.png",
+    "media/object-4.jpg",
+    "media/pipeline-frame-223.jpg",
+    "media/pipeline-frame-031.jpg",
+    "media/object-2.jpg",
+    "media/object-3.jpg",
+    "media/pipeline-frame-100.jpg",
+    "media/hocap_four_objects.mp4"
+  ],
+  "restricted_record_identifiers_found": false,
+  "video_validation": "video_validation.json",
+  "browser_validation": "browser_validation.json",
+  "source_verification": "source_verification.json",
+  "semantic_object_names": 4,
+  "visual_review_separated_from_model": true,
+  "revision": 2
+}

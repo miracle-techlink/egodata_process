@@ -1,0 +1,51 @@
+\begin{thebibliography}{6}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Damen et~al.(2022)Damen, Doughty, Farinella, Furnari, Kazakos, Ma,
+  Moltisanti, Munro, Perrett, Price, and Wray]{damen2022rescaling}
+Dima Damen, Hazel Doughty, Giovanni~Maria Farinella, Antonino Furnari,
+  Evangelos Kazakos, Jian Ma, Davide Moltisanti, Jonathan Munro, Toby Perrett,
+  Will Price, and Michael Wray.
+\newblock Rescaling egocentric vision.
+\newblock \emph{International Journal of Computer Vision}, 2022.
+
+\bibitem[Grauman et~al.(2022)Grauman, Westbury, Byrne, Chavis, Furnari,
+  Girdhar, et~al.]{grauman2022ego4d}
+Kristen Grauman, Andrew Westbury, Eugene Byrne, Zachary Chavis, Antonino
+  Furnari, Rohit Girdhar, et~al.
+\newblock Ego4d: Around the world in 3,000 hours of egocentric video.
+\newblock In \emph{Proceedings of the IEEE/CVF Conference on Computer Vision
+  and Pattern Recognition}, 2022.
+
+\bibitem[Gu and Dao(2023)]{gu2023mamba}
+Albert Gu and Tri Dao.
+\newblock Mamba: Linear-time sequence modeling with selective state spaces.
+\newblock \emph{arXiv preprint arXiv:2312.00752}, 2023.
+
+\bibitem[{Lightwheel AI}()]{egodemo}
+{Lightwheel AI}.
+\newblock Egodemo dataset.
+\newblock \url{https://huggingface.co/datasets/LightwheelAI/EgoDemo}.
+\newblock Accessed 2026-11-12; experiments use the frozen local 2026-10-24
+  subset.
+
+\bibitem[Wen et~al.(2024)Wen, Yang, Kautz, and
+  Birchfield]{wen2024foundationpose}
+Bowen Wen, Wei Yang, Jan Kautz, and Stan Birchfield.
+\newblock Foundationpose: Unified 6d pose estimation and tracking of novel
+  objects.
+\newblock In \emph{Proceedings of the IEEE/CVF Conference on Computer Vision
+  and Pattern Recognition}, 2024.
+
+\bibitem[Zhang et~al.(2020)Zhang, Bazarevsky, Vakunov, Tkachenka, Sung, Chang,
+  and Grundmann]{zhang2020mediapipe}
+Fan Zhang, Valentin Bazarevsky, Andrey Vakunov, Andrei Tkachenka, George Sung,
+  Chuo-Ling Chang, and Matthias Grundmann.
+\newblock Mediapipe hands: On-device real-time hand tracking.
+\newblock \emph{arXiv preprint arXiv:2006.10214}, 2020.
+
+\end{thebibliography}

@@ -1,0 +1,47 @@
+\contentsline {section}{\numberline {1}研究目标与系统概览}{2}{section.1}%
+\contentsline {paragraph}{报告范围。}{2}{paragraph*.4}%
+\contentsline {section}{\numberline {2}相关工作}{2}{section.2}%
+\contentsline {section}{\numberline {3}原始视频、时间轴与输入条件}{3}{section.3}%
+\contentsline {section}{\numberline {4}手部姿态估计与坐标对齐}{3}{section.4}%
+\contentsline {subsection}{\numberline {4.1}从图像到双手21点}{3}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}官方三维姿态与RGB-D表面提升}{3}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}真实同帧手物演示}{4}{subsection.4.3}%
+\contentsline {section}{\numberline {5}物体6D位姿与表面运动建模}{5}{section.5}%
+\contentsline {subsection}{\numberline {5.1}六自由度与刚体变换}{5}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}RGB-D、mesh与FoundationPose分支}{5}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}EgoDemo双目重建与无CAD几何分支}{6}{subsection.5.3}%
+\contentsline {section}{\numberline {6}感知模块的指标与验证图}{8}{section.6}%
+\contentsline {subsection}{\numberline {6.1}按指标回答不同问题}{8}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}6D数值验证与逐帧延迟}{8}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}感知性能优化与实际边界}{9}{subsection.6.3}%
+\contentsline {section}{\numberline {7}数据构建与版本演进}{9}{section.7}%
+\contentsline {subsection}{\numberline {7.1}原生时间轴与图监督}{9}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}自动复核与冻结发布}{10}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}几何增强与覆盖解释}{10}{subsection.7.3}%
+\contentsline {section}{\numberline {8}动态交互图预测方法}{11}{section.8}%
+\contentsline {subsection}{\numberline {8.1}统一实体特征}{11}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}帧内关系编码}{11}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}共享时间骨干}{11}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}有向图解码与损失}{12}{subsection.8.4}%
+\contentsline {subsection}{\numberline {8.5}132 维位姿增强与实体关联}{12}{subsection.8.5}%
+\contentsline {section}{\numberline {9}RSI自动迭代优化}{12}{section.9}%
+\contentsline {subsection}{\numberline {9.1}候选生成与训练}{12}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}验证选择、失败处理与晋升}{13}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}服务器账本与实际轮次}{13}{subsection.9.3}%
+\contentsline {section}{\numberline {10}实验结果与版本对应}{14}{section.10}%
+\contentsline {subsection}{\numberline {10.1}已恢复的扩展数据评估}{14}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}最终全量结果与后续132维实验}{15}{subsection.10.2}%
+\contentsline {subsection}{\numberline {10.3}不同版本之间的比较原则}{16}{subsection.10.3}%
+\contentsline {section}{\numberline {11}新增：完整流程连续演示}{16}{section.11}%
+\contentsline {subsection}{\numberline {11.1}同一视频上的真实输出}{16}{subsection.11.1}%
+\contentsline {subsection}{\numberline {11.2}输入、模型与评价边界}{17}{subsection.11.2}%
+\contentsline {subsection}{\numberline {11.3}原始交互演示与补充感知片段}{18}{subsection.11.3}%
+\contentsline {section}{\numberline {12}已完成的Demo与可视化}{19}{section.12}%
+\contentsline {subsection}{\numberline {12.1}实际资产}{19}{subsection.12.1}%
+\contentsline {subsection}{\numberline {12.2}正式展示需要补齐的绑定}{19}{subsection.12.2}%
+\contentsline {section}{\numberline {13}复现与分析要求}{19}{section.13}%
+\contentsline {section}{\numberline {14}结论}{20}{section.14}%
+\contentsline {section}{参考文献}{20}{section*.29}%
+\contentsline {section}{\numberline {A}逐模块证据与复现入口}{21}{appendix.A}%
+\contentsline {section}{\numberline {B}演示文件与指标绑定}{21}{appendix.B}%
+\contentsline {section}{\numberline {C}尚需补充的独立验证}{21}{appendix.C}%

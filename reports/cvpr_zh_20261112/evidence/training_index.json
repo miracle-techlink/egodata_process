@@ -1,0 +1,585 @@
+{
+  "schema_version": "assistant_silver_graph_training_v5",
+  "created_at": "2026-10-24T06:20:24.397273+00:00",
+  "original_acquisition_count": 300,
+  "original_native_frame_count": 868255,
+  "base_root": "/root/gpufree-data/datasets/ego_hoi/egodemo_mamba_v2_300_20261023",
+  "base_dataset_index_sha256": "ae3c08b2590966d949b20ac1224c6b176a63e5b3f91c5355caf8a6477370c981",
+  "split_manifest_sha256": "2aaa03ab8686a7580bb88f34baa25038074119842545e335cb2141fb25072dcc",
+  "vocab_sha256": "ac17f9720a994c1a96cbd8ffeac89463600f6ce02a8a73f9417c2e6f48e9ec29",
+  "event_types": [
+    {
+      "layer": "operation",
+      "code": "align",
+      "name_zh": "对齐/调整"
+    },
+    {
+      "layer": "operation",
+      "code": "arrange",
+      "name_zh": "整理/排列"
+    },
+    {
+      "layer": "operation",
+      "code": "assemble",
+      "name_zh": "组装/安装"
+    },
+    {
+      "layer": "operation",
+      "code": "attach",
+      "name_zh": "贴附/连接"
+    },
+    {
+      "layer": "operation",
+      "code": "cap",
+      "name_zh": "盖帽"
+    },
+    {
+      "layer": "operation",
+      "code": "clamp",
+      "name_zh": "夹固"
+    },
+    {
+      "layer": "operation",
+      "code": "close",
+      "name_zh": "合上"
+    },
+    {
+      "layer": "operation",
+      "code": "collect",
+      "name_zh": "收集/聚拢"
+    },
+    {
+      "layer": "operation",
+      "code": "cut",
+      "name_zh": "剪切"
+    },
+    {
+      "layer": "operation",
+      "code": "disassemble",
+      "name_zh": "拆解"
+    },
+    {
+      "layer": "operation",
+      "code": "discard",
+      "name_zh": "丢弃"
+    },
+    {
+      "layer": "operation",
+      "code": "dispense",
+      "name_zh": "滴取/滴注"
+    },
+    {
+      "layer": "operation",
+      "code": "extract",
+      "name_zh": "取出/拆出"
+    },
+    {
+      "layer": "operation",
+      "code": "fill",
+      "name_zh": "填充/补充"
+    },
+    {
+      "layer": "operation",
+      "code": "flatten",
+      "name_zh": "压平"
+    },
+    {
+      "layer": "operation",
+      "code": "flip",
+      "name_zh": "翻转"
+    },
+    {
+      "layer": "operation",
+      "code": "fold",
+      "name_zh": "折叠"
+    },
+    {
+      "layer": "operation",
+      "code": "grasp",
+      "name_zh": "拿取"
+    },
+    {
+      "layer": "operation",
+      "code": "hang",
+      "name_zh": "挂放"
+    },
+    {
+      "layer": "operation",
+      "code": "hold",
+      "name_zh": "持握/扶稳"
+    },
+    {
+      "layer": "operation",
+      "code": "insert",
+      "name_zh": "插入/装入"
+    },
+    {
+      "layer": "operation",
+      "code": "inspect",
+      "name_zh": "检查"
+    },
+    {
+      "layer": "operation",
+      "code": "lift",
+      "name_zh": "提起"
+    },
+    {
+      "layer": "operation",
+      "code": "loosen",
+      "name_zh": "旋松"
+    },
+    {
+      "layer": "operation",
+      "code": "open",
+      "name_zh": "打开"
+    },
+    {
+      "layer": "operation",
+      "code": "place",
+      "name_zh": "放置"
+    },
+    {
+      "layer": "operation",
+      "code": "plug",
+      "name_zh": "插接"
+    },
+    {
+      "layer": "operation",
+      "code": "portion",
+      "name_zh": "分装"
+    },
+    {
+      "layer": "operation",
+      "code": "pour",
+      "name_zh": "倾倒"
+    },
+    {
+      "layer": "operation",
+      "code": "press",
+      "name_zh": "按压"
+    },
+    {
+      "layer": "operation",
+      "code": "pull",
+      "name_zh": "拉"
+    },
+    {
+      "layer": "operation",
+      "code": "push",
+      "name_zh": "推"
+    },
+    {
+      "layer": "operation",
+      "code": "scan",
+      "name_zh": "扫描"
+    },
+    {
+      "layer": "operation",
+      "code": "scoop",
+      "name_zh": "舀取"
+    },
+    {
+      "layer": "operation",
+      "code": "seal",
+      "name_zh": "封口"
+    },
+    {
+      "layer": "operation",
+      "code": "separate",
+      "name_zh": "分离/分拣"
+    },
+    {
+      "layer": "operation",
+      "code": "shake",
+      "name_zh": "摇动"
+    },
+    {
+      "layer": "operation",
+      "code": "spread",
+      "name_zh": "铺开"
+    },
+    {
+      "layer": "operation",
+      "code": "stack",
+      "name_zh": "堆叠"
+    },
+    {
+      "layer": "operation",
+      "code": "stir",
+      "name_zh": "搅拌/混合"
+    },
+    {
+      "layer": "operation",
+      "code": "tear",
+      "name_zh": "撕开"
+    },
+    {
+      "layer": "operation",
+      "code": "tie",
+      "name_zh": "系紧/打结"
+    },
+    {
+      "layer": "operation",
+      "code": "tighten",
+      "name_zh": "旋紧"
+    },
+    {
+      "layer": "operation",
+      "code": "transfer",
+      "name_zh": "移动/递送"
+    },
+    {
+      "layer": "operation",
+      "code": "unfold",
+      "name_zh": "展开"
+    },
+    {
+      "layer": "operation",
+      "code": "untie",
+      "name_zh": "解开"
+    },
+    {
+      "layer": "operation",
+      "code": "unwind",
+      "name_zh": "解卷/解缠"
+    },
+    {
+      "layer": "operation",
+      "code": "wind",
+      "name_zh": "绕卷/缠绕"
+    },
+    {
+      "layer": "operation",
+      "code": "wipe",
+      "name_zh": "擦拭"
+    },
+    {
+      "layer": "relation",
+      "code": "acts_on",
+      "name_zh": "工具作用于工件"
+    },
+    {
+      "layer": "relation",
+      "code": "co_motion",
+      "name_zh": "共同运动"
+    },
+    {
+      "layer": "relation",
+      "code": "contact",
+      "name_zh": "接触"
+    },
+    {
+      "layer": "relation",
+      "code": "grasp_control",
+      "name_zh": "抓持控制"
+    },
+    {
+      "layer": "relation",
+      "code": "stabilizes",
+      "name_zh": "稳定工件"
+    },
+    {
+      "layer": "relation",
+      "code": "supported_by",
+      "name_zh": "受到支撑"
+    },
+    {
+      "layer": "transition",
+      "code": "contact_onset",
+      "name_zh": "首次接触"
+    },
+    {
+      "layer": "transition",
+      "code": "grasp_onset",
+      "name_zh": "建立抓持"
+    },
+    {
+      "layer": "transition",
+      "code": "operation_onset",
+      "name_zh": "开始操作"
+    },
+    {
+      "layer": "transition",
+      "code": "release",
+      "name_zh": "最终脱离"
+    },
+    {
+      "layer": "transition",
+      "code": "support_gained",
+      "name_zh": "建立支撑"
+    },
+    {
+      "layer": "transition",
+      "code": "support_lost",
+      "name_zh": "失去支撑"
+    },
+    {
+      "layer": "cooperation",
+      "code": "bimanual_joint",
+      "name_zh": "双手共同操作"
+    },
+    {
+      "layer": "cooperation",
+      "code": "complementary",
+      "name_zh": "一手操作、一手稳定"
+    },
+    {
+      "layer": "cooperation",
+      "code": "handover",
+      "name_zh": "手间传递"
+    },
+    {
+      "layer": "cooperation",
+      "code": "single_hand",
+      "name_zh": "单手操作"
+    },
+    {
+      "layer": "cooperation",
+      "code": "tool_mediated",
+      "name_zh": "工具介导"
+    }
+  ],
+  "window_config": {
+    "window_frames": 32,
+    "horizon_seconds": 1.0,
+    "max_objects": 8,
+    "minimum_observations": 8,
+    "feature_dim": 120
+  },
+  "sequences": [
+    {
+      "sequence_id": "2a797a4e-5011-400e-b573-e32d80cc8a54",
+      "split": "train",
+      "frame_count": 2216,
+      "review_path": "dense_reviews/2a797a4e-5011-400e-b573-e32d80cc8a54.json",
+      "review_sha256": "4e6e73285d06b742f51ada5a4ab1566af124f7e5a624745b21d4e8e10e037a82",
+      "observations_path": "visual_observations/2a797a4e-5011-400e-b573-e32d80cc8a54/observations.npz",
+      "observations_sha256": "d62756b5c7310ec8bf0f93d76ee3297e051fc2f00dbab038d4c36b9300155f51",
+      "observation_metadata_path": "visual_observations/2a797a4e-5011-400e-b573-e32d80cc8a54/metadata.json",
+      "observation_metadata_sha256": "db88851348dfd199867e4168bedf224230d0539145226bb3e0746f2b0beed048",
+      "seeds_path": "visual_observations/2a797a4e-5011-400e-b573-e32d80cc8a54/seeds.json",
+      "seeds_sha256": "b78c2ff6d7314aa8a15befb0d02e11dd234bcffb8ada2ded9505343d06d80fb0",
+      "tracking_review_path": "visual_observations/2a797a4e-5011-400e-b573-e32d80cc8a54/tracking_review.json",
+      "tracking_review_sha256": "d94e38b5fc88661433ff20f224d898ecd653fe3a65c3ab202013f89e428b35fa",
+      "sequence_path": "sequences/2a797a4e-5011-400e-b573-e32d80cc8a54/hands.npz",
+      "sequence_sha256": "6b9c8ecdeb4ab173325f1385c129a53ab1f6145bf9d18921f26e2c3b31eb492e",
+      "base_sequence_sha256": "6372b42adb6422af8710cf616e5cc2679c5e34099b12ccbaacf6f54c0c7b61c4",
+      "native_image_size": [
+        1920,
+        1456
+      ],
+      "observed_entity_frame_count": 487,
+      "evidence_root": "/root/gpufree-data/datasets/ego_hoi/egodemo_training_v5_300_20261024",
+      "window_count": 211,
+      "continuously_reviewed_frames": 420
+    },
+    {
+      "sequence_id": "2eb9dcc4-6a9a-4f51-b304-d01e0d9bdd6d",
+      "split": "val",
+      "frame_count": 536,
+      "review_path": "dense_reviews/2eb9dcc4-6a9a-4f51-b304-d01e0d9bdd6d.json",
+      "review_sha256": "2682267bc530126c2e5195a2266f11bf5bfb850e0225584ce3dc68324fceb4e8",
+      "observations_path": "visual_observations/2eb9dcc4-6a9a-4f51-b304-d01e0d9bdd6d/observations.npz",
+      "observations_sha256": "246a30bd7005fcb1868048eb11b96a87482a1e1f89eeb34863dcb46f04465903",
+      "observation_metadata_path": "visual_observations/2eb9dcc4-6a9a-4f51-b304-d01e0d9bdd6d/metadata.json",
+      "observation_metadata_sha256": "4dd2311b619aeccf6528a7991a909211c5910b7aa3c382479f9b79cde3cacffc",
+      "seeds_path": "visual_observations/2eb9dcc4-6a9a-4f51-b304-d01e0d9bdd6d/seeds.json",
+      "seeds_sha256": "14b0e547b0cf527816130cec6db07926837dff019a056432b9e27a82d736aaff",
+      "tracking_review_path": "visual_observations/2eb9dcc4-6a9a-4f51-b304-d01e0d9bdd6d/tracking_review.json",
+      "tracking_review_sha256": "6ab4744e8bda0d2c94873965901e71fee8ceba0dd5b8117aedbd03c2a930909d",
+      "sequence_path": "sequences/2eb9dcc4-6a9a-4f51-b304-d01e0d9bdd6d/hands.npz",
+      "sequence_sha256": "577ef6d9a0a701dfcc339eea20803ba4535173d24bb5413fa54fe06630d73f13",
+      "base_sequence_sha256": "ab5ee185104c99fe592d7888d8a69000a22bf4478855b74415ccc6d845dc75b1",
+      "native_image_size": [
+        1920,
+        1456
+      ],
+      "observed_entity_frame_count": 355,
+      "evidence_root": "/root/gpufree-data/datasets/ego_hoi/egodemo_training_v5_300_20261024",
+      "window_count": 366,
+      "continuously_reviewed_frames": 536
+    },
+    {
+      "sequence_id": "99190763-eb6b-43ef-b0ad-8489a9496cbb",
+      "split": "train",
+      "frame_count": 314,
+      "review_path": "dense_reviews/99190763-eb6b-43ef-b0ad-8489a9496cbb.json",
+      "review_sha256": "fe80cee40ee99b0a655f8b108911f422592492fe3319f69c5b78f89559da5f81",
+      "observations_path": "visual_observations/99190763-eb6b-43ef-b0ad-8489a9496cbb/observations.npz",
+      "observations_sha256": "8f0a30db987e5b4482c1735e2dcc9af099f22101bf82f83d8ced3054c239b098",
+      "observation_metadata_path": "visual_observations/99190763-eb6b-43ef-b0ad-8489a9496cbb/metadata.json",
+      "observation_metadata_sha256": "01e0ba60e16f3b9c70f6bd26d462ae25c58899730a0f7f635f865a2bb3dcaaa4",
+      "seeds_path": "visual_observations/99190763-eb6b-43ef-b0ad-8489a9496cbb/seeds.json",
+      "seeds_sha256": "8ef0d9a5567c92d5aadd74fac4c6c713660bc5e76a7951cd13929f7db77043f7",
+      "tracking_review_path": "visual_observations/99190763-eb6b-43ef-b0ad-8489a9496cbb/tracking_review.json",
+      "tracking_review_sha256": "c530b56dca4cae7c3bfcd9e0b0b18b03cf8e6ae16f0848b53b450be12b3d99b7",
+      "sequence_path": "sequences/99190763-eb6b-43ef-b0ad-8489a9496cbb/hands.npz",
+      "sequence_sha256": "f94279c3cd41ed3d2926714c05fc9b71e325bbf6a1da4feb71430a5ff541827a",
+      "base_sequence_sha256": "9171c8951decbe0fbc8c8788179783c2b9f4c7fb042c497c6927d829eff45804",
+      "native_image_size": [
+        1920,
+        1456
+      ],
+      "observed_entity_frame_count": 421,
+      "evidence_root": "/root/gpufree-data/datasets/ego_hoi/egodemo_training_v5_300_20261024",
+      "window_count": 177,
+      "continuously_reviewed_frames": 314
+    },
+    {
+      "sequence_id": "9be303ef-7491-43be-9915-ddfd51fde7b3",
+      "split": "test",
+      "frame_count": 405,
+      "review_path": "dense_reviews/9be303ef-7491-43be-9915-ddfd51fde7b3.json",
+      "review_sha256": "3562efada126af5ec4213038ec436c88937c491093ee024cbe55ca31c7997c36",
+      "observations_path": "visual_observations/9be303ef-7491-43be-9915-ddfd51fde7b3/observations.npz",
+      "observations_sha256": "9a04d2758c3116867241e8406c460df4a270f210f70fddcfc7f7cfb22a1c2227",
+      "observation_metadata_path": "visual_observations/9be303ef-7491-43be-9915-ddfd51fde7b3/metadata.json",
+      "observation_metadata_sha256": "241b108e2ecd513731cd105c2645d444a54fe5c24edd293de2460e534a517f2b",
+      "seeds_path": "visual_observations/9be303ef-7491-43be-9915-ddfd51fde7b3/seeds.json",
+      "seeds_sha256": "f6bff58830e27d3ed5567e4e22413e8fb1621018504f697029504461100e0c94",
+      "tracking_review_path": "visual_observations/9be303ef-7491-43be-9915-ddfd51fde7b3/tracking_review.json",
+      "tracking_review_sha256": "90e40ca482d2f9428ec2eff73f36feab983f8b50095e4a7845cd911e1e03f547",
+      "sequence_path": "sequences/9be303ef-7491-43be-9915-ddfd51fde7b3/hands.npz",
+      "sequence_sha256": "d5475e0f4e831c8ca05ef0ec62341d111429fe72cd8946d065f7348b39e70267",
+      "base_sequence_sha256": "0056211bdee78d19d6b3d245aa742134826c7b9bf8971944313133641ad2ae99",
+      "native_image_size": [
+        1920,
+        1456
+      ],
+      "observed_entity_frame_count": 522,
+      "evidence_root": "/root/gpufree-data/datasets/ego_hoi/egodemo_training_v5_300_20261024",
+      "window_count": 280,
+      "continuously_reviewed_frames": 405
+    },
+    {
+      "sequence_id": "acc3c38d-9591-4eaa-9e6b-d98e385249c8",
+      "split": "train",
+      "frame_count": 320,
+      "review_path": "dense_reviews/acc3c38d-9591-4eaa-9e6b-d98e385249c8.json",
+      "review_sha256": "cb0ee9d70031234df1604bb42c35105eb4d3648aadccafea55307fd80ba733d8",
+      "observations_path": "visual_observations/acc3c38d-9591-4eaa-9e6b-d98e385249c8/observations.npz",
+      "observations_sha256": "063ca2ddf1706a30eef1e722c038d088bb52c822842f791075bc9cfd6a4148fa",
+      "observation_metadata_path": "visual_observations/acc3c38d-9591-4eaa-9e6b-d98e385249c8/metadata.json",
+      "observation_metadata_sha256": "98038c1c43b692488434eaa52729672716196d78118c178cef60cc18cc197daa",
+      "seeds_path": "visual_observations/acc3c38d-9591-4eaa-9e6b-d98e385249c8/seeds.json",
+      "seeds_sha256": "ce7ad88f15e80324b165ea8c7e90511b1a6be9d888f4ec7bc82777d49574b886",
+      "tracking_review_path": "visual_observations/acc3c38d-9591-4eaa-9e6b-d98e385249c8/tracking_review.json",
+      "tracking_review_sha256": "036d57a7dc231256ef23cf5daa8f9b5e06901c9fbaeae009584ebb1f8b8843cb",
+      "sequence_path": "sequences/acc3c38d-9591-4eaa-9e6b-d98e385249c8/hands.npz",
+      "sequence_sha256": "86e9f0311beb8e6864caa26c130f6f37379c616e6dbad125a2cce03176004ccd",
+      "base_sequence_sha256": "fdc86472d7e353eec02343d1a4b25b3717d4b6b3c411e150c9c8dc48a040783a",
+      "native_image_size": [
+        1920,
+        1456
+      ],
+      "observed_entity_frame_count": 572,
+      "evidence_root": "/root/gpufree-data/datasets/ego_hoi/egodemo_training_v5_300_20261024",
+      "window_count": 204,
+      "continuously_reviewed_frames": 320
+    }
+  ],
+  "splits": {
+    "train": {
+      "path": "graph_windows/train.jsonl",
+      "sha256": "93f3aa1373b379a40d3e55a5ec345c2e823b1ed7be1c2316ef345628be6b2634",
+      "windows": 592,
+      "sequence_count": 3
+    },
+    "val": {
+      "path": "graph_windows/val.jsonl",
+      "sha256": "e9acd8b384aaf5bf6af1442b732251279b6287926cb5b1fda7c2303989062db8",
+      "windows": 366,
+      "sequence_count": 1
+    },
+    "test": {
+      "path": "graph_windows/test.jsonl",
+      "sha256": "5a540456297e08eeb673a303cb601449ee1d28881780d58d07d02f3ae314d0b1",
+      "windows": 280,
+      "sequence_count": 1
+    }
+  },
+  "counts": {
+    "train": {
+      "windows": 592,
+      "known_positive_cells": 1953,
+      "known_negative_cells": 1452,
+      "windows_with_positive": 531,
+      "windows_with_negative": 445
+    },
+    "val": {
+      "windows": 366,
+      "known_positive_cells": 1172,
+      "known_negative_cells": 406,
+      "windows_with_positive": 366,
+      "windows_with_negative": 261
+    },
+    "test": {
+      "windows": 280,
+      "known_positive_cells": 786,
+      "known_negative_cells": 1364,
+      "windows_with_positive": 143,
+      "windows_with_negative": 272
+    }
+  },
+  "known_cells_by_type": {
+    "train": {
+      "relation:contact": 1262,
+      "relation:grasp_control": 1149,
+      "relation:supported_by": 471,
+      "relation:acts_on": 11,
+      "transition:release": 132,
+      "operation:transfer": 83,
+      "relation:co_motion": 137,
+      "transition:contact_onset": 20,
+      "transition:grasp_onset": 8,
+      "cooperation:single_hand": 16,
+      "operation:close": 17,
+      "cooperation:bimanual_joint": 99
+    },
+    "val": {
+      "relation:contact": 826,
+      "relation:grasp_control": 585,
+      "relation:stabilizes": 67,
+      "operation:lift": 8,
+      "cooperation:bimanual_joint": 25,
+      "operation:transfer": 17,
+      "transition:release": 20,
+      "transition:contact_onset": 2,
+      "operation:close": 14,
+      "cooperation:complementary": 14
+    },
+    "test": {
+      "operation:hold": 126,
+      "relation:contact": 970,
+      "relation:grasp_control": 630,
+      "cooperation:complementary": 7,
+      "operation:place": 22,
+      "transition:release": 70,
+      "operation:press": 45,
+      "relation:supported_by": 33,
+      "transition:contact_onset": 39,
+      "transition:grasp_onset": 44,
+      "cooperation:bimanual_joint": 53,
+      "cooperation:handover": 5,
+      "operation:flip": 6,
+      "cooperation:single_hand": 19,
+      "operation:align": 37,
+      "operation:transfer": 19,
+      "relation:stabilizes": 25
+    }
+  },
+  "exclusion_counts": {
+    "insufficient_history_or_horizon": 306,
+    "no_known_graph_labels_on_observed_entities": 390,
+    "unreviewed_history_target_gap": 61
+  },
+  "admission_required": true,
+  "admission_path": "training_release.json",
+  "training_scope": "assistant_silver_interaction_forecasting_with_annotated_2d_observations",
+  "whole_object_6d_certified": false,
+  "full_joint_training_allowed": false,
+  "full_annotation_complete": false,
+  "blind_evaluation": false,
+  "automatic_perception_evaluated": false,
+  "exporter_sha256": "bd89e8db8d75eddacefc3529b561e97d9b94f9843e63a0256d4af0cba3cc8586"
+}

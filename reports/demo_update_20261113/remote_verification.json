@@ -1,0 +1,35 @@
+[
+  {
+    "route": "/",
+    "status": 200,
+    "expected_title_present": true
+  },
+  {
+    "route": "/egodata-technical-report-zh.pdf",
+    "status": 200,
+    "bytes": 3567234,
+    "local_hash_match": true
+  },
+  {
+    "route": "/media/full-pipeline.mp4",
+    "status": 200,
+    "bytes": 1774486,
+    "local_hash_match": true
+  },
+  {
+    "route": "/media/hands_and_object_rgbd.mp4",
+    "status": 200,
+    "bytes": 253149,
+    "local_hash_match": true
+  },
+  {
+    "route": "/media/hocap_four_objects.mp4",
+    "status": 200,
+    "bytes": 2459939,
+    "local_hash_match": true
+  },
+  {
+    "release_pdf_status": 200,
+    "local_hash_match": true
+  }
+]

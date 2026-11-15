@@ -1,0 +1,32 @@
+\documentclass[tikz,border=5pt]{standalone}
+\usepackage[UTF8,fontset=fandol]{ctex}
+\usepackage{amsmath}
+\usetikzlibrary{arrows.meta}
+\definecolor{blue}{HTML}{247DA6}\definecolor{green}{HTML}{27896C}\definecolor{orange}{HTML}{DD8A28}
+\begin{document}
+\begin{tikzpicture}[>=Latex,font=\small]
+\path[use as bounding box] (-.1,-2.4) rectangle (16.2,3.6);
+\foreach \x/\title in {0/整物体刚性,5.5/铰接部件,11/非刚体表面}{
+ \node[anchor=west,font=\bfseries] at (\x,3.3) {\title};
+ \draw[rounded corners,blue!40] (\x,-1.7) rectangle (\x+5,2.9);
+}
+\draw[fill=blue!8,blue,thick] (.5,.6) rectangle (2,1.8);
+\foreach \x/\y in {.8/.9,1.6/.9,.8/1.5,1.6/1.5}{\fill[blue] (\x,\y) circle(2pt);}
+\begin{scope}[shift={(3.4,1.1)},rotate=25]
+\draw[fill=orange!8,orange,thick] (-.75,-.6) rectangle (.75,.6);
+\foreach \x/\y in {-.45/-.3,.35/-.3,-.45/.3,.35/.3}{\fill[orange] (\x,\y) circle(2pt);}
+\end{scope}
+\draw[->,thick] (2.1,1.1)--(2.55,1.1);
+\node[align=center,text width=4.5cm] at (2.5,-.65) {同一刚体内距离保持\\全部内点共享一个 $R,t$};
+\draw[line width=12pt,blue!55] (6.2,.65)--(7.9,.65);
+\draw[line width=12pt,orange!65] (7.9,.65)--(9.3,2.1);
+\draw[dashed,line width=1pt] (7.9,.65)--(9.5,.65);
+\fill[green] (7.9,.65) circle(4pt);
+\draw[->,green,thick] (8.7,.65) arc[start angle=0,end angle=46,radius=.8];
+\node[align=center,text width=4.5cm] at (8,-.65) {部件各有独立位姿\\连接处另保留相对运动};
+\foreach \y in {.6,1,1.4,1.8}{\draw[blue] (11.5,\y) .. controls (12.7,\y+.7) and (14,\y-.6) .. (15.5,\y+.1);}
+\foreach \x in {11.5,12.5,13.5,14.5,15.5}{\draw[blue!55] (\x,.6) .. controls (\x+.2,1) and (\x-.1,1.5) .. (\x,1.9);}
+\node[align=center,text width=4.5cm] at (13.5,-.65) {保留点轨迹与局部表面\\不强制拟合整物体刚体};
+\node[anchor=west,font=\scriptsize] at (0,-2.15) {独立原理示意；颜色表示对应关系，点数与形状不对应任何实验记录。};
+\end{tikzpicture}
+\end{document}

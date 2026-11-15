@@ -1,0 +1,2412 @@
+{
+  "sequences": 300,
+  "statuses": {
+    "consistent_on_sampled_frames": 275,
+    "inconsistent_on_sampled_frames": 11,
+    "needs_review": 14
+  },
+  "records": [
+    {
+      "sequence_id": "0458190e-9534-418e-924f-17fac8cf2620",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "5da934e19de5accddfeaa2277f56eea953677e09c62dd2db7ce62a025979a952",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "06402139-b7b1-4aa5-9902-04035f173e06",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "2621068b466ec15403b42fb12bd414ff82d8466822681f27e5dd104e4ddcd487",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "0686c012-c5e6-403a-ae6b-b3e0863fcc13",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "d5eaa782e60ea8a10f8526a11dbe22791d226e03485658c197dc7ad7a0f5aa8d",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "07ef32ed-df16-40bc-a045-3397bd53f265",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "867698fdf743b008050535a58eec4fe92e16cb520b5e9aaa927a31f4c237c872",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "10f22535-17cf-4f57-b88b-411a12a328dc",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "bfbea2792f0e11a00d76cf8bcb2b7d2122ef027f1ca180a74fe9e66d721d13ae",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "18245740-2950-487e-9ca1-d74b40e891d2",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "a2ef492e27071c05ed3bfe5e81d46da751667d410bef237cd61333ae8053097f",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "3cffe24a-e1bc-4698-a7aa-78cd1d3e8460",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "b1989d1b53939d6914e30b24df9f9fa48b50f1f7222bbaa03e17e341b492d438",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "3e193286-19a8-4c30-a037-b2ceb32d066a",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "ff355484151a67aef86c0b8ffb7fa99d619fd2634de46e3a1e24ba0f48880929",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "43c18195-ba74-473b-b62b-f19a6eb7f284",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "85ad56656ce2a56aec0fb4a0d63d72292b9007d11e1853780537baa8fb85ac2f",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "47b08ee3-0e22-42be-96db-12b924090923",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "970a7a6a98cc6d06c996dcc1f65b955542f8eaa91dc25bf485711d3d455a1bbd",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "5a009538-c74a-42f9-8ca7-47246a36437a",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "9749ca17b2c561421286943692b0dc3ee75f99b60bedff4a02f8cae329a181b8",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "5c74f350-daf1-47ac-a0a6-e7935e4b03b5",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "9fa81eda4d6c0dfeb1f0968b5050f97c3bde03c672b9b0b0a0eb5d225e749b2d",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "7cd681cb-775c-44a4-8cfe-94d3817fb859",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "b8b3280762292c6634ccb2f52efe66b462af9ae6859d3f05a2aeeac8a18fee7c",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "883b50d8-2c5c-49b8-84ec-b8f4f0b46469",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "1884a2276a7e92a3c6312ec2e1df600c360aa27f78bf20969149133cdb944325",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "9b8d027e-f72d-4705-bcd3-b74ea99638fa",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "8696e581ccb22af48b390244d80aba1a1380a042f079d841489ff547fddaea7e",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "9ccfc0fc-981b-4ce8-8a8e-d30698e87015",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "208f0988b116d5e6b966d49e7c3227c864e19b353d1f68cc06ff1a15607e2632",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "a3791837-824a-46f1-847c-a7a4c771e933",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "4a30181b1d5255b6bf6dfc1ef8e54ac6750a6709804e64fd5a7082187e137c55",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "a396e497-4c0e-4e0e-9f08-03e5aa33bb6c",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "960442eb890f47435731048835526c8128c81a13af54362c8ace97268dd002c9",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "a4b88b26-ce6e-450d-a10f-f1167afa75d9",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "753c989a2a623a0c30cc6d2558c36edf1da5c34e051781a8f5c73d40c8d3c308",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "a9f11e8d-1831-4e82-ad72-282f10026ea2",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "1ce17faeb2f1bf9c8dcee8d28085cab3e28cdd14b1b9c962b5c7793aa0b9e949",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "ae2b4a57-4fd5-420e-b49e-7afcba79d1d2",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "ba89367e672b64141803ef30b63f96ee36b0f71d8b1471e93d9a79d6cccb22e5",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "b4f00788-f9cb-4580-a451-ef614b9dae3d",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "2552ee1914fb3e622ca4b818aa46595819b70de0433b5c7eafa4bdb74cc28199",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "bb5202cc-b77c-4c86-a021-2fd603e98f6b",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "18d9f4f78b551079138a87ed8c7751590c54b911525b139ce8cd2ef37dba1a07",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "bbc0f0ea-4aed-4aaa-a5e8-b5484443f8d1",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "02485405fd58788f3c22ae492e26f4a4f13fc6c055a0d8ddd346274bbf27824e",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "bf9f0ed2-3e22-4bb1-899b-e0c3f020a2a9",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "0d52eaf3613587f5733f52ac7c7d1518f72c94c5f22cc33b2486bbc5d057fbf6",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "c0b3fe3d-b903-4746-a8b3-6ed65ea66d2d",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "b0b504958197869ee09a53f8f2f7ca5fd244379f87596bce5b0d3a413b334dde",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "ce22bfbe-3daa-4cac-b43a-7c202f6c87ee",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "0ec111892443bad5bed850e8006d2d6fdd92d4e0a1e481f8f41df3df14229ef3",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "cff84ff2-af5c-4480-b9c7-4c88bd4bb2e7",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "32099e37f413d47eadd5603f08c6f45f64108a3f710bf12d24b61d3b469b060f",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "d057beac-dab1-43a1-9192-6b8b06abddaf",
+      "status": "needs_review",
+      "source_calibration_sha256": "f83f7f9df7546f8129ceda394f09d6068b6c78558376bffd6d5ffe4e16aa1811",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "d447b676-1e83-4d51-a2ad-14ad74178ccd",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "32a8d0bc38b1baacb24abafa6051705251e08520a71937a6e73662d734e5e2ff",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "e317e172-f7fe-4672-ba24-12ba9f9e0ae7",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "3df0971fe9a4523428c6e53643b1616028bd40e31d9ac2c6b67b0f623c478cbe",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "e63f52e6-94be-40c9-8b35-5461efb2714d",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "43c3fa11ee71890f3b7210e239e315a50bc07700db27cc76bafe81f53d398551",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "f8b967dd-50c2-4bba-8fc6-84439c8ad99b",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "5e0037426c09a2c90d3359dcab35774a710b19b8a257f5bc54f6360a5f29cdbc",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "f8eb691b-7096-498e-ad8d-679f19307319",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "e9cab174911760b646e877a545068ea16cc33c6d2e9f84111c4e0faf26bdda29",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "e5c83d10-e7c8-4668-9a7a-388b46b7f878",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "3c234c05473a72877e5f5b17a94f47cffa3d140f0c8c6e95fe230451cdeae89e",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "4413d61e-c8e1-4a91-8dab-51071765c782",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "df1e9e26788527b5fe5408d81ad80d71aaf643c6e95d4d0263490ecd5c30351f",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "b1cca9be-cf3b-42af-b179-f845ff8f5547",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "e6a7988295ffb97710c14ed5dfd54284376d8c6d5e2eb1c5bcabf62c09d6cf32",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "2993523a-2d8f-4fba-985f-2c63ba66d2e0",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "13d4daa68a6a6c34b25c8570c53274a1ad9d7764a3711487b4b9076f764e3bab",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "f8bc9ba3-43b9-465f-a436-3ab1272ac450",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "790b05063e7a65d8d667ec151683e74fa61d8d46337d3b98b7a338c4d6a6becc",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "318968fa-4f29-4b2e-933d-7bedf33067cc",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "10f141ddefc84bd3fdc5e09c4085476f40701465eb9dca86ab82b538ac85a675",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "2eaa38c2-8600-43a3-b814-9589b330e3b5",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "2183fea517b05e67c95951b829ac00a558b0db373d5910af64620efb84392c44",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "28baf278-0835-46db-9788-cb637c669368",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "267d2cfa998c08869d07cadcf72881a6329b5d0dba73a26bd99ee236803c8e5c",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "92e6644d-83d6-436a-8fe9-2704df068cfa",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "5d63a631cd8acb696b3216a378364ce9751eca4c45d3b4d4bd96d78c364f806f",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "ebc6ed2f-942c-46a8-8b6e-177b738a58fb",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "08bc0ab927fedf3e1a5f07a43bb763dbd5345bc38442e9a37e98e19215e0a032",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "7fd4fd1a-5950-4c04-a35f-765ab91f71a6",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "52bd496d231a3990d62a817a49099cd8c2489408cf66975bcf403207f041e375",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "7b7e7d51-ea3b-4572-ae4c-e658bc5b6447",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "ca8a9ef92eee960bab79bd26c3e22e034e6d6394a172edb3e62a741ca9407b4f",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "f0ebf55f-3574-440a-943b-1d754dc8dd3d",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "20c5f59d527745cfa76b9719d49c6a8761d12d2c8a7268aa386592e742deec9b",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "33c3f7ad-8320-496f-ba36-72695b2434e1",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "7f18fc6eb084b94c3cbfac4b90272cc00a23df2d9db68060a77c2bb01f57e17c",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "6f58f8cc-acf2-4092-bbee-0c837c443ad8",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "6235c1d1ae07df1cd07a1581fd6bcd8103653429c8e83e8027853a706332f200",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "21182cd6-f8fa-41cf-b8e2-74caaa949728",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "ddc0e06dca9fc1df1b7ee931b3096a68177721d8f7470d1f6565561aed4b3b40",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "4040d71e-4e1c-4911-8638-a782564ffc9d",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "43d384d71f19a372ec7c5d2f3aeb11a17caad8e99f63b6c645b956c01ed2788c",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "64ee7ce6-c5a6-40b1-a45a-e3e0d6161a59",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "10ad0ca87920f4c98403bf08eb5f50440b7931e3de61540a2fd427f7c3be0897",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "6733b85c-5483-4580-ad22-cac43d4ac365",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "afb683d7c5363efc66e2e70833ed7c9a4409a5188af325ea1bbaada994d00805",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "6770b2c6-7e86-4982-a1f2-1aedc3548a2a",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "dd05a3c1368ccf96d08cb23f8bf3514046207201055524e6565c4fb701300445",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "bb13d401-d267-4f84-9faa-efe4107d1c73",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "0fa0a081cc6b40d10a74ec6a9082713cc6c76260d583dc45b4cc41ef23d8b342",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "2567e22f-5efc-4b55-b8fb-86b48a5bff86",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "2b2728b6eddaf1f3d769ece8db7042f26206877ae4b10e4a95f71b3638073458",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "dfc5d936-53b5-4b40-8aa7-ad38a1b0805f",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "023c93a56a5eade1a6748e0b7828f2a8dc9869a2793b73f80c4e1a2dc6fef8bb",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "6b2d5f9b-eafb-430e-9acc-defb2ea0f333",
+      "status": "needs_review",
+      "source_calibration_sha256": "eb87a79ae81fcc45270f5672d739fa78658ab9f6c7164dfeee6bd8ce62f662d9",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "9d1153b1-041d-4bdb-8e6f-98d5841bb80e",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "92b6a6847ed5e86ab9d7402a14fae37c72b89b3889e9649871302878fffc0075",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "4a155d66-e907-408c-a901-ff784a6f118e",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "c351ae9fa6b2faa39ea177e43e199e6a51f2fb0c99445a6616fb486277d6bc4b",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "46fa6880-4d36-4143-b8aa-0fe4b19f77ab",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "97fab62f5908d84c931eca97ffc9357262d9677a31ab6ecae3a53b8a244314f5",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "b6557cfd-1ab5-41e0-ba48-2a67f151a20c",
+      "status": "needs_review",
+      "source_calibration_sha256": "e20376173a773c0ec512b6104187408054c14f2979dc4248969d522ddf3a8a5f",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "3c5ed8b1-d32b-49b9-a800-f8689b7fb79d",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "97e50d20014c29c84df123c8844f07b1077f7b315280e8d45d8e1adf3188db32",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "90172bfb-6b9e-47c0-a0a6-0f951f74e215",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "bbda9366b9dafc4c07f4d88fa6e0848ea93b1f1fb3a586408f6e8466538f713c",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "e373fe13-c736-45f1-986b-b6c2304d01a0",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "73efce47d57ff818bcb308124c2729ab83e739c7e9912f6d8b55fbe376fcafb3",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "cd31a8c1-1372-4719-b5a4-095bde9cd384",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "f6f4686290d1967014c1e59589ffcbe4e560a016ce5995f0cfb05a764c3c457b",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "fb059e6b-48f3-4502-97e7-241a8d36db6f",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "e0e8a59818e6f3b9887121e7775c80bdfa257243d031173762136e18f30ce458",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "a544f569-d812-4182-884d-015886331350",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "1b6d70e67646ed48bf7694ca407528f487950d9070488bd0fd5ea3f87e6f3f22",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "39227f1e-3c42-4ead-8221-33b74b8ccd05",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "f67ab6b5a9c9f4d49345b70b0a73aea2b4a5e5184ab39dc29e118d9fb4cfac50",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "6128ded0-eae7-467d-b94d-4154320cc1f2",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "2225f3bcc9902fe783e30eda1676b2b390d3ef36a35cdc275365061cea854b1e",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "40d9c1da-25d2-4764-a29a-6a45839e6aec",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "f1a957636ebd312a6289c05a61cfbb293549258d3752aa8ecff0a8319e362979",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "90576f8c-037e-4b1d-be2f-3ad03f76b302",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "a55a9ef51d23a64dc4f02ef630eaed405424810f681c4233ea025500cc6dad9b",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "9d592344-9d75-4862-a4fe-581253bbe794",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "93f31847155c6553ce9515a7703d54e49ebbaccf26cef21283ad3e575ead9e0c",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "5800ed0b-0fd7-438d-89a8-ef23de66723d",
+      "status": "needs_review",
+      "source_calibration_sha256": "d66ebdeff13aff9d1e96df93125f8be8163482b5e356ba6e1ebd3cbae44bd56c",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "e1b0c3ec-53ac-4ec3-9b9b-32f4e31e6267",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "4f5159c8e80df1e9ffdaa3e27c44df05014cc141a36eecb4a0100e8a8776d563",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "a3e645f3-2dcb-4c30-bb16-c335f49ca4e1",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "1b1bde2b2803c5ac3916120c61d3341aaafee1ddb36df23803a7dc4f4e20eb37",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "19620ad8-3f52-4790-9cf3-4e675e4e86a9",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "8ae4fa84b2d040195c301633f3b67ffb64b42f04dc8c836e5cbc5aad199f17a9",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "a1bb9bc5-0769-4b80-856a-f201b7fe8454",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "080826242a0fe466cc3ccffbf1e8ca5af24ee59da5b1cdf3d44cc4f6fb54163a",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "20395348-d65b-44c1-8ea7-04d09bf97680",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "b83ca7eec5c9330792eaa117bd3070cf215cee87755b8e57cef3433c6f7dcf6d",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "d57f8abe-753c-45a8-9928-c797fbfb5959",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "ab3cba081e92a2535ce58f18182b07cf12c978ca9bed4c2c05bcaf6d26adc995",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "04a6e579-0ce4-49eb-9b8d-f7892c31118c",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "7a2afcec8ab20ba9b81d810a347d519e6dd5e92aee05d6d35a0c4a001fd0d288",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "a59cf6de-7da8-4604-82d6-3cbc33f5d563",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "39e0842c3025448e361587bed10c6d49ee61de3fc02442473774a4bf8c73cedb",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "476a5b84-ba89-4e0d-837c-b28ef743fdb8",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "e158df0c3ba71f24de660d48fa806a32eeecab8b34f3f14badaef27c576a0558",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "8e6911e0-a942-456c-8721-a2b90dc7076f",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "f9653fe94c5cdd16cc45f37d7a89120ae7c6ca417cee739f9ac417759e9f111b",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "08ab8460-1a71-4c7b-a0bf-27a0720208a3",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "3763545383e0f11e922c864ad97786bee924cc1527faa2b05f745228f4d8a2b3",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "5e3846f7-6324-4e36-a5d0-e6d171dce9a9",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "1fd47ee9407ee7e6e7772a208c654b2097baf7ae79e867ab33975884716f3c0c",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "a1c3b7e1-79e0-4f9d-b3b1-45f67374d542",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "582dc6a76dc5942d90612dbe941690acf4a220fe589e77b5fb81d1ae926422b0",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "5d2f1545-a995-42d2-b4a9-30946e07c6a1",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "4891772d4a547f7486316e87e6fa63394b917390cc688475cb3702f6f4bc3540",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "7c9cff9b-4e3a-43a5-942f-c18504204088",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "3e25409a9e84567a7aa788bc6b41f8dae92fc68dcece58945d72473fcf523fb5",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "c3c5d6cf-c4e6-42c7-a41c-fd2497d54474",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "f2375dab133c959cd0ff944a5cacdcc5cdf34679d4c6f850a30e45d0e9d1e311",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "1f3029ea-eaaf-46db-9d62-34901cb5ba7b",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "60d399082cb1deaec57c669d6825e1a168dfd24b7167a30a688a46e04e1a59f5",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "6978b59b-4f9a-488a-a0ab-e466286f5e8d",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "cc526959522ae7a2161c821afed5a09e3a8d9430c981591dd22d1f473d799145",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "70479c7e-e47a-424b-b707-0b955b761d35",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "fefd0f6dc24c052aaab3e4ab98420e3d32aad3402bb11f7894e69e41ac8470d4",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "52122ecd-d861-436d-9874-7994eef61269",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "117faff9cac9f5120ae7c988f2b078bd8026663fafcc06f6ff1f9542e1e64cd5",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "5f07479e-f06e-42ab-8dbd-3d0cc9d10b98",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "1322e9b3149bd2337479c8fb1caa1d5c1a398c856fab55119c4fd7e2dbf3976f",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "49debfba-e3b7-48d2-8a4a-b5780f71c67c",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "dc1a78379cfb0c40614c32c5cc8284a772b4a20705e5bcc956bb37ec235845e9",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "297f3ea6-e982-40f8-b86a-bef06ca1036e",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "a0b7ea4e4209a466b70b3ba34975a08f4487e5a5f81d4d1d913e25b0685c7ec8",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "4c72b3bc-badd-4aa6-9517-63e935554a44",
+      "status": "inconsistent_on_sampled_frames",
+      "source_calibration_sha256": "ae256b04e6d14763302587fffb10ae74df3634cea4e8664dca8e14899a9d140e",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "de206cf8-85a7-48ad-9eb8-2f89290a299d",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "ea5d7376ac2a699eee9a1e9f64ab8fcbecc2904890d1b6502ff78009d924c06c",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "20fa791d-5cd0-4c32-bfc5-91ab7fa9050a",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "a9f3e9a15f44b9a86a97aacca9ac2e96280bac548a576df0708ab1e11d26da7c",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "3572df36-95ca-43d0-9ebd-a34c0771eb42",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "c0523aced5b8ad5ad4b76fd43bdfe969095f7df617b46096fd5ababb448b4bf0",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "66947b03-99f4-448e-9299-ce542f594a05",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "4f4040293e1c896447170d1ee6b93141bf2f7221bd7aa324512d32d56216340a",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "44b5cfd0-beff-417a-be26-daeee5daf380",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "0886362a66ed294427428b8b0919bf7026911a6e56be651a9aa0f28d2b734ef3",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "18ba76d3-7d9b-4c6d-8164-9c62eb9e03e1",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "81bb8362e309cc32be80242a618f94e416c54d0ba4d34cebd446cbb87291b4e9",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "a16be5d9-b663-4487-9f75-4332bb1a9c9a",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "e927fc5f80ae1d1509746a059735966637a5a810517811ecf5435b196751db25",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "db15e5fa-c1fd-49db-a3a3-da93daba9721",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "de6632bc08818aa645b3244b7f5ade6a619b9d63f6ba3f050510f82d2e1bd6cb",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "92111e9a-a889-40f7-8ddd-58b9132da5f7",
+      "status": "inconsistent_on_sampled_frames",
+      "source_calibration_sha256": "6a69a247ac7be3de93555711fdda37037ccb2aa8e632dd992bee55b34d521ef2",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "6f5b4679-7579-402b-bede-d4fc5357d752",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "c3dce408060b3264e07158be271a3cb298d28110f176cb0b59f1795251769bbe",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "095af748-e7d7-44b9-8ce5-499819662310",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "293859be1dd4e08b50ae50293d014a7a567b79c30a180b9ce00b947cac3ed0f8",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "2c466389-8225-4ddd-9136-c787c0803d59",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "3fc10fb37fb46db085f9374d487d3ec1bf8108465ea0c7e1e9b6ad1763ce124a",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "7cec407e-a678-40dc-b208-451bc8b81f54",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "751b87d5cf6c67a557288d17d79d81b2fc16cd2f380f4888c7ffe6dfe371ea87",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "661f670a-a60f-45df-9a33-6264d16d8a1a",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "508cd82dcf3249736786acff14d60295efc798188c49eb3f3cd37b448a5a4def",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "247d8afd-218f-4334-8ff9-e88260893f67",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "d3f805a56515180cd1d7706ca8a6b0804411cae68e9fc7eca3eb99247744ccdf",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "dac64f13-1d08-42e5-8da9-7a1052b418b2",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "d008048c81db0e06b0d6fed5c8f02f099ee3a62989a651c5f741f0699ff53850",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "33a0b191-77dd-435f-b8c5-4726031c8536",
+      "status": "needs_review",
+      "source_calibration_sha256": "e8452710f59785ea44da10168030caa8fc6a528fbdb72e34eb06d0c65304b2eb",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "25c690c7-022d-4552-8e8d-b0bfb89556f6",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "82d7fe7cc07c9ec20888f731db4520edec8c0e5f63571a90b36592a4c2685257",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "05347923-c2fe-4598-acde-2db0f30b19aa",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "784985e1f665eaac445d2d4280f68ba64dae0d71984366843d3674c8c2f85543",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "f40e8a35-3ea0-4fbe-aa2a-bea8f5b9eaa6",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "054d345743c85a6db49baaa0a46a1095aec1b6a4ebba199fa799def9aadc4e44",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "e0237e22-763b-403f-8b14-cf68a92283d0",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "bbb6ca71ab969fbce03a22fe591d321ce838be6317d1008f1e986c2d4ad17432",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "668d4010-a35b-4cbd-88ce-483d6ad8de08",
+      "status": "inconsistent_on_sampled_frames",
+      "source_calibration_sha256": "25861db947642d111492a9e68e09ca8aa135c3aef67006cb0405eb102d20e4db",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "1568cefc-0bdb-48ee-89cd-641594fccda2",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "6d05f5418a6cfad0f8e05d00daa4c5c4521f13074b627dc187a14d034d0133ae",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "b4aacf51-c8e9-4ad8-8be9-7a7e4d8e4156",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "643345aba588b3ecf26ddc95d20336db6c60732f14b00536c980f1d630e05bd2",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "2a797a4e-5011-400e-b573-e32d80cc8a54",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "df1f180b10159cbc5a69d49aa581e4fddeb6a41cbb4661b39e18b02f9894efe8",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "189f044c-4e43-4a05-9ea6-772e46553080",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "a2aaf3f1ed89274d1cd1285139e6e90edc32da3083898ed811272a754f2a4f0d",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "2eae9665-bd0b-4ecd-b40a-ce82619c9364",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "10b46b5ead5b610d5c25d05fd7c40ad81c3cca0e7f95d473eba9a16aebaa8b3e",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "57adeb85-2148-4038-b793-16a199729cfc",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "da7fc00109399fc69f9038ac66f1e2269582ec556fee641ae59bafd5d691ec7b",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "fe42622e-bddd-49f9-ac20-2d2abc38ddce",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "917289fb8c416826df54e7f115b80ba09d055493a7016bd405d682b8ea0b3897",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "14497e23-89e6-43d5-a4b3-8ea3086396fc",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "3f68c8cea4eea47966959285f10580ea6d85a19881064d27e2f2dc1320644bb5",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "457ec21e-c581-4935-8ded-1679ec2f0767",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "fdefaeffd2a39b6796af13ed45b3c4d285afdc4c08c00166fae4978675f4693d",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "962edf2b-6543-4d94-aacc-57ab0decc9b5",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "9f5886ce99f87a989af0ffa65eb25158be7266aa30288ccba87c708dc1491e7c",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "d70dea0b-12e5-407f-a97d-5cd3c2e76465",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "74022e909f51be065bd7ce9884c4f737c04bd86ba776926e490c3627f2f402b5",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "999a549b-e0ff-404b-a3d1-86b520c8ae2e",
+      "status": "inconsistent_on_sampled_frames",
+      "source_calibration_sha256": "b70df3bed864586da325df1f77f32f05c017b1efd442d43c58cfc11c221b4973",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "f68deba9-efab-443e-87e9-642f8771dcb6",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "49ea2db2f3127764ef5607462a9588a1b142f56ce8001f108a94f0276500b723",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "9be303ef-7491-43be-9915-ddfd51fde7b3",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "c747f8695438c6589ce62f802259481823b859195c00437a01b5c74745946a30",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "d99d98d9-bdf6-4a28-8c67-3aea0b7add0f",
+      "status": "inconsistent_on_sampled_frames",
+      "source_calibration_sha256": "12e7cd10b34f01a55846db89ba3c82e6e3efc3b999df93b3a23e4bd6683bbdd9",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "34a57254-e068-48e9-851b-288f3cccae99",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "bcd02a2dac34b76e764832ddb87af1fef6cc7e6a944d50c7c7f973116c678c22",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "531ca8fe-986c-45d6-9fe4-67b168df0846",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "a59769e7da9e537d17a6c3ab584354fc64756df4c3e811449f13b71a56ac45fc",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "80bf6483-64e1-466d-84d8-482876270eec",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "9ba6f1cad701eb3565c99bc136c7e65d8f398c0ded24627b5f6b3b1f864e5415",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "fbd5c512-432a-44e3-beea-0c985bf825c5",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "db57ed0b3e1946e68c62ce6b96bdf54a2259f912fccdc2257623c274d576f586",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "1e082bcb-1450-4f5b-80f4-0753d5dddec0",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "5920abff0b89fb111bba07c62b5909daae1defdc80669737cdd084444c5328ea",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "9ea5cd5d-675d-4821-8d52-37f5a04d6e0e",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "62ad2dbd2db14652246ae1f0d8ff1421a601f075511aa4427ed459d80cf6dce7",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "5279c555-7e4d-44dd-9507-b4b3e9a38f37",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "7ecebe2f35b3e5617b14d66c0355e48920d250b77e4e1e5df131799b17419358",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "9845a6e9-a629-4de7-aab1-22fbc3842488",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "a85f603e6a4177ce46a36ae8f404c1e4706e89061963387300bec687a1cb4ecf",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "0ef7fcbc-c733-4199-afad-adfb5e6428af",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "ae507baf944a6871511a8d319e85fef0072491dd3798a8a90170cea482381af3",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "4a8c7fe6-a0ba-439f-b1ba-f08f46b92d46",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "83494684caa661f070b224559146bb44f4100148f0d9031a8ef3c07c8c930b3a",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "2eb9dcc4-6a9a-4f51-b304-d01e0d9bdd6d",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "fa4a292ac4c5b71daecbd417c3db471aa79fc6c1d6615b1c2f62784ab6101fdf",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "1a5920d8-b3cd-4911-b21a-1c8cf679f88c",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "c451480393d0c5bade9116aa455ec4188172edf0be0480faca1ccc552521facf",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "14fa7bd7-27d5-4d71-bc09-02d4c90af6e5",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "0b860a7ace4084b61d7198793e621706cf80feb953aa624bfc44f9afc81b7061",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "0e823707-695c-447c-bb88-eca6510e376e",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "a61819c4b5e9c6b79179efc9de352596bcd9e58f958b37defb27f5280e59875c",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "75bd2704-7df6-45d6-9a5d-1fd5f56012ba",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "3fc9b5bbc5fde1423a36a1f6c21c3f57cc0b09a5f6d7ee67fcacc8f7b9a92acf",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "032f4408-d4cc-4107-a049-0bf8984136a3",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "370d966420637459d3216268227171927af7cda39130c7deb0a14472edcc8015",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "17c0b966-37a4-4deb-bd31-ebee25de87de",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "c8c4a9cfffc093bde8d592ebf3a3b8e8e2d5e36095e344595388c50ea740f143",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "f443ae04-f2e0-4489-8f6a-846a070e6907",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "86dd402ec64fd303e847fd1bf021ebb47493461c25a57ee9d18706975c25a92a",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "0c1f7f17-6aed-4491-9996-025cca317bbc",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "15de4170502d347ecd56109d9a322678928f2626a8c9ef62576233c4c51762d6",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "16ce7e82-c155-4616-ad63-aec86770e139",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "37501c9231f7b472480194082e56708987481e945bd9f57f17af8c68302ede1c",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "03edde52-cc7f-4122-b441-554f90e13b95",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "43e7a5487574d4fed4658c426667fa3e353cfd9c6d7297827f19b56efef42a7b",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "6f0f7a99-7e6e-4933-9ef4-11210fea8135",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "ec250fa28d1e0aaa942fe4f8c8f36d64285044a1ef26940aef908a9c5dd871dc",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "b6cddbfc-441f-4bb6-977a-6d3f5bb99ead",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "6200dedb35d9cac60daf0aaef082cba492952f6e70b2814c41283ee6b9b74909",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "f05f092f-59a8-4eb1-9d81-fb3af82d5d99",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "61b10f14fc1a9f8a9733ffc0681d02a87682df589fb1b444662b6a828c352ad9",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "b6b6b907-93e6-498b-bc70-13cffb085da1",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "c3dda4a68c01596fef846282726bc4a2b4b53def8bfdee53ccb1159683db74fa",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "3f9e9c7c-2ee7-4010-a1cf-43083e6ecd15",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "60fa36662e2eb07f94436dcc5196fda5d511f140ea07b9e6646515eb1fcea47e",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "cb779693-2633-4f04-8ba4-7a83fc5ebf2d",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "b5808967b113703a40ac23f12cb4cf634f2516277aa60bf8214f9b23ef4357ee",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "0ab06bf2-e633-4a1b-bac4-949ca6ced0cc",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "0495b73cadf92e5450b35d002675f1edab7f707c55f8a380a265b2c8f76a5594",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "f6726feb-cb45-462f-b219-a4cb2b6c62dc",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "89bac17b715644074b4392e82a44494d4483db732c8a5b5115169f66bc451d8e",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "1a3e2805-3d60-4ba3-8cb6-f54e187a2358",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "6c52a4d44b50e79111de35b48d7b296157acd8a48f132d1017d673cf1d042188",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "ec561e12-9a3a-40b3-834f-6c2f1b143545",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "3a61e79f30916a6fba6d31b30d504de9ff5820a43f58c904b24863ae960be521",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "e923ec44-a446-4e32-9faf-f1f76d697765",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "4092a081a65e572842790bc4d2f89c23d6e6e82eebdc509343c9c5dcd0237eb2",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "6fef6404-b868-4e76-ae0d-47797abd2309",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "1852a7afa079d7fe2cb0dfef6a8775cf2c390472be2da9f01f78a7437f35a867",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "d03c0111-b8f4-429a-84b0-dbf4214332ac",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "b6845720285c5e57b7f76f12b15e43615a0504d9a1e2d52b1027b44fe8aa0d06",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "acc3c38d-9591-4eaa-9e6b-d98e385249c8",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "828363d8c8a251fb2083485ed2dbb198d2b7537267cc9c9485c90fc823e14eda",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "1173dca7-42ea-43ad-99fc-9d304666767f",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "48eae89be372fe38eacf39601840b2601d627b346f0a1e56c3bdc6d5afd93372",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "358c4b3d-c7d9-4fda-91b6-fee93e99679c",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "4f68ff5cd9b25d8a14c4fb82200ef12530009c082d3ea0fdb61278f4bb811a45",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "ff77aaa2-c701-448e-ba9a-79c564c7438c",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "0dd033a59f769fe741825e2a63697949b34013ec1aeb5a6464377f2b1a8c14ef",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "fa14b529-ce07-47c5-9bf1-3408a16e6939",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "bfc36a2d51d50047c573cd79428ec507f52cd5014c8540f9277995f1750af9ea",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "94ce00bd-7fab-4b09-9b18-5d3ae3aa6e9b",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "87228119b661bb630065286f3baae3fbee7cb7a7c90cccb3cb20076affae2bc8",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "71801d08-9474-496a-b37a-93d9cd3a6f10",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "2204f2a3f806b64bef24eb3e4b003d58bb76ac0fb2ac8d856712cb994cd01cfb",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "3ebc9a40-c8c1-491f-b6db-5895a8dc7c64",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "3c0760dc904c3ca50c6bd30267fc44312bb5e92c046c8ffdb52db8527c484480",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "db53cc49-d4a4-4c9f-b79b-906c4a6a7ac1",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "f92eb4888df6be859399620cc9560ea8c341190a8f79dad0cce072c3d05c892a",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "09642014-6949-4201-8f8b-b96544622d55",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "0a30a8df3e6582d7c846df79e55a3cd0c33842d8b6da2dfdf4e622ceef885575",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "759125a9-6b1f-4c42-9082-74b3b7533426",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "9cacd9cdcd0fbbc366f859f4e4fc1e09eedc6b80f99c6c582f685808304930a2",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "e20d45c7-ce6a-4bb9-b491-a1be3e0e6df8",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "b13649439a691334c0e5c65d2fad79463269de93201bba048b93d616b27b3868",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "68775be4-5897-4391-ba4d-9b55ef8ef6b5",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "09d2f78383673af769f2e5aa6ae232c8c148c003d1923bb506e868f3aa16c00a",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "94fe2f10-da1b-44d8-b5a8-34e0e6f9ca54",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "668ac8314abc8536dbc10e277264f50e6faa4523c24bb5e4df27e40e584bddba",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "dda5d307-5cca-4970-bbb1-73134121f0b2",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "3ac89c38b0c870f93abd8d17863143150ac24dca9d7e5c71594a8bbf9faddf5d",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "96e480f8-46d2-4152-b3d1-104569912996",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "f20ebd5869ff998d9a4153811e026e174ccdcf180d0dadeaecb49523048f8e14",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "296f9fc7-2103-4478-afc3-5ff5cf5ae931",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "b9b2ed87a62015e1f107e9ee7ccdba29e3fb0610d6a2aa462609877126e6e7d6",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "d5f76e6f-1d0f-4718-bed3-10c3f22b21e4",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "da5cd1d6eb629ebe78351df617b615b3479f45b6ed2ac4194e8bef258244e279",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "bf808803-b93f-4dfc-85e9-00404cace9c9",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "75ef0d7ae38d25fcc0cfdac62f56d8b06f3528fc63439103c9623fc9afcaea7a",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "1f51bca4-d3cf-4dc4-9e5e-77336887c6a7",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "4ee78ffe847a28084af428e7442399d9fb1785947d80a6da6400f0303556ce31",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "83bc8266-316e-4601-bce4-5cb38fc14f2b",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "f355b7a75ba1c8e883b80778a25d0b84d8408f6362c1e5338ca7f08ff572ee9e",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "7509b935-9b86-43f6-9cc3-a83db05e5a5a",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "61cd947cf340ff821317e68a58a87124e7d76e75b6ec6c3fcd34b5f83b33af22",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "4dfa0e7c-637f-4600-b2d1-71eb546e7a54",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "0c40a09827fe1a937df4ecda57a278b4a94d12aec938b115500b57555c460fc6",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "d342b9a3-04f4-43a5-89f8-57998b241dd8",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "d80ecf1a4f38ed475311cc49890efdfcc235909dfd7722dd2ff9462a0263f482",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "3dd76281-a280-4eed-9e6b-5ed3e49e8d63",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "b44ee36ca44ed88d4e444241f1af82a6a78e1a30267e28cbb799f873d16d99c2",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "0d0f61d2-8e52-4115-b3a6-b8a0689aeebc",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "4783bf9053cca62069e494ab60daabba2da4d1c3702f8a6e5a79144db75244de",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "9ed3d567-b925-452a-add2-ed3e21784cf8",
+      "status": "needs_review",
+      "source_calibration_sha256": "102b28e3cc8296772097db6e23765b75f031802ba9ba6842f5a2b23b184742d0",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "74a153df-307b-4621-937e-1c40e6e30e2b",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "1fc395f46eb500fe1bdc3c4397dc8550e853a97dff8a3484258d2689c5ab2284",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "afaf1601-cc94-4318-8a2c-67c4004b75ed",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "f6ea8b1e50f5163a30be69b35d8dbbad81e2495363ea7431939ac72f9885e578",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "4f8332c3-52d2-4658-88ac-2f5471d7d010",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "9cc8f4cd3364e5d819b0456edbb43fbe94bd22a2415ffa6b9b35d3a37c56ad6a",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "bd5f29ed-59b3-4c7e-a0d6-6b14ccf66e68",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "9b4191beb2c794781cc80d072317d6e306fdcd2a5d363bd0c65ec6db25331478",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "3caa2059-e369-43fc-ab7d-f4e12bafbcd8",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "145b2161079e8cecf641be9b341930908577b6f2f28e43d2e978ab0180bbb2e2",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "a3bbb3d1-f4fd-47ef-8b93-12b2c805e9b7",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "b68d3153adeeb4059a747b454078c9413f3b391603f244d3676ccbbc4fe5a3a9",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "c8c9d384-4899-4aba-aedc-38060d9dd720",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "b2f1552802c633a4d1c7b9284a6324e35fd5dfc8f1a96a284d51d0edf2754ad4",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "1d5ff7f4-e103-4c21-a6a8-371a76e28006",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "242af36afcf1a4817a1f54bb4bdcdecd14907070b2c7da1a462e3dbdf6fde10c",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "6cc2c589-2c12-4c30-96de-12c1721c1c9f",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "aee3e7e7f1922409e9e7ec0e47a73f05d94ad60ac34db6a559c2c9677891693d",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "28b25752-d7e0-4a03-b6a5-a7b5a1f463df",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "8e789ff75cde4e129760a4372419e0427887ab05d936cd5369629dc29ef8b627",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "55eef6bf-e816-4913-9d4c-c3543d514cd6",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "4a7e1eab549e3487cfbfe65b1c2db817d94502dca007ff83636c61f6f204d0a9",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "21df8d3e-e990-488b-a61b-ffe3adedadb4",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "8a568ae7f6574f184a1b679dcb5530ce5a5d880a02a9b3fe1d234a8354d1d5f7",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "15984566-c1f0-4eab-9234-beca1a83ad00",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "46446c58bba3f30b58e6c03e69e5eab60d267516be5fa566620a3a37a91b9834",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "a571f855-2376-42ad-92aa-3f47b3c2c580",
+      "status": "needs_review",
+      "source_calibration_sha256": "1fff989b7923fdafa98542f4893c7ae53f52356bb7d484ba1daa4e3976d481dd",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "546f82fc-5fe3-4d2a-8cc1-494d8d3e161e",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "050e2f7acc83b2af7a0b5da289362a793152ac11801234b8734f9a16ddcb195a",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "944f9e5c-af88-430a-8035-1d13e10288e9",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "ae960f412c0579d63f426cf086f104d04416c910900d96953f4659258113d534",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "e153eaba-a5e1-4348-a2da-36cf5fbbd0da",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "a74303d9bdc8f0de084cfe665ab220c8e3990b2bbf40df5c64a05282c49c3d00",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "bb659d21-8c79-4de3-92cb-32d344904285",
+      "status": "needs_review",
+      "source_calibration_sha256": "9c500e9cf8f4cdbda8d713e69c93cda3433e0b1512c799d5bffc304eb2986246",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "816fcf4b-714e-44c7-b084-2caf1f0d63c0",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "7411ad434d4f3be1fb9ce67bdfa7270a8d17ec01057ffa9babf39b2c62663c4f",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "e3a2e67c-00b8-4e22-965b-10e7eab8d7d2",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "2f46e40863587954aae8c862110e1f41e951b23758e212c15d835a29673aec84",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "99492800-6816-4962-8405-fea29fe0c61d",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "541262063f9f476c1ef4c45acb3f2a255aafc80791592f8bb087697be3f37ece",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "31197279-1345-47bb-9c82-639f0d1bac8b",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "0246feda94684711127403e16978e93e761ae38e55b3884cbf450e7fc08a38f2",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "8e2260fe-320c-442b-bda6-1c77d16eee17",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "744932c9122a0328454e8561a7ae42b5049ecfa5b8f57ebc75c94e0e222fe764",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "9038760f-c644-4ad5-afc4-4b44d44b9500",
+      "status": "needs_review",
+      "source_calibration_sha256": "0ffc44dcbf5d6d54f56df2103fe08c86d19366d33876b5ae5e5a16e9a09f77c8",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "b60e178b-35ef-4ae1-8681-d410c76047a6",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "fa2a9a7d3628c749a47e318c8220b9f0d4cb8bab1866e8d6c484f07d02786b24",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "61e7c25c-79e5-4d2f-bdc3-4d9c57118ab8",
+      "status": "inconsistent_on_sampled_frames",
+      "source_calibration_sha256": "911f6f430f3ae44447cddf9f295247d132d8c17fb7b47a31e690fba4df17d011",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "bb6efe43-9682-4ecd-9e33-e09659e6b9b4",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "63121eca4f9d2e6a5dec8b66018ef8e8eb281799796af292b70262e6193b2fdd",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "217e6a5d-fc93-4088-9944-969544e349f9",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "94e574ee01dff47820a1b5a2e37338cf16da5d3d18ac759dd224b3a41ca90ddd",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "00f1de69-e398-4d6c-9a37-523d738221b6",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "5449745b92a1bb9240e8232b3c1f8051d38c1822f2f2624759c5e3a90d125824",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "09a8c79f-c5d2-4596-bd79-feb65f6ce3aa",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "e946e382f72e25ce30e0885fe98e6f4ff61466150ac3addfb5bcc9b86800a1b7",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "4c08fd7e-321f-4057-96a4-1a2abcf97737",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "1bac3343cbf607aefa8d1d45f229bc2cc2a6dedb33bdd715f20e2e408926da2e",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "61ec9fe4-1148-4687-a6df-9edf9ed8ae3a",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "210c128b5c09e545a82fa46b16e4032be7410c684e5cec8d2bf8cf9ed83ce742",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "3452c1d3-bad2-4733-9b4b-a3a7b9895d23",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "e965efa1ccfdbc9c1d868fdf831f68f688f640e532f43e7cc2cc611cb9a5f8b8",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "a38d9a74-1b7c-474d-b508-e419be4b37e1",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "3aad1218239cf2a73438ad86a868b6d2986cc3206d98bf0873cd297915f97bfd",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "385e1b7e-2e16-440a-8f39-0880717a3881",
+      "status": "inconsistent_on_sampled_frames",
+      "source_calibration_sha256": "745767a4413abfe4520f50525f36bcb6a0dba9858aa01b4d20322b90858ce25e",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "0bacaaa4-c52c-4723-a2f7-d68c16309a4c",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "79aba28a9f819d9cd6970e5b832ffbf3ef7ce3dcfb2b533eee941a71d2df3dd2",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "216fd96b-cee9-4698-99df-db4499801a51",
+      "status": "inconsistent_on_sampled_frames",
+      "source_calibration_sha256": "5f3c2a3f8a38f751a8bc07df8a8e590bf814c9ede342ee9787f5e49fe4a4ad7a",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "fa570a4c-2373-4be4-8da7-063a1439d180",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "c7f496aaae954c8b4a2f90654cd5fcafe68bd37da0533046ea1ae33e1f073fd6",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "e409aacb-b6fe-45df-937b-b7c21c7b4d84",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "d723fb1a33a951f74cbde0b96dbb63fd36d855dd66076e2e07eb9ab55727bb2f",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "840f152f-2e89-406c-ab28-1d9426e8739a",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "94ddffe1ec18aa0d112c90afae74bdf6ea26ef91c94bee9bbce094978beeea07",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "86e2f743-cf5b-4320-a31c-8a69c4fe7186",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "e1309c89a91275c1f0ea9cb5f724f904eb62aa6bf09f1368f8cf5238104541b1",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "7cfc7c05-a34d-4703-86d7-b51c2e3ad0b1",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "9ebf8953d164dd98e785792e614ecf4ab82d8bf54b5b46f38f0b7802c3b93f98",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "97487507-66e5-4912-a621-f882605ccfd8",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "47ce753da57910b70735f8313c604b18057313457962fac4acf4950c65a63e36",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "334cf7d3-b4dc-4c6e-8a6e-28cfd7cc5bd5",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "5392525f39bc30c9755bdab192a25900c2ef57c1a3dc6e7a1b4514858a5e47dc",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "af146626-f1f8-4dec-af7d-b874258078c8",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "16bfac1f2c12eddf2233e7e4f2f0e441871c71f8493f2f5d10cc0e6555aac30f",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "b4be22e2-3746-4e64-aa1f-c5191836f8b1",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "91329e4d9248431fd41f1c6c7cedac8f016ef0e769d011263d3b21fcd7d619c1",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "96fbd10b-f262-4355-a7d1-33edfb9ab74e",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "e6968efa18e8f974b68db762e2fa550b3fd2ab97db28909cbc35f87aac77cec7",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "83246a5a-d8c9-4fe1-bf3a-e6ee9b2c79e5",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "bc94354ef2c8eef35602feebd30295b7dd18b903cf118113e4d8eec3d9a2d367",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "186c89f1-2c3c-4812-a1ff-09801c9ab91d",
+      "status": "needs_review",
+      "source_calibration_sha256": "5172cc2b2feece2c0c267092deb7a451179f372de41c341d3b6777cffefe0999",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "6f43fb3b-b8a2-4a48-8ff8-0e09614ea6ac",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "c8a3a6fe2b626668ed0b24938098c0ab32bb80f2a40256d248cc69a77ff93e0c",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "0815c9e8-e727-4dff-b23c-a1c7853a2f06",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "7270e06d8b901d4303a058a88b1625bb552c05ee7473f661f5c9b12f19b288bf",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "76c77d4c-558e-4bf5-a313-37cf8b550475",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "f6ddeef05d4cd15ae356937458d7b5cfc3ca6ce2ebf666bd67df159aa3fe541d",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "5395432c-8969-481e-960c-181fadddc338",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "74e202e450a37d55c05bd6032fb622fbfd19c9bc121d0efc28c0b637cd4eb107",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "5d852202-fdca-49a6-b4fc-02123e9f4f51",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "cb44bd5b89aa284a3aa3b66f7371a65a2b5edf6fcb6fb6e79a7ef60b2d1b980a",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "b590cfbc-3951-4038-bc4c-721d4b4928e1",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "54656038667bb5cd54b006db4f287f7b88775c04fc53fee91477e25e4f8146e2",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "d90495fa-3d3a-4fd7-9744-e7f20e1b2a8f",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "b1ea40571ce4237b1e9efb4fa179ebbfbc57ac5fac73e0a6c8f2f17a9a0b50e2",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "e5f2f71b-96a1-4033-9899-545b8e0a2af2",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "895d62c453f851966b34a367a5eabea481a17d0cdb8eebdcbd4ac87d041621b2",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "f5422d9b-8b85-4d18-960e-d21dedb8b64e",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "226bd58d46a1d8b6a4bcddfbfa4ec5f16457812aa25dbc1a5035d6d05f5fcb5a",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "583e7973-c018-4ad9-b1ef-359161120ee9",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "843ada96da17e7f1684a23b50693586a028b9053e5c6eb4dfed5bc3710d64732",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "59b2af93-24fa-4d6d-a5c9-364927ccee72",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "480b3e3eabadf0f6f5da2ca8e8a4718eb0526b72ff515faf3d922a4de730e1c6",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "02c51852-ef35-47f2-85d5-4ee9e37b1e2e",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "1bfc48576c0e9350b441a8c94e9a5e9e698163e8daa4f4db9f68c04c8a70c6b7",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "e9c0b4e0-2091-4665-8ae0-f07810eb2308",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "74a971708bb17ac1fc988ea772c6c2b50318304a12cab394f15345676aea7eb3",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "0de81155-bd5e-4587-8129-25c65b4d7ed0",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "247c2d88ba42ca597255bbf88dfcea63ac218e1c05178466af9c21da13b7a938",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "02c97c9e-fa5a-43c3-b600-f5193bc5bd51",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "86adf29dc34e79fb6ee9162b1c1a5d48d4cdb6ebb8bfedbe67d21349e892aaec",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "9c33c9c6-8e05-4f2f-ab33-402d2dda9047",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "990c21e4019304f37d27a944a46f861b11ea293cef74c9908ebebab8b7cc7ce0",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "6077dd05-80be-4be9-a42f-16b7904b6d81",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "43f3c44a7984bcc1023633345b3e4c32fc4d962129fb696494e067c5b612c5ed",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "42ad0d49-d483-40a6-bb57-b9b2a7ccf075",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "1155ded25261711cba0f75253ad59215c7a057d34cb45d12719a3c6139a92f52",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "548a922c-cba2-45c7-9f98-7e453a96a14f",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "c7395e78efd4cef6f8016f0260ef3813837784a0afb3bc22c9d42119b6d7b916",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "e63ca914-dc70-4822-9bb5-401fea73eb05",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "b0273ddcf96be0c9c8c6f073c329a60f39d690ec11cc184722b2ddb775d93544",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "09d538f8-b6c9-4e34-8ae7-2c9b1cd89b47",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "b5f3999b8d7f048170da0b523fec3f67217b829a6b55d68181c7ac9f2c83b810",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "c7fe9afd-40ee-4690-a7d7-546180b170b5",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "a3d55296a2a382913ce4712c81b5e010dfadae356f46dcd9ed63f6d65de1e336",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "e5b3ed73-346e-434a-b1df-6518b0fec6ec",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "36f8d4a3392d1c68b6fc1bf12e34c09fdb87bcc88397eec1f63c1469fe6d30eb",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "499a5f91-cb0d-46d6-901f-596c3920ad8a",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "cf89e8beb29c1324493c60b93c79807b693dd643fe675e1e8d4d3283f715040f",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "f8425c13-5810-4fa6-8aa9-9d640d252bd1",
+      "status": "inconsistent_on_sampled_frames",
+      "source_calibration_sha256": "e79294eac6862b9dd1c75f9808e27ae7cc047a9caeb7cdea44314ce23383c8ba",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "e31953dc-e77d-4728-9d4e-80636b6fba44",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "e027dec09fe1fa8f7ea59f86c856ad7ca85333ba7587cf1686b6ed09240fe6b6",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "834caeec-7d41-40b3-a36f-953700e93611",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "30418d071fe58fd075fc47d3be2ab4be21e3da4ba336062669602735c7f409a7",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "96030873-a050-46f8-8f57-4529ce3c9e25",
+      "status": "needs_review",
+      "source_calibration_sha256": "6af6d8ac881526edb3dee06b6419fd9c31e073924ab89172d433eea6b94564d6",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "fe67d4d7-4782-40a2-87d6-68059bcf1586",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "9709a465e932101fa3cd9e0f802d899da10678f6e6daab1c1ce6f9cacce0aec9",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "dd722779-ba2d-4384-9f6b-b1fb955e861c",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "8cfceaaa8b67832ab10c06bf95330c9f13679b4d5e0c9870c7420737b5905210",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "5a665251-0c11-4ff3-bf67-e0aa4eb394b3",
+      "status": "needs_review",
+      "source_calibration_sha256": "2508d90281f139aff9c5affd8a7ed9659138aae369161d1be47aba73924e8d43",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "3f9df9fb-b5ea-48f4-919d-6752ca74f5fd",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "4679f4c1bf6c22088d93c20b7710310f7a7cb7367914f795d40f0dc05ffa6d53",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "c939e6ae-8a17-4e60-bb85-6d0912366610",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "06d8725542b94fb72f01769e89fff555b8caf890ba14589c1b0ff84970fcb9b9",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "31221fdc-5ad6-46d9-a095-2985d9d27055",
+      "status": "needs_review",
+      "source_calibration_sha256": "ac28abd3f889a4e2137283b21abbf3b865d2524ac5c46f39a6b3dd9e14506e65",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "c9618497-d817-44c5-8768-f7039dd504a6",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "02ddc2982f013e28b2aa731fc4768ac8740cceec4624a931868ef6daba6ad14c",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "0aadd2ad-2b1b-4793-9cde-afd1200d61ad",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "6935f2db520d126e33d0cfd05823a183a8bddc8cdcbbac957bbb36fd44b32cb1",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "19233b36-c915-4849-b6e5-32dc0a94f8c9",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "487a646a7e72d4bbb8424e98b2a27d73074fafa48270dee120503e45343745bd",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "b857b2a8-5793-43ce-9d29-bf17e4c54ac6",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "6cbdbf60f95216de31e53f145057146020393eef3dcd886a55de81d5d3f7e14b",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "d3c55a2b-5374-43ab-8721-8a1109c719e4",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "058ad9fc0d806dad500d202383f9183e7a31f8dc16d4373a208e7978246e84ae",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "444106ee-1adb-49e9-8b93-b321c30a86e6",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "1e8561e5d157a560e6b6652b26408eb1d4c68766875a5cec53293a46407c66ab",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "14b342bd-7803-4914-b113-53eb455a23ed",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "ce780e5c8ddfc77ad284f6a205624192a9b078c29992e84e3bc95c07d657a53e",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "94d7cbd1-71b5-46dd-89ba-1cf544624f5f",
+      "status": "inconsistent_on_sampled_frames",
+      "source_calibration_sha256": "34b8f561f72e0279f02b0b65768ac8c3c42d42a377b773c39d8d398c1bb270d5",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "4dcabba2-4e58-4a27-a9eb-b44ea9c64c0e",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "45e82acf1ecf7a954c9e3f0339406128bded93ca7a7b73936eb92d92a6fce261",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "d25e5faa-8d84-45bc-8c32-4c892ae94afa",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "36a5b8da5cb70376dc6b026362e74ac5db8cacbbe76f66151156c73fb3aacd7a",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "7658a5ad-b991-4b5b-88bd-f95157f42005",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "54ca2d8e2039da75d8619031d16ec75cf3f2e1bf1decfd67757be74d2f6cd620",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "a6da11b1-0a96-4e43-959d-5664350b2e07",
+      "status": "inconsistent_on_sampled_frames",
+      "source_calibration_sha256": "970f87c8103a4d6db73b59cb7e30ecf3fcf1fd4f2a23a63082da4ceb0b23aff9",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "cd685f1c-c7a6-48a7-919b-7108660e86ed",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "a5f4aad473f5a729e59ca5b61f165a478c47a19994daf04e7c4cb2591d9914a2",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "2f0e32e9-05f2-4974-835a-7e84b221c2ec",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "459bf180b06536610a07779dca55e787f20fcdd5a4c979bab4ba9beda1e6c679",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "99190763-eb6b-43ef-b0ad-8489a9496cbb",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "149d0f29b5d45e62bc938ac4613d40ac6e1e7d3df8e253ce4f57388d399a7baf",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "8a0d7852-b0f8-41b7-bc18-260ed1393dd3",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "32e00036f25b57c4addbc9c7efb11d1af5d09b4317bad8dc4da5021223b636dc",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "4e10aac6-104a-4805-a25c-f152980e8a19",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "d793e410f3fe35155b7fdd4c622cecf22fe001bbb5f6520c5f2f8740cc201bca",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "e9e911fc-2fdb-45e7-b796-ff5ecc564a36",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "9a0d58ed17a89a27bebf20c0dfab652ddac6a10a8ffb9e046aa2fbe0ddb2e6ad",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "a27d3dbf-b0ce-4069-afd0-719f7da7e216",
+      "status": "needs_review",
+      "source_calibration_sha256": "5520c1f972049d5b432a254c95741487c4522839f363f9966300ef3d6e142b6b",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "bcd9bd75-70d0-4ea8-80ec-6d03fd994702",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "8fbce83b92cc9886005d095cf9558b1121b0a11b26f32b9c1e911b26b866eb60",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    },
+    {
+      "sequence_id": "72728198-ccf0-4e22-bd5c-c1e2cfca63e3",
+      "status": "consistent_on_sampled_frames",
+      "source_calibration_sha256": "dd48458a301d9569a17ca89817363c009f36733401700f8b6291e701d5eeac28",
+      "method": "mutual_SIFT_independent_MAGSAC_matches_vs_supplied_F",
+      "sampled_only": true,
+      "independent_pose_accuracy": null
+    }
+  ],
+  "sampled_only": true,
+  "training_allowed": false
+}

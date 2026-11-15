@@ -1,0 +1,35 @@
+% A4 single-column style based on visual_check.tex.
+\documentclass[10pt,a4paper,UTF8,fontset=fandol]{ctexart}
+\usepackage[margin=1.6cm]{geometry}
+\usepackage{graphicx,xcolor,mathtools,amssymb,booktabs,tabularx,multirow}
+\usepackage{float,caption,placeins,tikz,needspace}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{xurl}
+\usetikzlibrary{arrows.meta,positioning,fit,backgrounds}
+\usepackage[colorlinks,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black,bookmarksnumbered]{hyperref}
+\hypersetup{pdftitle={第一视角人—物交互预测：完整Pipeline技术报告（单栏公开版）},pdfauthor={项目技术报告},pdfsubject={手部姿态、物体6D、动态交互图与RSI优化}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\setlength{\intextsep}{12pt}
+\renewcommand{\arraystretch}{1.15}
+\captionsetup{font=small,labelfont=bf,labelsep=quad,justification=justified,singlelinecheck=false,skip=6pt}
+\ctexset{section={format=\Large\bfseries,beforeskip=16pt,afterskip=8pt},subsection={format=\large\bfseries,beforeskip=12pt,afterskip=6pt}}
+\setcounter{tocdepth}{1}
+\makeatletter
+\renewcommand{\l@section}{\@dottedtocline{1}{0em}{2.3em}}
+\makeatother
+\renewcommand{\refname}{参考文献}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\code}[1]{\begingroup\small\ttfamily\def\_{\textunderscore\allowbreak}#1\endgroup}
+\pagestyle{plain}
+\raggedbottom
+\widowpenalty=10000
+\clubpenalty=10000
+\displaywidowpenalty=10000
+\begin{document}
+\begin{center}
+{\LARGE\bfseries 第一视角人—物交互预测}\\[7pt]
+{\Large\bfseries 完整Pipeline技术报告}\\[8pt]
+{\normalsize 手部姿态 · 物体6D · 动态交互图 · RSI优化}\\[5pt]
+{\small 2026年11月13日\quad 单栏公开版 · 连续Demo更新}
+\end{center}

@@ -1,0 +1,18 @@
+{
+  "archive": "/home/nvidia/Downloads/手物交互预测_全套素材与详细技术解读_20261113.zip",
+  "archive_bytes": 134453546,
+  "archive_mib": 128.2248935699463,
+  "sha256": "34002c6ccbbbec059c7805ce93b9fa2267d0c4d20a4d334b20c391d12a47492d",
+  "zip_members": 777,
+  "crc_check": "passed",
+  "all_manifest_hashes": "passed",
+  "summary": {
+    "files": 774,
+    "video_files": 16,
+    "image_and_chart_files": 203,
+    "total_bytes": 141563081,
+    "guide_pages": 22,
+    "public_report_pages": 20,
+    "internal_report_pages": 21
+  }
+}

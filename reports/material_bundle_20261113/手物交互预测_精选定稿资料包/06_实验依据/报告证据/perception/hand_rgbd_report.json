@@ -1,0 +1,221 @@
+{
+  "status": "success",
+  "input_type": "recorded_rgbd_replay",
+  "dataset_name": "DexYCB",
+  "viewpoint": "third_person_fixed_camera",
+  "is_egodemo": false,
+  "live_camera_validated": false,
+  "real_models": true,
+  "frames_completed": 44,
+  "accuracy": {
+    "hand": null,
+    "object_translation": null,
+    "object_rotation": null,
+    "joint": null
+  },
+  "coordinate_warning": "Hands: normalized image XY and relative Z. Object: original mesh -> camera, metres. Shared image overlay is NOT calibrated 3D hand-object fusion.",
+  "parameters": {
+    "foundationpose_repo": "/root/gpufree-data/third_party/FoundationPose_real_20261022",
+    "scene_dir": "/root/gpufree-data/datasets/ego_hoi/human_rgbd_assets_20261022/scenes/dexycb_bowl_20200709_150906_932122060861_f030_073",
+    "mesh_file": "/root/gpufree-data/datasets/ego_hoi/human_rgbd_assets_20261022/scenes/dexycb_bowl_20200709_150906_932122060861_f030_073/mesh/textured_simple.obj",
+    "out_dir": "/root/gpufree-data/datasets/ego_hoi/human_pose_live_20261022/dexycb_human_lite_stream_3",
+    "dataset_name": "DexYCB",
+    "viewpoint": "third_person_fixed_camera",
+    "human_evidence": "/root/gpufree-data/datasets/ego_hoi/human_rgbd_assets_20261022/scenes/dexycb_bowl_20200709_150906_932122060861_f030_073/meta.json; verified human right hand holding bowl",
+    "fps_source": "/root/gpufree-data/datasets/ego_hoi/human_rgbd_assets_20261022/scenes/dexycb_bowl_20200709_150906_932122060861_f030_073/meta.json; official CVPR2021 paper section 2.1",
+    "source_fps": 30.0,
+    "depth_scale": 0.001,
+    "limit_frames": null,
+    "est_refine_iter": 5,
+    "track_refine_iter": 1,
+    "torch_threads": 1,
+    "opencv_threads": 1,
+    "hand_model_complexity": 0,
+    "hand_detection_threshold": 0.5,
+    "hand_tracking_threshold": 0.5,
+    "input_mirrored": false,
+    "save_every": 1000,
+    "display": false,
+    "pace_replay": true,
+    "prefetch_input": true
+  },
+  "phase": "complete",
+  "frames_requested": 44,
+  "hand_backend": {
+    "backend": "mediapipe.solutions.hands.Hands",
+    "backend_version": "0.10.21",
+    "test_only": false,
+    "model_files": [
+      {
+        "path": "/root/gpufree-data/conda/envs/panda_human_live/lib/python3.10/site-packages/mediapipe/modules/palm_detection/palm_detection_lite.tflite",
+        "sha256": "e9a4aaddf90dda56a87235303cf00e4c2d3fb28725f68fd88772997dac905c18",
+        "bytes": 1985440
+      },
+      {
+        "path": "/root/gpufree-data/conda/envs/panda_human_live/lib/python3.10/site-packages/mediapipe/modules/hand_landmark/hand_landmark_lite.tflite",
+        "sha256": "048edd3645c9bf7397d19a9f6e3a42957d6e414c9bea6598030a2e9b624156e6",
+        "bytes": 2071597
+      }
+    ],
+    "graph": {
+      "path": "/root/gpufree-data/conda/envs/panda_human_live/lib/python3.10/site-packages/mediapipe/modules/hand_landmark/hand_landmark_tracking_cpu.binarypb",
+      "sha256": "942ad4e6b3ecd1903fd2743ad2255a341854de975ef9c90418a4c7b64f0b4425",
+      "bytes": 2901
+    },
+    "implementation": {
+      "path": "/root/gpufree-data/conda/envs/panda_human_live/lib/python3.10/site-packages/mediapipe/python/solutions/hands.py",
+      "sha256": "4eea13e0f63eae5cf2dc21448ea78df38f4c90a2a36f43f1db8d8797f788b51a",
+      "bytes": 6132
+    },
+    "thresholds": {
+      "min_detection_confidence": 0.5,
+      "min_tracking_confidence": 0.5,
+      "min_handedness_score": 0.5
+    },
+    "backend_options": {
+      "static_image_mode": false,
+      "model_complexity": 0,
+      "max_num_hands": 2,
+      "min_detection_confidence": 0.5,
+      "min_tracking_confidence": 0.5
+    },
+    "handedness": {
+      "input_mirrored": false,
+      "raw_label_assumption": "mirrored_selfie_input",
+      "label_mapping": {
+        "Left": "right_hand",
+        "Right": "left_hand"
+      },
+      "rule": "swap_left_right_labels",
+      "image_or_coordinates_flipped": false,
+      "inferred_from_ego_view": false,
+      "source": "https://github.com/google-ai-edge/mediapipe/blob/v0.10.21/docs/solutions/hands.md#multi_handedness"
+    },
+    "coordinate_semantics": {
+      "x": "normalized_by_input_image_width",
+      "y": "normalized_by_input_image_height",
+      "z": "wrist_relative_depth_roughly_x_scale_smaller_is_closer_NOT_meters",
+      "camera_metric_xyz": false,
+      "world_local": "omitted_not_camera_or_global_frame",
+      "landmark_order": "MediaPipe_Hands_21_wrist_index_0"
+    },
+    "confidence_semantics": "handedness_classification_score_NOT_detection_score_or_joint_accuracy",
+    "conf_slot_order": [
+      "left_hand",
+      "right_hand"
+    ],
+    "missing": "whole_hand_and_corresponding_conf_NaN",
+    "duplicate_label_policy": "highest_score_first_on_tie",
+    "interpolation": "none",
+    "thread_policy": "construct_process_close_on_the_same_thread; metadata_after_join_is_allowed",
+    "timestamp_policy": {
+      "units": "ms",
+      "strictly_increasing": true,
+      "passed_to_legacy_graph": false,
+      "legacy_graph_clock": "internal_simulated_33333us_per_call",
+      "real_time_performance_claimed": false
+    },
+    "drawing_colors_bgr": {
+      "left_hand": [
+        0,
+        220,
+        0
+      ],
+      "right_hand": [
+        255,
+        120,
+        0
+      ]
+    },
+    "frames_processed": 44,
+    "last_input_timestamp_ms": 1433.3333333333333,
+    "closed": false,
+    "failed": false
+  },
+  "object_backend": {
+    "name": "foundationpose",
+    "real_model": true,
+    "repo": "/root/gpufree-data/third_party/FoundationPose_real_20261022",
+    "seed": 0,
+    "seed_source": "official_estimater.set_seed_before_predictor_initialization",
+    "git_commit": "a1b694b83e633c2cb6115b9063d940a687759392",
+    "git_dirty": false,
+    "weights": {
+      "scorer": {
+        "checkpoint": {
+          "path": "/root/gpufree-data/datasets/ego_hoi/foundationpose_assets_20261022/weights/2024-01-11-20-02-45/model_best.pth",
+          "sha256": "81924d384bf5c26c646ee4783104982ae3d1e049c181c36641b6a7aeae494c26",
+          "bytes": 190229389
+        },
+        "config": {
+          "path": "/root/gpufree-data/datasets/ego_hoi/foundationpose_assets_20261022/weights/2024-01-11-20-02-45/config.yml",
+          "sha256": "a79db4de3b95885dd5ae86833b37b8698a75dad81e87d1086cd50b2fcd8dda3f",
+          "bytes": 778
+        },
+        "implementation": {
+          "path": "/root/gpufree-data/third_party/FoundationPose_real_20261022/learning/training/predict_score.py",
+          "sha256": "97f2f6f74fbe60be6a630d515db5142d78045f1150adb26dca56d93cffd3bbde",
+          "bytes": 9572
+        }
+      },
+      "refiner": {
+        "checkpoint": {
+          "path": "/root/gpufree-data/datasets/ego_hoi/foundationpose_assets_20261022/weights/2023-10-28-18-33-37/model_best.pth",
+          "sha256": "774700586ddc435d408fc01c9809c43e151232936369dfbea0f0f964ba471d60",
+          "bytes": 68220109
+        },
+        "config": {
+          "path": "/root/gpufree-data/datasets/ego_hoi/foundationpose_assets_20261022/weights/2023-10-28-18-33-37/config.yml",
+          "sha256": "28a6ba94a33230ee5fc3c51939486281578b0972542bd9e38ca6123e75605686",
+          "bytes": 708
+        },
+        "implementation": {
+          "path": "/root/gpufree-data/third_party/FoundationPose_real_20261022/learning/training/predict_pose_refine.py",
+          "sha256": "a210f46868ab77631fdb264043356a435d06b1294929b304b0922e23c839d64a",
+          "bytes": 14252
+        }
+      }
+    },
+    "code": [
+      {
+        "path": "/root/gpufree-data/third_party/FoundationPose_real_20261022/estimater.py",
+        "sha256": "73a40474d11ab9d9dc873e101b5eef370c0bd78f2874ab1b5148dac402496ad0",
+        "bytes": 10283
+      },
+      {
+        "path": "/root/gpufree-data/third_party/FoundationPose_real_20261022/Utils.py",
+        "sha256": "ab77518df7a6c41bef82cb32579d06ccff5d435ee5ad716a8c1fef0c72f05ad4",
+        "bytes": 35397
+      }
+    ],
+    "torch": "2.6.0+cu124",
+    "cuda": "12.4",
+    "device": "NVIDIA L40"
+  },
+  "stream_elapsed_seconds": 3.1031095385551453,
+  "timing": {
+    "steady_frames": 43,
+    "steady_processing_fps": 41.52356127378698,
+    "steady_latency_p50_ms": 22.476591169834137,
+    "steady_latency_p95_ms": 27.264741249382492,
+    "keeps_up_with_source_steady": true,
+    "criterion": "mean throughput >= source FPS AND p95 frame work <= frame period; excludes registration, pacing sleep, model loading, preflight",
+    "registration_frame_ms": 1634.7665023058653,
+    "source_read_to_output_p95_ms": 66.89895857125519,
+    "source_latency_meaning": "file-read start to rendered video write, including bounded prefetch queue; NOT camera capture-to-display latency",
+    "live_camera_validated": false
+  },
+  "coverage": {
+    "object_frames": 44,
+    "human_hand_frames": 44,
+    "joint_frames": 44,
+    "joint_rate": 1.0,
+    "meaning": "frames with valid predictions, NOT accuracy"
+  },
+  "video": {
+    "decoded_frames": 44,
+    "fps": 30.0,
+    "fps_source": "/root/gpufree-data/datasets/ego_hoi/human_rgbd_assets_20261022/scenes/dexycb_bowl_20200709_150906_932122060861_f030_073/meta.json; official CVPR2021 paper section 2.1"
+  },
+  "total_wall_seconds": 15.827752314507961
+}

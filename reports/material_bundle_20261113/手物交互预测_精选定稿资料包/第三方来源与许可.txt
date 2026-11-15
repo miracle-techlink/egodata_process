@@ -1,0 +1,30 @@
+THIRD-PARTY NOTICES — Curated Local Research Bundle
+
+This local research bundle contains the selected report, companion, four demonstration videos, derived figures, necessary experiment records, project source and one project LSTM checkpoint for cached-input replay. It is not a mirror of the complete training dataset. The report itself excludes source EgoDemo frames and record-level illustrations.
+
+DexYCB
+Source: https://dex-ycb.github.io/
+License: Creative Commons Attribution-NonCommercial 4.0 International
+https://creativecommons.org/licenses/by-nc/4.0/
+Authors: Yu-Wei Chao, Wei Yang, Yu Xiang, Pavlo Molchanov, Ankur Handa, Jonathan Tremblay, Yashraj S. Narang, Karl Van Wyk, Umar Iqbal, Stan Birchfield, Jan Kautz, Dieter Fox.
+Use: research screenshots and a 44-frame video with project-estimated hand skeleton, object box and pose axes. The screenshot is subject to the original noncommercial license. No endorsement is implied.
+
+HO-Cap
+Source: https://irvlutd.github.io/HOCap/
+Download mirror: JWRoboticsVision/HO-Cap-Dataset, revision 2b24836d5e51ad39e56ed4db3fc0c166e755332e.
+License: Creative Commons Attribution 4.0 International
+https://creativecommons.org/licenses/by/4.0/
+Authors: Jikai Wang, Qifan Zhang, Yu-Wei Chao, Bowen Wen, Xiaohu Guo, Yu Xiang.
+Use: 446-frame RGB and four-object inference-rendering video, synchronized pipeline demonstration, derived screenshots, and one-frame RGB/depth/point-cloud and transformed mesh-vertex cache for figure reproduction. Modifications: frame selection, overlays of hand landmarks and estimated object poses, layout, transcoding, and new cross-dataset LSTM inference. Original data rights and attribution remain. No MANO base model is distributed. No endorsement is implied.
+
+FoundationPose
+Source: https://github.com/NVlabs/FoundationPose
+License and copyright: https://github.com/NVlabs/FoundationPose/blob/main/LICENSE
+Copyright (c) 2022-Present, NVIDIA Corporation & affiliates. All rights reserved.
+Use: method attribution and project-estimated object poses in HO-Cap and DexYCB. The independent robot backend illustration has been excluded. FoundationPose model weights and upstream source datasets are not bundled.
+
+EgoDemo / Lightwheel AI
+Official authorized-access entry: https://huggingface.co/datasets/LightwheelAI/EgoDemo
+The public report contains method descriptions and non-record-identifying aggregate statistics. It excludes source frames, videos, record identifiers, per-frame annotations, manifests and source checksums. Hand-coordinate and surface-motion illustrations are independently authored explanatory diagrams, not reconstructions or experimental predictions. The newly added interaction interface and continuous pipeline video use HO-Cap observations and actual cross-dataset LSTM inference.
+
+Author-created text and diagrams are not a relicensing of any third-party material. Consult the cited sources and original licenses before reusing third-party screenshots.

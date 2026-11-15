@@ -1,0 +1,24 @@
+\documentclass[tikz,border=5pt]{standalone}
+\usepackage[UTF8,fontset=fandol]{ctex}
+\usetikzlibrary{arrows.meta}
+\definecolor{blue}{HTML}{247DA6}\definecolor{green}{HTML}{27896C}\definecolor{orange}{HTML}{DD8A28}
+\begin{document}
+\begin{tikzpicture}[>=Latex,font=\small,n/.style={circle,draw,minimum size=.85cm,fill=white},edge/.style={->,thick}]
+\path[use as bounding box] (-.2,-2.4) rectangle (16.2,3.5);
+\foreach \x/\title in {0/历史观测,5.5/目标时刻已知关系,11/模型预测交互图}{
+ \node[anchor=west,font=\bfseries] at (\x,3.2) {\title};
+ \draw[rounded corners,blue!45] (\x,-1.6) rectangle (\x+5,2.8);
+}
+\node[n,draw=green] (l) at (1.1,1.8) {左手};\node[n,draw=blue] (r) at (3.7,1.8) {右手};
+\node[n,draw=orange] (o) at (2.4,.1) {物体};
+\draw[dotted] (l)--(o);\draw[dotted] (r)--(o);
+\node[align=center,text width=4.5cm] at (2.5,-.95) {过去32帧的有效状态\\图中角色均为示意};
+\node[n,draw=green] (l2) at (6.6,1.8) {左手};\node[n,draw=blue] (r2) at (9.2,1.8) {右手};\node[n,draw=orange] (o2) at (7.9,.1) {物体};
+\draw[edge,green] (l2)--node[left,font=\scriptsize]{已知关系}(o2);\draw[dashed,gray] (r2)--node[right,font=\scriptsize]{未知}(o2);
+\node[align=center,text width=4.5cm] at (8,-.95) {未来核验时揭示标签\\正、负、未知分开};
+\node[n,draw=green] (l3) at (12.1,1.8) {左手};\node[n,draw=blue] (r3) at (14.7,1.8) {右手};\node[n,draw=orange] (o3) at (13.4,.1) {物体};
+\draw[edge,blue] (l3)--node[left,font=\scriptsize]{预测边}(o3);\draw[edge,blue,dashed] (r3)--(o3);
+\node[align=center,text width=4.5cm] at (13.5,-.95) {实体对 + 关系类型\\实测概率由绑定模型输出};
+\node[anchor=west,font=\scriptsize] at (0,-2.15) {展示结构示意，不是实验预测结果；不使用受限视频帧、逐条标签或虚构数值。};
+\end{tikzpicture}
+\end{document}

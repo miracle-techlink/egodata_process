@@ -1,0 +1,44 @@
+\documentclass[tikz,border=5pt]{standalone}
+\usepackage[UTF8,fontset=fandol]{ctex}
+\usepackage{amsmath}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\definecolor{ink}{HTML}{18324A}
+\definecolor{blue}{HTML}{247DA6}
+\definecolor{orange}{HTML}{DD8A28}
+\definecolor{green}{HTML}{27896C}
+\begin{document}
+\begin{tikzpicture}[>=Latex,font=\small,text=ink,
+ box/.style={draw=blue,fill=blue!5,rounded corners=2pt,align=center,minimum height=.9cm,text width=2.9cm},
+ arr/.style={->,line width=1pt,draw=blue}]
+\path[use as bounding box] (-.2,-5.5) rectangle (16.2,1.7);
+\node[anchor=west,font=\bfseries] at (0,1.4) {(a) 在线图像分支：定位手掌，再回归关键点};
+\node[box] (rgb) at (1.55,.4) {当前RGB帧\\保留原图与帧号};
+\node[box] (palm) at (5.65,.4) {手掌检测／跟踪\\裁剪手部区域};
+\node[box] (landmark) at (9.75,.4) {21点关键点回归\\$(x,y,z_{\rm rel})$};
+\node[box] (out) at (13.85,.4) {左右手身份 + 有效mask\\缺失保持未知};
+\draw[arr] (rgb)--(palm);\draw[arr] (palm)--(landmark);\draw[arr] (landmark)--(out);
+\node[anchor=west,font=\bfseries] at (0,-.7) {(b) 21点拓扑示意};
+\begin{scope}[shift={(.2,-5)},scale=.86]
+\coordinate (p0) at (2.3,0);
+\coordinate (p1) at (1.5,.6);\coordinate (p2) at (.9,1.15);\coordinate (p3) at (.45,1.65);\coordinate (p4) at (.1,2.15);
+\coordinate (p5) at (1.5,1.75);\coordinate (p6) at (1.25,2.65);\coordinate (p7) at (1.12,3.3);\coordinate (p8) at (1.03,3.85);
+\coordinate (p9) at (2.3,1.95);\coordinate (p10) at (2.3,3);\coordinate (p11) at (2.3,3.7);\coordinate (p12) at (2.3,4.25);
+\coordinate (p13) at (3.08,1.8);\coordinate (p14) at (3.25,2.75);\coordinate (p15) at (3.38,3.35);\coordinate (p16) at (3.45,3.85);
+\coordinate (p17) at (3.8,1.4);\coordinate (p18) at (4.15,2.1);\coordinate (p19) at (4.35,2.6);\coordinate (p20) at (4.55,3);
+\draw[ink!50,line width=1.3pt] (p0)--(p5)--(p9)--(p13)--(p17)--cycle;
+\foreach \a/\b/\c/\d/\col in {1/2/3/4/orange,5/6/7/8/blue,9/10/11/12/green,13/14/15/16/violet,17/18/19/20/red!65!black}{
+ \draw[\col,line width=1.8pt] (p0)--(p\a)--(p\b)--(p\c)--(p\d);
+ \foreach \j in {\a,\b,\c,\d}{\fill[\col] (p\j) circle (2.3pt);\node[anchor=west,font=\scriptsize,xshift=3pt] at (p\j) {\j};}
+}
+\fill[ink] (p0) circle(2.5pt);\node[below,font=\scriptsize] at (p0) {0：腕部};
+\end{scope}
+\node[anchor=west,font=\bfseries] at (5.1,-.7) {(c) 两条三维来源与统一坐标};
+\node[box,text width=3.6cm,minimum height=1.0cm] (world) at (7,-1.65) {EgoDemo官方三维关节\\世界系 $p_w$，单位：米};
+\node[box,text width=3.6cm,minimum height=1.0cm] (camera) at (13.4,-1.65) {同帧相机系 $p_c$\\$p_c=R_{cw}^{\mathsf T}(p_w-t_{cw})$};
+\draw[arr] (world)--node[above,font=\scriptsize]{相机外参求逆}(camera);
+\node[box,text width=3.6cm,minimum height=1.0cm,draw=green,fill=green!5] (pixel) at (7,-3.35) {RGB-D预测二维点 $(u,v)$\\局部有效深度中位数 $d$};
+\node[box,text width=3.6cm,minimum height=1.0cm,draw=green,fill=green!5] (surface) at (13.4,-3.35) {相机系可见表面点\\$p_c=dK^{-1}[u,v,1]^{\mathsf T}$};
+\draw[arr,draw=green] (pixel)--node[above,font=\scriptsize]{内参反投影}(surface);
+\node[align=left,anchor=west,text width=10.7cm,font=\small] at (5.1,-4.85) {米制深度 $d$ 与相对深度 $z_{\rm rel}$ 分开；表面点不自动等于骨骼关节中心。\\几何、身份和mask一起传给历史窗口。图为原理示意，非实测关节。};
+\end{tikzpicture}
+\end{document}

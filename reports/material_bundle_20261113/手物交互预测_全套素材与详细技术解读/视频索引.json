@@ -1,0 +1,178 @@
+[
+  {
+    "path": "03_视频素材/b857b2a8_demo.mp4",
+    "name": "b857b2a8_demo.mp4",
+    "description": "早期交互演示（授权工作区）",
+    "duration_seconds": 6.0,
+    "codec_name": "h264",
+    "width": 1500,
+    "height": 500,
+    "r_frame_rate": "4/1",
+    "nb_frames": "24"
+  },
+  {
+    "path": "03_视频素材/b857b2a8_demo_v2.mp4",
+    "name": "b857b2a8_demo_v2.mp4",
+    "description": "早期交互演示改进版（授权工作区）",
+    "duration_seconds": 6.0,
+    "codec_name": "h264",
+    "width": 1500,
+    "height": 500,
+    "r_frame_rate": "4/1",
+    "nb_frames": "24"
+  },
+  {
+    "path": "03_视频素材/demo_pose_v4.mp4",
+    "name": "demo_pose_v4.mp4",
+    "description": "位姿与交互显示历史版本 v4（授权工作区）",
+    "duration_seconds": 10.75,
+    "codec_name": "h264",
+    "width": 1500,
+    "height": 500,
+    "r_frame_rate": "4/1",
+    "nb_frames": "43"
+  },
+  {
+    "path": "03_视频素材/demo_v5.mp4",
+    "name": "demo_v5.mp4",
+    "description": "交互预测历史版本 v5（授权工作区）",
+    "duration_seconds": 8.0,
+    "codec_name": "h264",
+    "width": 1500,
+    "height": 500,
+    "r_frame_rate": "3/1",
+    "nb_frames": "24"
+  },
+  {
+    "path": "03_视频素材/demo_v6.mp4",
+    "name": "demo_v6.mp4",
+    "description": "EgoDemo原始三栏交互预测（授权工作区）",
+    "duration_seconds": 8.0,
+    "codec_name": "h264",
+    "width": 1500,
+    "height": 500,
+    "r_frame_rate": "3/1",
+    "nb_frames": "24"
+  },
+  {
+    "path": "03_视频素材/e923ec44_demo.mp4",
+    "name": "e923ec44_demo.mp4",
+    "description": "另一早期交互样例（授权工作区）",
+    "duration_seconds": 2.0,
+    "codec_name": "h264",
+    "width": 1500,
+    "height": 500,
+    "r_frame_rate": "4/1",
+    "nb_frames": "8"
+  },
+  {
+    "path": "03_视频素材/full-pipeline.mp4",
+    "name": "full-pipeline.mp4",
+    "description": "最新完整流程：物体名称与实物图、手部/6D、当前交互与模型候选",
+    "duration_seconds": 14.866667,
+    "codec_name": "h264",
+    "width": 1800,
+    "height": 1040,
+    "r_frame_rate": "30/1",
+    "nb_frames": "446"
+  },
+  {
+    "path": "03_视频素材/hands_and_object_rgbd.mp4",
+    "name": "hands_and_object_rgbd.mp4",
+    "description": "DexYCB真人手与物体6D联合感知",
+    "duration_seconds": 1.466667,
+    "codec_name": "mpeg4",
+    "width": 640,
+    "height": 480,
+    "r_frame_rate": "30/1",
+    "nb_frames": "44"
+  },
+  {
+    "path": "03_视频素材/hands_and_object_rgbd_browser.mp4",
+    "name": "hands_and_object_rgbd_browser.mp4",
+    "description": "DexYCB真人手与物体6D联合感知 · H.264浏览器兼容版",
+    "duration_seconds": 1.466667,
+    "codec_name": "h264",
+    "width": 640,
+    "height": 480,
+    "r_frame_rate": "30/1",
+    "nb_frames": "44"
+  },
+  {
+    "path": "03_视频素材/hands_ego_coordinates.mp4",
+    "name": "hands_ego_coordinates.mp4",
+    "description": "第一视角手部世界/相机坐标（授权工作区）",
+    "duration_seconds": 10.0,
+    "codec_name": "mpeg4",
+    "width": 1280,
+    "height": 864,
+    "r_frame_rate": "10/1",
+    "nb_frames": "100"
+  },
+  {
+    "path": "03_视频素材/hands_ego_coordinates_browser.mp4",
+    "name": "hands_ego_coordinates_browser.mp4",
+    "description": "第一视角手部世界/相机坐标（授权工作区） · H.264浏览器兼容版",
+    "duration_seconds": 10.0,
+    "codec_name": "h264",
+    "width": 1280,
+    "height": 864,
+    "r_frame_rate": "10/1",
+    "nb_frames": "100"
+  },
+  {
+    "path": "03_视频素材/hocap_four_objects.mp4",
+    "name": "hocap_four_objects.mp4",
+    "description": "HO-Cap四物体完整感知分支",
+    "duration_seconds": 14.866667,
+    "codec_name": "h264",
+    "width": 640,
+    "height": 480,
+    "r_frame_rate": "30/1",
+    "nb_frames": "446"
+  },
+  {
+    "path": "03_视频素材/pose6d_backend_full.mp4",
+    "name": "pose6d_backend_full.mp4",
+    "description": "FoundationPose完整后端样例，包含机器人，73.7秒",
+    "duration_seconds": 73.7,
+    "codec_name": "mpeg4",
+    "width": 640,
+    "height": 480,
+    "r_frame_rate": "10/1",
+    "nb_frames": "737"
+  },
+  {
+    "path": "03_视频素材/pose6d_backend_full_browser.mp4",
+    "name": "pose6d_backend_full_browser.mp4",
+    "description": "FoundationPose完整后端样例，包含机器人，73.7秒 · H.264浏览器兼容版",
+    "duration_seconds": 73.7,
+    "codec_name": "h264",
+    "width": 640,
+    "height": 480,
+    "r_frame_rate": "10/1",
+    "nb_frames": "737"
+  },
+  {
+    "path": "03_视频素材/raw_rgb.mp4",
+    "name": "raw_rgb.mp4",
+    "description": "同一HO-Cap原始RGB回放，作为对照",
+    "duration_seconds": 14.866667,
+    "codec_name": "mpeg4",
+    "width": 640,
+    "height": 480,
+    "r_frame_rate": "30/1",
+    "nb_frames": "446"
+  },
+  {
+    "path": "03_视频素材/raw_rgb_browser.mp4",
+    "name": "raw_rgb_browser.mp4",
+    "description": "同一HO-Cap原始RGB回放，作为对照 · H.264浏览器兼容版",
+    "duration_seconds": 14.866667,
+    "codec_name": "h264",
+    "width": 640,
+    "height": 480,
+    "r_frame_rate": "30/1",
+    "nb_frames": "446"
+  }
+]

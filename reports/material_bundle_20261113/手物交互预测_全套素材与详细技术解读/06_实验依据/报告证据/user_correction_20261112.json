@@ -1,0 +1,8 @@
+{
+  "source": "current_user_message",
+  "final_full_dataset_score_reported": 0.93,
+  "metric_name": "pending_confirmation",
+  "optimization": "multiple_RSI_rounds",
+  "old_five_sequence_results": "historical_only_not_final",
+  "final_run_artifacts_located": false
+}

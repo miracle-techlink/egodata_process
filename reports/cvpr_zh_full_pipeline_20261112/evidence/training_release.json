@@ -1,0 +1,40 @@
+{
+  "schema_version": "v5_scoped_interaction_training_release",
+  "created_at": "2026-10-24T06:43:57.804550+00:00",
+  "training_index_sha256": "4b162d6595f7b489a078d86b096732a2060300cc3ea5d92296463fccfcb179e6",
+  "training_scope": "assistant_silver_interaction_forecasting_with_annotated_2d_observations",
+  "interaction_training_allowed": true,
+  "full_joint_training_allowed": false,
+  "full_annotation_complete": false,
+  "whole_object_6d_certified": false,
+  "human_ground_truth_certified": false,
+  "blind_evaluation": false,
+  "original_pool_retained": 300,
+  "subset_sequence_count": 5,
+  "subset_windows": {
+    "train": 592,
+    "val": 366,
+    "test": 280
+  },
+  "positive_types_absent_from_train": [
+    "cooperation:complementary",
+    "cooperation:handover",
+    "operation:align",
+    "operation:flip",
+    "operation:hold",
+    "operation:lift",
+    "operation:place",
+    "operation:press",
+    "relation:stabilizes"
+  ],
+  "evidence_sha256": {
+    "review_seed_audit.json": "3729259eae0639473f3277f7dcdfd834b0d244a1e890e6b1ba91296fb38674c2",
+    "training_index_audit.json": "c43d73e37c8716210ba3c3a7ccb3ace7beb7641ce7703e75f157df1e0f58f06a",
+    "delivery_integrity_checks_v5.json": "32e53c6a41c7474c5c6b1949c6a36b16e92a2a953d184f1b61c575308bced05c",
+    "model_checks/real_graph_mamba_smoke.json": "a0660cd15910cbd58cfa11d2d69d7dca3893df66796ffa74dc2747fda4f58c06",
+    "model_checks/real_graph_target_coverage.json": "be22ad8180c2e4e9c0a03f59bd5f0c304a65e061c7e2abff5738af4343ee2ef0",
+    "audit_sources/model_report_crosscheck_v2.json": "78d1b0d9ae974b01ba863be89149822bce958973277c8e9c83c72e75ebaf4c9e"
+  },
+  "scope_zh": "允许以已审核二维实例观测和官方手姿态进行助手银标交互预测的小规模训练。只覆盖本索引5段1238窗；没有认证300段完整标注或整物体6D，不含训练结果。",
+  "evaluation_limit_zh": "训练仅12种正例类型；验证/测试另9类没有训练正例，须单列未见类型。窗口高度重叠、采集少且标注已被查看，不用于声称无偏或盲测性能。"
+}

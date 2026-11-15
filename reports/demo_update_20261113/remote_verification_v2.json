@@ -1,0 +1,26 @@
+[
+  {
+    "route": "/",
+    "status": 200,
+    "semantic_revision_present": true
+  },
+  {
+    "route": "/egodata-technical-report-zh.pdf",
+    "status": 200,
+    "local_hash_match": true
+  },
+  {
+    "route": "/media/full-pipeline.mp4",
+    "status": 200,
+    "local_hash_match": true
+  },
+  {
+    "route": "/demo_manifest.json",
+    "status": 200,
+    "local_hash_match": true
+  },
+  {
+    "release_pdf_status": 200,
+    "local_hash_match": true
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "status": "local_and_independent_package_build_passed",
+  "main_pages": 7,
+  "materials_pages": 4,
+  "latex_errors": 0,
+  "undefined_references": 0,
+  "overfull_boxes": 0,
+  "missing_glyph_log_warnings": 0,
+  "original_demo_chinese_boxes": "present_in_source_image_needs_original_rerender",
+  "demo_count": 6,
+  "full_decode_and_sha_verified": true,
+  "collector_isolated_smoke": "passed",
+  "remote_verified": false,
+  "final_user_score_approx": 0.93,
+  "final_run_bound": false,
+  "portable_build_exit": 0,
+  "portable_build_directory": "/tmp/cvpr_full_pipeline_portable_i1vju5ux",
+  "pdf_sha256": {
+    "main.pdf": "c4d7804e1fb98d76f0327b6e9cd0f1983ef47ee61b76d782da03444ae247c680",
+    "demo_materials.pdf": "13f137056e9a3a93671292019e1fe5657e5481a297c612153a0cce80e7fdaecd"
+  }
+}

@@ -1,0 +1,116 @@
+[
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/runs/human_pose_live_20261022/dexycb_human_lite_stream_3/run_report.json",
+    "snapshot": "evidence/perception/hand_rgbd_report.json",
+    "sha256": "27d2c04c3783daa15e6d17e52ec2f541707324e1938481bbe203edb9993582c1"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/runs/human_pose_live_20261022/dexycb_human_lite_stream_3/frames.csv",
+    "snapshot": "evidence/perception/rgbd_frames.csv",
+    "sha256": "32c1bc4a41cf24596677eb9819daace851231b5fac17510f8a587076e1bc9d36"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/runs/human_pose_live_20261022/performance_trials.json",
+    "snapshot": "evidence/perception/performance_trials.json",
+    "sha256": "a84a3cf553642c640837bebe8703c29cac0c8bec7103d80a4daff6f3711fb10d"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/runs/foundationpose_real_20261022/mustard0_full/run_report.json",
+    "snapshot": "evidence/perception/fp_report.json",
+    "sha256": "3a4804f25a3c05a189c077ead21d688ba8e6b29c403a5bf1bf2b20bce2e198f3"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/runs/foundationpose_real_20261022/independent_validation.json",
+    "snapshot": "evidence/perception/fp_validation.json",
+    "sha256": "1f8a177875634ffa78d1652fcf939ebabbeda538021818efc2717d8f545637e1"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/runs/foundationpose_real_20261022/mustard0_full/poses.npz",
+    "snapshot": "evidence/perception/fp_poses.npz",
+    "sha256": "f5d3ca5cc933e05e34faf2601e3ee752af6845a918badd4d672920ec76d0bfbc"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/runs/full_hocap_resume_20261023/production_01/report.json",
+    "snapshot": "evidence/perception/hocap_report.json",
+    "sha256": "52e6432614fe93cb570a5b72fa1013d9cb262bf835b5626fdea3c1a4ab82987c"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/runs/full_hocap_resume_20261023/production_01/acceptance.json",
+    "snapshot": "evidence/perception/hocap_acceptance.json",
+    "sha256": "4cbf52b2931de5336a917d0297c93e3218a7b4e8216ceaecaa1c6c692a35b6c3"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/runs/fusion_acceptance_20261022_review/d057beac-dab1-43a1-9192-6b8b06abddaf/acceptance.json",
+    "snapshot": "evidence/perception/shelf_acceptance.json",
+    "sha256": "a3c073ddf47c36aad89a1e18b78a79fd49a4ab8b70d9810d0059d823a4a2420e"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/runs/fusion_acceptance_20261022_review/ce22bfbe-3daa-4cac-b43a-7c202f6c87ee/acceptance.json",
+    "snapshot": "evidence/perception/cable_acceptance.json",
+    "sha256": "75d15e64f8eb90ea60af356fb4dd7a1fe5308a35b29615f6ee0574d3020e9c32"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/runs/egodemo_refine_300_20261023/refinement_report.json",
+    "snapshot": "evidence/perception/refinement_report.json",
+    "sha256": "3f7a946da6802b7b3304b03542b9f6f5b30e04a9ea1c9a6451214ffd86994dd9"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/runs/egodemo_refine_300_20261023/pixel_calibration_audit_summary.json",
+    "snapshot": "evidence/perception/calibration_summary.json",
+    "sha256": "e2dc3dbdc6c02eb01ee839bb05fddf54f8ae3525d2f284707981fed21d39ffdb"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/runs/human_pose_live_20261022/human_hands_foundationpose_preview.png",
+    "snapshot": "figures/hand_object_rgbd.png",
+    "sha256": "9664f0d5a95c674f33665306e76d6567c66f421c5cf40fb4a3a3bcf5a87045be",
+    "operation": "original_pixels_unchanged"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/runs/fusion_acceptance_20261022_review/d057beac-dab1-43a1-9192-6b8b06abddaf/frame_000270.png",
+    "snapshot": "figures/hand_ego_coordinates.png",
+    "sha256": "30eefbcdefcc159de40f7b266e0a534f22fa0d373b8e335a092fdb6dbf68044b",
+    "operation": "original_pixels_unchanged"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/runs/foundationpose_real_20261022/mustard0_full/scene_3d_0368.png",
+    "snapshot": "figures/pose6d_pointcloud.png",
+    "sha256": "c4561f368b6a8bb0a05970b0db6716a08500fed91f2609f024b4cf34ac3cba41",
+    "operation": "original_pixels_unchanged"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/runs/egodemo_refine_300_20261023/dense_seed_pilot_review.jpg",
+    "snapshot": "figures/egodemo_surface_seeds.jpg",
+    "sha256": "9c2057e94f0a7dbc25afe54bbac34ed035a659b4b59e148224d695c925fd6136",
+    "operation": "original_pixels_unchanged"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/runs/human_pose_live_20261022/human_hands_foundationpose_30fps.mp4",
+    "snapshot": "media/hands_and_object_rgbd.mp4",
+    "sha256": "284172980bcac7a8d873f831b98a233a94fd6fb19dec49593f3eebdea941d4e2",
+    "operation": "original_bytes_unchanged"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/runs/full_hocap_resume_20261023/production_01/overlay.mp4",
+    "snapshot": "media/hocap_four_objects.mp4",
+    "sha256": "dbda443e5f137f827a8130252a96bcc03613e0b547961daeffe11f895fc96807",
+    "operation": "original_bytes_unchanged"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/runs/fusion_acceptance_20261022_review/d057beac-dab1-43a1-9192-6b8b06abddaf/hand_camera_preview.mp4",
+    "snapshot": "media/hands_ego_coordinates.mp4",
+    "sha256": "5beb5906ab173b8e75e5173f1ac68bd539d70b87d87c00cd857e2d2e647a946e",
+    "operation": "original_bytes_unchanged"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/runs/foundationpose_real_20261022/mustard0_full/preview.mp4",
+    "snapshot": "media/pose6d_backend_full.mp4",
+    "sha256": "3e7b6eb094d24911bf2b2097ede45b6ce2b220221af9f25706693171541be1c6",
+    "operation": "original_bytes_unchanged"
+  },
+  {
+    "source": "media/hocap_four_objects.mp4",
+    "frame_index": 180,
+    "snapshot": "figures/hocap_four_objects_f180.png",
+    "operation": "decode_frame_without_overlay_changes"
+  }
+]

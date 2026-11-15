@@ -1,0 +1,53 @@
+[
+  {
+    "file": "full-pipeline.mp4",
+    "sha256": "949b8a72aad1ac86401801fc7339504fa8d180a75982cdb345176b71851e936f",
+    "programs": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 1800,
+        "height": 1040,
+        "r_frame_rate": "30/1",
+        "nb_frames": "446"
+      }
+    ],
+    "format": {
+      "duration": "14.866667"
+    }
+  },
+  {
+    "file": "hands_and_object_rgbd.mp4",
+    "sha256": "d47492908dea3fd18088758b68b864356c8ddc7442e5375ea56ad7bee648da54",
+    "programs": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 640,
+        "height": 480,
+        "r_frame_rate": "30/1",
+        "nb_frames": "44"
+      }
+    ],
+    "format": {
+      "duration": "1.466667"
+    }
+  },
+  {
+    "file": "hocap_four_objects.mp4",
+    "sha256": "dbda443e5f137f827a8130252a96bcc03613e0b547961daeffe11f895fc96807",
+    "programs": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 640,
+        "height": 480,
+        "r_frame_rate": "30/1",
+        "nb_frames": "446"
+      }
+    ],
+    "format": {
+      "duration": "14.866667"
+    }
+  }
+]

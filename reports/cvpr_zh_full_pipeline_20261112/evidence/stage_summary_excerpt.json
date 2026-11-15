@@ -1,0 +1,10 @@
+{
+  "source": "/home/nvidia/.claude/projects/-home-nvidia-algotithm/memory/egodemo-v5-training-state.md",
+  "type": "historical_assistant_summary_not_raw_benchmark",
+  "records": [
+    {
+      "line": 21,
+      "text": "- **v4 benchmark + RSI（2026-10-26 深夜）**：冻结发布（暂停 worker 后跑完链——坑：refresh2.sh 不含 export，删了 index 会 FAIL_INDEX；发布链审计 ~1h/轮且必须先停 worker 否则移动目标竞态）。冻结版：train 5,855/36 段、val 2,123/12 段、test 1,326/9 段。v4 test F1：mamba 0.905 / lstm 0.939 / transformer 0.939（val 0.807/0.816/0.872）——数字终稳。RSI loop 在 tmux `rsi_auto`（loop-root /root/gpufree-data/runs/rsi_auto，genome=data.root 指向 auto 根），scaleA/B 已恢复放量。注：RSI/训练只读冻结文件，worker 并行安全；下次重新冻结才吸收新段。"
+    }
+  ]
+}

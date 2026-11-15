@@ -1,0 +1,17 @@
+{
+  "branch": "reports/technical-report-2026-11-12",
+  "previous_commit": "fcdd2146798851d169aed94fbb8c9e1142b7da47",
+  "commit": "05514de60e6ef78765ebca0e863a0245fa007e85",
+  "tag_preserved": "technical-report-2026-11-12",
+  "release_url": "https://github.com/miracle-techlink/egodata_process/releases/tag/technical-report-2026-11-12",
+  "demo_url": "https://egodata-full-pipeline-demo.miracle-techlink.chatgpt.site",
+  "pdf_url": "https://egodata-full-pipeline-demo.miracle-techlink.chatgpt.site/egodata-technical-report-zh.pdf",
+  "project_id": "appgprj_6af5e43ba18c8191b5c3466a6b9a3b24",
+  "site_commit": "1559e59f61e79f1cc6cfdfdec341b9cf139e35a3",
+  "site_version_number": 2,
+  "site_version": "appgprj_6af5e43ba18c8191b5c3466a6b9a3b24~appgver_90771a99907481919df22179bf945262",
+  "deployment_id": "appgdep_6af5e974e4548191a93a4b3ece6840b8",
+  "deployment_status": "succeeded",
+  "site_access": "public",
+  "updated_date": "2026-11-13"
+}

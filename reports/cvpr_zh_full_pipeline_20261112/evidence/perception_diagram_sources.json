@@ -1,0 +1,23 @@
+[
+  {
+    "path": "figures/hand_pose_principle.pdf",
+    "source": "figures/hand_pose_principle.tex",
+    "kind": "authored_vector_mechanism_diagram_not_experimental_output",
+    "based_on": "sections/perception.tex and included pipeline source snapshots",
+    "sha256": "63e854442023028fe5ab10dcc6a2a7a536598748460579347826b80b6a1e4053"
+  },
+  {
+    "path": "figures/pose6d_principle.pdf",
+    "source": "figures/pose6d_principle.tex",
+    "kind": "authored_vector_mechanism_diagram_not_experimental_output",
+    "based_on": "sections/perception.tex and included pipeline source snapshots",
+    "sha256": "818273372a9d15e77476ae61e8f8fa26ea05a7792e57b35ab3c21888449665f2"
+  },
+  {
+    "path": "figures/stereo_geometry_principle.pdf",
+    "source": "figures/stereo_geometry_principle.tex",
+    "kind": "authored_vector_mechanism_diagram_not_experimental_output",
+    "based_on": "sections/perception.tex and included pipeline source snapshots",
+    "sha256": "bde40b0fb26601b15a41ce554f6eb38e1523581292d9f56ed3d009e31b6f4e00"
+  }
+]

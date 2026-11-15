@@ -1,0 +1,19 @@
+\documentclass[tikz,border=4pt]{standalone}
+\usepackage[UTF8,fontset=fandol]{ctex}
+\usepackage{amsmath}
+\usetikzlibrary{arrows.meta,positioning,decorations.pathreplacing}
+\begin{document}
+\begin{tikzpicture}[>=Latex,font=\small]
+\draw[->,thick] (0,0)--(15,0) node[right]{原生时间};
+\foreach \i in {0,...,31}{\draw[fill=blue!18,draw=blue!60] ({0.5+0.25*\i},.12) rectangle +(0.18,.65);}
+\draw[thick,dashed,orange!80!black] (8.7,-.4)--(8.7,1.8);
+\node[align=center] at (4.2,1.2) {32帧历史观测：图像、手／物状态、有效mask};
+\node[below,align=center] at (8.7,-.4) {观察截止\ $t$};
+\draw[fill=orange!20,draw=orange!80!black] (13.4,.12) rectangle +(0.4,.65);
+\node[above,align=center] at (13.6,.9) {未来目标帧\ $u$};
+\draw[<->,thick] (8.7,1.85)--node[above]{$\tau_u-\tau_t\geq1$秒}(13.6,1.85);
+\node[draw,rounded corners,fill=blue!4,align=center,text width=6.6cm] at (4.4,-1.7) {历史特征 $X_{t-31:t}$ → 交互预测 $\hat Y_u$\\同采集固定split；缺测不插值冒充有效};
+\node[draw,rounded corners,fill=orange!6,align=center,text width=5.7cm] at (11.9,-1.7) {目标监督：正例 $Y=1$，负例 $Y=0$\\未知 $M=0$，只屏蔽损失与评估};
+\draw[->,dashed,orange!80!black] (13.6,.12)--(13.6,-1.08);
+\end{tikzpicture}
+\end{document}

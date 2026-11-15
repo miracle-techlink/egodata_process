@@ -1,0 +1,17 @@
+\documentclass[tikz,border=5pt]{standalone}
+\usepackage[UTF8,fontset=fandol]{ctex}
+\usepackage{amsmath}
+\usetikzlibrary{arrows.meta,positioning,fit,backgrounds}
+\begin{document}
+\begin{tikzpicture}[>=Latex,box/.style={draw=blue!45!black,fill=blue!4,rounded corners=2pt,align=center,minimum height=1.25cm,text width=2.8cm,font=\small},arr/.style={->,thick,draw=blue!60!black}]
+\node[box] (input) at (0,0) {历史实体观测\\$32\times11\times D$\\120维基础 / 132维增强};
+\node[box] (space) at (3.65,0) {共享特征投影\\帧内实体注意力\\$32\times11\times128$};
+\node[box] (time) at (7.3,0) {逐实体共享时序骨干\\Mamba / LSTM /\\因果 Transformer};
+\node[box] (pair) at (10.95,0) {历史末端实体状态\\有向实体对组合\\$[h_i,h_j,h_i-h_j,h_i h_j]$};
+\node[box] (output) at (14.6,0) {多标签交互图\\$11\times11\times66$\\逐类型 sigmoid};
+\draw[arr] (input)--(space);\draw[arr] (space)--(time);\draw[arr] (time)--(pair);\draw[arr] (pair)--(output);
+\node[draw=orange!70!black,fill=orange!7,rounded corners,align=center,text width=8cm,font=\small] (label) at (10.9,-1.65) {未来银标 $Y$ + 已知掩码 $M$：只进入监督与评估\\未知单元不计损失；未见实体不可预测};
+\draw[->,dashed,thick,draw=orange!70!black] (output.south)--(label.north east);
+\node[align=center,font=\small,text width=6.7cm] at (2.2,-1.6) {基础观测截止于历史锚点 $t$\\目标帧满足 $\tau_u-\tau_t\geq1$ 秒};
+\end{tikzpicture}
+\end{document}

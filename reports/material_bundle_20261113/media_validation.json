@@ -1,0 +1,80 @@
+{
+  "all_videos_decoded": [
+    {
+      "file": "full-pipeline.mp4",
+      "ok": true,
+      "error": ""
+    },
+    {
+      "file": "demo_v5.mp4",
+      "ok": true,
+      "error": ""
+    },
+    {
+      "file": "hands_and_object_rgbd.mp4",
+      "ok": true,
+      "error": ""
+    },
+    {
+      "file": "hands_ego_coordinates.mp4",
+      "ok": true,
+      "error": ""
+    },
+    {
+      "file": "b857b2a8_demo.mp4",
+      "ok": true,
+      "error": ""
+    },
+    {
+      "file": "e923ec44_demo.mp4",
+      "ok": true,
+      "error": ""
+    },
+    {
+      "file": "raw_rgb.mp4",
+      "ok": true,
+      "error": ""
+    },
+    {
+      "file": "hands_and_object_rgbd_browser.mp4",
+      "ok": true,
+      "error": ""
+    },
+    {
+      "file": "b857b2a8_demo_v2.mp4",
+      "ok": true,
+      "error": ""
+    },
+    {
+      "file": "pose6d_backend_full_browser.mp4",
+      "ok": true,
+      "error": ""
+    },
+    {
+      "file": "demo_pose_v4.mp4",
+      "ok": true,
+      "error": ""
+    },
+    {
+      "file": "pose6d_backend_full.mp4",
+      "ok": true,
+      "error": ""
+    },
+    {
+      "file": "demo_v6.mp4",
+      "ok": true,
+      "error": ""
+    },
+    {
+      "file": "hocap_four_objects.mp4",
+      "ok": true,
+      "error": ""
+    },
+    {
+      "file": "hands_ego_coordinates_browser.mp4",
+      "ok": true,
+      "error": ""
+    }
+  ],
+  "raster_images_verified": 183
+}

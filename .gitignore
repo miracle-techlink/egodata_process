@@ -17,3 +17,4 @@ __pycache__/
 # 环境与系统
 .env
 .DS_Store
+reports/demo_update_20261113/site/

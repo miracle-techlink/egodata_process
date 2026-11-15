@@ -1,0 +1,23 @@
+[
+  {
+    "series": "rsi_v5",
+    "history_records": 8,
+    "unique_scored_candidates": 6,
+    "successful_unique": 6,
+    "best_observed_val_f1": 0.8565799842395585
+  },
+  {
+    "series": "rsi_auto",
+    "history_records": 8,
+    "unique_scored_candidates": 6,
+    "successful_unique": 6,
+    "best_observed_val_f1": 0.9140679953106683
+  },
+  {
+    "series": "rsi_final",
+    "history_records": 30,
+    "unique_scored_candidates": 21,
+    "successful_unique": 21,
+    "best_observed_val_f1": 1.0
+  }
+]

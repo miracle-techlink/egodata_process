@@ -1,0 +1,102 @@
+[
+  {
+    "width": 1500,
+    "height": 500,
+    "avg_frame_rate": "4/1",
+    "nb_frames": "24",
+    "path": "media/b857b2a8_demo.mp4",
+    "duration": "6.000000",
+    "sha256": "a1fd396388c69d7e83a74ce55f91c06eb467c8541a3204978209edb9316ef376",
+    "full_decode_passed": true
+  },
+  {
+    "width": 1500,
+    "height": 500,
+    "avg_frame_rate": "4/1",
+    "nb_frames": "24",
+    "path": "media/b857b2a8_demo_v2.mp4",
+    "duration": "6.000000",
+    "sha256": "a1238542b2c8544455cce85e041a5483b2bad8fc682c0a5d34f2f93ca56edf37",
+    "full_decode_passed": true
+  },
+  {
+    "width": 1500,
+    "height": 500,
+    "avg_frame_rate": "4/1",
+    "nb_frames": "43",
+    "path": "media/demo_pose_v4.mp4",
+    "duration": "10.750000",
+    "sha256": "d29fcb8b59b0d9de86d0dd88da07ddaa5775f65342083c4872c829d6b3f195e7",
+    "full_decode_passed": true
+  },
+  {
+    "width": 1500,
+    "height": 500,
+    "avg_frame_rate": "3/1",
+    "nb_frames": "24",
+    "path": "media/demo_v5.mp4",
+    "duration": "8.000000",
+    "sha256": "c6e0362dc6f9b4e22673f0b4af60182e40de8f102d270e7952e7bb422be4284a",
+    "full_decode_passed": true
+  },
+  {
+    "width": 1500,
+    "height": 500,
+    "avg_frame_rate": "3/1",
+    "nb_frames": "24",
+    "path": "media/demo_v6.mp4",
+    "duration": "8.000000",
+    "sha256": "c6f8dbad2e4c188b75b318df19e32e0cbd5ecc57468bb5fbae5c225cf89a264c",
+    "full_decode_passed": true
+  },
+  {
+    "width": 1500,
+    "height": 500,
+    "avg_frame_rate": "4/1",
+    "nb_frames": "8",
+    "path": "media/e923ec44_demo.mp4",
+    "duration": "2.000000",
+    "sha256": "e059d700e3aa7fa444cf00994b5988bd3245f4ffce83482942a50080cc156e80",
+    "full_decode_passed": true
+  },
+  {
+    "width": 640,
+    "height": 480,
+    "avg_frame_rate": "30/1",
+    "nb_frames": "44",
+    "path": "media/hands_and_object_rgbd.mp4",
+    "duration": "1.466667",
+    "sha256": "284172980bcac7a8d873f831b98a233a94fd6fb19dec49593f3eebdea941d4e2",
+    "full_decode_passed": true
+  },
+  {
+    "width": 1280,
+    "height": 864,
+    "avg_frame_rate": "10/1",
+    "nb_frames": "100",
+    "path": "media/hands_ego_coordinates.mp4",
+    "duration": "10.000000",
+    "sha256": "5beb5906ab173b8e75e5173f1ac68bd539d70b87d87c00cd857e2d2e647a946e",
+    "full_decode_passed": true
+  },
+  {
+    "width": 640,
+    "height": 480,
+    "avg_frame_rate": "30/1",
+    "nb_frames": "446",
+    "path": "media/hocap_four_objects.mp4",
+    "duration": "14.866667",
+    "sha256": "dbda443e5f137f827a8130252a96bcc03613e0b547961daeffe11f895fc96807",
+    "full_decode_passed": true
+  },
+  {
+    "width": 640,
+    "height": 480,
+    "avg_frame_rate": "10/1",
+    "nb_frames": "737",
+    "path": "media/pose6d_backend_full.mp4",
+    "duration": "73.700000",
+    "sha256": "3e7b6eb094d24911bf2b2097ede45b6ce2b220221af9f25706693171541be1c6",
+    "full_decode_passed": true
+  }
+]

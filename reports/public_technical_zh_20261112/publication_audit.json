@@ -1,0 +1,38 @@
+{
+  "checked_at": "2026-11-12T23:37:33.575612+08:00",
+  "pages": 19,
+  "figure_count": 18,
+  "embedded_files": 0,
+  "overfull_or_missing_or_undefined": false,
+  "restricted_identifiers_in_text": false,
+  "restricted_screenshot_references": false,
+  "retained_real_images": [
+    "DexYCB hand-object overlay",
+    "HO-Cap four-object overlay",
+    "FoundationPose backend point cloud"
+  ],
+  "replacement_figures": [
+    "hand coordinate principle",
+    "surface motion principle",
+    "interaction interface principle"
+  ],
+  "public_pdf_sha256": "9bf6accde520100bb0f4352fc4ef56dc5692b32e810d17e39c74af5900c02457",
+  "dataset_status": "ModelScope master contains only README.md and .gitattributes; no data files",
+  "raster_images": {
+    "208": {
+      "width": 640,
+      "height": 480,
+      "pixel_sha256": "65f54ac1a4477dc044018493222e8d69523f6cbd0e74c3ab95bf3df79cc3126f"
+    },
+    "209": {
+      "width": 640,
+      "height": 480,
+      "pixel_sha256": "1c1f4c93f34d96c19c26dcf6de466b973c873f0896cfb5b71c0bfcb03e95a829"
+    },
+    "324": {
+      "width": 2700,
+      "height": 930,
+      "pixel_sha256": "048c8d0d1720655e0faaa1376310ccd7be0041c0f949d76df41dac11f50f8eec"
+    }
+  }
+}

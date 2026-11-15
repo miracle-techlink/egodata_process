@@ -1,0 +1,21 @@
+{
+  "pose_frames": 737,
+  "orthogonality_max_abs": 3.471688863498912e-06,
+  "determinant_deviation_max_abs": 1.5942700206661442e-06,
+  "hand_sequences": [
+    {
+      "frames": 1194,
+      "both": 1183
+    },
+    {
+      "frames": 5970,
+      "both": 5963
+    }
+  ],
+  "calibration_counts": {
+    "consistent_on_sampled_frames": 275,
+    "image_refined_with_heldout_checks": 20,
+    "needs_review": 4,
+    "inconsistent_on_sampled_frames": 1
+  }
+}

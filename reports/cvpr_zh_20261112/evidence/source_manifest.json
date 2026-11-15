@@ -1,0 +1,128 @@
+{
+  "report_date": "2026-11-12",
+  "remote_verified": false,
+  "status": "full_pipeline_alignment_draft_final_result_user_reported",
+  "files": [
+    {
+      "source": "/home/nvidia/algotithm/egodata_process/docs/V5_TRAINING_20261024.md",
+      "snapshot": "evidence/V5_TRAINING_20261024.md",
+      "sha256": "db54bc1a60c09215fe077bd85d6bec6d5fac2dde3dfeb7db5addbe7e9cb19c27",
+      "scope": "historical_or_local_implementation_not_final_run"
+    },
+    {
+      "source": "/home/nvidia/algotithm/egodata_process/docs/TRAINING_V5_HANDOFF.md",
+      "snapshot": "evidence/TRAINING_V5_HANDOFF.md",
+      "sha256": "d0e63506a86dd2f77b017bbe4532102e228ebec2bae20b03d4377e8f3a549d4c",
+      "scope": "historical_or_local_implementation_not_final_run"
+    },
+    {
+      "source": "/home/nvidia/algotithm/egodata_process/configs/graph_v5_base.yaml",
+      "snapshot": "evidence/graph_v5_base.yaml",
+      "sha256": "da3e7f64076063967377e54fbe3fa74a48df1cd3267e8a2337fcc912c605372a",
+      "scope": "historical_or_local_implementation_not_final_run"
+    },
+    {
+      "source": "/home/nvidia/algotithm/egodata_process/runs/egodemo_training_v5_300_20261024/training_index.json",
+      "snapshot": "evidence/training_index.json",
+      "sha256": "4b162d6595f7b489a078d86b096732a2060300cc3ea5d92296463fccfcb179e6",
+      "scope": "historical_or_local_implementation_not_final_run"
+    },
+    {
+      "source": "/home/nvidia/algotithm/egodata_process/runs/egodemo_training_v5_300_20261024/training_release.json",
+      "snapshot": "evidence/training_release.json",
+      "sha256": "58b8da4620b027eecb92e35fddde98af07525506b68d66f2a34f085b2cec5983",
+      "scope": "historical_or_local_implementation_not_final_run"
+    },
+    {
+      "source": "/home/nvidia/algotithm/egodata_process/runs/egodemo_training_v5_300_20261024/training_index_audit.json",
+      "snapshot": "evidence/training_index_audit.json",
+      "sha256": "c43d73e37c8716210ba3c3a7ccb3ace7beb7641ce7703e75f157df1e0f58f06a",
+      "scope": "historical_or_local_implementation_not_final_run"
+    },
+    {
+      "source": "/home/nvidia/algotithm/egodata_process/runs/egodemo_training_v5_300_20261024/model_checks/real_graph_target_coverage.json",
+      "snapshot": "evidence/real_graph_target_coverage.json",
+      "sha256": "be22ad8180c2e4e9c0a03f59bd5f0c304a65e061c7e2abff5738af4343ee2ef0",
+      "scope": "historical_or_local_implementation_not_final_run"
+    },
+    {
+      "source": "/home/nvidia/algotithm/egodata_process/src/mamba/graph_v5.py",
+      "snapshot": "evidence/graph_v5.py",
+      "sha256": "e8595144a14d8a1bc6c9a35bd8e276c005821768857829ae1660a7d5241eb44d",
+      "scope": "historical_or_local_implementation_not_final_run"
+    },
+    {
+      "source": "/home/nvidia/algotithm/egodata_process/src/mamba/train_v5.py",
+      "snapshot": "evidence/train_v5.py",
+      "sha256": "60adc124617daea41e2de658ec9a1bf5e39503e0094e961b30f90a46dcf904ca",
+      "scope": "historical_or_local_implementation_not_final_run"
+    },
+    {
+      "source": "/home/nvidia/algotithm/egodata_process/src/mamba/eval_v5.py",
+      "snapshot": "evidence/eval_v5.py",
+      "sha256": "41a845a108bc5675eb99bbf4eefd68e92a8967ced8c6d9428b82cfca0fb82322",
+      "scope": "historical_or_local_implementation_not_final_run"
+    },
+    {
+      "source": "/home/nvidia/algotithm/egodata_process/src/mamba/dataset_v5.py",
+      "snapshot": "evidence/dataset_v5.py",
+      "sha256": "01768a9fc190bf2e36a13769b8d56debcb88d446a182e36992b8c61db784c170",
+      "scope": "historical_or_local_implementation_not_final_run"
+    },
+    {
+      "source": "/home/nvidia/algotithm/egodata_process/src/mamba/rsi_v5.py",
+      "snapshot": "evidence/rsi_v5.py",
+      "sha256": "aa539f427edff7a99c4c110fcca9e65db90a8a3e9ae95c52e383eb3cece71030",
+      "scope": "local_implementation_not_final_run"
+    },
+    {
+      "source": "/home/nvidia/algotithm/egodata_process/src/mamba/pose_features_v6.py",
+      "snapshot": "evidence/pose_features_v6.py",
+      "sha256": "7ea015f6b34944e0e6ace4ca2ea0a614585313c375de6488b7c448941a37815b",
+      "scope": "local_implementation_not_final_run"
+    },
+    {
+      "source": "/home/nvidia/algotithm/egodata_process/src/annotation/auto_review_v5.py",
+      "snapshot": "evidence/auto_review_v5.py",
+      "sha256": "9a35e72881de6f6dc964466c5f301f18e007da09239cd28aec9f21c3c8f11ee6",
+      "scope": "local_implementation_not_final_run"
+    },
+    {
+      "source": "selected_conversation_tool_output_or_local_inventory",
+      "snapshot": "evidence/later_run_outputs.json",
+      "sha256": "e227f72414c40c1093640111593b070c16a383a918bcd0a4d9d53a7c89e23e9c",
+      "scope": "see_record_timestamp_and_provenance"
+    },
+    {
+      "source": "selected_conversation_tool_output_or_local_inventory",
+      "snapshot": "evidence/user_correction_20261112.json",
+      "sha256": "b8f9f55f193ad0c18dbc83c745639ebf1776c19e7e065f30b904235ba2b89936",
+      "scope": "see_record_timestamp_and_provenance"
+    },
+    {
+      "source": "selected_conversation_tool_output_or_local_inventory",
+      "snapshot": "evidence/expanded_benchmark_20261026.csv",
+      "sha256": "8b21ebdc2663decd8f8b72f9a47be55e262425535fe334ad5c3e3fea9fa1987b",
+      "scope": "see_record_timestamp_and_provenance"
+    },
+    {
+      "source": "selected_conversation_tool_output_or_local_inventory",
+      "snapshot": "evidence/current_demo_inventory.json",
+      "sha256": "6abd980f08ee460cb6ad9f5d8b8a688c6a37e83d887fab204b40681a4b6d3c2d",
+      "scope": "see_record_timestamp_and_provenance"
+    },
+    {
+      "source": "historical_assistant_summary_excerpt",
+      "snapshot": "evidence/stage_summary_excerpt.json",
+      "sha256": "add76dd23237d6dcbdaec88a68b8905a0d9b493aca7b4719c1e96271024f83cf",
+      "scope": "not_raw_index_requires_run_binding"
+    }
+  ],
+  "final_result": {
+    "value_approx": 0.93,
+    "source": "user_correction_20261112.json",
+    "metric_key": null,
+    "champion_run": null,
+    "run_bound_verified": false
+  }
+}

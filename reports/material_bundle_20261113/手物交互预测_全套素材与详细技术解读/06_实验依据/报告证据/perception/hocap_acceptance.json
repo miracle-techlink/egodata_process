@@ -1,0 +1,50 @@
+{
+  "schema_version": "full_hocap_v1",
+  "engineering_pass": true,
+  "checks": {
+    "complete_status": true,
+    "full_processed_count": true,
+    "real_backends": true,
+    "frame_ids": true,
+    "object_shape": true,
+    "hand_shape": true,
+    "object_valid_mask": true,
+    "rigid_positive_z_poses": true,
+    "hand_valid_mask": true,
+    "hand_nan_policy": true,
+    "surface_valid_mask": true,
+    "unknown_source_time_not_fabricated": true,
+    "source_time_flags": true,
+    "processing_time_increases": true,
+    "some_human_hand_observations": true,
+    "timing_all_frames": true,
+    "video_all_frames_decodable": true
+  },
+  "coverage": {
+    "hand_any_frames": 446,
+    "left_hand_frames": 441,
+    "right_hand_frames": 5,
+    "object_numeric_valid_frames": [
+      446,
+      446,
+      446,
+      446
+    ],
+    "object_projection_in_image_frames": [
+      446,
+      446,
+      446,
+      446
+    ],
+    "depth_surface_valid_joints": 9255,
+    "joint_hand_any_all_objects_numeric_frames": 446,
+    "denominator_frames": 446,
+    "not_accuracy": true
+  },
+  "accuracy": null,
+  "independent_accuracy_pass": null,
+  "formal_training_allowed": false,
+  "source_timestamp_known": false,
+  "decoded_video_frames": 446,
+  "report_sha256": "52e6432614fe93cb570a5b72fa1013d9cb262bf835b5626fdea3c1a4ab82987c"
+}

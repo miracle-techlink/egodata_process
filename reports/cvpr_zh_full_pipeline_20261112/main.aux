@@ -1,0 +1,141 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand*\HyPL@Entry[1]{}
+\citation{damen2022rescaling}
+\citation{grauman2022ego4d}
+\citation{egodemo}
+\citation{zhang2020mediapipe}
+\citation{wen2024foundationpose}
+\citation{gu2023mamba}
+\HyPL@Entry{0<</S/D>>}
+\@writefile{toc}{\contentsline {section}{\numberline {1}\hskip -1em.~研究目标与系统概览}{1}{section.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{报告范围。}{1}{section*.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}\hskip -1em.~相关工作}{1}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}\hskip -1em.~原始视频、时间轴与输入条件}{1}{section.3}\protected@file@percent }
+\newlabel{sec:input}{{3}{1}{\texorpdfstring {\hskip -1em.~}{}原始视频、时间轴与输入条件}{section.3}{}}
+\newlabel{sec:input@cref}{{[section][3][]3}{[1][1][]1}}
+\citation{zhang2020mediapipe}
+\citation{wen2024foundationpose}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces 完整pipeline与数据流。(2)手部和(3)物体分支并行，(4)统一时间、身份与坐标，(5)(6)学习历史到未来的交互变化，(7)分别验证感知与预测，并驱动RSI配置迭代。未来标签经监督分支进入损失与评估，不进入历史特征；各分支的来源、有效mask和版本随数据传递。}}{2}{figure.caption.1}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:fullpipeline}{{1}{2}{完整pipeline与数据流。(2)手部和(3)物体分支并行，(4)统一时间、身份与坐标，(5)(6)学习历史到未来的交互变化，(7)分别验证感知与预测，并驱动RSI配置迭代。未来标签经监督分支进入损失与评估，不进入历史特征；各分支的来源、有效mask和版本随数据传递。}{figure.caption.1}{}}
+\newlabel{fig:fullpipeline@cref}{{[figure][1][]1}{[1][1][]2}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}\hskip -1em.~手部姿态估计与坐标对齐}{2}{section.4}\protected@file@percent }
+\newlabel{sec:hands}{{4}{2}{\texorpdfstring {\hskip -1em.~}{}手部姿态估计与坐标对齐}{section.4}{}}
+\newlabel{sec:hands@cref}{{[section][4][]4}{[1][2][]2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}\hskip -1em.~从图像到双手21点}{2}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}\hskip -1em.~官方三维姿态与RGB-D表面提升}{2}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}\hskip -1em.~真实同帧手物演示}{2}{subsection.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}\hskip -1em.~物体6D位姿与表面运动建模}{2}{section.5}\protected@file@percent }
+\newlabel{sec:pose6d}{{5}{2}{\texorpdfstring {\hskip -1em.~}{}物体6D位姿与表面运动建模}{section.5}{}}
+\newlabel{sec:pose6d@cref}{{[section][5][]5}{[1][2][]2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}\hskip -1em.~六自由度与刚体变换}{2}{subsection.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}\hskip -1em.~RGB-D、mesh与FoundationPose分支}{2}{subsection.5.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces 手部姿态原理图。上：手掌定位到21点回归的在线分支。左下：腕部与五指的21点拓扑。右下：官方世界系关节经相机外参转换，以及RGB-D二维关键点经深度反投影，两条来源分开表达。所有点与模块均为原理示意；真实演示见图\ref {fig:handcoords}和图\ref {fig:rgbdhuman}。}}{3}{figure.caption.3}\protected@file@percent }
+\newlabel{fig:handprinciple}{{2}{3}{手部姿态原理图。上：手掌定位到21点回归的在线分支。左下：腕部与五指的21点拓扑。右下：官方世界系关节经相机外参转换，以及RGB-D二维关键点经深度反投影，两条来源分开表达。所有点与模块均为原理示意；真实演示见图\ref {fig:handcoords}和图\ref {fig:rgbdhuman}。}{figure.caption.3}{}}
+\newlabel{fig:handprinciple@cref}{{[figure][2][]2}{[1][2][]3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces 第一视角手部姿态与相机／世界坐标演示。左侧为来源手关节投影，右侧与下侧为不同坐标视图；并非MediaPipe检测结果。该原图来自10月22日手／相机专项检查，画面中的物体缺失提示属于当时的阶段状态，不代表后续物体几何仍未构建。保留原图文字以维持来源可追溯。}}{3}{figure.caption.4}\protected@file@percent }
+\newlabel{fig:handcoords}{{3}{3}{第一视角手部姿态与相机／世界坐标演示。左侧为来源手关节投影，右侧与下侧为不同坐标视图；并非MediaPipe检测结果。该原图来自10月22日手／相机专项检查，画面中的物体缺失提示属于当时的阶段状态，不代表后续物体几何仍未构建。保留原图文字以维持来源可追溯。}{figure.caption.4}{}}
+\newlabel{fig:handcoords@cref}{{[figure][3][]3}{[1][2][]3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces 两条真实RGB-D感知演示，均为既有输出。左图蓝色手骨架来自模型预测；右图从446帧完整视频的第180帧直接解码。颜色区分物体身份，坐标轴表示估计姿态。不同场景不拼接成一次运行；同帧叠加不自动证明手关节与物体已完成独立米制精度验收。}}{4}{figure.caption.5}\protected@file@percent }
+\newlabel{fig:rgbdhuman}{{4}{4}{两条真实RGB-D感知演示，均为既有输出。左图蓝色手骨架来自模型预测；右图从446帧完整视频的第180帧直接解码。颜色区分物体身份，坐标轴表示估计姿态。不同场景不拼接成一次运行；同帧叠加不自动证明手关节与物体已完成独立米制精度验收。}{figure.caption.5}{}}
+\newlabel{fig:rgbdhuman@cref}{{[figure][4][]4}{[1][2][]4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}\hskip -1em.~EgoDemo双目重建与无CAD几何分支}{4}{subsection.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}\hskip -1em.~感知模块的指标与验证图}{4}{section.6}\protected@file@percent }
+\newlabel{sec:perceptionmetrics}{{6}{4}{\texorpdfstring {\hskip -1em.~}{}感知模块的指标与验证图}{section.6}{}}
+\newlabel{sec:perceptionmetrics@cref}{{[section][6][]6}{[1][4][]4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}\hskip -1em.~按指标回答不同问题}{4}{subsection.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}\hskip -1em.~6D数值验证与逐帧延迟}{4}{subsection.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}\hskip -1em.~感知性能优化与实际边界}{4}{subsection.6.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces 物体6D与FoundationPose原理图。上：物体点由旋转$R$和平移$t$变换到相机系，经内参投影为框、轴或轮廓。下：首帧RGB-D、mask与mesh用于姿态候选细化和评分，后续由前帧位姿与当前观测连续跟踪。图中方块是几何示意，不是实测模型；真实点云与mesh输出见图\ref {fig:posecloud}。}}{5}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:poseprinciple}{{5}{5}{物体6D与FoundationPose原理图。上：物体点由旋转$R$和平移$t$变换到相机系，经内参投影为框、轴或轮廓。下：首帧RGB-D、mask与mesh用于姿态候选细化和评分，后续由前帧位姿与当前观测连续跟踪。图中方块是几何示意，不是实测模型；真实点云与mesh输出见图\ref {fig:posecloud}。}{figure.caption.6}{}}
+\newlabel{fig:poseprinciple@cref}{{[figure][5][]5}{[1][4][]5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces FoundationPose独立后端验证：RGB叠加、真实深度反投影点云及预测mesh局部图。紫色mesh由估计位姿变换，不按GT重新对齐。这个737帧公开样例包含机械臂，仅用于说明6D后端与三维坐标计算；真人手物演示见图\ref {fig:rgbdhuman}，第一视角主线见图\ref {fig:handcoords}和图\ref {fig:surface}.}}{5}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:posecloud}{{6}{5}{FoundationPose独立后端验证：RGB叠加、真实深度反投影点云及预测mesh局部图。紫色mesh由估计位姿变换，不按GT重新对齐。这个737帧公开样例包含机械臂，仅用于说明6D后端与三维坐标计算；真人手物演示见图\ref {fig:rgbdhuman}，第一视角主线见图\ref {fig:handcoords}和图\ref {fig:surface}}{figure.caption.7}{}}
+\newlabel{fig:posecloud@cref}{{[figure][6][]6}{[1][4][]5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces 双目重建与跨帧刚体拟合原理图。左上：同一表面点由左右像素射线交会恢复深度，理想校正情形为$Z=f_xb/d$。右上：参考帧与当前帧的对应点，经RANSAC筛选后用SVD求刚体变换。下：从标定、点匹配到局部几何输出的工程路径。相机和点集为原理示意，真实表面种子见图\ref {fig:surface}。}}{6}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:stereoprinciple}{{7}{6}{双目重建与跨帧刚体拟合原理图。左上：同一表面点由左右像素射线交会恢复深度，理想校正情形为$Z=f_xb/d$。右上：参考帧与当前帧的对应点，经RANSAC筛选后用SVD求刚体变换。下：从标定、点匹配到局部几何输出的工程路径。相机和点集为原理示意，真实表面种子见图\ref {fig:surface}。}{figure.caption.8}{}}
+\newlabel{fig:stereoprinciple@cref}{{[figure][7][]7}{[1][4][]6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces EgoDemo第一视角的真实表面种子与点分布示例，包含纸盒、织物和托盘／笔等不同目标。图为已保存的候选几何准备结果，数字表示相应实例的点数，不能解释为姿态准确率。该分支为后续跨帧跟踪、刚体／部件拟合和非刚体表面描述提供观测。}}{6}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:surface}{{8}{6}{EgoDemo第一视角的真实表面种子与点分布示例，包含纸盒、织物和托盘／笔等不同目标。图为已保存的候选几何准备结果，数字表示相应实例的点数，不能解释为姿态准确率。该分支为后续跨帧跟踪、刚体／部件拟合和非刚体表面描述提供观测。}{figure.caption.9}{}}
+\newlabel{fig:surface@cref}{{[figure][8][]8}{[1][4][]6}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces 感知验证结果与统计口径，来自既有运行JSON／NPZ／CSV。不同数据集的计数不相加成为统一测试集。具体失败和缺失状态按各次运行保留，而非覆盖成一个总通过率。}}{7}{table.caption.10}\protected@file@percent }
+\newlabel{tab:perception}{{1}{7}{感知验证结果与统计口径，来自既有运行JSON／NPZ／CSV。不同数据集的计数不相加成为统一测试集。具体失败和缺失状态按各次运行保留，而非覆盖成一个总通过率。}{table.caption.10}{}}
+\newlabel{tab:perception@cref}{{[table][1][]1}{[1][4][]7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces 手部来源覆盖与相机像素一致性验证图。左侧柱顶为有效帧数、柱高为对应采集中的比例；右侧为300段重建流程最终汇总中的标定状态。两者分别验证数据可用性与几何输入，不是学习模型精度。}}{7}{figure.caption.11}\protected@file@percent }
+\newlabel{fig:coverage}{{9}{7}{手部来源覆盖与相机像素一致性验证图。左侧柱顶为有效帧数、柱高为对应采集中的比例；右侧为300段重建流程最终汇总中的标定状态。两者分别验证数据可用性与几何输入，不是学习模型精度。}{figure.caption.11}{}}
+\newlabel{fig:coverage@cref}{{[figure][9][]9}{[1][4][]7}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}\hskip -1em.~数据构建与版本演进}{7}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}\hskip -1em.~原生时间轴与图监督}{7}{subsection.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}\hskip -1em.~自动复核与冻结发布}{7}{subsection.7.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}\hskip -1em.~几何增强与覆盖解释}{7}{subsection.7.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces 逐帧感知验证。左：6D输出的平移变化；中：旋转正交性与行列式偏差；右：DexYCB最终复测中除注册帧外的帧内处理和读取至写出时延。右图采用对数轴保留首个预取帧跨注册阶段的排队峰值，未裁掉慢帧。矩阵误差属于数值检查，不属于姿态真值误差。}}{8}{figure.caption.12}\protected@file@percent }
+\newlabel{fig:perceptionvalidation}{{10}{8}{逐帧感知验证。左：6D输出的平移变化；中：旋转正交性与行列式偏差；右：DexYCB最终复测中除注册帧外的帧内处理和读取至写出时延。右图采用对数轴保留首个预取帧跨注册阶段的排队峰值，未裁掉慢帧。矩阵误差属于数值检查，不属于姿态真值误差。}{figure.caption.12}{}}
+\newlabel{fig:perceptionvalidation@cref}{{[figure][10][]10}{[1][4][]8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces 真实感知配置的吞吐与帧内P95，均来自同一44帧片段，稳态分母为除注册帧外的43帧。虚线对应30FPS处理预算。改手模型和跟踪迭代数可能影响精度，图中只报告实测性能；三次复测不是132个独立样本。}}{8}{figure.caption.13}\protected@file@percent }
+\newlabel{fig:runtime}{{11}{8}{真实感知配置的吞吐与帧内P95，均来自同一44帧片段，稳态分母为除注册帧外的43帧。虚线对应30FPS处理预算。改手模型和跟踪迭代数可能影响精度，图中只报告实测性能；三次复测不是132个独立样本。}{figure.caption.13}{}}
+\newlabel{fig:runtime@cref}{{[figure][11][]11}{[1][4][]8}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}\hskip -1em.~动态交互图预测方法}{8}{section.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}\hskip -1em.~统一实体特征}{8}{subsection.8.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2}\hskip -1em.~帧内关系编码}{8}{subsection.8.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces 时序样本与监督边界示意。历史窗口只使用截止帧及此前的信息，目标由原生时间戳确定；图中方块为结构示意，间隔不表示原视频帧率。正／负／未知分别编码，未来标签不参与输入编码。}}{9}{figure.caption.14}\protected@file@percent }
+\newlabel{fig:sample}{{12}{9}{时序样本与监督边界示意。历史窗口只使用截止帧及此前的信息，目标由原生时间戳确定；图中方块为结构示意，间隔不表示原视频帧率。正／负／未知分别编码，未来标签不参与输入编码。}{figure.caption.14}{}}
+\newlabel{fig:sample@cref}{{[figure][12][]12}{[1][7][]9}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces 项目演进，斜杠依次为train/val/test。不同数据版本的规模和采样策略不同，不能混为单一试验。fasttrain有效采集数来自本次读取的索引。扩展v4的验证／测试窗口数已与服务器benchmark核对；同名数据根后续曾重新导出，历史运行不直接绑定其当前内容。}}{9}{table.caption.15}\protected@file@percent }
+\newlabel{tab:versions}{{2}{9}{项目演进，斜杠依次为train/val/test。不同数据版本的规模和采样策略不同，不能混为单一试验。fasttrain有效采集数来自本次读取的索引。扩展v4的验证／测试窗口数已与服务器benchmark核对；同名数据根后续曾重新导出，历史运行不直接绑定其当前内容。}{table.caption.15}{}}
+\newlabel{tab:versions@cref}{{[table][2][]2}{[1][7][]9}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.3}\hskip -1em.~共享时间骨干}{9}{subsection.8.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.4}\hskip -1em.~有向图解码与损失}{9}{subsection.8.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces 系统实现。帧内注意力建模空间上下文，时间骨干沿各实体历史独立且共享地运算；末端有向图头保留主体与客体的区别。同一数据版本内的三骨干对照替换时间模块；132维位姿增强另记录离线来源。虚线表示损失与标签的关联，标签不进入前向特征。图为实现结构示意，不是实验输出。}}{10}{figure.caption.16}\protected@file@percent }
+\newlabel{fig:architecture}{{13}{10}{系统实现。帧内注意力建模空间上下文，时间骨干沿各实体历史独立且共享地运算；末端有向图头保留主体与客体的区别。同一数据版本内的三骨干对照替换时间模块；132维位姿增强另记录离线来源。虚线表示损失与标签的关联，标签不进入前向特征。图为实现结构示意，不是实验输出。}{figure.caption.16}{}}
+\newlabel{fig:architecture@cref}{{[figure][13][]13}{[1][8][]10}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.5}\hskip -1em.~132 维位姿增强与实体关联}{10}{subsection.8.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9}\hskip -1em.~RSI自动迭代优化}{10}{section.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.1}\hskip -1em.~候选生成与训练}{10}{subsection.9.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces 搜索空间来自\texttt  {rsi\_v5.py}。最终运行的候选集合以实际history与配置为准，不由默认参数推算完成轮数。}}{10}{table.caption.17}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces RSI机制图。该图说明代码流程，不代表已完成轮数或各轮收益。}}{10}{figure.caption.18}\protected@file@percent }
+\newlabel{fig:rsi}{{14}{10}{RSI机制图。该图说明代码流程，不代表已完成轮数或各轮收益。}{figure.caption.18}{}}
+\newlabel{fig:rsi@cref}{{[figure][14][]14}{[1][10][]10}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.2}\hskip -1em.~验证选择、失败处理与晋升}{10}{subsection.9.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces 服务器快照中的RSI账本，三个系列对应不同数据版本。表中最高分不必等于当前genome，是否晋升还受2\%相对阈值约束。}}{11}{table.caption.19}\protected@file@percent }
+\newlabel{tab:rsiobserved}{{4}{11}{服务器快照中的RSI账本，三个系列对应不同数据版本。表中最高分不必等于当前genome，是否晋升还受2\%相对阈值约束。}{table.caption.19}{}}
+\newlabel{tab:rsiobserved@cref}{{[table][4][]4}{[1][11][]11}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.3}\hskip -1em.~服务器账本与实际轮次}{11}{subsection.9.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {10}\hskip -1em.~实验结果与版本对应}{11}{section.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.1}\hskip -1em.~已恢复的扩展数据评估}{11}{subsection.10.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.2}\hskip -1em.~最终全量结果与后续132维实验}{11}{subsection.10.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.3}\hskip -1em.~不同版本之间的比较原则}{11}{subsection.10.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {11}\hskip -1em.~已完成的Demo与可视化}{11}{section.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.1}\hskip -1em.~实际资产}{11}{subsection.11.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.2}\hskip -1em.~正式展示需要补齐的绑定}{11}{subsection.11.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces 由三个实际history逐条复算的RSI曲线。横轴为账本记录序号，保留重复候选复用；红线为迄今最高分，不冒充晋升记录。各系列的验证集不同，分面展示而不连接为同一测试集上的提升。}}{12}{figure.caption.20}\protected@file@percent }
+\newlabel{fig:rsihistory}{{15}{12}{由三个实际history逐条复算的RSI曲线。横轴为账本记录序号，保留重复候选复用；红线为迄今最高分，不冒充晋升记录。各系列的验证集不同，分面展示而不连接为同一测试集上的提升。}{figure.caption.20}{}}
+\newlabel{fig:rsihistory@cref}{{[figure][15][]15}{[1][11][]12}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces 扩展冻结阶段的已记录评估值。数值已从服务器评估JSON核对，非本轮重新训练；表格显示三位小数。LSTM／Transformer精确test micro-F1为0.9388532001，Mamba为0.9052002986；测试1326窗口。该阶段采用120维输入，不冒充132维RSI的独立测试。}}{12}{table.caption.21}\protected@file@percent }
+\newlabel{tab:results}{{5}{12}{扩展冻结阶段的已记录评估值。数值已从服务器评估JSON核对，非本轮重新训练；表格显示三位小数。LSTM／Transformer精确test micro-F1为0.9388532001，Mamba为0.9052002986；测试1326窗口。该阶段采用120维输入，不冒充132维RSI的独立测试。}{table.caption.21}{}}
+\newlabel{tab:results@cref}{{[table][5][]5}{[1][11][]12}}
+\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces 扩展冻结版本的验证／测试micro-F1。不同骨干处于同一记录阶段；未提供重复运行方差，故不绘制误差条。}}{12}{figure.caption.22}\protected@file@percent }
+\newlabel{fig:expanded}{{16}{12}{扩展冻结版本的验证／测试micro-F1。不同骨干处于同一记录阶段；未提供重复运行方差，故不绘制误差条。}{figure.caption.22}{}}
+\newlabel{fig:expanded@cref}{{[figure][16][]16}{[1][11][]12}}
+\@writefile{toc}{\contentsline {section}{\numberline {12}\hskip -1em.~复现与分析要求}{12}{section.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {13}\hskip -1em.~结论}{12}{section.13}\protected@file@percent }
+\bibstyle{ieeenat_fullname}
+\bibdata{references}
+\bibcite{damen2022rescaling}{{1}{2022}{{Damen et~al.}}{{Damen, Doughty, Farinella, Furnari, Kazakos, Ma, Moltisanti, Munro, Perrett, Price, and Wray}}}
+\bibcite{grauman2022ego4d}{{2}{2022}{{Grauman et~al.}}{{Grauman, Westbury, Byrne, Chavis, Furnari, Girdhar, et~al.}}}
+\bibcite{gu2023mamba}{{3}{2023}{{Gu and Dao}}{{}}}
+\bibcite{egodemo}{{4}{}{{Lightwheel AI}}{{}}}
+\bibcite{wen2024foundationpose}{{5}{2024}{{Wen et~al.}}{{Wen, Yang, Kautz, and Birchfield}}}
+\bibcite{zhang2020mediapipe}{{6}{2020}{{Zhang et~al.}}{{Zhang, Bazarevsky, Vakunov, Tkachenka, Sung, Chang, and Grundmann}}}
+\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces 历史版本结果概览。每组柱对应各版本自身测试集，数据规模与监督发生变化，仅呈现项目演进，不作为固定测试集上的提升曲线，也不将最终0.93强行接到某个历史模型上。}}{13}{figure.caption.23}\protected@file@percent }
+\newlabel{fig:history}{{17}{13}{历史版本结果概览。每组柱对应各版本自身测试集，数据规模与监督发生变化，仅呈现项目演进，不作为固定测试集上的提升曲线，也不将最终0.93强行接到某个历史模型上。}{figure.caption.23}{}}
+\newlabel{fig:history@cref}{{[figure][17][]17}{[1][11][]13}}
+\@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces 现有demo v6真实预览帧。左为第一视角图像，中为已有复核关系，右为LSTM预测关系（画面阈值0.80）。手部骨架和物体位姿用于显示观测，模型预测的是交互边，不是未来三维姿态。原图保留，部分中文仍显示方框；正式导出应修复字体。原画面“TRUTH”不自动证明标签是独立人工金标准。}}{13}{figure.caption.24}\protected@file@percent }
+\newlabel{fig:demo}{{18}{13}{现有demo v6真实预览帧。左为第一视角图像，中为已有复核关系，右为LSTM预测关系（画面阈值0.80）。手部骨架和物体位姿用于显示观测，模型预测的是交互边，不是未来三维姿态。原图保留，部分中文仍显示方框；正式导出应修复字体。原画面“TRUTH”不自动证明标签是独立人工金标准。}{figure.caption.24}{}}
+\newlabel{fig:demo@cref}{{[figure][18][]18}{[1][11][]13}}
+\@writefile{toc}{\contentsline {section}{\numberline {A}\hskip -1em.~逐模块证据与复现入口}{14}{appendix.A}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {B}\hskip -1em.~演示文件与指标绑定}{14}{appendix.B}\protected@file@percent }
+\newlabel{sec:assets}{{B}{14}{\texorpdfstring {\hskip -1em.~}{}演示文件与指标绑定}{appendix.B}{}}
+\newlabel{sec:assets@cref}{{[appendix][2][2147483647]B}{[1][14][]14}}
+\@writefile{toc}{\contentsline {section}{\numberline {C}\hskip -1em.~尚需补充的独立验证}{14}{appendix.C}\protected@file@percent }
+\gdef \@abspage@last{14}

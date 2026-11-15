@@ -1,0 +1,73 @@
+{
+  "series": {
+    "rsi_v5": {
+      "promotion_messages": [
+        "[rsi] genome promoted: g_transformer_d_model=64_n_layer=2_dropout=0.0_batch_size=16_lr=0.0003_weight_decay=0.01_selection_metric=val_loss score=0.5493",
+        "[rsi] genome promoted: g_lstm_d_model=64_n_layer=2_dropout=0.0_batch_size=16_lr=0.0003_weight_decay=0.01_selection_metric=val_loss score=0.8373",
+        "[rsi] genome promoted: g_mamba_d_model=256_n_layer=2_dropout=0.0_batch_size=16_lr=0.0003_weight_decay=0.01_selection_metric=val_loss score=0.8566"
+      ],
+      "completion_messages": [
+        "[rsi] done. Test split untouched; run eval_v5 --splits val test manually on the winner."
+      ],
+      "score_files": 6,
+      "candidate_directories": 6
+    },
+    "rsi_auto": {
+      "promotion_messages": [
+        "[rsi] genome promoted: g_transformer_d_model=64_n_layer=2_dropout=0.0_batch_size=16_lr=0.0003_weight_decay=0.01_selection_metric=val_loss score=0.9141"
+      ],
+      "completion_messages": [
+        "[rsi] done. Test split untouched; run eval_v5 --splits val test manually on the winner."
+      ],
+      "score_files": 6,
+      "candidate_directories": 6
+    },
+    "rsi_final": {
+      "promotion_messages": [],
+      "completion_messages": [],
+      "score_files": 21,
+      "candidate_directories": 22
+    }
+  },
+  "hashes": {
+    "runs/rsi_v5/candidates/g_mamba_d_model=64_n_layer=2_dropout=0.0_batch_size=32_lr=0.0003_weight_decay=0.01_selection_metric=val_loss/best.pt": "30ab6b0d4833a036ebfae26ea76127ce69de8678a348d1b7aef0caa19b1a1e8c",
+    "runs/rsi_v5/candidates/g_lstm_d_model=64_n_layer=2_dropout=0.0_batch_size=16_lr=0.0003_weight_decay=0.01_selection_metric=val_loss/best.pt": "baa4ed7ab18e32ba3d169cc4ea2e24e4d7bb8d45607da8b05432f7f0a7a4b75b",
+    "runs/rsi_v5/candidates/g_transformer_d_model=64_n_layer=2_dropout=0.0_batch_size=16_lr=0.0003_weight_decay=0.01_selection_metric=val_loss/best.pt": "69fbe8a1a3ea5d88a1d001deab0be9eeba9394b5cbd502e14e5c3e16862f62bf",
+    "runs/rsi_v5/candidates/g_transformer_d_model=64_n_layer=4_dropout=0.0_batch_size=16_lr=0.0003_weight_decay=0.01_selection_metric=val_loss/best.pt": "b5180094618a6bfb5617834aa716353728649fc6e7d368db555f31040ed5e442",
+    "runs/rsi_v5/candidates/g_mamba_d_model=256_n_layer=2_dropout=0.0_batch_size=16_lr=0.0003_weight_decay=0.01_selection_metric=val_loss/best.pt": "0761290ad2e0160fb1de0618f1b3cd42cfdffb708861bc37acdc809c2d12c813",
+    "runs/rsi_v5/candidates/g_lstm_d_model=64_n_layer=2_dropout=0.0_batch_size=16_lr=0.0003_weight_decay=0.0_selection_metric=val_loss/best.pt": "29e3db01ca70a62d7da9472b3ca126ad5d0d1356603bc3a9092056d913742ad4",
+    "runs/rsi_auto/candidates/g_mamba_d_model=64_n_layer=2_dropout=0.0_batch_size=32_lr=0.0003_weight_decay=0.01_selection_metric=val_loss/best.pt": "cad417855eccf80584ae17200c692bff9a01aec11308ed6659333c50a18673f1",
+    "runs/rsi_auto/candidates/g_lstm_d_model=64_n_layer=2_dropout=0.0_batch_size=16_lr=0.0003_weight_decay=0.01_selection_metric=val_loss/best.pt": "8cc68f35464ba3f1468226692c8fd37e800358863114af4cac4659b71aa04f3b",
+    "runs/rsi_auto/candidates/g_transformer_d_model=64_n_layer=2_dropout=0.0_batch_size=16_lr=0.0003_weight_decay=0.01_selection_metric=val_loss/best.pt": "6cbccac2a3388053259a9cd43617b60fc1dc3d2f4876f18c83f74a2ccb9ff3c8",
+    "runs/rsi_auto/candidates/g_transformer_d_model=64_n_layer=4_dropout=0.0_batch_size=16_lr=0.0003_weight_decay=0.01_selection_metric=val_loss/best.pt": "1919764771674c00f667c4e5af4c0f8a229f257dd226859677b96bc3d23f71f5",
+    "runs/rsi_auto/candidates/g_mamba_d_model=256_n_layer=2_dropout=0.0_batch_size=16_lr=0.0003_weight_decay=0.01_selection_metric=val_loss/best.pt": "579ceee4481bbc6301da0bbc9509fbcaa88b94a785f9a130b4f2e7eb3d5f9732",
+    "runs/rsi_auto/candidates/g_lstm_d_model=64_n_layer=2_dropout=0.0_batch_size=16_lr=0.0003_weight_decay=0.0_selection_metric=val_loss/best.pt": "42711665e9cecac6c3e262d14994d9e4e5d7813390220c3748873329dba50f4c",
+    "runs/rsi_final/candidates/g_transformer_d_model=64_n_layer=2_dropout=0.1_batch_size=16_lr=0.0003_weight_decay=0.01_selection_metric=val_micro_f1/best.pt": "0adb8c5f2e6ce80ada2a6829b8af091d6468db255e5c45f63b52d82782029000",
+    "runs/rsi_final/candidates/g_transformer_d_model=64_n_layer=2_dropout=0.0_batch_size=16_lr=0.001_weight_decay=0.01_selection_metric=val_micro_f1/best.pt": "854c8349801d04d2a7027141415372011118c0f192743580b087e759ddf3978a",
+    "runs/rsi_final/candidates/g_transformer_d_model=64_n_layer=4_dropout=0.0_batch_size=16_lr=0.0003_weight_decay=0.01_selection_metric=val_micro_f1/best.pt": "c4071efe3bfbb89763738072b860ca9389b6b04c45be79d2ca891eb2491e5322",
+    "runs/rsi_final/candidates/g_mamba_d_model=256_n_layer=2_dropout=0.0_batch_size=16_lr=0.0003_weight_decay=0.01_selection_metric=val_micro_f1/best.pt": "e905dea2d104a4a8ba6c22db30079b19334443c075542166cc3d47a299f8fbfe",
+    "runs/rsi_final/candidates/g_mamba_d_model=64_n_layer=2_dropout=0.0_batch_size=16_lr=0.0003_weight_decay=0.01_selection_metric=val_loss/best.pt": "ba46f02a8fa8832bfe3e0e1c6576db194948fa080edde8a9397bf905e494ff61",
+    "runs/rsi_final/candidates/g_lstm_d_model=64_n_layer=2_dropout=0.0_batch_size=8_lr=0.0003_weight_decay=0.01_selection_metric=val_micro_f1/best.pt": "5cdcffae10ec15674af0619f7fb8435911ff762ad5be4cdeaf421240f69ab1f4",
+    "runs/rsi_final/candidates/g_lstm_d_model=64_n_layer=2_dropout=0.2_batch_size=16_lr=0.0003_weight_decay=0.01_selection_metric=val_micro_f1/best.pt": "9d20fb9b5eb1aa26240df845980f775cd8be4c1c674e1f05f98ad0764f90a18a",
+    "runs/rsi_final/candidates/g_transformer_d_model=64_n_layer=2_dropout=0.0_batch_size=32_lr=0.0003_weight_decay=0.01_selection_metric=val_micro_f1/best.pt": "f565058a3a2361f470ef4673e7d39a15da2c0d7e442e9d5b9ab83cd3db34db81",
+    "runs/rsi_final/candidates/g_lstm_d_model=64_n_layer=2_dropout=0.0_batch_size=16_lr=0.0003_weight_decay=0.01_selection_metric=val_loss/best.pt": "cf029a4035fd90087dbfc424cd67b7189ffeb2f94d89d5a343853f8caa5c775f",
+    "runs/rsi_final/candidates/g_mamba_d_model=64_n_layer=2_dropout=0.0_batch_size=8_lr=0.0003_weight_decay=0.01_selection_metric=val_micro_f1/best.pt": "2e9822d93d6430f313216b67a86af80b92dc7231845007a39a80811135d0c525",
+    "runs/rsi_final/candidates/g_lstm_d_model=64_n_layer=2_dropout=0.0_batch_size=16_lr=0.0001_weight_decay=0.01_selection_metric=val_micro_f1/best.pt": "9a2500301841613e5271fe50293a2250a73a4a597e4b1c802f542ba9f3754b59",
+    "runs/rsi_final/candidates/g_lstm_d_model=64_n_layer=2_dropout=0.0_batch_size=16_lr=0.0003_weight_decay=0.01_selection_metric=val_micro_f1/best.pt": "d2ba94f6a06e0e0f797e0655d1c1bd260df9a142a03aa361c6ba7e268f157b0f",
+    "runs/rsi_final/candidates/g_transformer_d_model=64_n_layer=2_dropout=0.0_batch_size=16_lr=0.0003_weight_decay=0.01_selection_metric=val_loss/best.pt": "3d1e93453dea8e36b753633fb857ab38afaba0156db1fad82e65b2d404130db7",
+    "runs/rsi_final/candidates/g_mamba_d_model=64_n_layer=2_dropout=0.0_batch_size=16_lr=0.0003_weight_decay=0.01_selection_metric=val_micro_f1/best.pt": "05119cc110bff4bf24cc6bddb962e50c64c41ebbb993001678853723fe08ad76",
+    "runs/rsi_final/candidates/g_mamba_d_model=64_n_layer=2_dropout=0.0_batch_size=32_lr=0.0003_weight_decay=0.01_selection_metric=val_micro_f1/best.pt": "aa3745f77561ebb9905d91e18b1081a5b2e797ffa7158342f5ae3469133610b8",
+    "runs/rsi_final/candidates/g_transformer_d_model=64_n_layer=2_dropout=0.0_batch_size=16_lr=0.0003_weight_decay=0.01_selection_metric=val_micro_f1/best.pt": "c768fcd65acc71e445f273cc4a0474f0c6962875a2cc651e36880adcb10240de",
+    "runs/rsi_final/candidates/g_lstm_d_model=64_n_layer=2_dropout=0.0_batch_size=16_lr=0.001_weight_decay=0.01_selection_metric=val_micro_f1/best.pt": "cb9fe52045c3a8e53420bf6e22702ed1d6e2cd6d727e0e2259231d2151f9259c",
+    "runs/rsi_final/candidates/g_mamba_d_model=64_n_layer=3_dropout=0.0_batch_size=16_lr=0.0003_weight_decay=0.01_selection_metric=val_micro_f1/best.pt": "45f2a21fe5b12e4ad3496bc8d2960e2cd1056fc1abe029660a8311d3e7ae3350",
+    "runs/rsi_final/candidates/g_lstm_d_model=64_n_layer=2_dropout=0.1_batch_size=16_lr=0.0003_weight_decay=0.01_selection_metric=val_micro_f1/best.pt": "0f58904cf137fef985fa87d28a3a88d7fc39ae338c77c9b231ad316ba809f643",
+    "runs/rsi_final/candidates/g_mamba_d_model=64_n_layer=2_dropout=0.0_batch_size=16_lr=0.0001_weight_decay=0.01_selection_metric=val_micro_f1/best.pt": "01be91235e1e519ea975f6efe09aa81ad8bb839fd25ff41ec5a70dd3ca1cb6fe",
+    "runs/rsi_final/candidates/g_lstm_d_model=64_n_layer=2_dropout=0.0_batch_size=16_lr=0.0003_weight_decay=0.0_selection_metric=val_micro_f1/best.pt": "33919caa9b1a9a2290b956aabd1e5cc8ad1deccb547892cb679bcc79194e0820",
+    "runs/rsi_final/candidates/g_transformer_d_model=64_n_layer=3_dropout=0.0_batch_size=16_lr=0.0003_weight_decay=0.01_selection_metric=val_micro_f1/best.pt": "279eaa167236160041e12def78e45afd511ae503808e89aa0ca15eedf447a539",
+    "runs/graph_v5_auto/lstm_final/best.pt": "c04c6ce22d7860680da81c2bef17beab5076770f61964cd394b8e52047a0d419",
+    "runs/graph_v5_auto/mamba_final/best.pt": "f92caf6f3de5624fe1a899fc7b5dc36715447a5b81550561485d2a4c4d20f13a",
+    "runs/graph_v5_auto/transformer_final/best.pt": "cb651420e7136dc8efde36567b024089c28b147d5a658573bb4057510ccb74e0",
+    "runs/graph_v5_auto/lstm_auto_v4/best.pt": "ff9bff40a42a84839ea6c5ded7ad7e7ec4622003483cd3e1084e65731f3b3cc2",
+    "runs/graph_v5_auto/transformer_auto_v4/best.pt": "96a3c1d7b855676b1946bf0b4fe115a31bba851176c65cb394c213750bf47956"
+  }
+}

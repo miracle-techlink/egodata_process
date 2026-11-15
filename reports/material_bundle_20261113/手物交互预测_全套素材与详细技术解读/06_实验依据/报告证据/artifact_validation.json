@@ -1,0 +1,56 @@
+{
+  "status": "single_column_local_and_independent_package_build_passed",
+  "checked_at": "2026-11-12T23:27:26.265987+08:00",
+  "main_pages": 19,
+  "materials_pages": 5,
+  "numbered_figures": 18,
+  "latex_errors": 0,
+  "undefined_references": 0,
+  "overfull_boxes": 0,
+  "missing_glyph_log_warnings": 0,
+  "benign_warnings": [
+    "Fandol font CJK Script metadata warning"
+  ],
+  "original_demo_chinese_boxes": "present_in_source_image_needs_original_rerender",
+  "demo_count": 10,
+  "full_decode_and_sha_verified": true,
+  "remote_verified": true,
+  "remote_scope": "Retrieved run records, RSI histories, metrics, configs, selected dataset indices, and checkpoint SHA; no training or source modification. No test benchmark found under inspected *_final or rsi_final directories.",
+  "verified_historical_test_micro_f1": 0.9388532000951701,
+  "final_user_score_approx": 0.93,
+  "final_run_bound": false,
+  "independent_pose_accuracy_measured": false,
+  "portable_build_exit": 0,
+  "pdfs": {
+    "main.pdf": {
+      "pages": 19,
+      "sha256": "795726f2a13f51e3ac5360bdf6727e5ddc8596375c04b6ae8116561f8d9b9c23"
+    },
+    "demo_materials.pdf": {
+      "pages": 5,
+      "sha256": "79621a8cbc26654ace93a7e4a7ae06e961ce83bec744954df81c9f717e7868c4"
+    },
+    "visual_check.pdf": {
+      "pages": 3,
+      "sha256": "ec083f323395760a6b4cf5737a0fca2a3bae44257a98a3130393539ec0695f9f"
+    }
+  },
+  "portable_build_directory": "/tmp/technical_report_single_column_r_nyh8vj",
+  "portable_log_checks": "passed",
+  "portable_pdf_pages": {
+    "main.pdf": 19,
+    "demo_materials.pdf": 5,
+    "visual_check.pdf": 3
+  },
+  "visual_preview_pages": 3,
+  "perception_principle_figures": {
+    "hand": 3,
+    "pose6d": 6,
+    "stereo": 7
+  },
+  "named_pdf_aliases_sha_equal": true,
+  "layout": "A4, single column, 10pt Fandol, 16mm margins; based on visual_check.tex",
+  "preserved_narrative_paragraphs": 72,
+  "preserved_equation_environments": 9,
+  "reference_format_and_table_of_contents": "compiled and linked"
+}

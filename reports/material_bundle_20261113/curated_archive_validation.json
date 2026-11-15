@@ -1,0 +1,11 @@
+{
+  "archive": "/home/nvidia/Downloads/手物交互预测_精选定稿资料包_20261113.zip",
+  "bytes": 34495522,
+  "mib": 32.89749336242676,
+  "sha256": "ff7d6f2a673c62bf8c1ca23d08e4520b7f961d59c4ae7b0d8159ab60720fec01",
+  "files": 153,
+  "all_crc_passed": true,
+  "all_manifest_sha256_passed": true,
+  "pdf": "/home/nvidia/Downloads/手物交互预测_技术报告_精选修订版.pdf",
+  "pdf_sha256": "a4b969f0011d6cbb381d4fecff816dc2a2b17950a64f21bf56cbb14e370c9f1e"
+}

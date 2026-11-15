@@ -1,0 +1,25 @@
+\documentclass[tikz,border=4pt]{standalone}
+\usepackage[UTF8,fontset=fandol]{ctex}
+\usepackage{amsmath}
+\usetikzlibrary{arrows.meta,positioning,fit,backgrounds}
+\begin{document}
+\begin{tikzpicture}[>=Latex,b/.style={draw=blue!50!black,fill=blue!4,rounded corners,align=center,text width=2.4cm,minimum height=1.05cm,font=\small},a/.style={->,thick,blue!60!black}]
+\node[b] (video) at (0,0) {(1) 视频与时间轴\\RGB／双目／RGB-D\\标定、原生帧、采集ID};
+\node[b] (hands) at (3.25,1.05) {(2) 双手状态\\21点、左右手、mask\\模型估计／官方姿态};
+\node[b] (pose) at (3.25,-1.05) {(3) 物体几何\\RGB-D注册跟踪／\\双目重建与刚性拟合};
+\node[b] (sample) at (6.5,0) {(4) 对齐与样本\\同帧、同实体、同坐标\\32帧历史 → 1秒目标};
+\node[b] (encode) at (9.75,0) {(5) 动态图编码\\120／132维实体\\帧内注意力};
+\node[b] (model) at (13,0) {(6) 时间预测\\Mamba／LSTM／\\因果Transformer};
+\node[b] (result) at (16.25,0) {未来交互图\\主体、客体、类型\\概率与未知状态};
+\draw[a] (video.east)--(hands.west);\draw[a] (video.east)--(pose.west);
+\draw[a] (hands.east)--(sample.west);\draw[a] (pose.east)--(sample.west);
+\draw[a] (sample)--(encode);\draw[a] (encode)--(model);\draw[a] (model)--(result);
+\node[b,fill=orange!8,draw=orange!60!black,text width=5cm] (review) at (6.5,-3) {视觉复核与关系标注：正／负／未知\\未来标签只进入损失，不作为历史输入};
+\node[b,fill=green!8,draw=green!50!black,text width=5.4cm] (eval) at (14,-3) {(7) 分层验证 + RSI\\感知：覆盖、几何、时延；预测：P/R/F1\\候选训练 → 仅val选择 → 独立test};
+\draw[a,dashed] (video.south)|-(review.west);
+\draw[a,dashed] (review.east)--(eval.west);
+\draw[a] (result.south)|-(eval.east);
+\draw[a,dashed] (eval.north)--node[right,font=\scriptsize]{配置迭代}(model.south);
+\node[align=center,font=\scriptsize,text width=5.4cm] at (0.9,-3) {全流程采用统一ID、时间戳、有效掩码与来源哈希\\离线候选和在线观测分别标记};
+\end{tikzpicture}
+\end{document}

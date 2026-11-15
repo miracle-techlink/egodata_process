@@ -1,0 +1,67 @@
+[
+  {
+    "sequence_id": "2a797a4e-5011-400e-b573-e32d80cc8a54",
+    "split": "train",
+    "name": "纸盒扫码",
+    "frame": 120,
+    "frame_count": 2216,
+    "video": "/home/nvidia/backup_ego_server/raw/EgoDemo/EgoProStandard-body/lerobot/Package Barcode Scanning for Inbound Storage/2a797a4e-5011-400e-b573-e32d80cc8a54/videos/observation.images.head_left/chunk-000/file-000.mp4",
+    "video_local_status": "git_lfs_pointer_only",
+    "video_lfs_oid": "oid sha256:abb3df2f08cfc93d5b813b1ee60d802d9816c30f1633e82319961b05aad1fcde",
+    "figure": "figures/2a797a4e_f000120.jpg",
+    "source_image": "/home/nvidia/algotithm/egodata_process/runs/egodemo_training_v5_300_20261024/navigation/root_seed_frames/2a797a4e-5011-400e-b573-e32d80cc8a54_000120.jpg",
+    "source_image_sha256": "1fc1a12e7e5869a35e6ddfbddfac2972575054e5c7e7a8c224fec885ce962026"
+  },
+  {
+    "sequence_id": "2eb9dcc4-6a9a-4f51-b304-d01e0d9bdd6d",
+    "split": "val",
+    "name": "水壶操作",
+    "frame": 120,
+    "frame_count": 536,
+    "video": "/home/nvidia/backup_ego_server/raw/EgoDemo/EgoProStandard-body/lerobot/Fill and boil water in kettle/2eb9dcc4-6a9a-4f51-b304-d01e0d9bdd6d/videos/observation.images.head_left/chunk-000/file-000.mp4",
+    "video_local_status": "git_lfs_pointer_only",
+    "video_lfs_oid": "oid sha256:d0f6bc098df9fac9f46c9f581de1b4fac305278060c248db178337e5ddac909a",
+    "figure": "figures/2eb9dcc4_f000120.png",
+    "source_image": "/home/nvidia/algotithm/egodata_process/runs/egodemo_training_v5_300_20261024/seed_evidence/2eb9dcc4-6a9a-4f51-b304-d01e0d9bdd6d/000120.png",
+    "source_image_sha256": "8a0f98d0456c0467f120a5718f91c928133d371faaa4ff33492812a2f9729865"
+  },
+  {
+    "sequence_id": "99190763-eb6b-43ef-b0ad-8489a9496cbb",
+    "split": "train",
+    "name": "订书机收纳",
+    "frame": 120,
+    "frame_count": 314,
+    "video": "/home/nvidia/backup_ego_server/raw/EgoDemo/EgoProStandard/lerobot/Put stapler into drawer/99190763-eb6b-43ef-b0ad-8489a9496cbb/videos/observation.images.head_left/chunk-000/file-000.mp4",
+    "video_local_status": "git_lfs_pointer_only",
+    "video_lfs_oid": "oid sha256:5387df88b82c8f458b9bbdede32f2f319bdd8f9d054a3e2a9016712f34d304d7",
+    "figure": "figures/99190763_f000120.jpg",
+    "source_image": "/home/nvidia/algotithm/egodata_process/runs/egodemo_training_v5_300_20261024/navigation/root_seed_frames/99190763-eb6b-43ef-b0ad-8489a9496cbb_000120.jpg",
+    "source_image_sha256": "8c943f904a5cf8cbde9642502857a8f33ebf44635e717393e78f604c80b0423f"
+  },
+  {
+    "sequence_id": "9be303ef-7491-43be-9915-ddfd51fde7b3",
+    "split": "test",
+    "name": "封口贴操作",
+    "frame": 156,
+    "frame_count": 405,
+    "video": "/home/nvidia/backup_ego_server/raw/EgoDemo/EgoProStandard/lerobot/Apply Sealing Label/9be303ef-7491-43be-9915-ddfd51fde7b3/videos/observation.images.head_left/chunk-000/file-000.mp4",
+    "video_local_status": "git_lfs_pointer_only",
+    "video_lfs_oid": "oid sha256:b934132379f4d915c67b8db6cf2492d0a4c8bd1ee340d5d8f0536bc2bc731e89",
+    "figure": "figures/9be303ef_f000156.png",
+    "source_image": "/home/nvidia/algotithm/egodata_process/runs/egodemo_training_v5_300_20261024/dense_evidence/9be303ef-7491-43be-9915-ddfd51fde7b3/000000_000405_aa0d0ee28c1e/crops/000156.png",
+    "source_image_sha256": "d4ff8e5749dcb71fad6b2f610fd2bd1489dfd45a9312c47b56700a7138fd366d"
+  },
+  {
+    "sequence_id": "acc3c38d-9591-4eaa-9e6b-d98e385249c8",
+    "split": "train",
+    "name": "手柄归位",
+    "frame": 120,
+    "frame_count": 320,
+    "video": "/home/nvidia/backup_ego_server/raw/EgoDemo/EgoProStandard-body/lerobot/Return Game Controller/acc3c38d-9591-4eaa-9e6b-d98e385249c8/videos/observation.images.head_left/chunk-000/file-000.mp4",
+    "video_local_status": "git_lfs_pointer_only",
+    "video_lfs_oid": "oid sha256:2bfd13278f37cc6891496f569d61f8fe34bea96b3367cdb6f92a614efd333be8",
+    "figure": "figures/acc3c38d_f000120.jpg",
+    "source_image": "/home/nvidia/algotithm/egodata_process/runs/egodemo_training_v5_300_20261024/navigation/root_seed_frames/acc3c38d-9591-4eaa-9e6b-d98e385249c8_000120.jpg",
+    "source_image_sha256": "83e443aad9cda80f6cfb14cb709b73aa9de39063600f3f9f7da95993ad5153ca"
+  }
+]

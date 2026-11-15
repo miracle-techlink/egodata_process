@@ -1,0 +1,13 @@
+{
+  "checked_at": "2026-11-12T23:32:05.032834+08:00",
+  "url": "https://www.modelscope.cn/datasets/Liuyue9698/ego_pose_dataset",
+  "branch": "master",
+  "commit": "aa877e03c0a8ddcf0c93b2a00d3f49f11ff8be3a",
+  "files": [
+    ".gitattributes",
+    "README.md"
+  ],
+  "data_files": [],
+  "upload_status": "no_data_files_in_current_git_tree",
+  "clone_directory": "/tmp/modelscope_dataset_status_mk2hfi8n/repo"
+}

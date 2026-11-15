@@ -1,0 +1,28 @@
+{
+  "status": "passed",
+  "anchors": 415,
+  "feature_shape": [
+    415,
+    32,
+    11,
+    132
+  ],
+  "maximum_absolute_probability_difference": 2.980232238769531e-07,
+  "prediction_masks_identical": true,
+  "checkpoint_sha256": "c04c6ce22d7860680da81c2bef17beab5076770f61964cd394b8e52047a0d419",
+  "model": {
+    "backbone": "lstm",
+    "input_dim": 132,
+    "event_type_count": 66,
+    "d_model": 128,
+    "n_layer": 2,
+    "d_state": 16,
+    "d_conv": 4,
+    "expand": 2,
+    "n_heads": 4,
+    "dropout": 0.0
+  },
+  "epoch": 43,
+  "training_performed": false,
+  "scope": "replay equivalence only; not an accuracy evaluation"
+}

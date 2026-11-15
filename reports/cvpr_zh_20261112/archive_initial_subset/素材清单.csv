@@ -1,0 +1,19 @@
+﻿编号,素材,状态,本地路径,所需动作
+F1,五场景真实证据图,已生成,/home/nvidia/algotithm/egodata_process/reports/cvpr_zh_20261112/figures/dataset_examples.pdf,正式版从标注版原视频替换无网格高清帧
+F2,系统结构图,已生成,/home/nvidia/algotithm/egodata_process/reports/cvpr_zh_20261112/figures/architecture.pdf,可直接用于报告与讲解
+F3,监督构成统计,已生成,/home/nvidia/algotithm/egodata_process/reports/cvpr_zh_20261112/figures/supervision.pdf,与冻结数据计数绑定
+F4,骨干结果与全正参照,已生成；模型数值为文档转录,/home/nvidia/algotithm/egodata_process/reports/cvpr_zh_20261112/figures/backbone_results.pdf,补取三个原始benchmark后核验
+F5,正负未知标注时间线,已生成；非模型预测,/home/nvidia/algotithm/egodata_process/reports/cvpr_zh_20261112/figures/annotation_timeline.pdf,用于说明监督机制
+F6,预测与未来揭示拼图,待制作,,需要checkpoint绑定逐窗口输出
+F7,三骨干学习曲线,待同步日志,,需要完整epoch metrics与选优点
+F8,失败与遮挡案例,待绑定预测,,误报漏报与未知各一个连续片段
+D1,110秒主demo,待制作,,原视频+逐窗口三模型输出+已知标签mask
+D2,同窗口基线对照,待制作,,Mamba/LSTM/Transformer/全正参照统一输入与阈值
+V-2a797a4e,纸盒扫码 标注版左目视频,仅LFS指针，未有视频内容,/home/nvidia/backup_ego_server/raw/EgoDemo/EgoProStandard-body/lerobot/Package Barcode Scanning for Inbound Storage/2a797a4e-5011-400e-b573-e32d80cc8a54/videos/observation.images.head_left/chunk-000/file-000.mp4,同步真实MP4并核对2216原生帧；对象标识 oid sha256:abb3df2f08cfc93d5b813b1ee60d802d9816c30f1633e82319961b05aad1fcde
+V-2eb9dcc4,水壶操作 标注版左目视频,仅LFS指针，未有视频内容,/home/nvidia/backup_ego_server/raw/EgoDemo/EgoProStandard-body/lerobot/Fill and boil water in kettle/2eb9dcc4-6a9a-4f51-b304-d01e0d9bdd6d/videos/observation.images.head_left/chunk-000/file-000.mp4,同步真实MP4并核对536原生帧；对象标识 oid sha256:d0f6bc098df9fac9f46c9f581de1b4fac305278060c248db178337e5ddac909a
+V-99190763,订书机收纳 标注版左目视频,仅LFS指针，未有视频内容,/home/nvidia/backup_ego_server/raw/EgoDemo/EgoProStandard/lerobot/Put stapler into drawer/99190763-eb6b-43ef-b0ad-8489a9496cbb/videos/observation.images.head_left/chunk-000/file-000.mp4,同步真实MP4并核对314原生帧；对象标识 oid sha256:5387df88b82c8f458b9bbdede32f2f319bdd8f9d054a3e2a9016712f34d304d7
+V-9be303ef,封口贴操作 标注版左目视频,仅LFS指针，未有视频内容,/home/nvidia/backup_ego_server/raw/EgoDemo/EgoProStandard/lerobot/Apply Sealing Label/9be303ef-7491-43be-9915-ddfd51fde7b3/videos/observation.images.head_left/chunk-000/file-000.mp4,同步真实MP4并核对405原生帧；对象标识 oid sha256:b934132379f4d915c67b8db6cf2492d0a4c8bd1ee340d5d8f0536bc2bc731e89
+V-acc3c38d,手柄归位 标注版左目视频,仅LFS指针，未有视频内容,/home/nvidia/backup_ego_server/raw/EgoDemo/EgoProStandard-body/lerobot/Return Game Controller/acc3c38d-9591-4eaa-9e6b-d98e385249c8/videos/observation.images.head_left/chunk-000/file-000.mp4,同步真实MP4并核对320原生帧；对象标识 oid sha256:2bfd13278f37cc6891496f569d61f8fe34bea96b3367cdb6f92a614efd333be8
+AUX,human_hands_foundationpose_30fps.mp4,现有视频，44帧，1.47秒,/home/nvidia/algotithm/egodata_process/runs/human_pose_live_20261022/human_hands_foundationpose_30fps.mp4,仅独立感知/未来姿态探索演示；不能替代V5交互预测
+AUX,future_pose_comparison.mp4,现有视频，74帧，2.47秒,/home/nvidia/algotithm/egodata_process/runs/pose_forecast_20261022/future_pose_comparison.mp4,仅独立感知/未来姿态探索演示；不能替代V5交互预测
+AUX,future_pose_online.mp4,现有视频，74帧，2.47秒,/home/nvidia/algotithm/egodata_process/runs/pose_forecast_20261022/future_pose_online.mp4,仅独立感知/未来姿态探索演示；不能替代V5交互预测

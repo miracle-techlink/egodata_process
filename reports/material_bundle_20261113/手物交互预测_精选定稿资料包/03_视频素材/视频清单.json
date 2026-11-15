@@ -1,0 +1,82 @@
+[
+  {
+    "path": "03_视频素材/full-pipeline.mp4",
+    "title": "完整流程 Demo",
+    "note": "同一HO-Cap片段：物体名称、手部与6D、当前复核阶段、实际LSTM候选。",
+    "probe": {
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1800,
+          "height": 1040,
+          "r_frame_rate": "30/1",
+          "nb_frames": "446"
+        }
+      ],
+      "format": {
+        "duration": "14.866667"
+      }
+    }
+  },
+  {
+    "path": "03_视频素材/raw_rgb.mp4",
+    "title": "同源原始 RGB",
+    "note": "与完整流程按帧对应的原始画面，供前后对照。",
+    "probe": {
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 640,
+          "height": 480,
+          "r_frame_rate": "30/1",
+          "nb_frames": "446"
+        }
+      ],
+      "format": {
+        "duration": "14.866667"
+      }
+    }
+  },
+  {
+    "path": "03_视频素材/hocap_four_objects.mp4",
+    "title": "四物体与手部感知",
+    "note": "同一HO-Cap片段的FoundationPose与手部叠加。",
+    "probe": {
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 640,
+          "height": 480,
+          "r_frame_rate": "30/1",
+          "nb_frames": "446"
+        }
+      ],
+      "format": {
+        "duration": "14.866667"
+      }
+    }
+  },
+  {
+    "path": "03_视频素材/hands_and_object_rgbd.mp4",
+    "title": "真人手物联合感知",
+    "note": "DexYCB补充样例，展示手骨架与物体6D。",
+    "probe": {
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 640,
+          "height": 480,
+          "r_frame_rate": "30/1",
+          "nb_frames": "44"
+        }
+      ],
+      "format": {
+        "duration": "1.466667"
+      }
+    }
+  }
+]

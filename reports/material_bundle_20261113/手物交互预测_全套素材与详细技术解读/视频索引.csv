@@ -1,0 +1,17 @@
+﻿path,name,description,duration_seconds,codec_name,width,height,r_frame_rate,nb_frames
+03_视频素材/b857b2a8_demo.mp4,b857b2a8_demo.mp4,早期交互演示（授权工作区）,6.0,h264,1500,500,4/1,24
+03_视频素材/b857b2a8_demo_v2.mp4,b857b2a8_demo_v2.mp4,早期交互演示改进版（授权工作区）,6.0,h264,1500,500,4/1,24
+03_视频素材/demo_pose_v4.mp4,demo_pose_v4.mp4,位姿与交互显示历史版本 v4（授权工作区）,10.75,h264,1500,500,4/1,43
+03_视频素材/demo_v5.mp4,demo_v5.mp4,交互预测历史版本 v5（授权工作区）,8.0,h264,1500,500,3/1,24
+03_视频素材/demo_v6.mp4,demo_v6.mp4,EgoDemo原始三栏交互预测（授权工作区）,8.0,h264,1500,500,3/1,24
+03_视频素材/e923ec44_demo.mp4,e923ec44_demo.mp4,另一早期交互样例（授权工作区）,2.0,h264,1500,500,4/1,8
+03_视频素材/full-pipeline.mp4,full-pipeline.mp4,最新完整流程：物体名称与实物图、手部/6D、当前交互与模型候选,14.866667,h264,1800,1040,30/1,446
+03_视频素材/hands_and_object_rgbd.mp4,hands_and_object_rgbd.mp4,DexYCB真人手与物体6D联合感知,1.466667,mpeg4,640,480,30/1,44
+03_视频素材/hands_and_object_rgbd_browser.mp4,hands_and_object_rgbd_browser.mp4,DexYCB真人手与物体6D联合感知 · H.264浏览器兼容版,1.466667,h264,640,480,30/1,44
+03_视频素材/hands_ego_coordinates.mp4,hands_ego_coordinates.mp4,第一视角手部世界/相机坐标（授权工作区）,10.0,mpeg4,1280,864,10/1,100
+03_视频素材/hands_ego_coordinates_browser.mp4,hands_ego_coordinates_browser.mp4,第一视角手部世界/相机坐标（授权工作区） · H.264浏览器兼容版,10.0,h264,1280,864,10/1,100
+03_视频素材/hocap_four_objects.mp4,hocap_four_objects.mp4,HO-Cap四物体完整感知分支,14.866667,h264,640,480,30/1,446
+03_视频素材/pose6d_backend_full.mp4,pose6d_backend_full.mp4,FoundationPose完整后端样例，包含机器人，73.7秒,73.7,mpeg4,640,480,10/1,737
+03_视频素材/pose6d_backend_full_browser.mp4,pose6d_backend_full_browser.mp4,FoundationPose完整后端样例，包含机器人，73.7秒 · H.264浏览器兼容版,73.7,h264,640,480,10/1,737
+03_视频素材/raw_rgb.mp4,raw_rgb.mp4,同一HO-Cap原始RGB回放，作为对照,14.866667,mpeg4,640,480,30/1,446
+03_视频素材/raw_rgb_browser.mp4,raw_rgb_browser.mp4,同一HO-Cap原始RGB回放，作为对照 · H.264浏览器兼容版,14.866667,h264,640,480,30/1,446

@@ -1,0 +1,14 @@
+\documentclass[tikz,border=4pt]{standalone}
+\usepackage[UTF8,fontset=fandol]{ctex}
+\usepackage{amsmath}
+\usetikzlibrary{arrows.meta,positioning,fit,backgrounds}
+\begin{document}
+\begin{tikzpicture}[>=Latex,n/.style={draw,rounded corners,align=center,text width=2.55cm,minimum height=.9cm,font=\small}]
+\node[n,fill=blue!5] (g) at (0,0) {冻结数据与当前配置};
+\node[n,fill=blue!5] (m) at (3.5,0) {白名单变异\\独立候选训练};
+\node[n,fill=orange!8] (v) at (3.5,-1.6) {仅验证集评分\\失败单列留档};
+\node[n,fill=green!7] (s) at (0,-1.6) {相对提升超过2\%\\晋升并写入谱系};
+\draw[->,thick] (g)--(m);\draw[->,thick] (m)--(v);\draw[->,thick] (v)--(s);\draw[->,thick] (s)--(g);
+\node[align=center,font=\small] at (1.7,-2.55) {选定配置后独立测试；数据版本变化另开系列};
+\end{tikzpicture}
+\end{document}

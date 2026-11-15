@@ -1,0 +1,50 @@
+{
+  "verified_at": "2026-11-12T23:39:58.525252+08:00",
+  "release_id": 443150945,
+  "release_url": "https://github.com/miracle-techlink/egodata_process/releases/tag/technical-report-2026-11-12",
+  "draft": false,
+  "published_at": "2026-11-12T15:39:10Z",
+  "assets": [
+    {
+      "name": "egodata-technical-report-zh.pdf",
+      "size": 2462075,
+      "url": "https://github.com/miracle-techlink/egodata_process/releases/download/technical-report-2026-11-12/egodata-technical-report-zh.pdf"
+    },
+    {
+      "name": "SHA256SUMS.txt",
+      "size": 188,
+      "url": "https://github.com/miracle-techlink/egodata_process/releases/download/technical-report-2026-11-12/SHA256SUMS.txt"
+    },
+    {
+      "name": "THIRD_PARTY_NOTICES.txt",
+      "size": 2308,
+      "url": "https://github.com/miracle-techlink/egodata_process/releases/download/technical-report-2026-11-12/THIRD_PARTY_NOTICES.txt"
+    }
+  ],
+  "links": {
+    "release": {
+      "http_status": 200,
+      "bytes": 148770
+    },
+    "read_pdf": {
+      "http_status": 200,
+      "bytes": 167587
+    },
+    "download_pdf": {
+      "http_status": 200,
+      "bytes": 2462075,
+      "pdf_magic": true,
+      "sha256": "9bf6accde520100bb0f4352fc4ef56dc5692b32e810d17e39c74af5900c02457",
+      "matches_local": true
+    }
+  },
+  "modelscope": {
+    "api_status": 200,
+    "total_count": 2,
+    "files": [
+      ".gitattributes",
+      "README.md"
+    ],
+    "dataset_uploaded": false
+  }
+}

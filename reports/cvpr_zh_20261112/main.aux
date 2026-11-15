@@ -1,0 +1,71 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand*\HyPL@Entry[1]{}
+\citation{damen2022rescaling}
+\citation{grauman2022ego4d}
+\citation{egodemo}
+\citation{zhang2020mediapipe}
+\citation{wen2024foundationpose}
+\citation{gu2023mamba}
+\HyPL@Entry{0<</S/D>>}
+\@writefile{toc}{\contentsline {section}{\numberline {1}\hskip -1em.~研究目标与系统概览}{1}{section.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{结果口径。}{1}{section*.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}\hskip -1em.~相关工作}{1}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}\hskip -1em.~数据构建与版本演进}{1}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}\hskip -1em.~原生时间轴与图监督}{1}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}\hskip -1em.~自动复核与冻结发布}{2}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}\hskip -1em.~几何增强与覆盖解释}{2}{subsection.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}\hskip -1em.~动态交互图预测方法}{2}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}\hskip -1em.~统一实体特征}{2}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}\hskip -1em.~帧内关系编码}{2}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}\hskip -1em.~共享时间骨干}{2}{subsection.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}\hskip -1em.~有向图解码与损失}{2}{subsection.4.4}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces 项目演进，斜杠依次为train/val/test。不同数据版本的规模和采样策略不同，不能混为单一试验。fasttrain涉及289段不等于289段均产生有效监督；记录中186段有状态段。扩展v4规模来自历史阶段总结；10月26日较早的原始索引摘要另为36/5/7采集、5855/713/995窗。两套规模不可混用，最终以各run绑定索引核定。}}{3}{table.caption.2}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{tab:versions}{{1}{3}{项目演进，斜杠依次为train/val/test。不同数据版本的规模和采样策略不同，不能混为单一试验。fasttrain涉及289段不等于289段均产生有效监督；记录中186段有状态段。扩展v4规模来自历史阶段总结；10月26日较早的原始索引摘要另为36/5/7采集、5855/713/995窗。两套规模不可混用，最终以各run绑定索引核定。}{table.caption.2}{}}
+\newlabel{tab:versions@cref}{{[table][1][]1}{[1][2][]3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces 系统实现。帧内注意力建模空间上下文，时间骨干沿各实体历史独立且共享地运算；末端有向图头保留主体与客体的区别。同一数据版本内的三骨干对照替换时间模块；132维位姿增强另记录离线来源。虚线表示损失与标签的关联，标签不进入前向特征。图为实现结构示意，不是实验输出。}}{3}{figure.caption.3}\protected@file@percent }
+\newlabel{fig:architecture}{{1}{3}{系统实现。帧内注意力建模空间上下文，时间骨干沿各实体历史独立且共享地运算；末端有向图头保留主体与客体的区别。同一数据版本内的三骨干对照替换时间模块；132维位姿增强另记录离线来源。虚线表示损失与标签的关联，标签不进入前向特征。图为实现结构示意，不是实验输出。}{figure.caption.3}{}}
+\newlabel{fig:architecture@cref}{{[figure][1][]1}{[1][2][]3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}\hskip -1em.~132 维位姿增强与实体关联}{3}{subsection.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}\hskip -1em.~RSI自动迭代优化}{3}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}\hskip -1em.~候选生成与训练}{3}{subsection.5.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces 搜索空间来自\texttt  {rsi\_v5.py}。最终运行的候选集合以实际history与配置为准，不由默认参数推算完成轮数。}}{4}{table.caption.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces RSI机制图。该图说明代码流程，不代表已完成轮数或各轮收益。}}{4}{figure.caption.5}\protected@file@percent }
+\newlabel{fig:rsi}{{2}{4}{RSI机制图。该图说明代码流程，不代表已完成轮数或各轮收益。}{figure.caption.5}{}}
+\newlabel{fig:rsi@cref}{{[figure][2][]2}{[1][4][]4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}\hskip -1em.~验证选择、失败处理与晋升}{4}{subsection.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}\hskip -1em.~迭代经验}{4}{subsection.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}\hskip -1em.~实验结果与版本对应}{4}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}\hskip -1em.~已恢复的扩展数据评估}{4}{subsection.6.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces 扩展冻结版本的验证／测试micro-F1。不同骨干处于同一记录阶段；未提供重复运行方差，故不绘制误差条。}}{4}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:expanded}{{3}{4}{扩展冻结版本的验证／测试micro-F1。不同骨干处于同一记录阶段；未提供重复运行方差，故不绘制误差条。}{figure.caption.7}{}}
+\newlabel{fig:expanded@cref}{{[figure][3][]3}{[1][4][]4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}\hskip -1em.~最终全量结果的绑定}{4}{subsection.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}\hskip -1em.~不同版本之间的比较原则}{4}{subsection.6.3}\protected@file@percent }
+\bibstyle{ieeenat_fullname}
+\bibdata{references}
+\bibcite{damen2022rescaling}{{1}{2022}{{Damen et~al.}}{{Damen, Doughty, Farinella, Furnari, Kazakos, Ma, Moltisanti, Munro, Perrett, Price, and Wray}}}
+\bibcite{grauman2022ego4d}{{2}{2022}{{Grauman et~al.}}{{Grauman, Westbury, Byrne, Chavis, Furnari, Girdhar, et~al.}}}
+\bibcite{gu2023mamba}{{3}{2023}{{Gu and Dao}}{{}}}
+\bibcite{egodemo}{{4}{}{{Lightwheel AI}}{{}}}
+\bibcite{wen2024foundationpose}{{5}{2024}{{Wen et~al.}}{{Wen, Yang, Kautz, and Birchfield}}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces 扩展冻结阶段的已记录评估值。数值来自历史工具输出，非本轮重新训练；保留原输出三位小数精度。该表不冒充尚未直接同步的最终RSI冠军表。}}{5}{table.caption.6}\protected@file@percent }
+\newlabel{tab:results}{{3}{5}{扩展冻结阶段的已记录评估值。数值来自历史工具输出，非本轮重新训练；保留原输出三位小数精度。该表不冒充尚未直接同步的最终RSI冠军表。}{table.caption.6}{}}
+\newlabel{tab:results@cref}{{[table][3][]3}{[1][4][]5}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}\hskip -1em.~已完成的Demo与可视化}{5}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}\hskip -1em.~实际资产}{5}{subsection.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}\hskip -1em.~正式展示需要补齐的绑定}{5}{subsection.7.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8}\hskip -1em.~复现与分析要求}{5}{section.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9}\hskip -1em.~结论}{5}{section.9}\protected@file@percent }
+\bibcite{zhang2020mediapipe}{{6}{2020}{{Zhang et~al.}}{{Zhang, Bazarevsky, Vakunov, Tkachenka, Sung, Chang, and Grundmann}}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces 历史版本结果概览。每组柱对应各版本自身测试集，数据规模与监督发生变化，仅呈现项目演进，不作为固定测试集上的提升曲线，也不将最终0.93强行接到某个历史模型上。}}{6}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:history}{{4}{6}{历史版本结果概览。每组柱对应各版本自身测试集，数据规模与监督发生变化，仅呈现项目演进，不作为固定测试集上的提升曲线，也不将最终0.93强行接到某个历史模型上。}{figure.caption.8}{}}
+\newlabel{fig:history@cref}{{[figure][4][]4}{[1][5][]6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces 现有demo v6真实预览帧。左为第一视角图像，中为已有复核关系，右为LSTM预测关系（画面阈值0.80）。手部骨架和物体位姿用于显示观测，模型预测的是交互边，不是未来三维姿态。原图保留，部分中文仍显示方框；正式导出应修复字体。原画面“TRUTH”不自动证明标签是独立人工金标准。}}{6}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:demo}{{5}{6}{现有demo v6真实预览帧。左为第一视角图像，中为已有复核关系，右为LSTM预测关系（画面阈值0.80）。手部骨架和物体位姿用于显示观测，模型预测的是交互边，不是未来三维姿态。原图保留，部分中文仍显示方框；正式导出应修复字体。原画面“TRUTH”不自动证明标签是独立人工金标准。}{figure.caption.9}{}}
+\newlabel{fig:demo@cref}{{[figure][5][]5}{[1][5][]6}}
+\@writefile{toc}{\contentsline {section}{\numberline {A}\hskip -1em.~本稿证据来源}{7}{appendix.A}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {B}\hskip -1em.~最终同步入口}{7}{appendix.B}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {C}\hskip -1em.~正式图表清单}{7}{appendix.C}\protected@file@percent }
+\gdef \@abspage@last{7}

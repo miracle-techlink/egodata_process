@@ -1,0 +1,442 @@
+\documentclass[11pt,a4paper,UTF8,fontset=fandol]{ctexart}
+\usepackage[margin=1.8cm]{geometry}
+\usepackage{amsmath,amssymb,booktabs,longtable,tabularx,graphicx,float,xcolor,fancyhdr}
+\usepackage{fvextra,xurl}
+\setmonofont{FandolFang-Regular.otf}
+\usepackage[colorlinks,linkcolor=teal!55!black,urlcolor=teal!55!black]{hyperref}
+\definecolor{ink}{HTML}{173446}
+\definecolor{green}{HTML}{086B59}
+\setlength{\parindent}{0pt}\setlength{\parskip}{7pt}
+\renewcommand{\arraystretch}{1.22}
+\ctexset{section={format=\Large\bfseries\color{ink}},subsection={format=\large\bfseries\color{green}}}
+\pagestyle{fancy}\fancyhf{}\fancyhead[L]{\small 手物交互预测 · 原理、实现与证据}\fancyhead[R]{\small 2026.11.13}\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}\setcounter{tocdepth}{2}
+\newcommand{\code}[1]{{\small\nolinkurl{#1}}}
+\newcommand{\fig}[3][.94]{\begin{figure}[H]\centering\includegraphics[width=#1\linewidth]{../04_图片与图表/#2}\caption{#3}\end{figure}}
+\newcommand{\where}[1]{\par{\small\color{green}\textbf{对应实现／材料：}#1}\par}
+\hypersetup{pdftitle={手物交互预测：完整Pipeline详细技术解读},pdfauthor={项目技术资料},pdfsubject={数据、手部、6D、交互图、Mamba/LSTM/Transformer、RSI、评估和Demo复现}}
+\begin{document}
+\begin{titlepage}
+\vspace*{1.5cm}
+{\color{green}\large EGODATA / TECHNICAL COMPANION}\par\vspace{.8cm}
+{\Huge\bfseries\color{ink}手物交互预测}\par\vspace{.35cm}
+{\LARGE\bfseries 完整Pipeline详细技术解读}\par\vspace{.6cm}
+{\Large 从原始画面到结构化关系，\par 从模型输出到可复核的实验结论。}\par\vspace{1.3cm}
+本册与本包中的单栏技术报告配套。正式报告侧重方法、实验与结论；本册进一步解释数据含义、坐标约定、张量变换、边监督、模型差异、RSI选优和演示制作，并把说明对应到压缩包中的实际文件。
+
+\vspace{.4cm}
+\textbf{阅读顺序：}先看第1--3节确定系统任务与数据边界，再看第4--10节理解实现，最后用第11--16节核对结果、视频和复现方法。
+
+\textbf{版本口径：}原始EgoDemo交互实验、独立RGB-D感知验证、HO-Cap跨数据集公开Demo分别说明。项目方确认最终全量结果约0.93；本包同时保留可核验的扩展阶段test micro-F1 0.938853及后续RSI账本，不将不同阶段混成一次试验。
+
+\textbf{精选资料包：}只保留当前完整流程、真人手物与四物体感知材料，以及相应方法图和结果依据。旧版Demo、机械臂后端示例、历史报告和排版截图已移出；真实模型输出和必要实验记录保留。此包不是全部原始训练数据集的镜像。
+
+\vfill
+{\large 2026年11月13日}\par
+\href{https://egodata-full-pipeline-demo.miracle-techlink.chatgpt.site}{公开演示与报告入口}
+\end{titlepage}
+\tableofcontents\clearpage
+
+\section{系统到底在预测什么}
+\subsection{从“动作类别”到“谁、对谁、做什么”}
+普通视频分类给一段视频一个类别，例如“拿取”。本项目要求输出更细的结构：主体可以是左手、右手、双手或某个物体；客体是具有稳定身份的对象；关系可以是接触、持握、共同运动或操作。最终输出因此是一组有方向的三元组，而非只有一个动作词。
+
+例如，\textbf{左手$\rightarrow$持握$\rightarrow$红盖圆瓶}同时包含主体、关系和客体。“红盖圆瓶”在Demo里是供人阅读的名称，推理核心引用的是实体槽位及其观测特征。换一个外观不同的物体，数据结构仍能保持一致；能否泛化则需要实验验证，不能由结构设计直接推出。
+
+同一实体对可以同时满足多种关系。手与圆瓶可能同时接触、持握和共同运动；因此交互类型不是互斥的单选项。另一方面，“手靠近瓶子”只能提供接近证据，不能直接证明接触或下一秒必然抓取。
+
+\subsection{预测、观测与复核承担不同任务}
+\begin{tabularx}{\linewidth}{p{2.5cm}XX}
+\toprule 信息 & 例子 & 在系统中的用途\\\midrule
+观测 & 二维骨架、物体框、估计6D & 描述历史中可获得的状态\\
+未来监督 & 目标时刻已复核的接触正／负 & 训练损失与测试统计\\
+模型候选 & 某条边的sigmoid概率 & 预测未来交互，需独立评价\\
+Demo阶段提示 & “持握并移动红盖圆瓶” & 帮助理解画面，不改写概率\\
+\bottomrule
+\end{tabularx}
+
+这四类信息在数据中保留来源，在画面中分区显示。手部骨架是姿态观测，不是本项目图预测头生成的未来手部轨迹；视觉复核阶段提示也不自动成为逐帧测试标签。
+\where{\code{src/mamba/graph_v5.py}、\code{src/mamba/dataset_v5.py}；公开Demo的\code{demo_manifest.json}。}
+
+\section{完整数据流与三种实际运行条件}
+\fig{full_pipeline.pdf}{完整处理链。手部与物体感知并行，之后在时间、身份和坐标上对齐；未来标签进入监督分支。}
+\subsection{第一视角实验主线}
+EgoDemo主线保留原生时间戳、官方手姿态和同采集相机参数，物体几何由二维实例观测、双目和局部表面轨迹逐步补齐。训练样本由历史窗口构成，目标定位到未来时刻。后续自动复核、数据扩充和RSI均沿这条研究主线推进。
+
+这条主线中的“已有三维手姿态”与“从RGB实时估计三维手姿态”是两种输入条件。使用来源姿态可以研究后续交互建模，但不能因此宣称系统已经在任意相机上完成全部感知。
+
+\subsection{独立RGB-D感知验证}
+DexYCB真人持物片段验证MediaPipe与FoundationPose的同帧输出；HO-Cap片段验证四物体6D和手部观测；737帧FoundationPose后端样例用于点云、模型坐标和数值合法性检查。它们提供工程可运行性、覆盖和时延证据，不能直接替代第一视角交互任务的测试集。
+
+\subsection{本次公开完整流程Demo}
+公开Demo将同一HO-Cap序列的原始RGB、已保存的手部／四物体感知与现有LSTM接起来。446帧连续展示，32帧历史积累后获得415个预测锚点。这个适配过程没有训练或调整权重。
+
+该序列源时戳尚未核验，回放及特征速度的时基明确假设为30Hz；手部度量三维没有提供，物体位姿采用相机坐标。因此它是可检查各模块接口和真实输出的跨源演示，不能作为原协议未来1秒预测的独立计分结果。
+
+\section{数据组织、时间窗口与防止信息泄漏}
+\subsection{采集、相机、片段与窗口是四个不同层级}
+同一次采集可以有多个机位、多个视频文件和大量重叠窗口。数据划分以独立采集为单位完成，再在各划分内部生成窗口。相邻窗口通常高度相关，将它们随机分进训练和测试会造成共享场景、对象轨迹甚至相同帧的泄漏。
+
+资源池中的300段采集、75个原始任务和868,255帧是资源规模；经过审核和窗口筛选后，进入某一次实验的采集与窗口数可能少得多。不能把资源池总数写成每个checkpoint实际使用的数据量。
+
+\subsection{32帧历史与未来目标如何对应}
+设历史窗口为$[s,e)$，锚点是$t=e-1$，原生时间戳为$\tau_f$。当前图任务常用$W=e-s=32$，目标帧$u$须满足
+\[
+u\ge e,\qquad \tau_u-\tau_t\ge 1\text{秒}.
+\]
+32帧是观测数量，1秒是物理时间间隔。若视频帧率不固定，就必须使用时间戳定位目标；将展示视频改成3fps只影响播放速度，不能改变训练目标。
+
+\textbf{理想化示例：}在已知恒定30Hz的序列中，历史帧0--31的锚点为31，未来至少1秒的目标至少为61。这只是说明公式的假设例子，不是对当前HO-Cap未知源时戳的补测结果。
+
+\subsection{历史特征与未来标签的读取边界}
+历史特征函数只读取\code{[start,end)}，相机锚点取历史末帧。未来标签单独由\code{target_edges}产生。名称、来源路径和复核文本不作为图模型前向输入；但后续几何名称匹配会间接影响选择了哪条位姿轨迹，因此需要保留对应依据。
+
+若几何来自离线双向跟踪或后见种子，即使把它放在历史帧的位置，也不等于上游过程严格因果。132维实验中保留离线候选标记，须与120维历史观测实验区别解释。
+\where{\code{dataset_v5.py::build_features}、\code{target_edges}、\code{__getitem__}；数据发布时绑定的索引及审核记录（完整训练索引另在授权工作区保存）。}
+
+\section{手部21点：坐标、缺失与投影}
+\subsection{二维关键点与三维关节不能直接混用}
+MediaPipe分支输出每只手21个点。图像$x,y$通常按宽高归一化；相对深度$z_{rel}$描述相对于腕部的变化，不等于以米计的相机坐标。左右手分类分数也不等于关节定位精度。项目实际使用的手部封装与后端版本在元数据中保留；官方方法说明见\href{https://developers.google.com/edge/mediapipe/solutions/vision/hand_landmarker}{MediaPipe官方文档}。
+
+腕部为拓扑根节点，各指通过固定关节连接组成骨架。骨架显示连接的是观测点；线段本身不增加新的深度信息。遮挡后整只手缺失时保持NaN及无效掩码，下游不能把零向量解释为手位于坐标原点。
+
+\fig[.88]{hand_pose_principle.pdf}{手部感知与坐标路径。示意图解释方法，实际输出另见视频与数组。}
+\subsection{世界坐标转到当前相机}
+本册统一用$T_{A\leftarrow B}$表示“把B系坐标变换到A系”。设相机到世界变换为$T_{w\leftarrow c}=[R_{wc},t_{wc}]$，则
+\[
+p_c=R_{wc}^{\mathsf T}(p_w-t_{wc}),\quad
+u=f_x x_c/z_c+c_x,\quad v=f_y y_c/z_c+c_y.
+\]
+必须检查$z_c>0$、点落在图像内，以及所用内参与图像版本一致。Raw版视频与标注版不保证同帧号同一时刻，不能只凭文件名关联。
+
+\subsection{历史末帧相机锚定}
+如果历史各帧的三维手关节都在世界系，可将它们统一到锚点相机$t$：
+\[
+p^{(t)}_{f,c}=R_{wc,t}^{\mathsf T}(p_{f,w}-t_{wc,t}),\quad f\in[s,e).
+\]
+这样同一世界中的手部运动不会与每一帧的相机坐标变动直接混在一起。它依赖相机轨迹质量；错误外参仍会导致错误的“补偿”。
+
+\subsection{RGB-D反投影得到的是可见表面}
+给定二维像素和对齐深度$d$，反投影为$p_c=dK^{-1}[u,v,1]^\mathsf T$。项目HO-Cap分支在半径2像素邻域取有效深度，中位数用于降低孤立噪声；至少3个有效点且分位跨度不超过0.04米时才接受。
+
+深度相机测到的是可见表面。关节中心可能在皮肤内部，邻域也可能混入被手遮挡的物体，故这个量被记录为表面点，不作为解剖关节真值。当前公开Demo保留手部二维信息，并将度量关节三维设为缺失。
+
+\subsection{左右手标记要对应输入镜像约定}
+\code{OnlineHands}显式接受\code{input_mirrored}。当输入不是后端假设的镜像自拍图时，封装交换左右标签，图像及像素坐标不做水平翻转。数据契约中较早的文字约定不能替代运行时实际元数据；遇到标签相反要核对这项设置，而不是任意调换骨架颜色。
+\where{\code{src/hand_pose/online_hands.py}；\code{hand_valid}、\code{hand_projection_valid}与\code{hand_camera_surface_valid}三个掩码含义不同。}
+
+\section{物体6D：姿态、坐标轴与模型身份}
+\subsection{六自由度位姿与旋转六维编码}
+刚体位姿为三维平移$t$加三维旋转$R$，写成
+\[
+T_{c\leftarrow o}=\begin{bmatrix}R&t\\0&1\end{bmatrix},\quad x_c=Rx_o+t,
+\quad R^\mathsf TR=I,\ \det R=1.
+\]
+“旋转六维编码”则是把旋转矩阵前两列拼为6个数。它是一种表示旋转的特征，不代表增加了6个独立自由度。若需从任意6维预测向量恢复旋转，可先归一化第一向量，再对第二向量做正交化，第三列取叉积；本项目当前位姿块是从已有矩阵读取前两列。
+
+物体原点、轴方向和模型尺度决定了$t,R$的含义。同一个物体若改用了不同原点的mesh，平移会系统变化；要记录模型坐标变换，不能只比较矩阵数值。
+
+\subsection{FoundationPose注册与跟踪各做什么}
+本项目模型已知的RGB-D分支输入当前彩色图、米制深度、相机内参、目标初始化mask和对应mesh。注册时从候选姿态出发做学习式细化与评分，选出输出；后续帧利用前帧估计及当前RGB-D继续跟踪。方法来源为\href{https://nvlabs.github.io/FoundationPose/}{FoundationPose官方项目}，项目实际参数与版本以保存日志为准。
+
+初始化mask只说明要跟踪哪一个实例；不能把每一帧的真值位姿或未来mask偷偷提供给跟踪器。当前HO-Cap感知记录说明只使用首帧分割初始化，未读取后续参考姿态。\textbf{本次Demo复用这些已保存感知结果，并未重新跑6D网络。}
+
+\fig[.88]{pose6d_principle.pdf}{刚体变换、注册与连续跟踪。先确认几何定义，再解释画面中的框和轴。}
+\subsection{为什么“框贴住物体”还不足以证明6D精度}
+一个对称容器绕对称轴旋转，投影轮廓可能几乎不变；二维框贴合也不能单独确定深度。当前可报告的“有限、正深度、矩阵合法”等条件属于输出可用性检查，独立平移／旋转精度必须和相同坐标、相同实例、相同时刻的外部参考比较。
+
+毫米深度乘0.001才能与米制mesh一致；误用毫米会造成数量级错误。图像缩放时也要同步缩放内参，否则投影位置与尺度都会变。多物体场景为每个实体独立维护状态，不能把同名包装的不同实例合成一个轨迹。
+\where{\code{src/pose6d/full_hocap.py}、\code{run_human_rgbd.py}；\code{hocap_sequence.npz}中的\code{object_poses}原始形状为$(4,446,4,4)$。}
+
+\section{点云、双目与无CAD几何的详细路径}
+\subsection{从深度到相机点云}
+对所有有效像素重复反投影即可得到点云。需要同时保留无效深度、量程和物体掩码；背景点混入后会使注册倾向于桌面或大面积静态区域。真实深度点云与估计mesh叠加在同一相机系，是检查单位、外参和模型坐标的重要可视化方式。
+
+\fig[.98]{hocap_same_scene_pointcloud.png}{同一HO-Cap第223帧的RGB、实测深度、反投影点云与估计模型。模型仅使用保存的估计位姿，没有按真值对齐。三维显示轴为相机X、相机Z与负相机Y，单位为米。}
+\subsection{双目恢复尺度所需的条件}
+两相机标定已知、像素对应可靠时，可以从两条射线估计同一表面点。在理想校正、水平基线情况下，有$Z=f_xb/d$，其中$b$是米制基线、$d$是像素视差。非校正情况应使用各自投影矩阵三角化，不能机械套用标量公式。
+
+视差接近零时深度对像素误差很敏感：$|\partial Z/\partial d|=f_xb/d^2$。因此远处目标、低纹理和反光区域往往不稳定。项目使用校正、左右一致性和几何筛选；有像素抽查通过也不意味着每个表面点均达到高精度。
+
+\subsection{由跨帧对应点估计刚体运动}
+参考点$a_j$和当前点$b_j$已对应时，优化目标为
+\[
+\min_{R\in SO(3),t}\sum_{j\in\mathcal I}\|Ra_j+t-b_j\|^2.
+\]
+先计算质心$\bar a,\bar b$与中心化协方差$H=\sum_j(a_j-\bar a)(b_j-\bar b)^\mathsf T$。若$H=U\Sigma V^\mathsf T$，则
+\[
+R=V\operatorname{diag}(1,1,\det(VU^\mathsf T))U^\mathsf T,\quad
+t=\bar b-R\bar a.
+\]
+行列式修正避免反射被误当作旋转。RANSAC先剔除错配，SVD再拟合保留的内点；本地默认阈值包括至少8个内点、内点比例0.65、残差阈值0.012米，并检查空间跨度与退化情况。这些是该实现的工程参数，不是普遍适用的精度保证。
+
+\subsection{参考系、部件和非刚体}
+无CAD情况下，局部原点可以是初始可见表面中心，轴可以取初始相机轴。这种轨迹描述局部参考系运动，不自动等于整物体语义中心的6D。不同tracklet各自初始化时，即便属于同一物体，也需要估计参考系间的变换后才能拼接。
+
+纸张、织物和袋子发生形变时，一个SE(3)矩阵不足以描述整体。应保存表面点轨迹或局部刚性部件；铰接工具应分部件。不能把“局部表面有矩阵”统一统计为“整物体6D已成功”。
+\fig[.90]{stereo_geometry_principle.pdf}{双目对应、三角化与刚性拟合之间的关系。图为原理示意；实际同帧RGB-D点云见上图。}
+
+\section{物体身份、中文名称与交互监督}
+\subsection{身份ID与显示名称承担不同职责}
+身份ID表示同一个物理实体，显示名称帮助读者理解画面。本次Demo将四个实体分别称为红盖圆瓶、蓝色纸盒、椭圆罐和粉色包装盒，名称依据外观人工指定，不声称模型识别了品牌或包装内物品。
+
+若跟踪丢失后重新出现的是另一个同类物体，名称相同不能证明身份相同。稳定ID应由实例观测与对应证据支持；缺少证据时保留未知或新轨迹，而不是通过统一名字强行连接。
+
+\subsection{三态标签：正、负、未知}
+对一个源实体$i$、目标$j$和类型$k$，需要分别保存标签值$Y_{ijk}$和已知掩码$M_{ijk}$。正例为$Y=1,M=1$；明确负例为$Y=0,M=1$；未知为$M=0$，此时$Y$的占位值没有监督意义。
+
+假设某时刻复核确认手持握瓶子，但没有查看手是否接触纸盒。瓶子的持握单元可标正，纸盒的接触单元应保持未知，不能为了获得负例而直接标0。这决定了损失分母和micro-F1的含义。
+
+\subsection{持续状态与转换事件的时间语义}
+持续状态在目标帧上判断，例如“目标时刻是否接触”；转换事件则判断是否在锚点到目标之间发生，例如“是否完成释放”。转换边界可能有一个不确定帧区间，需要前后证据支持，不能只把整段文本描述平均铺到每一帧。
+
+视频中当前显示的复核阶段属于讲解辅助，抓取与松手过渡范围明确标为待核验。它没有替代正式训练用的逐帧审核，也没有被写入本次推理的输入张量。
+\where{\code{dataset_v5.py::target_edges}；\code{reviewed_ranges}、\code{silver_label_valid}、\code{annotation_source}；新Demo的\code{visual_review_phases}。}
+
+\section{120／132维特征逐段拆解}
+\subsection{张量形状与实体角色}
+一次输入为$X\in\mathbb R^{B\times W\times E\times D}$，其中常用$W=32$、$E=11$（左手、右手、双手、最多8个物体）、$D=120$或132。配套有效性为$V\in\{0,1\}^{B\times W\times E}$，实体类别为$\kappa\in\{0,1,2,3\}^{B\times E}$。
+
+双手节点是聚合节点：可用双手框的并集和运动信息表达，不为它制造第三套21点骨架。所有物体共享同一种类别编码，不把“第几个槽位”作为额外身份嵌入。
+
+\begin{longtable}{p{2.1cm}p{2.5cm}p{8.8cm}}
+\toprule 切片 & 维数 & 含义与有效条件\\\midrule\endhead
+\code{0:4} & 4 & 归一化框中心$x,y$与宽高。手框从二维关节范围产生；物体框来自有效实例观测。\\
+\code{4:6} & 2 & 相邻有效历史帧的框中心速度，除以实际时间差；Demo时基另有明确假设。\\
+\code{6:12} & 6 & 框内RGB三个通道的均值与标准差，像素按255归一化。\\
+\code{12:54} & 42 & 21个二维手点，按图像宽高归一化；物体不填手点。\\
+\code{54:117} & 63 & 21个三维手关节，统一到历史末帧相机锚点。\\
+\code{117} & 1 & 手部投影是否有效。\\
+\code{118} & 1 & 手部度量三维是否有效。\\
+\code{119} & 1 & 当前物体观测是否来自初始化种子。\\
+\code{120:123} & 3 & 增强块的位置。训练几何分支来源约定为世界坐标。\\
+\code{123:129} & 6 & 旋转矩阵前两列的六维编码。\\
+\code{129} & 1 & 增强位姿是否有效。\\
+\code{130} & 1 & 离线位姿候选来源标记。\\
+\code{131} & 1 & 预留位，当前置零。\\\bottomrule
+\end{longtable}
+
+\subsection{速度、缺失与边界的具体处理}
+若相邻两帧都有效且$\Delta\tau>0$，速度为$(c_f-c_{f-1})/\Delta\tau$；窗口起始帧没有该窗口内的前驱，速度为0。失踪后重新出现不跨缺失区间计算速度，避免把身份跳变或长时间遮挡当作瞬时高速运动。
+
+无效字段可以包含NaN作为原始缺失记录，但送入可学习层前必须按掩码清零。标记为“有效”的特征仍含NaN或Inf时实现直接拒绝，不能让无效数值污染线性层与梯度。
+
+\subsection{132维增强的坐标和名称关联边界}
+\code{PoseTable}通过名称相等、子串和字符二元组Jaccard相似度关联视觉ID与几何轨迹，最低接受分数为0.34，别名先按斜杠拆开。该规则是工程近似，可能发生漏配或错配；不能把相似名字当作实例身份真值。
+
+当前训练代码把手部三维转换到锚点相机，增强物体块按来源转换到世界坐标。\textbf{二者的参考系并不会因为拼接进同一向量而自动相同。}网络可以分别处理这些字段，但未经额外变换，不能直接对它们相减并解释为手物米制距离。部署或修改坐标约定时必须重新核对checkpoint输入条件。
+
+公开HO-Cap演示则明确采用相机系物体位姿、二维手部和缺失三维掩码，是跨数据集适配；它没有被伪装成与原训练几何完全一致的输入。
+
+\section{空间编码、时间骨干和有向图解码}
+\subsection{帧内注意力为何在时间模型之前}
+先对每个实体用共享MLP投影到$d$维，加上角色嵌入，再让同一帧的有效实体相互注意。这样手的表示可以包含周围物体的状态，而不是单独处理手的运动。掩码同时约束注意力键和输出；整帧全缺失时临时保留零键避免softmax全为负无穷，然后再次屏蔽全部输出。
+
+\[
+Z_{f,i}=\phi(X_{f,i})+e_{\kappa_i},\qquad
+\widetilde Z_f=\mathrm{LN}\left[Z_f+\mathrm{Attn}(\mathrm{LN}(Z_f);V_f)\right].
+\]
+注意力权重表示模型内部聚合强度，不是接触概率。交互概率来自之后的有向图头。
+
+\subsection{LSTM：门控记忆如何形成历史表示}
+张量重排为$(BE)\times W\times d$，每个实体用共享时间模块处理自己的32步历史。LSTM的核心递推可写成
+\begin{align*}
+i_f,f_f,o_f&=\sigma(W_{i,f,o}[z_f;h_{f-1}]+b_{i,f,o}),\\
+g_f&=\tanh(W_g[z_f;h_{f-1}]+b_g),\\
+c_f&=f_f\odot c_{f-1}+i_f\odot g_f,\quad
+h_f=o_f\odot\tanh(c_f).
+\end{align*}
+遗忘门决定保留哪些历史，输入门决定写入哪些信息，输出门决定暴露哪些记忆。实际工程使用PyTorch模块；公式用于说明机制，并不声称项目另行实现了这些算子。当前公开Demo是两层、隐藏宽度128、132维输入的LSTM，第43轮保存权重。
+
+\subsection{Mamba：选择性状态更新的作用}
+Mamba以输入相关的状态更新参数选择传播或遗忘历史信息，可抽象为$h_f=\bar A_fh_{f-1}+\bar B_fx_f$、$y_f=C_fh_f$。项目通过\code{mamba_ssm}调用真实骨干，基础配置含状态维16、卷积宽度4、扩展倍率2。方法背景见\href{https://arxiv.org/abs/2312.00752}{Mamba原论文}。
+
+较长序列的效率优势是设计动机，不能推出它在本项目32帧、稀疏图标签和当前数据规模下必然优于LSTM。已恢复的同阶段结果应直接报告，不按架构名预设排名。
+
+\subsection{Transformer：因果时间注意力}
+Transformer分支加入时间位置编码，并采用上三角因果屏蔽，使某一步不读取之后的历史序列位置。它可显式比较不同时间点，代价与序列长度、宽度和层数有关。三骨干共享实体编码、图头和数据协议，但参数量和实际耗时不自动相等。
+
+\subsection{有方向、多标签的图头}
+取每个实体历史末端状态$h_i$，构造
+\[
+r_{ij}=[h_i;h_j;h_i-h_j;h_i\odot h_j],\qquad
+\ell_{ijk}=\mathrm{MLP}(r_{ij})_k,\quad p_{ijk}=\sigma(\ell_{ijk}).
+\]
+主体和客体顺序被保留，“手作用于瓶子”与“瓶子作用于手”不会被强制视为同一条边。每类关系独立sigmoid，允许并存。输出形状为$B\times11\times11\times66$；后续展示仍须依据类型语义解释这些实体对。
+
+如果一条实体历史中从未出现，相关预测对会被屏蔽；曾出现后暂时缺失则允许保留时间状态。共享物体类别、空间集合注意力、共享时间模块和共享图头使槽位置换后输出可相应置换，但错误身份关联仍会破坏语义。
+\where{\code{GraphV5Encoder}、\code{GraphV5LSTM}、\code{GraphV5Mamba}、\code{GraphV5Transformer}、\code{DirectedGraphV5Head}。}
+
+\section{训练损失与评价：哪些单元参与计分}
+\subsection{稀疏BCE的分母决定了任务含义}
+令$Q_{ij}$表示源、目标均在历史中出现；已知监督集合为$\Omega=\{(i,j,k):M_{ijk}=1,Q_{ij}=1\}$，则
+\[
+\mathcal L=\frac{1}{|\Omega|}\sum_{(i,j,k)\in\Omega}
+\left[-Y_{ijk}\log p_{ijk}-(1-Y_{ijk})\log(1-p_{ijk})\right].
+\]
+实现使用\code{BCEWithLogits}提升数值稳定性，并用FP32累积。未知单元不参与；重复COO监督项会被拒绝，避免同一项重复增加权重。监督引用历史未见实体时也报错，而不是静默改变评价集合。
+
+\subsection{micro-F1、macro-F1与全正参照}
+在同一已知掩码和阈值上，$P=TP/(TP+FP)$，$R=TP/(TP+FN)$，$F_1=2TP/(2TP+FP+FN)$。micro聚合所有计分单元，频繁类型贡献更大；macro先按类型计算再平均，需说明哪些类型有支持、哪些未见或没有正例。
+
+若已知监督中的正例比例为$\rho$，全部预测为正时$P=\rho,R=1$，因此$F_1=2\rho/(1+\rho)$。全正参照依赖所用测试集的监督分布，不能跨数据版本与最终全量及RSI结果比较。每个版本都应在自己的监督集合上重新计算参照。
+
+\subsection{用已恢复原始计数复算0.938853}
+扩展阶段LSTM的test记录给出$TP=3946,FP=514,FN=0$，1326个窗口，阈值0.5。由此
+\[
+P=\frac{3946}{4460}=0.884753,\quad R=1,\quad
+F_1=\frac{7892}{8406}=0.938853.
+\]
+这个值是明确版本下的micro-F1，不是“所有66类都达到93.9\%准确率”。高召回还需结合负例、类型覆盖、全正参照与独立采集的差异检查。当前包包含原JSON，读者可以直接复算。
+
+\subsection{必须分开的三组结果}
+\begin{tabularx}{\linewidth}{p{3.1cm}p{2.5cm}X}
+\toprule 来源 & 数值 & 可支持的结论\\\midrule
+扩展阶段已恢复test & LSTM／Transformer 0.938853；Mamba 0.905200 & 该阶段、该协议的测试结果\\
+后续RSI验证账本 & 最优观察val F1可达1.0 & 候选选择过程；不是独立test\\
+项目方最终全量说明 & 约0.93 & 保留项目方结论；最终冠军与独立测试文件仍待完整绑定\\
+\bottomrule
+\end{tabularx}
+\where{\code{06_实验依据/报告证据/remote/runs/graph_v5_auto/lstm_auto_v4/eval/test_benchmark.json}；同目录的Mamba／Transformer记录。}
+
+\section{RSI为何能迭代，以及日志应该怎样读}
+\subsection{一轮迭代的实际操作}
+读取当前\code{genome.yaml}，在白名单内产生候选配置；运行候选训练；只对验证划分评价；写\code{score.json}与历史账本；达到选优门槛时替换genome。训练失败、评价失败或缺失结果的候选不能获胜。每个候选有独立目录，便于中断后恢复。
+
+白名单包含骨干类型、隐藏宽度64／128／256、层数1--4、dropout、batch size、学习率、weight decay和checkpoint选择指标。输入维数、词表大小、数据根、窗口语义等不是当前循环自由变更的对象。跨数据版本扩充属于另一个工程变化，不能全部归因于一次超参数搜索。
+
+\subsection{选checkpoint与选候选是两层决定}
+某候选内部保存哪个epoch，可由\code{val_loss}、\code{val_micro_f1}或\code{val_macro_f1_seen}控制；跨候选选优的\code{score_of}实际读验证micro-F1。因此两个“最佳”可能使用不同口径，不能只看文件名\code{best.pt}就推断它是整个项目最终冠军。
+
+同理，公开Demo的\code{lstm_final}是一个已保存运行名称，而已恢复\code{rsi_final/genome.yaml}记录的是另一份配置。当前演示明确报告其实际checkpoint哈希、epoch及结构，不用\code{final}这个单词替代绑定证据。
+
+\subsection{2\%相对改进门槛的高分效应}
+当前选优规则是严格满足$S_{new}>1.02S_{old}$才晋升。若旧分数为0.988505747，则门槛约为1.008276，已经超过F1的上限1；即使出现1.0候选也无法满足该规则。这解释了“观察到更高验证值但genome没替换”的可能情况，属于规则本身的性质。
+
+未来可以另立实验研究绝对改进、置信区间或多随机种子规则，但不能事后更改已报告搜索的门槛，并把新选择当作原始结果。
+
+\subsection{记录数、候选数和训练次数不是同一个量}
+\begin{tabularx}{\linewidth}{lrrX}
+\toprule 系列 & 历史记录 & 已评分独立候选 & 最佳观察验证micro-F1\\\midrule
+\code{rsi_v5} & 8 & 6 & 0.856580\\
+\code{rsi_auto} & 8 & 6 & 0.914068\\
+\code{rsi_final} & 30 & 21 & 1.000000\\\bottomrule
+\end{tabularx}
+恢复循环可能复用已经评分的候选，因此30条记录不能写成30次独立训练。最终系列中还有未形成有效评分的目录，需要分别计数。小验证集的最优值也会受反复选择影响，应由锁定模型的独立test确认。
+\fig[.96]{rsi_observed_history.pdf}{来自实际账本的逐轮记录。不同系列使用不同数据条件，不把它们接成同一个固定基准上的单调提升曲线。}
+\where{\code{src/mamba/rsi_v5.py}；\code{rsi_series_summary.json}、\code{rsi_observed_curve.csv}与三个系列的\code{history.jsonl}。}
+
+\section{感知指标与性能优化应该怎样解释}
+\subsection{覆盖率、矩阵合法性与外部精度}
+覆盖率统计多少帧具有有效输出；矩阵检查统计$\|R^\mathsf TR-I\|$、$|\det R-1|$是否足够小；外部精度才比较$\hat T$与真值$T^*$。三者不能互相替代。平移曲线展示运动，而不是位置误差；关键点看起来连贯也不等于骨架已达到某个毫米级精度。
+
+姿态误差可定义为$e_t=\|\hat t-t^*\|_2$，旋转误差为
+\[
+e_R=\arccos\!\left(\operatorname{clip}_{[-1,1]}
+\frac{\operatorname{tr}(\hat R{R^*}^{\mathsf T})-1}{2}\right).
+\]
+对称物体需要按对称等价类调整。手部精度还需独立关节参考。当前感知材料没有完整独立精度记录，故未测项保持未测。
+
+\subsection{已保存的工程结果}
+当前HO-Cap序列中，四物体各有446/446帧有效位姿，左手与右手分别有441/446和5/446帧骨架输出。四物体旋转正交性最大元素偏差约$6.074\times10^{-6}$，行列式偏差约$5.361\times10^{-6}$，由包内原始位姿复算。DexYCB联合片段另有44帧，作为不同场景单独报告。\fig[.99]{hocap_perception_validation.pdf}{与完整流程Demo对应的覆盖、轨迹与矩阵数值检查。手部缺失状态按原输出保留；不将覆盖与自洽性称为准确率。}
+
+\subsection{处理FPS与播放FPS不是一个概念}
+DexYCB优化包括lite手模型、减少物体跟踪迭代、CPU／GPU同帧并行和有界预取。三个复测的稳态处理能力为41.409、41.471、41.524 FPS，分母均为排除注册帧后的43帧。改变模型复杂度和迭代次数可能影响精度，吞吐提升不能证明精度不变。
+
+首帧注册约1.63--1.66秒，且各次仍有2/43帧超过33.33ms；读取到写出P95为55.49--66.90ms。HO-Cap四物体配置约6.87 FPS，计算条件不同。输出MP4编码为30fps只是播放设置，不等于全流程达到了30fps实时处理。
+\fig[.94]{perception_runtime.pdf}{实际感知配置的处理能力与P95。短片复测不被包装为大量独立样本。}
+
+\section{把完整Demo逐帧读懂}
+\subsection{左栏：物体内容和身份}
+原始RGB上叠加四个物体框与外观名称，下面提供从原始首帧裁出的实物缩略图。四种颜色在观测、名称、缩略图和关系客体之间一致。物体名称供显示使用，未作为基础图模型的文本输入；包装内容、品牌和材质未做未经依据的识别声明。
+
+\subsection{中栏：真实感知与当前交互阶段}
+上部是同帧手部骨架、物体包围框和6D坐标轴；下部是复核阶段提示，例如“手$\rightarrow$持握／移动$\rightarrow$红盖圆瓶”。这些提示通过观察片段整理，过渡边界保留不确定范围，没有用于覆盖模型概率。
+
+\begin{tabularx}{\linewidth}{p{2cm}X}
+\toprule 帧范围 & 展示的阶段含义\\\midrule
+0--44 & 手在红盖圆瓶旁\\
+45--64 & 接近与抓取过渡，边界待核验\\
+65--119 & 持握红盖圆瓶\\
+120--299 & 持握并移动红盖圆瓶\\
+300--389 & 持握并向桌面放回\\
+390--424 & 放置与松手过渡，边界待核验\\
+425--445 & 圆瓶已放回，手离开\\\bottomrule
+\end{tabularx}
+这些区间是演示讲解用的粗阶段，不是精确逐帧金标准。其他物体作为背景实体保留，不能为了让关系图更丰富而添加画面中未观察到的物物操作。
+
+\subsection{右栏：实际模型未来关系候选}
+上部显示“左手$\rightarrow$接触$\rightarrow$某物体”的原始概率，下部从66个关系类型中展示手到物体的Top 5。概率并非正确率。当前跨源输入下，多条接触和共同运动关系接近1，本次保留原值，说明模型在新输入条件下需要独立核验，而不是选择性隐藏不理想输出。
+
+这段Demo没有逐帧交互真值，不计算自己的F1，也没有被标作最终约0.93实验的视频。用户可通过公开网页、离线网页、视频文件和缓存数组交叉检查同一输出。
+\fig[.99]{full_pipeline_demo.jpg}{第223帧：物体名称、实物图、当前复核关系和模型候选同时可见。画面中的来源区分是理解结果的一部分。}
+
+\section{素材索引：当前四段视频}
+\begin{longtable}{p{5.6cm}p{1.5cm}p{6.3cm}}
+\toprule 文件 & 时长约 & 内容与用途\\\midrule\endhead
+\code{full-pipeline.mp4} & 14.87秒 & 物体名称、手部／6D、当前交互与实际LSTM输出\\
+\code{raw_rgb.mp4} & 14.87秒 & 同一HO-Cap片段的原始RGB，供前后对照\\
+\code{hocap_four_objects.mp4} & 14.87秒 & 同一片段的四物体6D及手部感知\\
+\code{hands_and_object_rgbd.mp4} & 1.47秒 & DexYCB真人手骨架与物体6D联合感知\\\bottomrule
+\end{longtable}
+四段视频均保留完整序列，以H.264兼容编码提供，不重复收录相同内容的原始编码。图表目录只收录当前报告和本册实际使用的图；矢量图另提供PNG便于演示文稿插图。源码目录保留一套可重新编译的当前报告。
+
+\section{如何离线浏览和复核实际输出}
+\subsection{只阅读，无需安装模型环境}
+完整解压后打开根目录的“00\_素材导航.html”。导航包含当前报告、技术解读、全部视频和图表入口。视频、图片和PDF使用相对路径，离线浏览无需连接SSH或调用任何模型服务。
+
+如果浏览器不能播放原始编码，使用同内容的\code{_browser.mp4}，或用本地播放器打开原文件。原始EgoDemo材料仅在本地完整包中保留，公开网站不含这部分记录。
+
+\subsection{查看数据结构与数值}
+\code{demo_arrays.npz}保存446帧的概率、预测掩码、手部二维点、物体框、位姿、末帧特征和实体可见状态。前31帧概率为NaN，表示尚未完成历史积累；不要把它替换成零概率当作模型输出。
+
+\code{history_inputs.npz}冻结415个锚点的完整32帧输入，包含\code{entity_features}、\code{entity_valid}、\code{entity_kind}和锚点帧号。输入来自原始RGB统计及保存的感知结果，并逐一检查末帧特征与发布Demo的原记录相同。它允许在不下载原始数据集的情况下复跑图模型。
+
+\begin{Verbatim}[fontsize=\small,breaklines]
+python 08_复核工具/check_bundle.py
+python 08_复核工具/inspect_demo.py --frame 223
+python 08_复核工具/replay_model.py
+\end{Verbatim}
+检查清单只依赖Python标准库；查看数组需要NumPy；复跑模型还需要PyTorch和实现源码所需依赖。复跑脚本只做eval模式推理，对比保存概率，生成最大绝对误差与掩码一致性报告，不进行训练、数据上传或服务部署。
+
+\subsection{报告源码和制作脚本}
+第05目录的\code{build.sh}按XeLaTeX、BibTeX、XeLaTeX两次的顺序编译。图像和矢量图依赖统一放在第04目录。第07目录只收录当前方法说明与复跑所需的实现快照，不等同于GitHub主分支；原制作脚本保留其来源路径，重做感知或重新导出时需要按环境配置数据位置。
+
+包内提供一份用于这段演示的LSTM权重，不包含FoundationPose／MediaPipe全部上游权重，也不包含所有RSI候选checkpoint或完整原始训练数据。浏览素材与复跑缓存图输入不需要这些额外资产。
+
+\section{证据导航与后续完善方向}
+\subsection{从一个结论找到对应文件}
+\begin{tabularx}{\linewidth}{p{4cm}X}
+\toprule 要检查的问题 & 包内依据\\\midrule
+扩展阶段是否达到0.938853 & 报告证据中的\code{lstm_auto_v4/eval/test_benchmark.json}\\
+RSI是否确实进行了多轮 & 三个系列的\code{history.jsonl}、\code{genome.yaml}与汇总CSV\\
+演示是否真的调用模型 & \code{demo_manifest.json}、缓存历史、权重、概率数组与复跑工具\\
+物体名字从哪里来 & \code{object_display_names}与外观复核说明；实物缩略图\\
+当前关系是否被当作预测 & \code{visual_review_phases}与独立的概率数组，来源分离\\
+手部／6D是否有真值精度 & 感知报告中独立accuracy为空；覆盖和数值检查另列\\
+本地修订材料是否完整 & 包内文件清单及SHA256；在线入口仍保留此前发布版本\\\bottomrule
+\end{tabularx}
+
+\subsection{让最终结论更完整，需要补哪些证据}
+首先，将项目方最终全量约0.93对应的唯一checkpoint、数据版本、测试掩码、阈值、逐类型支持和原始评估输出绑定起来。其次，补手部及物体6D的独立参考误差，验证增强输入的坐标与因果条件。最后，给出同冻结版本、同评价集合下的多随机种子和简单基线，区分数据扩充、感知改善和时序骨干变化的贡献。
+
+这些是后续验证方向，不改写已经完成的结果。本包的作用是把已有报告、精选素材、必要实验记录和可复核代码放在一起，让每项结论都能找到来源。
+
+\subsection{官方方法来源与项目实现的关系}
+本册方法背景参考\href{https://developers.google.com/edge/mediapipe/solutions/vision/hand_landmarker}{MediaPipe官方说明}、\href{https://nvlabs.github.io/FoundationPose/}{FoundationPose官方项目}及\href{https://arxiv.org/abs/2312.00752}{Mamba原论文}。上游方法能力不自动等于本项目已完成的验证；项目参数、数据规模、指标和Demo行为均以本包代码及记录为依据。
+
+数据来源和署名见\code{第三方来源与许可.txt}，各阶段说明见第07目录。本包中的受限原始记录用于授权工作区阅读；需要对外分享时使用已经公开的网页、公开PDF和对应许可范围内的素材。
+
+\subsection{复核时容易混淆的六项结论}
+\textbf{概率与可信性。}视频中的1.0000是显示到四位小数的模型概率，原始值保存在数组中。它既不意味着数学上恰好等于1，也不意味着这条边已验证正确。特别是当前跨源输入，置信度与真实正确率之间的关系尚未标定。
+
+\textbf{当前交互与未来候选。}中栏“手持握圆瓶”描述正在观看的画面阶段，右栏来自预测图头。二者不必使用相同词，也不是同一目标时刻的真值对照。若要评价预测是否正确，需要为符合时间协议的目标帧建立独立标签。
+
+\textbf{实体存在与交互发生。}蓝色纸盒、椭圆罐和粉色包装盒具有持续身份，但在这一片段中主要是背景实体。把它们显示出来是为了说明场景和模型引用对象，不代表这些物体必须参与操作，也不意味着应人为补上物物交互边。
+
+\textbf{重放等价与算法有效。}缓存重跑的最大概率差约$2.98\times10^{-7}$，说明提供的权重、实现与缓存可以复现这批输出。该检查不验证输出准确率，也不独立证明原始感知和标签的全部因果条件。两类验证应分别列出。
+
+\textbf{窗口数量与独立样本量。}415个预测锚点来自同一段HO-Cap视频，相邻32帧历史高度重叠。这是415次前向输出而非415个独立采集。做置信区间或跨场景结论时应按采集、场景和任务组织统计，不能只靠扩大重叠窗口数量获得表面的样本规模。
+
+\textbf{材料完整与训练数据完整。}本包提供经过筛选的当前报告和演示素材、必要指标记录与图模型复核输入；它没有把单段Demo包装成可重新训练最终模型的全量数据集。重新训练必须另外准备已获授权且通过相应门禁的训练、验证和测试版本，并保存明确的数据绑定。
+\end{document}

@@ -1,0 +1,23 @@
+﻿优先级/图号,素材,状态,内容,路径/来源,验收要求
+P0,最终指标绑定,待同步,最终0.93的benchmark、指标键、checkpoint SHA与run配置,evidence/user_correction_20261112.json,最终索引与模型一致
+P0,RSI完整谱系,待同步,rsi_final、rsi_auto、rsi_v5的history、REPORT、genome、score,scripts/collect_remote_evidence.py,尝试/成功/失败/晋升分别统计
+P0,最终全量统计,待同步,有效采集、窗口、四层正负未知、支持数,冠军run配置指定的数据发布根,不将资源池总数当有效监督数
+P0,逐窗口预测,待同步,主体/客体/类型、概率、历史与目标时间、标签mask,冠军run输出,与checkpoint和词表绑定
+P0,原片与渲染脚本,待同步,连续RGB、观测位姿、关联表、采样帧、字体,现有demo原始生成目录,修复中文方框；说明位姿缺失
+P1,同版本基线与分层指标,待同步,同一数据/特征/评估口径下初始配置、冠军与三骨干,最终benchmark与支持数,全正参照按最终数据重算
+P1,错误和未知案例,待同步,误报/漏报/遮挡未知；保留选择依据,冠军逐窗口输出,不将未知计作对或错
+P2,在线实测录屏,按展示目标选做,原生时间、端到端延迟、硬件与离线条件,连续运行录像,回放fps不作为推理fps
+F1,系统结构,已生成,120/132维输入至有向多标签图,figures/architecture.pdf,独立可编辑TikZ
+F2,RSI机制,已生成,变异、验证、失败处理、晋升,figures/rsi_loop.pdf,机制图不冒充实际轮次
+F3,阶段结果图,历史版本可用,10月26日同版骨干验证/测试F1,figures/expanded_results.pdf,不是最终RSI冠军表
+F4,版本历史图,历史版本可用,10月24/25/26日各自测试集成绩,figures/version_history.pdf,不解释为固定测试集提升
+F5,实际demo预览,已有,原样保存v6预览,figures/demo_v6_actual.png,保留中文方框问题，不造实验图
+F6,RSI逐轮曲线,待日志,同版本候选分数与晋升,待完整history,失败单列、不同数据分面
+F7,最终数据/四层指标,待数据,划分、正负未知、P/R/F1与支持数,待最终索引/benchmark,注明统计分母
+F8,提前预测案例,待输出,历史、截止、预测、目标揭示,待冠军逐窗输出,成功/失败/未知均有
+视频,b857b2a8_demo.mp4,已有,6.000000秒；24帧；4/1fps,media/b857b2a8_demo.mp4,SHA见current_demo_inventory.json；最终冠军绑定待核
+视频,b857b2a8_demo_v2.mp4,已有,6.000000秒；24帧；4/1fps,media/b857b2a8_demo_v2.mp4,SHA见current_demo_inventory.json；最终冠军绑定待核
+视频,demo_pose_v4.mp4,已有,10.750000秒；43帧；4/1fps,media/demo_pose_v4.mp4,SHA见current_demo_inventory.json；最终冠军绑定待核
+视频,demo_v5.mp4,已有,8.000000秒；24帧；3/1fps,media/demo_v5.mp4,SHA见current_demo_inventory.json；最终冠军绑定待核
+视频,demo_v6.mp4,已有,8.000000秒；24帧；3/1fps,media/demo_v6.mp4,SHA见current_demo_inventory.json；最终冠军绑定待核
+视频,e923ec44_demo.mp4,已有,2.000000秒；8帧；4/1fps,media/e923ec44_demo.mp4,SHA见current_demo_inventory.json；最终冠军绑定待核

@@ -1,0 +1,16 @@
+{
+  "formula": "2P/(2P+N)",
+  "source": "real_graph_target_coverage.json",
+  "values": {
+    "val": {
+      "positive": 1172,
+      "negative": 406,
+      "all_positive_micro_f1": 0.8523636363636363
+    },
+    "test": {
+      "positive": 786,
+      "negative": 1364,
+      "all_positive_micro_f1": 0.5354223433242506
+    }
+  }
+}

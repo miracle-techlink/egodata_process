@@ -1,0 +1,113 @@
+{
+  "status": "success",
+  "dataset_role": "benchmark_demo",
+  "is_egodemo": false,
+  "real_model": true,
+  "inference_frames_completed": 737,
+  "inference_success_rate": 1.0,
+  "inference_rate_meaning": "valid returned poses, NOT GT accuracy",
+  "accuracy": {
+    "evaluated": false,
+    "translation_accuracy": null,
+    "rotation_accuracy": null,
+    "joint_accuracy": null,
+    "reason": "no_reference_requested"
+  },
+  "parameters": {
+    "foundationpose_repo": "/root/gpufree-data/third_party/FoundationPose_real_20261022",
+    "scene_dir": "/root/gpufree-data/datasets/ego_hoi/foundationpose_assets_20261022/demo_data/mustard0",
+    "mesh_file": "/root/gpufree-data/datasets/ego_hoi/foundationpose_assets_20261022/demo_data/mustard0/mesh/textured_simple.obj",
+    "out_dir": "/root/gpufree-data/datasets/ego_hoi/foundationpose_real_20261022/mustard0_full",
+    "limit_frames": null,
+    "depth_scale": 0.001,
+    "est_refine_iter": 5,
+    "track_refine_iter": 2,
+    "preview_fps": 10,
+    "reference_dir": null,
+    "reference_frame_confirmed": false,
+    "translation_threshold_m": null,
+    "rotation_threshold_deg": null
+  },
+  "generated_at": "2026-10-22T05:18:49.753824+00:00",
+  "phase": "complete",
+  "inference_frames_requested": 737,
+  "backend": {
+    "name": "foundationpose",
+    "real_model": true,
+    "repo": "/root/gpufree-data/third_party/FoundationPose_real_20261022",
+    "seed": 0,
+    "seed_source": "official_estimater.set_seed_before_predictor_initialization",
+    "git_commit": "a1b694b83e633c2cb6115b9063d940a687759392",
+    "git_dirty": false,
+    "weights": {
+      "scorer": {
+        "checkpoint": {
+          "path": "/root/gpufree-data/datasets/ego_hoi/foundationpose_assets_20261022/weights/2024-01-11-20-02-45/model_best.pth",
+          "sha256": "81924d384bf5c26c646ee4783104982ae3d1e049c181c36641b6a7aeae494c26",
+          "bytes": 190229389
+        },
+        "config": {
+          "path": "/root/gpufree-data/datasets/ego_hoi/foundationpose_assets_20261022/weights/2024-01-11-20-02-45/config.yml",
+          "sha256": "a79db4de3b95885dd5ae86833b37b8698a75dad81e87d1086cd50b2fcd8dda3f",
+          "bytes": 778
+        },
+        "implementation": {
+          "path": "/root/gpufree-data/third_party/FoundationPose_real_20261022/learning/training/predict_score.py",
+          "sha256": "97f2f6f74fbe60be6a630d515db5142d78045f1150adb26dca56d93cffd3bbde",
+          "bytes": 9572
+        }
+      },
+      "refiner": {
+        "checkpoint": {
+          "path": "/root/gpufree-data/datasets/ego_hoi/foundationpose_assets_20261022/weights/2023-10-28-18-33-37/model_best.pth",
+          "sha256": "774700586ddc435d408fc01c9809c43e151232936369dfbea0f0f964ba471d60",
+          "bytes": 68220109
+        },
+        "config": {
+          "path": "/root/gpufree-data/datasets/ego_hoi/foundationpose_assets_20261022/weights/2023-10-28-18-33-37/config.yml",
+          "sha256": "28a6ba94a33230ee5fc3c51939486281578b0972542bd9e38ca6123e75605686",
+          "bytes": 708
+        },
+        "implementation": {
+          "path": "/root/gpufree-data/third_party/FoundationPose_real_20261022/learning/training/predict_pose_refine.py",
+          "sha256": "a210f46868ab77631fdb264043356a435d06b1294929b304b0922e23c839d64a",
+          "bytes": 14252
+        }
+      }
+    },
+    "code": [
+      {
+        "path": "/root/gpufree-data/third_party/FoundationPose_real_20261022/estimater.py",
+        "sha256": "73a40474d11ab9d9dc873e101b5eef370c0bd78f2874ab1b5148dac402496ad0",
+        "bytes": 10283
+      },
+      {
+        "path": "/root/gpufree-data/third_party/FoundationPose_real_20261022/Utils.py",
+        "sha256": "ab77518df7a6c41bef82cb32579d06ccff5d435ee5ad716a8c1fef0c72f05ad4",
+        "bytes": 35397
+      }
+    ],
+    "torch": "2.6.0+cu124",
+    "cuda": "12.4",
+    "device": "NVIDIA L40"
+  },
+  "inference_elapsed_seconds": 34.004787342622876,
+  "video": {
+    "decoded_frames": 737,
+    "size": [
+      640,
+      480
+    ],
+    "fps": 10,
+    "fps_source": "preview_only_not_acquisition",
+    "padding": "right_bottom_to_even"
+  },
+  "artifacts": {
+    "poses": "poses.npz",
+    "metadata": "poses.meta.json",
+    "trajectory": "trajectory.csv",
+    "overlays": "overlays/",
+    "video": "preview.mp4"
+  },
+  "total_elapsed_seconds": 82.11259357817471
+}

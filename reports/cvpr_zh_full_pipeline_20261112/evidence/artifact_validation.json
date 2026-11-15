@@ -1,0 +1,53 @@
+{
+  "status": "local_and_independent_package_build_passed",
+  "checked_at": "2026-11-12T23:14:03.860775+08:00",
+  "main_pages": 14,
+  "materials_pages": 5,
+  "numbered_figures": 18,
+  "latex_errors": 0,
+  "undefined_references": 0,
+  "overfull_boxes": 0,
+  "missing_glyph_log_warnings": 0,
+  "benign_warnings": [
+    "Fandol font CJK Script metadata warning",
+    "balance called in second column; final pages visually inspected"
+  ],
+  "original_demo_chinese_boxes": "present_in_source_image_needs_original_rerender",
+  "demo_count": 10,
+  "full_decode_and_sha_verified": true,
+  "remote_verified": true,
+  "remote_scope": "Retrieved run records, RSI histories, metrics, configs, selected dataset indices, and checkpoint SHA; no training or source modification. No test benchmark found under inspected *_final or rsi_final directories.",
+  "verified_historical_test_micro_f1": 0.9388532000951701,
+  "final_user_score_approx": 0.93,
+  "final_run_bound": false,
+  "independent_pose_accuracy_measured": false,
+  "portable_build_exit": 0,
+  "pdfs": {
+    "main.pdf": {
+      "pages": 14,
+      "sha256": "ccb57a023045f2700e2d7e0a57a36cbf07e223201ac30fabc0c896c0b1bd2f64"
+    },
+    "demo_materials.pdf": {
+      "pages": 5,
+      "sha256": "f12009ba88fe9c131009486f4c3772058a736add919e36131e0e58a3770b6ed2"
+    },
+    "visual_check.pdf": {
+      "pages": 3,
+      "sha256": "df3d453de3013d6d709e0941f34b13cb5b70ffba1a94e6394a926ee86a80f7cf"
+    }
+  },
+  "portable_build_directory": "/tmp/cvpr_illustrated_portable_57hvx64b",
+  "portable_log_checks": "passed",
+  "portable_pdf_pages": {
+    "main.pdf": 14,
+    "demo_materials.pdf": 5,
+    "visual_check.pdf": 3
+  },
+  "visual_preview_pages": 3,
+  "perception_principle_figures": {
+    "hand": 3,
+    "pose6d": 5,
+    "stereo": 6
+  },
+  "named_pdf_aliases_sha_equal": true
+}

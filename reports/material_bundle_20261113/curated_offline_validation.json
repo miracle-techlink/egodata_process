@@ -1,0 +1,37 @@
+{
+  "relative_links_checked": 65,
+  "missing": [],
+  "video_playback": [
+    {
+      "width": 1800,
+      "height": 1040,
+      "duration": 14.866667,
+      "played": true,
+      "error": null
+    },
+    {
+      "width": 640,
+      "height": 480,
+      "duration": 14.866667,
+      "played": true,
+      "error": null
+    },
+    {
+      "width": 640,
+      "height": 480,
+      "duration": 14.866667,
+      "played": true,
+      "error": null
+    },
+    {
+      "width": 640,
+      "height": 480,
+      "duration": 1.466667,
+      "played": true,
+      "error": null
+    }
+  ],
+  "gallery_groups": 19,
+  "js_errors": [],
+  "mobile_horizontal_overflow": false
+}

@@ -1,0 +1,128 @@
+{
+  "fig:fullpipeline": {
+    "figure": 1,
+    "page": 2,
+    "title": "完整流程",
+    "stage": "1—7",
+    "path": "figures/full_pipeline.pdf"
+  },
+  "fig:handprinciple": {
+    "figure": 2,
+    "page": 3,
+    "title": "手部21点与坐标对齐原理",
+    "stage": "2",
+    "path": "figures/hand_pose_principle.pdf"
+  },
+  "fig:handcoords": {
+    "figure": 3,
+    "page": 3,
+    "title": "第一视角双手坐标",
+    "stage": "2",
+    "path": "figures/hand_ego_coordinates.png"
+  },
+  "fig:rgbdhuman": {
+    "figure": 4,
+    "page": 4,
+    "title": "真人手物与四目标6D",
+    "stage": "2/3",
+    "path": "figures/hand_object_rgbd.png;figures/hocap_four_objects_f180.png"
+  },
+  "fig:poseprinciple": {
+    "figure": 5,
+    "page": 5,
+    "title": "6D刚体变换与跟踪原理",
+    "stage": "3",
+    "path": "figures/pose6d_principle.pdf"
+  },
+  "fig:posecloud": {
+    "figure": 6,
+    "page": 5,
+    "title": "物体6D与点云",
+    "stage": "3",
+    "path": "figures/pose6d_pointcloud.png"
+  },
+  "fig:stereoprinciple": {
+    "figure": 7,
+    "page": 6,
+    "title": "双目三角化与跨帧拟合原理",
+    "stage": "3",
+    "path": "figures/stereo_geometry_principle.pdf"
+  },
+  "fig:surface": {
+    "figure": 8,
+    "page": 6,
+    "title": "第一视角表面点",
+    "stage": "3",
+    "path": "figures/egodemo_surface_seeds.jpg"
+  },
+  "fig:coverage": {
+    "figure": 9,
+    "page": 7,
+    "title": "手部覆盖与标定检查",
+    "stage": "2/3/7",
+    "path": "figures/hand_calibration_coverage.pdf"
+  },
+  "fig:perceptionvalidation": {
+    "figure": 10,
+    "page": 8,
+    "title": "6D数值与逐帧延迟",
+    "stage": "3/7",
+    "path": "figures/perception_validation.pdf"
+  },
+  "fig:runtime": {
+    "figure": 11,
+    "page": 8,
+    "title": "感知性能配置对照",
+    "stage": "2/3/7",
+    "path": "figures/perception_runtime.pdf"
+  },
+  "fig:sample": {
+    "figure": 12,
+    "page": 9,
+    "title": "滑窗与未来监督",
+    "stage": "4",
+    "path": "figures/sample_timeline.pdf"
+  },
+  "fig:architecture": {
+    "figure": 13,
+    "page": 10,
+    "title": "交互图模型结构",
+    "stage": "5/6",
+    "path": "figures/architecture.pdf"
+  },
+  "fig:rsi": {
+    "figure": 14,
+    "page": 10,
+    "title": "RSI机制",
+    "stage": "7",
+    "path": "figures/rsi_loop.pdf"
+  },
+  "fig:rsihistory": {
+    "figure": 15,
+    "page": 12,
+    "title": "实际RSI逐轮记录",
+    "stage": "7",
+    "path": "figures/rsi_observed_history.pdf"
+  },
+  "fig:expanded": {
+    "figure": 16,
+    "page": 12,
+    "title": "同版本验证/测试F1",
+    "stage": "6/7",
+    "path": "figures/expanded_results.pdf"
+  },
+  "fig:history": {
+    "figure": 17,
+    "page": 13,
+    "title": "历史版本成绩",
+    "stage": "6/7",
+    "path": "figures/version_history.pdf"
+  },
+  "fig:demo": {
+    "figure": 18,
+    "page": 13,
+    "title": "交互预测真实demo",
+    "stage": "6",
+    "path": "figures/demo_v6_actual.png"
+  }
+}

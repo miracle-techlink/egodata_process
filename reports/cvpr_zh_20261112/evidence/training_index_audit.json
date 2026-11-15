@@ -1,0 +1,251 @@
+{
+  "schema_version": "assistant_annotation_v5_training_index_audit",
+  "created_at": "2026-10-24T06:23:40.088688+00:00",
+  "training_index_sha256": "4b162d6595f7b489a078d86b096732a2060300cc3ea5d92296463fccfcb179e6",
+  "review_seed_audit_sha256": "3729259eae0639473f3277f7dcdfd834b0d244a1e890e6b1ba91296fb38674c2",
+  "auditor_sha256": "0e09c6a0985e37df6a9bc346180a67e6df54782aa6827bbafca58ef629a3af5f",
+  "source_selection_sha256": "e8d7d57f03cb2c9e251af36f3a86055ca03dd2fe66e65e458b198ad6376b368b",
+  "split_manifest_sha256": "2aaa03ab8686a7580bb88f34baa25038074119842545e335cb2141fb25072dcc",
+  "failed": 0,
+  "actual_dataset_windows_loaded": 1238,
+  "counts": {
+    "train": {
+      "windows": 592,
+      "known_positive_cells": 1953,
+      "known_negative_cells": 1452,
+      "windows_with_positive": 531,
+      "windows_with_negative": 445
+    },
+    "val": {
+      "windows": 366,
+      "known_positive_cells": 1172,
+      "known_negative_cells": 406,
+      "windows_with_positive": 366,
+      "windows_with_negative": 261
+    },
+    "test": {
+      "windows": 280,
+      "known_positive_cells": 786,
+      "known_negative_cells": 1364,
+      "windows_with_positive": 143,
+      "windows_with_negative": 272
+    }
+  },
+  "known_cells_by_type": {
+    "train": {
+      "relation:contact": 1262,
+      "relation:grasp_control": 1149,
+      "relation:supported_by": 471,
+      "relation:acts_on": 11,
+      "transition:release": 132,
+      "operation:transfer": 83,
+      "relation:co_motion": 137,
+      "transition:contact_onset": 20,
+      "transition:grasp_onset": 8,
+      "cooperation:single_hand": 16,
+      "operation:close": 17,
+      "cooperation:bimanual_joint": 99
+    },
+    "val": {
+      "relation:contact": 826,
+      "relation:grasp_control": 585,
+      "relation:stabilizes": 67,
+      "operation:lift": 8,
+      "cooperation:bimanual_joint": 25,
+      "operation:transfer": 17,
+      "transition:release": 20,
+      "transition:contact_onset": 2,
+      "operation:close": 14,
+      "cooperation:complementary": 14
+    },
+    "test": {
+      "operation:hold": 126,
+      "relation:contact": 970,
+      "relation:grasp_control": 630,
+      "cooperation:complementary": 7,
+      "operation:place": 22,
+      "transition:release": 70,
+      "operation:press": 45,
+      "relation:supported_by": 33,
+      "transition:contact_onset": 39,
+      "transition:grasp_onset": 44,
+      "cooperation:bimanual_joint": 53,
+      "cooperation:handover": 5,
+      "operation:flip": 6,
+      "cooperation:single_hand": 19,
+      "operation:align": 37,
+      "operation:transfer": 19,
+      "relation:stabilizes": 25
+    }
+  },
+  "type_coverage": {
+    "train": {
+      "known_type_count": 12,
+      "positive_type_count": 12,
+      "negative_type_count": 3,
+      "positive_cells_by_type": {
+        "relation:contact": 647,
+        "relation:grasp_control": 513,
+        "relation:acts_on": 11,
+        "relation:supported_by": 270,
+        "transition:release": 132,
+        "operation:transfer": 83,
+        "relation:co_motion": 137,
+        "transition:contact_onset": 20,
+        "transition:grasp_onset": 8,
+        "cooperation:single_hand": 16,
+        "operation:close": 17,
+        "cooperation:bimanual_joint": 99
+      },
+      "negative_cells_by_type": {
+        "relation:supported_by": 201,
+        "relation:contact": 615,
+        "relation:grasp_control": 636
+      },
+      "known_type_count_by_layer": {
+        "relation": 5,
+        "transition": 3,
+        "operation": 2,
+        "cooperation": 2
+      },
+      "positive_type_count_by_layer": {
+        "relation": 5,
+        "transition": 3,
+        "operation": 2,
+        "cooperation": 2
+      }
+    },
+    "val": {
+      "known_type_count": 10,
+      "positive_type_count": 10,
+      "negative_type_count": 2,
+      "positive_cells_by_type": {
+        "relation:contact": 581,
+        "relation:grasp_control": 424,
+        "relation:stabilizes": 67,
+        "operation:lift": 8,
+        "cooperation:bimanual_joint": 25,
+        "operation:transfer": 17,
+        "transition:release": 20,
+        "transition:contact_onset": 2,
+        "operation:close": 14,
+        "cooperation:complementary": 14
+      },
+      "negative_cells_by_type": {
+        "relation:contact": 245,
+        "relation:grasp_control": 161
+      },
+      "known_type_count_by_layer": {
+        "relation": 3,
+        "operation": 3,
+        "cooperation": 2,
+        "transition": 2
+      },
+      "positive_type_count_by_layer": {
+        "relation": 3,
+        "operation": 3,
+        "cooperation": 2,
+        "transition": 2
+      }
+    },
+    "test": {
+      "known_type_count": 17,
+      "positive_type_count": 16,
+      "negative_type_count": 5,
+      "positive_cells_by_type": {
+        "operation:hold": 126,
+        "relation:contact": 187,
+        "relation:grasp_control": 126,
+        "cooperation:complementary": 7,
+        "operation:place": 22,
+        "transition:release": 70,
+        "transition:contact_onset": 39,
+        "transition:grasp_onset": 44,
+        "cooperation:bimanual_joint": 38,
+        "cooperation:handover": 5,
+        "operation:flip": 6,
+        "cooperation:single_hand": 19,
+        "operation:align": 37,
+        "operation:transfer": 19,
+        "relation:stabilizes": 25,
+        "operation:press": 16
+      },
+      "negative_cells_by_type": {
+        "relation:contact": 783,
+        "relation:grasp_control": 504,
+        "operation:press": 29,
+        "relation:supported_by": 33,
+        "cooperation:bimanual_joint": 15
+      },
+      "known_type_count_by_layer": {
+        "operation": 6,
+        "relation": 4,
+        "cooperation": 4,
+        "transition": 3
+      },
+      "positive_type_count_by_layer": {
+        "operation": 6,
+        "relation": 3,
+        "cooperation": 4,
+        "transition": 3
+      }
+    }
+  },
+  "sequence_records": [
+    {
+      "sequence_id": "2a797a4e-5011-400e-b573-e32d80cc8a54",
+      "split": "train",
+      "review_sha256": "4e6e73285d06b742f51ada5a4ab1566af124f7e5a624745b21d4e8e10e037a82",
+      "candidate_object_frames": 507,
+      "accepted_object_frames": 487,
+      "rejected_object_frames": 20,
+      "viewed_tracking_pages": 20,
+      "tracking_manifest_sha256": "485cc024a66caf548c3d7709bfbe93759d9679b3ef38d0971792e8568ea9ec6d"
+    },
+    {
+      "sequence_id": "2eb9dcc4-6a9a-4f51-b304-d01e0d9bdd6d",
+      "split": "val",
+      "review_sha256": "2682267bc530126c2e5195a2266f11bf5bfb850e0225584ce3dc68324fceb4e8",
+      "candidate_object_frames": 407,
+      "accepted_object_frames": 355,
+      "rejected_object_frames": 52,
+      "viewed_tracking_pages": 26,
+      "tracking_manifest_sha256": "3039d8be3e4974c563ae82d0a56a98e73225a888b0b84273d51a59546b86b2f9"
+    },
+    {
+      "sequence_id": "99190763-eb6b-43ef-b0ad-8489a9496cbb",
+      "split": "train",
+      "review_sha256": "fe80cee40ee99b0a655f8b108911f422592492fe3319f69c5b78f89559da5f81",
+      "candidate_object_frames": 493,
+      "accepted_object_frames": 421,
+      "rejected_object_frames": 72,
+      "viewed_tracking_pages": 14,
+      "tracking_manifest_sha256": "ffea57f2649d2e1c3194b16484e601fc9f84baab3d2c72dd5c822433bb6b9d69"
+    },
+    {
+      "sequence_id": "9be303ef-7491-43be-9915-ddfd51fde7b3",
+      "split": "test",
+      "review_sha256": "3562efada126af5ec4213038ec436c88937c491093ee024cbe55ca31c7997c36",
+      "candidate_object_frames": 583,
+      "accepted_object_frames": 522,
+      "rejected_object_frames": 61,
+      "viewed_tracking_pages": 22,
+      "tracking_manifest_sha256": "280f230f033e6e943d3ee253407be4f3ce07508e7837c6b6062685681b888ef3"
+    },
+    {
+      "sequence_id": "acc3c38d-9591-4eaa-9e6b-d98e385249c8",
+      "split": "train",
+      "review_sha256": "cb0ee9d70031234df1604bb42c35105eb4d3648aadccafea55307fd80ba733d8",
+      "candidate_object_frames": 677,
+      "accepted_object_frames": 572,
+      "rejected_object_frames": 105,
+      "viewed_tracking_pages": 15,
+      "tracking_manifest_sha256": "5d170108f712531f83adf17cbe83cc6d02e697d812c4e8cd949e42d9171324de"
+    }
+  ],
+  "full_annotation_complete": false,
+  "full_joint_training_allowed": false,
+  "independent_human_semantic_review": false,
+  "optimizer_steps": 0,
+  "scope_zh": "独立核全部窗口来源/固定划分/实际原生1秒时基、真实当前帧种子和失联不复活、逐对象跟踪质检；逐窗重算历史槽位、120维输入和有向正负图mask并实际调用Dataset比对。未启动训练；未认证6D或300段完整标注。"
+}

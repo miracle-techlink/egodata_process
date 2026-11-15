@@ -1,0 +1,135 @@
+[
+  {
+    "name": "full_pipeline.pdf",
+    "title": "完整流程与监督边界",
+    "kind": "原理",
+    "image": "04_图片与图表/full_pipeline.png",
+    "original": "04_图片与图表/full_pipeline.pdf"
+  },
+  {
+    "name": "graph_architecture.pdf",
+    "title": "动态交互图模型结构",
+    "kind": "原理",
+    "image": "04_图片与图表/graph_architecture.png",
+    "original": "04_图片与图表/graph_architecture.pdf"
+  },
+  {
+    "name": "hand_pose_principle.pdf",
+    "title": "手部21点与坐标原理",
+    "kind": "原理",
+    "image": "04_图片与图表/hand_pose_principle.png",
+    "original": "04_图片与图表/hand_pose_principle.pdf"
+  },
+  {
+    "name": "public_hand_coordinates.pdf",
+    "title": "世界系、相机系与图像投影",
+    "kind": "原理",
+    "image": "04_图片与图表/public_hand_coordinates.png",
+    "original": "04_图片与图表/public_hand_coordinates.pdf"
+  },
+  {
+    "name": "hand_object_rgbd.png",
+    "title": "DexYCB真人手部与物体6D",
+    "kind": "实际输出",
+    "image": "04_图片与图表/hand_object_rgbd.png",
+    "original": "04_图片与图表/hand_object_rgbd.png"
+  },
+  {
+    "name": "pose6d_principle.pdf",
+    "title": "物体6D注册与跟踪",
+    "kind": "原理",
+    "image": "04_图片与图表/pose6d_principle.png",
+    "original": "04_图片与图表/pose6d_principle.pdf"
+  },
+  {
+    "name": "hocap_four_objects_f180.png",
+    "title": "HO-Cap四物体与手部输出",
+    "kind": "实际输出",
+    "image": "04_图片与图表/hocap_four_objects_f180.png",
+    "original": "04_图片与图表/hocap_four_objects_f180.png"
+  },
+  {
+    "name": "hocap_same_scene_pointcloud.png",
+    "title": "同源真人场景：RGB、深度与点云",
+    "kind": "实际输出",
+    "image": "04_图片与图表/hocap_same_scene_pointcloud.png",
+    "original": "04_图片与图表/hocap_same_scene_pointcloud.png"
+  },
+  {
+    "name": "stereo_geometry_principle.pdf",
+    "title": "双目重建与刚性拟合",
+    "kind": "原理",
+    "image": "04_图片与图表/stereo_geometry_principle.png",
+    "original": "04_图片与图表/stereo_geometry_principle.pdf"
+  },
+  {
+    "name": "public_surface_motion.pdf",
+    "title": "刚体、部件与非刚体表示",
+    "kind": "原理",
+    "image": "04_图片与图表/public_surface_motion.png",
+    "original": "04_图片与图表/public_surface_motion.pdf"
+  },
+  {
+    "name": "hand_calibration_coverage.pdf",
+    "title": "手部来源覆盖与标定状态",
+    "kind": "验证",
+    "image": "04_图片与图表/hand_calibration_coverage.png",
+    "original": "04_图片与图表/hand_calibration_coverage.pdf"
+  },
+  {
+    "name": "hocap_perception_validation.pdf",
+    "title": "当前Demo的覆盖与数值验证",
+    "kind": "验证",
+    "image": "04_图片与图表/hocap_perception_validation.png",
+    "original": "04_图片与图表/hocap_perception_validation.pdf"
+  },
+  {
+    "name": "perception_runtime.pdf",
+    "title": "同配置场景的性能优化",
+    "kind": "验证",
+    "image": "04_图片与图表/perception_runtime.png",
+    "original": "04_图片与图表/perception_runtime.pdf"
+  },
+  {
+    "name": "sample_timeline.pdf",
+    "title": "历史窗口与未来标签",
+    "kind": "原理",
+    "image": "04_图片与图表/sample_timeline.png",
+    "original": "04_图片与图表/sample_timeline.pdf"
+  },
+  {
+    "name": "rsi_loop.pdf",
+    "title": "RSI候选生成与验证选优",
+    "kind": "原理",
+    "image": "04_图片与图表/rsi_loop.png",
+    "original": "04_图片与图表/rsi_loop.pdf"
+  },
+  {
+    "name": "rsi_observed_history.pdf",
+    "title": "实际RSI账本曲线",
+    "kind": "验证",
+    "image": "04_图片与图表/rsi_observed_history.png",
+    "original": "04_图片与图表/rsi_observed_history.pdf"
+  },
+  {
+    "name": "expanded_results.pdf",
+    "title": "已核验扩展阶段模型结果",
+    "kind": "验证",
+    "image": "04_图片与图表/expanded_results.png",
+    "original": "04_图片与图表/expanded_results.pdf"
+  },
+  {
+    "name": "full_pipeline_demo.jpg",
+    "title": "物体内容、交互关系与模型输出",
+    "kind": "实际输出",
+    "image": "04_图片与图表/full_pipeline_demo.jpg",
+    "original": "04_图片与图表/full_pipeline_demo.jpg"
+  },
+  {
+    "name": "full_pipeline_sequence.jpg",
+    "title": "同一连续Demo的关键时刻",
+    "kind": "实际输出",
+    "image": "04_图片与图表/full_pipeline_sequence.jpg",
+    "original": "04_图片与图表/full_pipeline_sequence.jpg"
+  }
+]

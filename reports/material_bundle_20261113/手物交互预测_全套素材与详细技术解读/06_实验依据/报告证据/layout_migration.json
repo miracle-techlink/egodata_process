@@ -1,0 +1,28 @@
+{
+  "from": "../cvpr_zh_full_pipeline_20261112",
+  "style_reference": "visual_check.tex",
+  "format_changed_only": true,
+  "paragraphs_retained": 72,
+  "equations_retained": 9,
+  "figure_labels_retained": [
+    "fig:fullpipeline",
+    "fig:handprinciple",
+    "fig:handcoords",
+    "fig:rgbdhuman",
+    "fig:poseprinciple",
+    "fig:posecloud",
+    "fig:stereoprinciple",
+    "fig:surface",
+    "fig:coverage",
+    "fig:perceptionvalidation",
+    "fig:runtime",
+    "fig:sample",
+    "fig:architecture",
+    "fig:rsi",
+    "fig:rsihistory",
+    "fig:expanded",
+    "fig:history",
+    "fig:demo"
+  ],
+  "video_hashes_retained": true
+}

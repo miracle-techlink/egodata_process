@@ -1,0 +1,326 @@
+[
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/demo_update_20261113/site/dist/media/full-pipeline.mp4",
+    "included_as": "03_视频素材/full-pipeline.mp4"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/demo_update_20261113/site/dist/media/hands_and_object_rgbd.mp4",
+    "included_as": "03_视频素材/hands_and_object_rgbd_browser.mp4"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/demo_update_20261113/site/dist/media/hocap_four_objects.mp4",
+    "included_as": "03_视频素材/hocap_four_objects.mp4"
+  },
+  {
+    "source": "/home/nvidia/algotithm/demo/b857b2a8_demo.mp4",
+    "included_as": "03_视频素材/b857b2a8_demo.mp4"
+  },
+  {
+    "source": "/home/nvidia/algotithm/demo/b857b2a8_demo_v2.mp4",
+    "included_as": "03_视频素材/b857b2a8_demo_v2.mp4"
+  },
+  {
+    "source": "/home/nvidia/algotithm/demo/demo_pose_v4.mp4",
+    "included_as": "03_视频素材/demo_pose_v4.mp4"
+  },
+  {
+    "source": "/home/nvidia/algotithm/demo/demo_v5.mp4",
+    "included_as": "03_视频素材/demo_v5.mp4"
+  },
+  {
+    "source": "/home/nvidia/algotithm/demo/demo_v6.mp4",
+    "included_as": "03_视频素材/demo_v6.mp4"
+  },
+  {
+    "source": "/home/nvidia/algotithm/demo/e923ec44_demo.mp4",
+    "included_as": "03_视频素材/e923ec44_demo.mp4"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/public_technical_zh_20261112/figures/full_pipeline_demo.jpg",
+    "included_as": "04_图片与图表/当前报告插图/full_pipeline_demo.jpg"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/public_technical_zh_20261112/figures/full_pipeline_sequence.jpg",
+    "included_as": "04_图片与图表/当前报告插图/full_pipeline_sequence.jpg"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/public_technical_zh_20261112/figures/hand_object_rgbd.png",
+    "included_as": "04_图片与图表/当前报告插图/hand_object_rgbd.png"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/public_technical_zh_20261112/figures/hand_pose_principle.png",
+    "included_as": "04_图片与图表/当前报告插图/hand_pose_principle.png"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/public_technical_zh_20261112/figures/hocap_four_objects_f180.png",
+    "included_as": "04_图片与图表/当前报告插图/hocap_four_objects_f180.png"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/public_technical_zh_20261112/figures/perception_runtime.png",
+    "included_as": "04_图片与图表/当前报告插图/perception_runtime.png"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/public_technical_zh_20261112/figures/perception_validation.png",
+    "included_as": "04_图片与图表/当前报告插图/perception_validation.png"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/public_technical_zh_20261112/figures/pose6d_pointcloud.png",
+    "included_as": "04_图片与图表/当前报告插图/pose6d_pointcloud.png"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/public_technical_zh_20261112/figures/pose6d_principle.png",
+    "included_as": "04_图片与图表/当前报告插图/pose6d_principle.png"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/public_technical_zh_20261112/figures/rsi_observed_history.png",
+    "included_as": "04_图片与图表/当前报告插图/rsi_observed_history.png"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/public_technical_zh_20261112/figures/stereo_geometry_principle.png",
+    "included_as": "04_图片与图表/当前报告插图/stereo_geometry_principle.png"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/public_technical_zh_20261112/figures/architecture.pdf",
+    "included_as": "04_图片与图表/当前报告插图/architecture.pdf"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/public_technical_zh_20261112/figures/architecture.tex",
+    "included_as": "04_图片与图表/当前报告插图/architecture.tex"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/public_technical_zh_20261112/figures/expanded_results.pdf",
+    "included_as": "04_图片与图表/当前报告插图/expanded_results.pdf"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/public_technical_zh_20261112/figures/full_pipeline.pdf",
+    "included_as": "04_图片与图表/当前报告插图/full_pipeline.pdf"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/public_technical_zh_20261112/figures/full_pipeline.tex",
+    "included_as": "04_图片与图表/当前报告插图/full_pipeline.tex"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/public_technical_zh_20261112/figures/hand_pose_principle.pdf",
+    "included_as": "04_图片与图表/当前报告插图/hand_pose_principle.pdf"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/public_technical_zh_20261112/figures/hand_pose_principle.tex",
+    "included_as": "04_图片与图表/当前报告插图/hand_pose_principle.tex"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/public_technical_zh_20261112/figures/perception_runtime.pdf",
+    "included_as": "04_图片与图表/当前报告插图/perception_runtime.pdf"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/public_technical_zh_20261112/figures/perception_validation.pdf",
+    "included_as": "04_图片与图表/当前报告插图/perception_validation.pdf"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/public_technical_zh_20261112/figures/pose6d_principle.pdf",
+    "included_as": "04_图片与图表/当前报告插图/pose6d_principle.pdf"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/public_technical_zh_20261112/figures/pose6d_principle.tex",
+    "included_as": "04_图片与图表/当前报告插图/pose6d_principle.tex"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/public_technical_zh_20261112/figures/rsi_loop.pdf",
+    "included_as": "04_图片与图表/当前报告插图/rsi_loop.pdf"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/public_technical_zh_20261112/figures/rsi_loop.tex",
+    "included_as": "04_图片与图表/当前报告插图/rsi_loop.tex"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/public_technical_zh_20261112/figures/rsi_observed_history.pdf",
+    "included_as": "04_图片与图表/当前报告插图/rsi_observed_history.pdf"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/public_technical_zh_20261112/figures/sample_timeline.pdf",
+    "included_as": "04_图片与图表/当前报告插图/sample_timeline.pdf"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/public_technical_zh_20261112/figures/sample_timeline.tex",
+    "included_as": "04_图片与图表/当前报告插图/sample_timeline.tex"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/public_technical_zh_20261112/figures/stereo_geometry_principle.pdf",
+    "included_as": "04_图片与图表/当前报告插图/stereo_geometry_principle.pdf"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/public_technical_zh_20261112/figures/stereo_geometry_principle.tex",
+    "included_as": "04_图片与图表/当前报告插图/stereo_geometry_principle.tex"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/public_technical_zh_20261112/figures/version_history.pdf",
+    "included_as": "04_图片与图表/当前报告插图/version_history.pdf"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/cvpr_zh_full_pipeline_20261112/figures/demo_v6_actual.png",
+    "included_as": "04_图片与图表/当前报告插图/demo_v6_actual.png"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/cvpr_zh_full_pipeline_20261112/figures/egodemo_surface_seeds.jpg",
+    "included_as": "04_图片与图表/当前报告插图/egodemo_surface_seeds.jpg"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/cvpr_zh_full_pipeline_20261112/figures/hand_calibration_coverage.png",
+    "included_as": "04_图片与图表/当前报告插图/hand_calibration_coverage.png"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/cvpr_zh_full_pipeline_20261112/figures/hand_ego_coordinates.png",
+    "included_as": "04_图片与图表/当前报告插图/hand_ego_coordinates.png"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/cvpr_zh_full_pipeline_20261112/figures/hand_object_rgbd.png",
+    "included_as": "04_图片与图表/当前报告插图/hand_object_rgbd.png"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/cvpr_zh_full_pipeline_20261112/figures/hand_pose_principle.png",
+    "included_as": "04_图片与图表/当前报告插图/hand_pose_principle.png"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/cvpr_zh_full_pipeline_20261112/figures/hocap_four_objects_f180.png",
+    "included_as": "04_图片与图表/当前报告插图/hocap_four_objects_f180.png"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/cvpr_zh_full_pipeline_20261112/figures/perception_runtime.png",
+    "included_as": "04_图片与图表/当前报告插图/perception_runtime.png"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/cvpr_zh_full_pipeline_20261112/figures/perception_validation.png",
+    "included_as": "04_图片与图表/当前报告插图/perception_validation.png"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/cvpr_zh_full_pipeline_20261112/figures/pose6d_pointcloud.png",
+    "included_as": "04_图片与图表/当前报告插图/pose6d_pointcloud.png"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/cvpr_zh_full_pipeline_20261112/figures/pose6d_principle.png",
+    "included_as": "04_图片与图表/当前报告插图/pose6d_principle.png"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/cvpr_zh_full_pipeline_20261112/figures/rsi_observed_history.png",
+    "included_as": "04_图片与图表/当前报告插图/rsi_observed_history.png"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/cvpr_zh_full_pipeline_20261112/figures/stereo_geometry_principle.png",
+    "included_as": "04_图片与图表/当前报告插图/stereo_geometry_principle.png"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/cvpr_zh_full_pipeline_20261112/figures/architecture.pdf",
+    "included_as": "04_图片与图表/当前报告插图/architecture.pdf"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/cvpr_zh_full_pipeline_20261112/figures/architecture.tex",
+    "included_as": "04_图片与图表/当前报告插图/architecture.tex"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/cvpr_zh_full_pipeline_20261112/figures/expanded_results.pdf",
+    "included_as": "04_图片与图表/当前报告插图/expanded_results.pdf"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/cvpr_zh_full_pipeline_20261112/figures/full_pipeline.pdf",
+    "included_as": "04_图片与图表/当前报告插图/full_pipeline.pdf"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/cvpr_zh_full_pipeline_20261112/figures/full_pipeline.tex",
+    "included_as": "04_图片与图表/当前报告插图/full_pipeline.tex"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/cvpr_zh_full_pipeline_20261112/figures/hand_calibration_coverage.pdf",
+    "included_as": "04_图片与图表/当前报告插图/hand_calibration_coverage.pdf"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/cvpr_zh_full_pipeline_20261112/figures/hand_pose_principle.tex",
+    "included_as": "04_图片与图表/当前报告插图/hand_pose_principle.tex"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/cvpr_zh_full_pipeline_20261112/figures/perception_runtime.pdf",
+    "included_as": "04_图片与图表/当前报告插图/perception_runtime.pdf"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/cvpr_zh_full_pipeline_20261112/figures/perception_validation.pdf",
+    "included_as": "04_图片与图表/当前报告插图/perception_validation.pdf"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/cvpr_zh_full_pipeline_20261112/figures/pose6d_principle.tex",
+    "included_as": "04_图片与图表/当前报告插图/pose6d_principle.tex"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/cvpr_zh_full_pipeline_20261112/figures/rsi_loop.pdf",
+    "included_as": "04_图片与图表/当前报告插图/rsi_loop.pdf"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/cvpr_zh_full_pipeline_20261112/figures/rsi_loop.tex",
+    "included_as": "04_图片与图表/当前报告插图/rsi_loop.tex"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/cvpr_zh_full_pipeline_20261112/figures/rsi_observed_history.pdf",
+    "included_as": "04_图片与图表/当前报告插图/rsi_observed_history.pdf"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/cvpr_zh_full_pipeline_20261112/figures/sample_timeline.pdf",
+    "included_as": "04_图片与图表/当前报告插图/sample_timeline.pdf"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/cvpr_zh_full_pipeline_20261112/figures/sample_timeline.tex",
+    "included_as": "04_图片与图表/当前报告插图/sample_timeline.tex"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/cvpr_zh_full_pipeline_20261112/figures/stereo_geometry_principle.tex",
+    "included_as": "04_图片与图表/当前报告插图/stereo_geometry_principle.tex"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/cvpr_zh_full_pipeline_20261112/figures/version_history.pdf",
+    "included_as": "04_图片与图表/当前报告插图/version_history.pdf"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/cvpr_zh_20261112/figures/demo_v6_actual.png",
+    "included_as": "04_图片与图表/当前报告插图/demo_v6_actual.png"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/cvpr_zh_20261112/figures/architecture.pdf",
+    "included_as": "04_图片与图表/当前报告插图/architecture.pdf"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/cvpr_zh_20261112/figures/architecture.tex",
+    "included_as": "04_图片与图表/当前报告插图/architecture.tex"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/cvpr_zh_20261112/figures/expanded_results.pdf",
+    "included_as": "04_图片与图表/当前报告插图/expanded_results.pdf"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/cvpr_zh_20261112/figures/rsi_loop.pdf",
+    "included_as": "04_图片与图表/当前报告插图/rsi_loop.pdf"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/cvpr_zh_20261112/figures/rsi_loop.tex",
+    "included_as": "04_图片与图表/当前报告插图/rsi_loop.tex"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/cvpr_zh_20261112/figures/version_history.pdf",
+    "included_as": "04_图片与图表/当前报告插图/version_history.pdf"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/demo_update_20261113/site/dist/media/perception_validation.png",
+    "included_as": "04_图片与图表/当前报告插图/perception_validation.png"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/demo_update_20261113/site/dist/media/pipeline-frame-223.jpg",
+    "included_as": "04_图片与图表/当前报告插图/full_pipeline_demo.jpg"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/demo_update_20261113/site/dist/media/pipeline-sequence.jpg",
+    "included_as": "04_图片与图表/当前报告插图/full_pipeline_sequence.jpg"
+  },
+  {
+    "source": "/home/nvidia/algotithm/egodata_process/reports/demo_update_20261113/site/dist/media/rsi_observed_history.png",
+    "included_as": "04_图片与图表/当前报告插图/rsi_observed_history.png"
+  },
+  {
+    "source": "/home/nvidia/algotithm/demo/preview_v6.png",
+    "included_as": "04_图片与图表/当前报告插图/demo_v6_actual.png"
+  }
+]

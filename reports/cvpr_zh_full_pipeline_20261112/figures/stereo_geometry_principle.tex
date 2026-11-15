@@ -1,0 +1,51 @@
+\documentclass[tikz,border=5pt]{standalone}
+\usepackage[UTF8,fontset=fandol]{ctex}
+\usepackage{amsmath}
+\usetikzlibrary{arrows.meta,calc,positioning}
+\definecolor{ink}{HTML}{18324A}
+\definecolor{blue}{HTML}{247DA6}
+\definecolor{orange}{HTML}{DD8A28}
+\definecolor{green}{HTML}{27896C}
+\begin{document}
+\begin{tikzpicture}[>=Latex,font=\small,text=ink,arr/.style={->,line width=1pt,blue},box/.style={draw=blue,fill=blue!5,rounded corners=2pt,align=center,font=\footnotesize,minimum height=.85cm,text width=3.0cm}]
+\path[use as bounding box] (-.1,-5.8) rectangle (16.2,2.1);
+\node[anchor=west,font=\bfseries] at (0,1.8) {(a) 双目同点三角化：从像素到米制表面};
+\begin{scope}[shift={(.1,-2.0)}]
+\coordinate (cl) at (.8,0);\coordinate (cr) at (4.8,0);\coordinate (q) at (2.8,3.05);
+\draw[blue,thick] (cl)--(q);\draw[orange,thick] (cr)--(q);
+\fill[ink] (q) circle(2.5pt) node[above] {同一表面点 $P$};
+\foreach \x/\n in {.8/L,4.8/R}{
+ \draw[fill=ink!7,draw=ink] (\x-.22,-.2) rectangle (\x+.22,.05);
+ \node[below] at (\x,-.2) {$C_\n$};
+ \draw[dashed,ink!40] (\x,0)--(\x,2.4);
+ \draw[ink!60,thick] (\x-.65,.75)--(\x+.65,.75);
+}
+\fill[blue] (1.292,.75) circle(2.4pt);\node[above right,font=\scriptsize] at (1.292,.75) {$u_L$};
+\fill[orange] (4.308,.75) circle(2.4pt);\node[above left,font=\scriptsize] at (4.308,.75) {$u_R$};
+\draw[<->,ink!60] (.8,-.8)--node[fill=white]{基线 $b$}(4.8,-.8);
+\draw[<->,green] (5.65,0)--node[right] {深度 $Z$}(5.65,3.05);
+\draw[<->,ink!60] (.05,0)--node[left] {$f$}(.05,.75);
+\node[align=center] at (2.8,-1.45) {校正后 $d=u_L-u_R$，$Z=f_xb/d$\\示意使用虚拟成像平面，未按比例绘制};
+\end{scope}
+\node[anchor=west,font=\bfseries] at (7.2,1.8) {(b) 跨帧对应：求刚体运动};
+\begin{scope}[shift={(7.4,-.1)}]
+\draw[fill=blue!7,draw=blue] (0,0)--(1.8,.1)--(2.05,1.3)--(.3,1.5)--cycle;
+\foreach \x/\y in {.3/.3,.6/1.1,1.4/.4,1.6/1.0}{\fill[blue] (\x,\y) circle(2.3pt);}
+\node at (1,-.5) {参考点 $a_j$};
+\draw[arr] (2.4,.7)--node[above] {$R,t$}(4.2,.7);
+\begin{scope}[shift={(4.7,.0)},rotate=15]
+\draw[fill=orange!7,draw=orange] (0,0)--(1.8,.1)--(2.05,1.3)--(.3,1.5)--cycle;
+\foreach \x/\y in {.3/.3,.6/1.1,1.4/.4,1.6/1.0}{\fill[orange] (\x,\y) circle(2.3pt);}
+\end{scope}
+\node at (5.9,-.5) {当前点 $b_j$};
+\node[align=center,text width=8.3cm] at (3.6,-1.5) {$\displaystyle\min_{R\in SO(3),t}\sum_{j\in\mathcal I}\|Ra_j+t-b_j\|^2$\\RANSAC剔除外点；SVD求解旋转和平移};
+\node[align=center,text width=8.2cm,font=\small] at (3.6,-2.5) {检查内点数、残差与点云跨度；退化或非刚体不强制输出整物体6D。};
+\end{scope}
+\node[box] (cal) at (1.6,-4.7) {相机标定与双目匹配\\左右一致性筛选};
+\node[box] (surf) at (5.75,-4.7) {三角化表面点\\实例种子与连续跟踪};
+\node[box] (fit) at (9.9,-4.7) {刚体／部件拟合\\或二维对应PnP};
+\node[box,draw=green,fill=green!5] (non) at (14.05,-4.7) {刚体：$R,t$ + 有效mask\\非刚体：表面点轨迹};
+\draw[arr] (cal)--(surf);\draw[arr] (surf)--(fit);\draw[arr] (fit)--(non);
+\node[anchor=west,font=\scriptsize] at (0,-5.6) {原理示意：非校正相机使用双投影矩阵三角化；局部参考原点来自可见表面，不自动等于CAD中心。};
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,15 @@
+{
+  "base_commit": "4ca99373050ea8fd06d980dfcfc466e1991b574a",
+  "branch": "reports/technical-report-2026-11-12",
+  "blobs": {
+    "egodata-technical-report-zh.pdf": "18dddf009178e17379ddcc2d1b88434dcc1d2077",
+    "THIRD_PARTY_NOTICES.txt": "4a8ee0d7c60614d9c295af4921083de0f48e01e7",
+    "SHA256SUMS.txt": "75276b187fec2d5e95dee0796facf30f278ce46f",
+    "PUBLIC_README.md": "d65f47ccb6fc889d2c592a1d54af75977972977b"
+  },
+  "commit": "8c2d41717844a684a37ffc59d1d1d935729bb434",
+  "tree": "a3ab51cea15ff07378a3930aee3491d800939fd8",
+  "branch_url": "https://github.com/miracle-techlink/egodata_process/tree/reports/technical-report-2026-11-12",
+  "release_url": "https://github.com/miracle-techlink/egodata_process/releases/tag/technical-report-2026-11-12",
+  "tag": "technical-report-2026-11-12"
+}

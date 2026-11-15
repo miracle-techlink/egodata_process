@@ -1,0 +1,62 @@
+{
+  "frames": 446,
+  "object_valid_frames": [
+    446,
+    446,
+    446,
+    446
+  ],
+  "hand_valid_frames_left_right": [
+    441,
+    5
+  ],
+  "max_rotation_orthogonality_element_error": 6.073621280355823e-06,
+  "max_abs_det_minus_one": 5.36072620804795e-06,
+  "scope": "output coverage and numerical consistency only; no independent pose accuracy assessed",
+  "pointcloud_frame": 223,
+  "depth_scale": 0.001,
+  "K": [
+    [
+      378.30926513671875,
+      0.0,
+      323.66534423828125
+    ],
+    [
+      0.0,
+      378.024658203125,
+      253.562744140625
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "pointcloud_samples": 24340,
+  "depth_filter_m": [
+    0.15,
+    1.5
+  ],
+  "display_sampling_stride_px": 3,
+  "mesh_alignment": "saved estimated pose only; no reference alignment",
+  "source_rgb_sha256": "c9d6c7a01c780c9590e001f9e74113a4b34ea7dfe919c79f402babd1f1d20a18",
+  "source_depth_sha256": "d58f51b4a876baa713953b1ab75799d6447c99de115ea20c5e4bacf8f6bfea73",
+  "meshes": [
+    {
+      "id": "G04_1",
+      "sha256": "92dd7ea3aeb3ea475267295ba05b9d98c3d11dfe16d6ec754c47e284f869d1e8"
+    },
+    {
+      "id": "G04_2",
+      "sha256": "956eb8b73c7fdcc591147c85031e39a0b22db71d1fa7a1963ac7ed432c1ed356"
+    },
+    {
+      "id": "G04_3",
+      "sha256": "f944088ee1c9df32846eaaa5380912efb62924233c0f93392b18492e3dc5fc98"
+    },
+    {
+      "id": "G04_4",
+      "sha256": "b6d125a023612eeceddf88bc57ea42287040f60834945442afb8ce64fda0dc1e"
+    }
+  ]
+}

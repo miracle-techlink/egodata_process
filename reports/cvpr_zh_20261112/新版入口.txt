@@ -1,0 +1,8 @@
+本目录为前版七页报告。完整Pipeline新版位于：
+../cvpr_zh_full_pipeline_20261112/完整技术报告_手部与6D配图版.pdf
+
+新版14页、18幅编号图，补齐手部与6D位姿原理示意图、真实感知示例、指标验证图、远端RSI实际记录。
+直接看图：../cvpr_zh_full_pipeline_20261112/手部与6D_三页配图预览.pdf
+素材册：../cvpr_zh_full_pipeline_20261112/demo_materials.pdf
+10段视频：../cvpr_zh_full_pipeline_20261112/media/
+打包：../cvpr_zh_full_pipeline_20261112/完整Pipeline_CVPR中文报告与素材.zip

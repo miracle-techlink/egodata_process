@@ -1,0 +1,29 @@
+[
+  {
+    "width": 640,
+    "height": 480,
+    "avg_frame_rate": "30/1",
+    "duration": "1.466667",
+    "nb_frames": "44",
+    "path": "/home/nvidia/algotithm/egodata_process/runs/human_pose_live_20261022/human_hands_foundationpose_30fps.mp4",
+    "sha256": "284172980bcac7a8d873f831b98a233a94fd6fb19dec49593f3eebdea941d4e2"
+  },
+  {
+    "width": 1280,
+    "height": 584,
+    "avg_frame_rate": "30/1",
+    "duration": "2.466667",
+    "nb_frames": "74",
+    "path": "/home/nvidia/algotithm/egodata_process/runs/pose_forecast_20261022/future_pose_comparison.mp4",
+    "sha256": "aaf401e27694dec269ebd8df66ceba4a3e17239ea789b5ca6f1a333404c71624"
+  },
+  {
+    "width": 640,
+    "height": 480,
+    "avg_frame_rate": "30/1",
+    "duration": "2.466667",
+    "nb_frames": "74",
+    "path": "/home/nvidia/algotithm/egodata_process/runs/pose_forecast_20261022/future_pose_online.mp4",
+    "sha256": "17a96c27110948676c94ecfb4dff6c9df2338d84e000228b31dff2736a533726"
+  }
+]

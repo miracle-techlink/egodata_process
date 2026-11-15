@@ -1,0 +1,137 @@
+{
+  "source_episode_uuid": "ce22bfbe-3daa-4cac-b43a-7c202f6c87ee",
+  "task_name": "Coiling and Securing (Loose Cables)",
+  "frames": 5970,
+  "status": "blocked",
+  "overall_accepted": false,
+  "blockers": [
+    "real_object_6d_missing",
+    "independent_hand_reprojection_reference_missing",
+    "independent_object_pose_reference_missing"
+  ],
+  "intrinsics": {
+    "fx": 788.253173828125,
+    "fy": 788.253173828125,
+    "cx": 960.0,
+    "cy": 728.0
+  },
+  "provenance": {
+    "source_files": {
+      "episodes": {
+        "path": "/root/gpufree-data/datasets/ego_hoi/raw/annotated_pilot_20261022/EgoProStandard/lerobot/Coiling and Securing (Loose Cables)/ce22bfbe-3daa-4cac-b43a-7c202f6c87ee/meta/episodes/chunk-000/file-000.parquet",
+        "role": "episodes",
+        "size": 64365,
+        "sha256": "0ec111892443bad5bed850e8006d2d6fdd92d4e0a1e481f8f41df3df14229ef3",
+        "expected_size": 64365,
+        "expected_sha256": "0ec111892443bad5bed850e8006d2d6fdd92d4e0a1e481f8f41df3df14229ef3",
+        "manifest_ready": false,
+        "manifest_downloaded": false,
+        "payload_verified": true,
+        "relative_path": "EgoProStandard/lerobot/Coiling and Securing (Loose Cables)/ce22bfbe-3daa-4cac-b43a-7c202f6c87ee/meta/episodes/chunk-000/file-000.parquet"
+      },
+      "head_left_video": {
+        "path": "/root/gpufree-data/datasets/ego_hoi/raw/annotated_pilot_20261022/EgoProStandard/lerobot/Coiling and Securing (Loose Cables)/ce22bfbe-3daa-4cac-b43a-7c202f6c87ee/videos/observation.images.head_left/chunk-000/file-000.mp4",
+        "role": "head_left_video",
+        "size": 186644133,
+        "sha256": "2227b21d3a56cc88f9a852164815490d9606a92fc2e245d059e659ebdf2b0fe0",
+        "expected_size": 186644133,
+        "expected_sha256": "2227b21d3a56cc88f9a852164815490d9606a92fc2e245d059e659ebdf2b0fe0",
+        "manifest_ready": false,
+        "manifest_downloaded": false,
+        "payload_verified": true,
+        "relative_path": "EgoProStandard/lerobot/Coiling and Securing (Loose Cables)/ce22bfbe-3daa-4cac-b43a-7c202f6c87ee/videos/observation.images.head_left/chunk-000/file-000.mp4"
+      }
+    },
+    "sequence_path": "/root/gpufree-data/datasets/ego_hoi/annotated_pilot_20261022/staging/ce22bfbe-3daa-4cac-b43a-7c202f6c87ee/sequence.npz",
+    "sequence_sha256": "ca3a4c1396f456483657504a00fbd209beafd5e008fb22f22a8096dff0de9cc9",
+    "meta_sha256": "2afb30f20ff916443a560871ba5ce91f96c80421054af023bb680bcd9fef1a84",
+    "video_alignment": {
+      "decoded_frame_count": 5970,
+      "max_absolute_pts_error_seconds": 7.454101563553195e-06,
+      "tolerance_seconds": 0.0001,
+      "frame_index_zero_based_sequential": true,
+      "method": "ffprobe full decode with per-frame PTS; absolute timestamp comparison"
+    },
+    "calibration_field": "camera_intrinsics/head_left",
+    "calibration_source": "same annotated episode meta/episodes parquet; not Raw",
+    "camera_frame": "head_left OpenCV: x right, y down, z forward",
+    "transform": "p_camera = R_c2w.T @ (p_world - camera_position_world)",
+    "units": "meters according to publisher; independent scale measurement unavailable"
+  },
+  "valid_hand_frames": {
+    "left": 5966,
+    "right": 5965
+  },
+  "both_hands_valid_frames": 5963,
+  "positive_depth_hand_frames": {
+    "left": 5966,
+    "right": 5965
+  },
+  "whole_hand_inside_image_frames": {
+    "left": 5947,
+    "right": 5965
+  },
+  "roundtrip_max_m": 6.813202366332101e-16,
+  "roundtrip_is_accuracy_metric": false,
+  "real_object_pose_frames": 0,
+  "joint_eligible_frames": 0,
+  "joint_evaluated_frames": 0,
+  "joint_success_rate": null,
+  "pose_accuracy_success_rate": null,
+  "independent_reprojection_error_px": null,
+  "images": [
+    {
+      "file": "frame_000000.png",
+      "frame_index": 0,
+      "timestamp": 0.0
+    },
+    {
+      "file": "frame_000270.png",
+      "frame_index": 270,
+      "timestamp": 9.0
+    },
+    {
+      "file": "frame_000285.png",
+      "frame_index": 285,
+      "timestamp": 9.5
+    },
+    {
+      "file": "frame_000660.png",
+      "frame_index": 660,
+      "timestamp": 22.0
+    },
+    {
+      "file": "frame_001193.png",
+      "frame_index": 1193,
+      "timestamp": 39.766666412353516
+    },
+    {
+      "file": "frame_002387.png",
+      "frame_index": 2387,
+      "timestamp": 79.56666564941406
+    },
+    {
+      "file": "frame_003581.png",
+      "frame_index": 3581,
+      "timestamp": 119.36666870117188
+    },
+    {
+      "file": "frame_004775.png",
+      "frame_index": 4775,
+      "timestamp": 159.1666717529297
+    },
+    {
+      "file": "frame_005969.png",
+      "frame_index": 5969,
+      "timestamp": 198.96665954589844
+    }
+  ],
+  "preview": {
+    "file": "hand_camera_preview.mp4",
+    "start_frame": 240,
+    "end_frame_exclusive": 540,
+    "rendered_frames": 100,
+    "fps": 10.000152590218967
+  },
+  "limitation": "Hand/camera-only diagnostic. Finite points, visibility, in-frame coverage and inverse consistency are not pose accuracy or fused acceptance."
+}

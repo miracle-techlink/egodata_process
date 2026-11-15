@@ -1,0 +1,23 @@
+{
+  "videos": [
+    {
+      "src": "media/full-pipeline.mp4",
+      "duration": 14.866667,
+      "error": null
+    },
+    {
+      "src": "media/hands_and_object_rgbd.mp4",
+      "duration": 1.466667,
+      "error": null
+    },
+    {
+      "src": "media/hocap_four_objects.mp4",
+      "duration": 14.866667,
+      "error": null
+    }
+  ],
+  "jump_to_keyframe": true,
+  "slow_motion": true,
+  "mobile_overflow": false,
+  "javascript_errors": []
+}

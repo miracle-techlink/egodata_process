@@ -1,0 +1,112 @@
+{
+  "schema_version": "v5_real_graph_target_coverage",
+  "training_index_sha256": "4b162d6595f7b489a078d86b096732a2060300cc3ea5d92296463fccfcb179e6",
+  "splits": {
+    "train": {
+      "windows": 592,
+      "positive_cells": 1953,
+      "negative_cells": 1452,
+      "windows_with_positive": 531,
+      "windows_with_negative": 445,
+      "transition_positive_cells": 160,
+      "object_to_object_valid_cells": 482,
+      "unknown_cells": 4724307,
+      "sequences": [
+        "2a797a4e-5011-400e-b573-e32d80cc8a54",
+        "99190763-eb6b-43ef-b0ad-8489a9496cbb",
+        "acc3c38d-9591-4eaa-9e6b-d98e385249c8"
+      ],
+      "valid_cells_by_layer": {
+        "relation": 3030,
+        "transition": 160,
+        "operation": 100,
+        "cooperation": 115
+      },
+      "valid_cells_by_type": {
+        "relation:contact": 1262,
+        "relation:grasp_control": 1149,
+        "relation:supported_by": 471,
+        "relation:acts_on": 11,
+        "transition:release": 132,
+        "operation:transfer": 83,
+        "relation:co_motion": 137,
+        "transition:contact_onset": 20,
+        "transition:grasp_onset": 8,
+        "cooperation:single_hand": 16,
+        "operation:close": 17,
+        "cooperation:bimanual_joint": 99
+      }
+    },
+    "val": {
+      "windows": 366,
+      "positive_cells": 1172,
+      "negative_cells": 406,
+      "windows_with_positive": 366,
+      "windows_with_negative": 261,
+      "transition_positive_cells": 22,
+      "object_to_object_valid_cells": 0,
+      "unknown_cells": 2921298,
+      "sequences": [
+        "2eb9dcc4-6a9a-4f51-b304-d01e0d9bdd6d"
+      ],
+      "valid_cells_by_layer": {
+        "relation": 1478,
+        "operation": 39,
+        "cooperation": 39,
+        "transition": 22
+      },
+      "valid_cells_by_type": {
+        "relation:contact": 826,
+        "relation:grasp_control": 585,
+        "relation:stabilizes": 67,
+        "operation:lift": 8,
+        "cooperation:bimanual_joint": 25,
+        "operation:transfer": 17,
+        "transition:release": 20,
+        "transition:contact_onset": 2,
+        "operation:close": 14,
+        "cooperation:complementary": 14
+      }
+    },
+    "test": {
+      "windows": 280,
+      "positive_cells": 786,
+      "negative_cells": 1364,
+      "windows_with_positive": 143,
+      "windows_with_negative": 272,
+      "transition_positive_cells": 153,
+      "object_to_object_valid_cells": 131,
+      "unknown_cells": 2233930,
+      "sequences": [
+        "9be303ef-7491-43be-9915-ddfd51fde7b3"
+      ],
+      "valid_cells_by_layer": {
+        "relation": 1658,
+        "operation": 255,
+        "cooperation": 84,
+        "transition": 153
+      },
+      "valid_cells_by_type": {
+        "relation:contact": 970,
+        "operation:hold": 126,
+        "relation:grasp_control": 630,
+        "cooperation:complementary": 7,
+        "operation:place": 22,
+        "transition:release": 70,
+        "transition:contact_onset": 39,
+        "transition:grasp_onset": 44,
+        "operation:press": 45,
+        "cooperation:bimanual_joint": 53,
+        "cooperation:handover": 5,
+        "relation:supported_by": 33,
+        "operation:flip": 6,
+        "cooperation:single_hand": 19,
+        "operation:align": 37,
+        "operation:transfer": 19,
+        "relation:stabilizes": 25
+      }
+    }
+  },
+  "optimizer_steps": 0,
+  "scope_zh": "完整读取冻结子集全部窗口；计数为明确银标单元，跨重叠窗口重复计数，不代表独立采集数。"
+}

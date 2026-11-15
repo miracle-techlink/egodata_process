@@ -1,0 +1,10 @@
+{
+  "navigation": "passed",
+  "videos_listed": 15,
+  "default_video_ready": true,
+  "slow_motion": true,
+  "image_search": true,
+  "mobile_overflow": false,
+  "offline_public_page_videos": 3,
+  "javascript_errors": []
+}

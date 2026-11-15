@@ -1,0 +1,137 @@
+{
+  "source_episode_uuid": "d057beac-dab1-43a1-9192-6b8b06abddaf",
+  "task_name": "Adjust Shelf Labels",
+  "frames": 1194,
+  "status": "blocked",
+  "overall_accepted": false,
+  "blockers": [
+    "real_object_6d_missing",
+    "independent_hand_reprojection_reference_missing",
+    "independent_object_pose_reference_missing"
+  ],
+  "intrinsics": {
+    "fx": 788.9683837890625,
+    "fy": 788.9683837890625,
+    "cx": 960.0,
+    "cy": 728.0
+  },
+  "provenance": {
+    "source_files": {
+      "episodes": {
+        "path": "/root/gpufree-data/datasets/ego_hoi/raw/annotated_pilot_20261022/EgoProStandard/lerobot/Adjust Shelf Labels/d057beac-dab1-43a1-9192-6b8b06abddaf/meta/episodes/chunk-000/file-000.parquet",
+        "role": "episodes",
+        "size": 64219,
+        "sha256": "f83f7f9df7546f8129ceda394f09d6068b6c78558376bffd6d5ffe4e16aa1811",
+        "expected_size": 64219,
+        "expected_sha256": "f83f7f9df7546f8129ceda394f09d6068b6c78558376bffd6d5ffe4e16aa1811",
+        "manifest_ready": false,
+        "manifest_downloaded": false,
+        "payload_verified": true,
+        "relative_path": "EgoProStandard/lerobot/Adjust Shelf Labels/d057beac-dab1-43a1-9192-6b8b06abddaf/meta/episodes/chunk-000/file-000.parquet"
+      },
+      "head_left_video": {
+        "path": "/root/gpufree-data/datasets/ego_hoi/raw/annotated_pilot_20261022/EgoProStandard/lerobot/Adjust Shelf Labels/d057beac-dab1-43a1-9192-6b8b06abddaf/videos/observation.images.head_left/chunk-000/file-000.mp4",
+        "role": "head_left_video",
+        "size": 37520780,
+        "sha256": "8efdab17ef5c4fe2afcbffb86701b7c629ce7c6f6a1b123c6407dfb27574c04f",
+        "expected_size": 37520780,
+        "expected_sha256": "8efdab17ef5c4fe2afcbffb86701b7c629ce7c6f6a1b123c6407dfb27574c04f",
+        "manifest_ready": false,
+        "manifest_downloaded": false,
+        "payload_verified": true,
+        "relative_path": "EgoProStandard/lerobot/Adjust Shelf Labels/d057beac-dab1-43a1-9192-6b8b06abddaf/videos/observation.images.head_left/chunk-000/file-000.mp4"
+      }
+    },
+    "sequence_path": "/root/gpufree-data/datasets/ego_hoi/annotated_pilot_20261022/staging/d057beac-dab1-43a1-9192-6b8b06abddaf/sequence.npz",
+    "sequence_sha256": "f47933a0b11af4032190ce783943a76bb043554f5861e7d2428acac80240c6f1",
+    "meta_sha256": "cc35163aeb29410db36de923d90c3fb98c6a6501e18d824cab9e15f4d999ca9b",
+    "video_alignment": {
+      "decoded_frame_count": 1194,
+      "max_absolute_pts_error_seconds": 2.1135253902571094e-06,
+      "tolerance_seconds": 0.0001,
+      "frame_index_zero_based_sequential": true,
+      "method": "ffprobe full decode with per-frame PTS; absolute timestamp comparison"
+    },
+    "calibration_field": "camera_intrinsics/head_left",
+    "calibration_source": "same annotated episode meta/episodes parquet; not Raw",
+    "camera_frame": "head_left OpenCV: x right, y down, z forward",
+    "transform": "p_camera = R_c2w.T @ (p_world - camera_position_world)",
+    "units": "meters according to publisher; independent scale measurement unavailable"
+  },
+  "valid_hand_frames": {
+    "left": 1183,
+    "right": 1194
+  },
+  "both_hands_valid_frames": 1183,
+  "positive_depth_hand_frames": {
+    "left": 1183,
+    "right": 1194
+  },
+  "whole_hand_inside_image_frames": {
+    "left": 1183,
+    "right": 1194
+  },
+  "roundtrip_max_m": 7.447602459741819e-16,
+  "roundtrip_is_accuracy_metric": false,
+  "real_object_pose_frames": 0,
+  "joint_eligible_frames": 0,
+  "joint_evaluated_frames": 0,
+  "joint_success_rate": null,
+  "pose_accuracy_success_rate": null,
+  "independent_reprojection_error_px": null,
+  "images": [
+    {
+      "file": "frame_000000.png",
+      "frame_index": 0,
+      "timestamp": 0.0
+    },
+    {
+      "file": "frame_000238.png",
+      "frame_index": 238,
+      "timestamp": 7.933333396911621
+    },
+    {
+      "file": "frame_000270.png",
+      "frame_index": 270,
+      "timestamp": 9.0
+    },
+    {
+      "file": "frame_000285.png",
+      "frame_index": 285,
+      "timestamp": 9.5
+    },
+    {
+      "file": "frame_000477.png",
+      "frame_index": 477,
+      "timestamp": 15.899999618530273
+    },
+    {
+      "file": "frame_000660.png",
+      "frame_index": 660,
+      "timestamp": 22.0
+    },
+    {
+      "file": "frame_000715.png",
+      "frame_index": 715,
+      "timestamp": 23.83333396911621
+    },
+    {
+      "file": "frame_000954.png",
+      "frame_index": 954,
+      "timestamp": 31.799999237060547
+    },
+    {
+      "file": "frame_001193.png",
+      "frame_index": 1193,
+      "timestamp": 39.766666412353516
+    }
+  ],
+  "preview": {
+    "file": "hand_camera_preview.mp4",
+    "start_frame": 240,
+    "end_frame_exclusive": 540,
+    "rendered_frames": 100,
+    "fps": 10.000152590218967
+  },
+  "limitation": "Hand/camera-only diagnostic. Finite points, visibility, in-frame coverage and inverse consistency are not pose accuracy or fused acceptance."
+}

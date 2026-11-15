@@ -1,0 +1,84 @@
+\documentclass[11pt,a4paper]{ctexart}
+\usepackage[margin=2cm]{geometry}
+\usepackage{booktabs,longtable,tabularx,array,graphicx,xcolor}
+\usepackage{xurl}
+\usepackage[colorlinks,urlcolor=blue,linkcolor=blue]{hyperref}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\title{Demo 与图片制作清单\\\large 动态人—物交互图行为意图预测}
+\author{2026 年 11 月 12 日 · 与中文 CVPR 技术报告配套}
+\date{}
+\begin{document}
+\maketitle
+\textbf{制作判断：}报告已有五张可用配图。主 demo 的主要缺口是与 checkpoint 绑定的逐窗口预测、三骨干原始评估日志，以及五段场景的实际 MP4 内容。场景不需要重新拍摄；先取回已有视频和推理结果，再决定是否补拍全自动实时演示。当前服务器未连接成功，下文的“待同步”不表示远端没有该文件。
+
+\section{先拿到的最小素材包}
+\begin{longtable}{L{1.1cm}L{4.1cm}L{9.1cm}}
+\toprule 优先级 & 素材 & 具体要求与验收\\\midrule\endhead
+P0 & 三个已训练 run 的原始记录 & Mamba/LSTM/Transformer 的 manifest、最终 config、seen\_types、逐轮 metrics、val/test benchmark。确认数据索引 SHA、阈值、随机种子、最优 epoch 和 checkpoint SHA；核对各自已知正负单元数与报告一致。\\
+P0 & 五段标注版左目原视频 & 纸盒扫码、水壶、订书机、封口贴、手柄归位。必须取标注版配套文件；本地备份当前均为 133 字节 Git LFS 指针，不是可剪辑 MP4。不能用 Raw 版本相同帧号替代。\\
+P0 & 预测明细 JSONL & 同一测试窗口三骨干输出：sequence\_id、历史起止、anchor/target 帧、原生时间戳、实体 ID/名称、类型代码、概率、阈值、已知标签及 mask、checkpoint SHA。未知必须保留。\\
+P0 & 一段成功和一段失败案例 & 用固定选择规则挑选已知标签窗口；保留连续原片，不把不同窗口拼成单次运行。至少一个误报/漏报和一个遮挡未知片段。\\
+P1 & 无审核网格高清帧 & 对报告使用的四个第120帧与封口贴第156帧重新从标注版视频导出 PNG；保存原分辨率，不去除有意义的物体或遮挡。当前三张 train 图带坐标网格，可用于内部稿，正式稿宜替换。\\
+P1 & 分层结果与学习曲线 & 从真实日志绘制 train/val loss、四层交互指标、正例类型 macro-F1；需配支持数，未运行的消融不补数。\\
+P2 & 全流程新录屏 & 若要声称实时，额外录制相机输入到输出的连续运行并保存分阶段延迟；已有 DexYCB 回放仅可说明独立感知模块。\\
+\bottomrule
+\end{longtable}
+
+\section{论文配图安排}
+\begin{longtable}{L{.8cm}L{3.5cm}L{6.7cm}L{3cm}}
+\toprule 图号 & 内容 & 当前产物／下一步 & 状态\\\midrule\endhead
+F1 & 五场景数据概览 & figures/dataset\_examples.pdf；真实证据图，附采集、split、原生帧。& 已生成\\
+F2 & 模型结构与因果边界 & figures/architecture.pdf 及 main.tex 内 TikZ；输入、空间注意力、三种时间骨干、图头、监督掩码。& 已生成，可编辑\\
+F3 & 数据监督构成 & figures/supervision.pdf；明确正负和四层标签统计，注明重叠计数。& 已生成\\
+F4 & 三骨干结果与统计参照 & figures/backbone\_results.pdf；模型数字转录，参照线独立推导；远端核验后更新。& 已生成，待核原日志\\
+F5 & 真实状态时间线 & figures/annotation\_timeline.pdf；封口贴三条接触关系，正／负／未知。& 已生成；非预测\\
+F6 & 提前预测与未来揭示 & 建议 2 行×4 帧：历史、截止、预测卡、目标揭示；配同一窗口概率与已知标签。& 缺逐窗推理 JSON\\
+F7 & 三骨干学习曲线 & 共同 epoch 轴；train/val 分开，标注最优点与选择规则；不平滑隐藏震荡。& 缺逐轮日志\\
+F8 & 失败案例与未知证据 & 误报、漏报、遮挡各一例；给原图、时间、模型概率与明确/未知标签。& 缺运行绑定\\
+F9 & 消融／时延分解 & 表示项与骨干分开；多次实测并记录硬件和精度。& 后续实验，非现成结果\\
+\bottomrule
+\end{longtable}
+\textbf{导出规范：}结构图和统计图优先 PDF/SVG，正文缩放后文字至少约 7.5--8 pt；真实帧保留 PNG，单图宽建议不低于 1,280 px。颜色统一：左手蓝、右手橙、物体各自固定；未知灰色。当前证据图的原始像素与哈希保留，排版缩放不改变证据语义。
+
+\section{建议主视频分镜：110 秒}
+以下时间码是剪辑计划，不是已经录制的视频时间戳。
+\begin{longtable}{L{1.6cm}L{4cm}L{8.7cm}}
+\toprule 时间 & 画面 & 旁白要点与所需输入\\\midrule\endhead
+00--08 s & 真实手物画面 + 问题 & “只观察过去，预测一秒之后谁与什么发生何种交互。”不要先播放未来成功结果再回填预测。\\
+08--20 s & 场景与实体 & 两手、目标物、支撑物；标注二维观测和官方手姿态输入条件。使用真实 scene ID，训练/测试身份可在角标中显示。\\
+20--32 s & 系统结构动画 & 静态矢量图按顺序亮起：历史32帧→帧内关系→时间骨干→有向多标签图。图动画可制作，但不模拟不存在的推理行为。\\
+32--58 s & 测试成功例，1×速度 & 展示 anchor 时刻冻结预测；右侧列 top-3 主体/客体/类型/概率；推进至少一秒揭示目标帧与已知银标。保存原生时间戳；转场不跨窗口伪造连续性。\\
+58--78 s & 同窗口四列对照 & Mamba / LSTM / Transformer / 全正参照；统一输入、阈值和事件；同时标出正确与错误，不能只显示每模型最优边。\\
+78--98 s & 失败与未知 & 一个误报或漏报；一个严重遮挡导致未知。未知显示灰色“无法判定”，不算模型正确，也不算模型错误。\\
+98--110 s & 实际结果与范围 & 测试1段、280窗；三个F1及全正参照；明确当前小规模证据，结束于可追溯结果。\\
+\bottomrule
+\end{longtable}
+
+\textbf{主 demo 画面布局：}左侧约 65\% 为原视频和历史实体观测；右上约 25\% 为未来预测卡片；底部约 10\% 为原生时间轴，标出“观察截止”和“预测目标”。目标未到前不得显示目标帧标签。建议 1920×1080 H.264 导出；原画面保持比例，两侧留白，不拉伸原始 1920×1456 画面。播放速率与数据原生时间戳分别说明，慢放须标倍速。
+
+\textbf{概率曲线：}每条曲线必须能从保存的逐窗口输出复算，阈值固定为 0.5 或已在验证集确定的值。若同一事件的监督范围不确定，用区间带显示；不要用尖锐竖线暗示已知精确接触帧。
+
+\section{已有视频的合适用途}
+\begin{tabularx}{\linewidth}{L{4.8cm}X}
+\toprule 现有文件（项目 runs/ 下） & 适合呈现的内容\\\midrule
+\path{human_pose_live_20261022/human_hands_foundationpose_30fps.mp4} & 真人持碗的同帧手部骨架和物体框／轴。原片约1.47秒；可单独循环讲解，须标“第三人称录制RGB-D回放”，不称完整意图预测或长时间实时系统。\\
+\path{pose_forecast_20261022/future_pose_comparison.mp4} & 手部／物体未来姿态探索及基线对照。用于局限讨论，学习模型尚未稳定优于持位基线。\\
+\path{pose_forecast_20261022/future_pose_online.mp4} & 录制输入的逐帧预测流程；预测激活阶段约29.60 FPS，不能描述成稳定30 FPS端到端系统。\\
+工作区 v5\_predictions\_v2/ 的15张 JPG & 仅为候选预测素材。图上使用 e0/e6/type 等编码，且 boxes=0；需补实体和词表映射、历史/目标对齐和checkpoint，现阶段不进入主结论图。\\
+\bottomrule
+\end{tabularx}
+
+\section{导出与验收清单}
+\begin{enumerate}
+\item 先同步三组 run 的 JSON/YAML/CSV/JSONL 与模型哈希；数值对齐后再更新表格，保留旧报告来源。
+\item 五段视频必须实际可解码；核对标注版帧数为扫码2216、水壶536、订书机314、封口贴405、手柄320。LFS指针不能通过视频验收。
+\item 生成逐窗口预测清单；保持原始词表、图方向、已知标签mask、预测掩码和原生时间戳。预测标签与证据标签分别存放。
+\item 核对三骨干同一输入窗口，成功／失败筛选规则固定；将全部候选列表和最终选择原因放入 \path{demo_selection.json}。
+\item 导出主片、无字幕片、中文字幕 SRT、无损关键帧、数值 JSONL、封面与图像来源 CSV。将数字和中文解释统一到正文。
+\item 完整解码导出视频，逐个抽查 cutoff 前没有未来信息；末尾标明数据来源、输入条件和实验范围。本地制作不等于公开发布素材。
+\end{enumerate}
+
+配套 \path{scripts/collect_remote_evidence.py} 可在已能登录服务器的终端执行，只读收集三组运行的小文件与 checkpoint 哈希，不训练、不改原 run。输出包供下一版报告和 demo 使用；本次尚未在服务器执行。
+\end{document}

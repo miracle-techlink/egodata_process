@@ -1,0 +1,344 @@
+{
+  "validation_kind": "independent_post_inference_artifact_and_provenance_checks",
+  "status": "passed_consistency_checks_no_accuracy_claim",
+  "created_at": "2026-10-22T05:23:54.434275+00:00",
+  "remote_run_dir": "/root/gpufree-data/datasets/ego_hoi/foundationpose_real_20261022/mustard0_full",
+  "expected_frames": 737,
+  "dataset_role": "benchmark_demo",
+  "is_egodemo": false,
+  "independence": {
+    "imported_runner_or_reused_its_validation_helpers": false,
+    "reran_inference": false,
+    "used_or_read_gt": false,
+    "wrote_remote_run_artifacts_or_figures": false,
+    "method": "separate NumPy SO3/CSV checks; original-mesh bbox reprojection; complete OpenCV MP4/PNG decode; streamed SHA256 verification"
+  },
+  "check_count": 41,
+  "failed_checks": [],
+  "checks": [
+    {
+      "name": "finished_real_backend_report",
+      "passed": true
+    },
+    {
+      "name": "explicit_benchmark_demo_not_egodemo",
+      "passed": true
+    },
+    {
+      "name": "pose_shape_and_dtype",
+      "passed": true,
+      "details": {
+        "shape": [
+          1,
+          737,
+          4,
+          4
+        ],
+        "dtype": "float32"
+      }
+    },
+    {
+      "name": "bbox_shape_and_dtype",
+      "passed": true,
+      "details": {
+        "shape": [
+          1,
+          737,
+          4
+        ],
+        "dtype": "int32"
+      }
+    },
+    {
+      "name": "stable_single_object_id",
+      "passed": true
+    },
+    {
+      "name": "all_artifact_frame_counts_737",
+      "passed": true
+    },
+    {
+      "name": "source_and_metadata_stems_match_exactly",
+      "passed": true
+    },
+    {
+      "name": "csv_frame_order_ids_and_stems",
+      "passed": true
+    },
+    {
+      "name": "frame_source_paths_match_stems_and_roles",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "matching_depth_with_extras_allowed",
+      "passed": true,
+      "details": {
+        "rgb_files": 737,
+        "depth_files": 1332,
+        "unused_depth_files": 595,
+        "source_mask_files": 1
+      }
+    },
+    {
+      "name": "only_first_mask_used",
+      "passed": true
+    },
+    {
+      "name": "all_poses_finite",
+      "passed": true
+    },
+    {
+      "name": "all_rotations_so3",
+      "passed": true
+    },
+    {
+      "name": "homogeneous_last_rows",
+      "passed": true
+    },
+    {
+      "name": "positive_camera_z",
+      "passed": true
+    },
+    {
+      "name": "csv_pose_values_equal_npz",
+      "passed": true
+    },
+    {
+      "name": "csv_bbox_values_equal_npz",
+      "passed": true
+    },
+    {
+      "name": "csv_bbox_sources_equal_metadata",
+      "passed": true
+    },
+    {
+      "name": "recorded_rgb_size_640x480",
+      "passed": true
+    },
+    {
+      "name": "bboxes_in_frame_and_ordered",
+      "passed": true
+    },
+    {
+      "name": "intrinsics_match_source",
+      "passed": true
+    },
+    {
+      "name": "original_mesh_convention_and_scale",
+      "passed": true
+    },
+    {
+      "name": "independent_mask_or_mesh_bbox_reprojection",
+      "passed": true,
+      "details": {
+        "mismatched_frame_indices": []
+      }
+    },
+    {
+      "name": "all_projected_mesh_vertices_positive_z",
+      "passed": true,
+      "details": {
+        "minimum_vertex_z_m": 0.45938840934693814
+      }
+    },
+    {
+      "name": "png_count_and_stems",
+      "passed": true
+    },
+    {
+      "name": "video_opens",
+      "passed": true
+    },
+    {
+      "name": "video_actual_decoded_frames_737",
+      "passed": true
+    },
+    {
+      "name": "all_pngs_decode_at_recorded_size",
+      "passed": true
+    },
+    {
+      "name": "all_video_frames_640x480",
+      "passed": true
+    },
+    {
+      "name": "video_report_matches_actual_decode",
+      "passed": true
+    },
+    {
+      "name": "playback_fps_not_claimed_as_capture_fps",
+      "passed": true
+    },
+    {
+      "name": "all_declared_source_sha256_and_sizes_match",
+      "passed": true,
+      "details": {
+        "records": 1489,
+        "unique_files": 1489,
+        "mismatch_count": 0
+      }
+    },
+    {
+      "name": "frozen_runner_sha_matches_disk_and_metadata",
+      "passed": true
+    },
+    {
+      "name": "synced_test_sha_matches_local_handoff",
+      "passed": true
+    },
+    {
+      "name": "real_backend_seed_recorded",
+      "passed": true
+    },
+    {
+      "name": "accuracy_not_evaluated_and_all_rates_null",
+      "passed": true
+    },
+    {
+      "name": "no_reference_requested_or_hashed",
+      "passed": true
+    },
+    {
+      "name": "csv_has_no_gt_errors",
+      "passed": true
+    },
+    {
+      "name": "coverage_separate_from_accuracy",
+      "passed": true
+    },
+    {
+      "name": "full_repository_pytest_passed",
+      "passed": true
+    },
+    {
+      "name": "core_artifacts_unchanged_during_readonly_validation",
+      "passed": true
+    }
+  ],
+  "artifact_sha256": {
+    "poses.npz": {
+      "path": "/root/gpufree-data/datasets/ego_hoi/foundationpose_real_20261022/mustard0_full/poses.npz",
+      "sha256": "f5d3ca5cc933e05e34faf2601e3ee752af6845a918badd4d672920ec76d0bfbc",
+      "bytes": 59748
+    },
+    "poses.meta.json": {
+      "path": "/root/gpufree-data/datasets/ego_hoi/foundationpose_real_20261022/mustard0_full/poses.meta.json",
+      "sha256": "5a301228dd5af661c2d02701c5126ee6d9b72507ee0efd189b20e76f430528f7",
+      "bytes": 472031
+    },
+    "trajectory.csv": {
+      "path": "/root/gpufree-data/datasets/ego_hoi/foundationpose_real_20261022/mustard0_full/trajectory.csv",
+      "sha256": "ab09bf9b9ef14636bfc17517b17b325e158a19dfb5de719df2c2c1d9fbcf300c",
+      "bytes": 177462
+    },
+    "preview.mp4": {
+      "path": "/root/gpufree-data/datasets/ego_hoi/foundationpose_real_20261022/mustard0_full/preview.mp4",
+      "sha256": "3e7b6eb094d24911bf2b2097ede45b6ce2b220221af9f25706693171541be1c6",
+      "bytes": 4797376
+    },
+    "run_report.json": {
+      "path": "/root/gpufree-data/datasets/ego_hoi/foundationpose_real_20261022/mustard0_full/run_report.json",
+      "sha256": "3a4804f25a3c05a189c077ead21d688ba8e6b29c403a5bf1bf2b20bce2e198f3",
+      "bytes": 4292
+    }
+  },
+  "geometry": {
+    "finite_frames": 737,
+    "valid_rigid_positive_z_frames": 737,
+    "inference_coverage": 1.0,
+    "coverage_is_not_accuracy": true,
+    "max_rotation_orthogonality_element_error": 3.471688863498912e-06,
+    "rotation_determinant_min": 0.9999984057299796,
+    "rotation_determinant_max": 1.0000001545560295,
+    "max_homogeneous_last_row_error": 0.0,
+    "camera_z_min_m": 0.5189989805221558,
+    "camera_z_max_m": 0.8040176630020142,
+    "translation_min_m": [
+      -0.45707178115844727,
+      -0.15574993193149567,
+      0.5189989805221558
+    ],
+    "translation_max_m": [
+      0.00016427785158157349,
+      0.1201583743095398,
+      0.8040176630020142
+    ],
+    "pose_direction": "original_mesh_object_to_camera",
+    "invalid_frame_indices": [],
+    "rotation_is_identity_frames": 0
+  },
+  "video": {
+    "actual_decoded_frames": 737,
+    "header_frame_count_informational": 737,
+    "decoded_shapes": [
+      [
+        480,
+        640,
+        3
+      ]
+    ],
+    "png_frames": 737,
+    "png_decode_failures": [],
+    "preview_fps": 10.0,
+    "acquisition_fps": null,
+    "fps_role": "visualization_playback_only",
+    "video_to_corresponding_png_mae_mean": 2.8145136415460583,
+    "video_to_corresponding_png_mae_max": 3.097458767361111,
+    "mae_role": "lossy_codec_diagnostic_only_not_pose_accuracy"
+  },
+  "csv": {
+    "rows": 737,
+    "first_stem": "1581120424100262102",
+    "last_stem": "1581120495188295656",
+    "bbox_sources": {
+      "real_mask": 1,
+      "mesh_projection_missing_or_empty_mask": 736
+    }
+  },
+  "source_provenance": {
+    "records_verified": 1489,
+    "unique_files_verified": 1489,
+    "matching_records": 1489,
+    "mismatches": [],
+    "frozen_runner": {
+      "path": "/workspace/egodata_process/src/pose6d/run_rgbd_sequence.py",
+      "sha256": "c18fbeb949b395730caed7375704378f7529313bbe815ad75f30dfe1a781187d",
+      "bytes": 25311
+    },
+    "verified_records_manifest_sha256": "8bbf008a580a2f544338ecf22bbc347715698344970895fbfe5772775c0bdc7d",
+    "source_records_location": "poses.meta.json, pinned by artifact_sha256 above"
+  },
+  "accuracy": {
+    "evaluated": false,
+    "translation_accuracy": null,
+    "rotation_accuracy": null,
+    "joint_accuracy": null,
+    "reason": "no independent GT supplied; numerical validity and coverage are not accuracy"
+  },
+  "pytest": {
+    "log": {
+      "path": "/root/gpufree-data/datasets/ego_hoi/foundationpose_real_20261022/setup_logs/pytest_full.log",
+      "sha256": "b94edd1701279affd7b61106a94e6977f0db9d7f24194ef4c694d533c95bc72d",
+      "bytes": 1274
+    },
+    "exit_code": 0,
+    "passed": 797,
+    "subtests_passed": 26,
+    "duration_seconds": 13.04,
+    "environment": "/root/gpufree-data/conda/envs/panda_fp_real",
+    "command": "PYTHONDONTWRITEBYTECODE=1 python -B -m pytest -q -p no:cacheprovider",
+    "tests_file": {
+      "path": "/workspace/egodata_process/tests/test_rgbd_sequence.py",
+      "sha256": "a551dc3f953cf2c0e778325a8d077362b6fcf52eeb5d9818ecacbcd326d0e032",
+      "bytes": 26969
+    },
+    "packages_or_environment_files_modified": false
+  },
+  "limitations": [
+    "Real backend execution is reported by the completed runner; this audit checks saved artifacts, not a second model execution.",
+    "No GT accuracy, metric-depth calibration certification, or EgoDemo fusion success is claimed.",
+    "Preview FPS is not the source sampling rate. Source timestamp filenames are preserved without inferring acquisition FPS.",
+    "Caller-generated 3D figures and reports were not changed or certified by this audit."
+  ]
+}
